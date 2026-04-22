@@ -193,7 +193,7 @@
   <p>Accurate calculators, compliance templates, and AI prompt packs. Built on real SARS tables and SA legislation. Download instantly.</p>
   <div class="hero-stats">
     <div class="stat">
-      <div class="stat-n">3</div>
+      <div class="stat-n">7</div>
       <div class="stat-l">Products</div>
     </div>
     <div class="stat">
@@ -319,6 +319,50 @@
       <div class="card-footer">
         <div class="price">R199 <span class="price-note">once-off · instant download</span></div>
         <button class="btn" onclick="openModal('prompts')">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Vehicle Logbook -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-teal">🚗</div>
+        <div class="card-badge badge-popular">SARS Compliant</div>
+        <h3>SA Vehicle Logbook for SARS</h3>
+        <p>SARS-compliant digital travel logbook. Calculates your business km deduction at R4.84/km, exports to CSV for your accountant, and saves automatically.</p>
+      </div>
+      <div class="card-features">
+        <div class="feature">SARS-compliant trip log (date, origin, destination, purpose)</div>
+        <div class="feature">Auto km calculation from odometer readings</div>
+        <div class="feature">Business deduction at R4.84/km (2025 rate)</div>
+        <div class="feature">Export to CSV for your accountant</div>
+        <div class="feature">LocalStorage — data survives refresh</div>
+        <div class="feature">Print-ready logbook summary</div>
+      </div>
+      <div class="card-footer">
+        <div class="price">R79 <span class="price-note">once-off · instant download</span></div>
+        <button class="btn" onclick="openModal('logbook')">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Startup Checklist -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-purple">🚀</div>
+        <div class="card-badge badge-new">60+ Items</div>
+        <h3>SA Business Startup Checklist</h3>
+        <p>Step-by-step interactive checklist for registering and launching a business in South Africa. CIPC, SARS, banking, BBBEE, licences, and contracts.</p>
+      </div>
+      <div class="card-features">
+        <div class="feature">CIPC company registration steps</div>
+        <div class="feature">SARS tax/VAT/PAYE/UIF registration</div>
+        <div class="feature">Bank account comparison (FNB, Capitec, Standard, Nedbank, Absa)</div>
+        <div class="feature">BBBEE affidavit requirements</div>
+        <div class="feature">Contracts and legal checklist</div>
+        <div class="feature">Progress tracker across all 60+ items</div>
+      </div>
+      <div class="card-footer">
+        <div class="price">R99 <span class="price-note">once-off · instant download</span></div>
+        <button class="btn" onclick="openModal('startup')">Buy Now</button>
       </div>
     </div>
 
@@ -452,6 +496,34 @@ const products = {
     ],
     file: 'sa-ai-prompt-pack.html',
     paypal: 'https://paypal.me/mrbtmkhabela/19900ZAR'
+  },
+  logbook: {
+    name: 'SA Vehicle Logbook for SARS',
+    price: 'R79',
+    features: [
+      'SARS-compliant trip log (date, origin, destination, purpose)',
+      'Auto km calculation from odometer readings',
+      'Business deduction at R4.84/km (2025 rate)',
+      'Export to CSV for your accountant',
+      'LocalStorage — data survives refresh',
+      'Print-ready logbook summary'
+    ],
+    file: 'vehicle-logbook.html',
+    paypal: 'https://paypal.me/mrbtmkhabela/7900ZAR'
+  },
+  startup: {
+    name: 'SA Business Startup Checklist',
+    price: 'R99',
+    features: [
+      'CIPC company registration steps',
+      'SARS tax/VAT/PAYE/UIF registration',
+      'Bank account comparison (FNB, Capitec, Standard, Nedbank, Absa)',
+      'BBBEE affidavit requirements',
+      'Contracts and legal checklist',
+      'Progress tracker across all 60+ items'
+    ],
+    file: 'startup-checklist.html',
+    paypal: 'https://paypal.me/mrbtmkhabela/9900ZAR'
   }
 };
 

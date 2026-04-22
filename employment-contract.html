@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SA Employment Contract Generator | BCEA-Compliant Template</title>
+  <style>
+    :root {
+      --bg-page:        #0f1117;
+      --bg-card:        #181c27;
+      --bg-card-hover:  #1e2335;
+      --bg-input:       #12151f;
+      --bg-input-focus: #161929;
+      --bg-contract:    #f8f9fc;
+
+      --border:         rgba(255,255,255,0.07);
+      --border-focus:   rgba(99,179,237,0.5);
+
+      --accent:         #4f8ef7;
+      --accent-soft:    rgba(79,142,247,0.12);
+      --accent-glow:    rgba(79,142,247,0.25);
+      --green:          #34d399;
+      --green-soft:     rgba(52,211,153,0.12);
+      --amber:          #fbbf24;
+      --amber-soft:     rgba(251,191,36,0.10);
+      --red:            #f87171;
+      --red-soft:       rgba(248,113,113,0.10);
+      --purple:         #a78bfa;
+
+      --text-primary:   #f0f4ff;
+      --text-secondary: #8b9cc8;
+      --text-muted:     #4a5578;
+
+      --radius-sm:  6px;
+      --radius-md:  12px;
+      --radius-lg:  18px;
+      --radius-xl:  24px;
+
+      --shadow-card: 0 4px 24px rgba(0,0,0,0.4);
+      --transition:  all 0.2s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg-page);
+      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .app-wrapper {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 24px 16px 80px;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 36px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    .header-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid var(--accent-glow);
+      border-radius: 100px;
+      padding: 4px 10px;
+      margin-bottom: 12px;
+    }
+    .header-eyebrow::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+    h1 {
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+    }
+    .header-sub { margin-top: 6px; font-size: 14px; color: var(--text-secondary); }
+
+    .header-actions { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 18px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+      text-decoration: none;
+      white-space: nowrap;
+      background: var(--bg-card);
+      color: var(--text-secondary);
+    }
+    .btn:hover { border-color: var(--accent-glow); color: var(--accent); }
+    .btn-accent { background: var(--accent); color: #fff; border-color: transparent; }
+    .btn-accent:hover { opacity: 0.88; color: #fff; }
+    .btn-green { background: var(--green-soft); color: var(--green); border-color: rgba(52,211,153,0.25); }
+    .btn-green:hover { background: rgba(52,211,153,0.2); color: var(--green); }
+
+    /* ── DISCLAIMER BANNER ── */
+    .disclaimer {
+      display: flex;
+      gap: 12px;
+      background: var(--amber-soft);
+      border: 1px solid rgba(251,191,36,0.25);
+      border-radius: var(--radius-lg);
+      padding: 14px 18px;
+      margin-bottom: 28px;
+      font-size: 13px;
+      color: var(--amber);
+      align-items: flex-start;
+    }
+    .disclaimer-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+    .disclaimer strong { display:block; margin-bottom:2px; }
+
+    /* ── FORM CARD ── */
+    .form-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .form-section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .form-section-icon {
+      width: 36px; height: 36px;
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 17px;
+      flex-shrink: 0;
+    }
+    .form-section-name { font-size: 16px; font-weight: 700; }
+
+    /* ── FIELD GRID ── */
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+    }
+    .field-grid.two-col { grid-template-columns: 1fr 1fr; }
+    .full-width { grid-column: 1 / -1; }
+
+    .field { display: flex; flex-direction: column; gap: 5px; }
+
+    .field label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .field input, .field select, .field textarea {
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      font-size: 14px;
+      padding: 10px 12px;
+      width: 100%;
+      outline: none;
+      transition: var(--transition);
+      appearance: none;
+      -webkit-appearance: none;
+      font-family: inherit;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      border-color: var(--border-focus);
+      background: var(--bg-input-focus);
+    }
+    .field textarea { resize: vertical; min-height: 72px; }
+
+    .field-note {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .field-note.suggest { color: var(--accent); }
+
+    .radio-group { display: flex; gap: 8px; flex-wrap: wrap; }
+    .radio-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      cursor: pointer;
+      font-size: 13px;
+      color: var(--text-secondary);
+      transition: var(--transition);
+      user-select: none;
+    }
+    .radio-pill input[type="radio"] { display:none; }
+    .radio-pill:has(input:checked) {
+      background: var(--accent-soft);
+      border-color: var(--accent-glow);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .toggle-row:last-child { border-bottom: none; }
+    .toggle-label { font-size: 14px; color: var(--text-secondary); }
+
+    .toggle-switch {
+      position: relative;
+      width: 42px; height: 24px;
+    }
+    .toggle-switch input { opacity:0; width:0; height:0; }
+    .toggle-slider {
+      position: absolute;
+      top:0; left:0; right:0; bottom:0;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .toggle-slider::before {
+      content: '';
+      position: absolute;
+      width: 16px; height: 16px;
+      left: 3px; top: 3px;
+      background: var(--text-muted);
+      border-radius: 50%;
+      transition: var(--transition);
+    }
+    .toggle-switch input:checked + .toggle-slider { background: var(--accent-soft); border-color: var(--accent-glow); }
+    .toggle-switch input:checked + .toggle-slider::before { transform: translateX(18px); background: var(--accent); }
+
+    .conditional { display: none; margin-top: 14px; }
+    .conditional.visible { display: block; }
+
+    .subsection-divider {
+      border:none;
+      border-top: 1px solid var(--border);
+      margin: 20px 0;
+    }
+
+    .notice-auto {
+      background: var(--accent-soft);
+      border: 1px solid var(--accent-glow);
+      border-radius: var(--radius-md);
+      padding: 10px 14px;
+      font-size: 13px;
+      color: var(--accent);
+      margin-top: 8px;
+    }
+
+    /* ── GENERATE BUTTON ── */
+    .generate-wrap {
+      text-align: center;
+      margin: 32px 0 40px;
+    }
+    .btn-generate {
+      padding: 15px 36px;
+      font-size: 16px;
+      border-radius: var(--radius-lg);
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      transition: var(--transition);
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+    .btn-generate:hover { opacity: 0.88; transform: translateY(-1px); }
+    .generate-note { font-size: 12px; color: var(--text-muted); margin-top: 8px; }
+
+    /* ── CONTRACT OUTPUT ── */
+    #contract-section {
+      display: none;
+    }
+    #contract-section.visible { display: block; }
+
+    .contract-toolbar {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .contract-toolbar h2 { font-size: 18px; font-weight: 700; margin-right: auto; }
+
+    #contract-output {
+      background: #fff;
+      color: #111;
+      border-radius: var(--radius-lg);
+      padding: 48px 52px;
+      font-family: 'Times New Roman', 'Georgia', serif;
+      font-size: 13.5px;
+      line-height: 1.75;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+    }
+
+    #contract-output h2 {
+      text-align: center;
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+      color: #111;
+    }
+    #contract-output .contract-sub {
+      text-align: center;
+      font-size: 12px;
+      color: #555;
+      margin-bottom: 28px;
+    }
+    #contract-output .contract-parties {
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      background: #f9f9fb;
+    }
+    #contract-output .parties-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #888;
+      margin-bottom: 8px;
+    }
+    #contract-output .parties-row {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    #contract-output .party-block { flex: 1; min-width: 180px; }
+    #contract-output .party-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #888;
+      margin-bottom: 2px;
+    }
+    #contract-output .party-name { font-weight: 700; font-size: 14px; color: #111; }
+    #contract-output .party-detail { font-size: 12px; color: #555; }
+
+    #contract-output .clause {
+      margin-bottom: 20px;
+    }
+    #contract-output .clause-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #222;
+      margin-bottom: 6px;
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 4px;
+    }
+    #contract-output .clause p {
+      margin-bottom: 8px;
+      font-size: 13px;
+      color: #222;
+    }
+    #contract-output .clause ul {
+      margin-left: 20px;
+      margin-bottom: 8px;
+    }
+    #contract-output .clause ul li { margin-bottom: 4px; font-size: 13px; color: #222; }
+
+    #contract-output .sig-block {
+      margin-top: 40px;
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    #contract-output .sig-party { flex: 1; min-width: 200px; }
+    #contract-output .sig-line {
+      border-bottom: 1px solid #333;
+      height: 36px;
+      margin-bottom: 6px;
+    }
+    #contract-output .sig-label { font-size: 12px; color: #555; }
+
+    #contract-output .contract-footer {
+      margin-top: 32px;
+      padding-top: 16px;
+      border-top: 1px solid #e0e0e0;
+      font-size: 11px;
+      color: #888;
+      text-align: center;
+    }
+
+    /* ── UPSELL ── */
+    .upsell {
+      background: linear-gradient(135deg, rgba(79,142,247,0.08), rgba(167,139,250,0.08));
+      border: 1px solid rgba(79,142,247,0.2);
+      border-radius: var(--radius-xl);
+      padding: 28px 32px;
+      margin-top: 40px;
+      text-align: center;
+    }
+    .upsell-badge {
+      display: inline-block;
+      background: var(--accent-soft);
+      border: 1px solid var(--accent-glow);
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      padding: 4px 12px;
+      margin-bottom: 14px;
+    }
+    .upsell h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
+    .upsell p  { color: var(--text-secondary); font-size: 14px; margin-bottom: 16px; max-width: 520px; margin-left:auto; margin-right:auto; }
+    .upsell-price { font-size: 2rem; font-weight: 700; color: var(--accent); letter-spacing: -0.03em; margin-bottom: 16px; }
+    .upsell-price sup { font-size: 1rem; vertical-align: super; }
+    .upsell-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin: 0 0 20px;
+    }
+    .upsell-feature {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 12px;
+      padding: 4px 12px;
+      color: var(--text-secondary);
+    }
+
+    @media (max-width: 600px) {
+      .field-grid { grid-template-columns: 1fr; }
+      .field-grid.two-col { grid-template-columns: 1fr; }
+      #contract-output { padding: 24px 20px; }
+      #contract-output .parties-row { flex-direction: column; gap: 12px; }
+      #contract-output .sig-block { flex-direction: column; }
+    }
+
+    @media print {
+      body { background:#fff; color:#111; }
+      .app-wrapper { padding:0; max-width:100%; }
+      .disclaimer, .form-card, .generate-wrap, .contract-toolbar,
+      .upsell, .header { display:none !important; }
+      #contract-section { display:block !important; }
+      #contract-output {
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0;
+        background: #fff;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="app-wrapper">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-text">
+      <div class="header-eyebrow">SA Digital Tools</div>
+      <h1>Employment Contract Generator</h1>
+      <p class="header-sub">BCEA-compliant contract template for South African employers. Fill in the form, generate, copy or print.</p>
+    </div>
+    <div class="header-actions">
+      <button class="btn" onclick="resetForm()">↺ Reset</button>
+      <button class="btn btn-accent" onclick="scrollToContract()">View Contract ↓</button>
+    </div>
+  </header>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer">
+    <span class="disclaimer-icon">⚖️</span>
+    <div>
+      <strong>Legal Disclaimer — Please Read</strong>
+      This tool generates a template contract based on the Basic Conditions of Employment Act 75 of 1997 (BCEA) and the Labour Relations Act 66 of 1995 (LRA). It is intended as a starting point only and does not constitute legal advice. Laws change. Every employment situation is unique. <strong>Please have this contract reviewed by a qualified labour law attorney before use.</strong>
+    </div>
+  </div>
+
+  <!-- ── EMPLOYER DETAILS ── -->
+  <div class="form-card">
+    <div class="form-section-title">
+      <div class="form-section-icon" style="background:var(--accent-soft); color:var(--accent)">🏢</div>
+      <span class="form-section-name">Employer Details</span>
+    </div>
+    <div class="field-grid">
+      <div class="field">
+        <label>Employer / Company Name</label>
+        <input type="text" id="emp-name" placeholder="e.g. Acme (Pty) Ltd" />
+      </div>
+      <div class="field">
+        <label>Registration Number</label>
+        <input type="text" id="emp-reg" placeholder="e.g. 2018/123456/07" />
+      </div>
+      <div class="field full-width">
+        <label>Employer Physical Address</label>
+        <input type="text" id="emp-address" placeholder="e.g. 10 Main Road, Sandton, Johannesburg, 2196" />
+      </div>
+      <div class="field">
+        <label>HR Contact / Representative Name</label>
+        <input type="text" id="emp-rep" placeholder="e.g. Jane Dlamini" />
+      </div>
+      <div class="field">
+        <label>HR Contact Title</label>
+        <input type="text" id="emp-rep-title" placeholder="e.g. HR Manager" />
+      </div>
+    </div>
+  </div>
+
+  <!-- ── EMPLOYEE DETAILS ── -->
+  <div class="form-card">
+    <div class="form-section-title">
+      <div class="form-section-icon" style="background:var(--green-soft); color:var(--green)">👤</div>
+      <span class="form-section-name">Employee Details</span>
+    </div>
+    <div class="field-grid">
+      <div class="field">
+        <label>Employee Full Name</label>
+        <input type="text" id="ee-name" placeholder="e.g. Sipho Nkosi" />
+      </div>
+      <div class="field">
+        <label>SA ID Number</label>
+        <input type="text" id="ee-id" placeholder="e.g. 9001015800082" maxlength="13" />
+      </div>
+      <div class="field full-width">
+        <label>Employee Residential Address</label>
+        <input type="text" id="ee-address" placeholder="e.g. 23 Oak Street, Soweto, Johannesburg, 1804" />
+      </div>
+      <div class="field">
+        <label>Job Title</label>
+        <input type="text" id="ee-title" placeholder="e.g. Senior Software Developer" />
+      </div>
+      <div class="field">
+        <label>Department / Division</label>
+        <input type="text" id="ee-dept" placeholder="e.g. Engineering" />
+      </div>
+      <div class="field">
+        <label>Place of Work</label>
+        <input type="text" id="ee-workplace" placeholder="e.g. Sandton Office / Remote" />
+      </div>
+    </div>
+  </div>
+
+  <!-- ── EMPLOYMENT TYPE & DATES ── -->
+  <div class="form-card">
+    <div class="form-section-title">
+      <div class="form-section-icon" style="background:var(--amber-soft); color:var(--amber)">📅</div>
+      <span class="form-section-name">Employment Type &amp; Dates</span>
+    </div>
+    <div class="field-grid">
+      <div class="field">
+        <label>Start Date</label>
+        <input type="date" id="start-date" />
+      </div>
+      <div class="field">
+        <label>Probation Period</label>
+        <select id="probation">
+          <option value="3 months">3 months (standard)</option>
+          <option value="1 month">1 month</option>
+          <option value="2 months">2 months</option>
+          <option value="6 months">6 months</option>
+          <option value="none">No probation</option>
+        </select>
+      </div>
+    </div>
+
+    <hr class="subsection-divider" />
+
+    <p style="font-size:13px; color:var(--text-secondary); margin-bottom:12px; font-weight:600;">Employment Type</p>
+    <div class="radio-group" id="emp-type-group">
+      <label class="radio-pill">
+        <input type="radio" name="emp-type" value="permanent" checked onchange="onEmpTypeChange()" /> Permanent
+      </label>
+      <label class="radio-pill">
+        <input type="radio" name="emp-type" value="fixed-term" onchange="onEmpTypeChange()" /> Fixed-Term
+      </label>
+      <label class="radio-pill">
+        <input type="radio" name="emp-type" value="part-time" onchange="onEmpTypeChange()" /> Part-Time
+      </label>
+    </div>
+
+    <div class="conditional" id="fixed-term-fields">
+      <div class="field-grid" style="margin-top:14px">
+        <div class="field">
+          <label>Contract End Date</label>
+          <input type="date" id="end-date" />
+        </div>
+        <div class="field">
+          <label>Reason for Fixed Term</label>
+          <input type="text" id="fixed-reason" placeholder="e.g. Project completion, maternity cover" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── REMUNERATION ── -->
+  <div class="form-card">
+    <div class="form-section-title">
+      <div class="form-section-icon" style="background:var(--green-soft); color:var(--green)">💰</div>
+      <span class="form-section-name">Remuneration</span>
+    </div>
+    <div class="field-grid">
+      <div class="field">
+        <label>Basic Salary / Wage</label>
+        <input type="number" min="0" id="salary" placeholder="e.g. 35000" />
+        <span class="field-note">Enter the gross (before tax) amount in Rands</span>
+      </div>
+      <div class="field">
+        <label>Pay Frequency</label>
+        <select id="pay-freq">
+          <option value="monthly">Monthly (last working day)</option>
+          <option value="weekly">Weekly (every Friday)</option>
+          <option value="bi-weekly">Bi-weekly (every 2nd Friday)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Payment Method</label>
+        <select id="pay-method">
+          <option value="EFT">EFT — Bank Transfer</option>
+          <option value="Cash">Cash</option>
+          <option value="Cheque">Cheque</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Employee's Bank Name <span style="font-weight:400; text-transform:none; color:var(--text-muted)">(for EFT)</span></label>
+        <input type="text" id="bank-name" placeholder="e.g. FNB, Standard Bank, Capitec" />
+      </div>
+      <div class="field">
+        <label>Account Number</label>
+        <input type="text" id="bank-acc" placeholder="e.g. 62012345678" />
+      </div>
+      <div class="field">
+        <label>Branch Code</label>
+        <input type="text" id="bank-branch" placeholder="e.g. 250655" />
+      </div>
+    </div>
+  </div>
+
+  <!-- ── WORKING HOURS ── -->
+  <div class="form-card">
+    <div class="form-section-title">
+      <div class="form-section-icon" style="background:var(--accent-soft); color:var(--accent)">🕐</div>
+      <span class="form-section-name">Working Hours</span>
+    </div>
+    <div class="field-grid">
+      <div class="field">
+        <label>Working Days</label>
+        <select id="work-days">
+          <option value="Monday to Friday">Monday to Friday</option>
+          <option value="Monday to Saturday">Monday to Saturday</option>
+          <option value="as per roster">As per roster / shift schedule</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Hours per Day</label>
+        <input type="number" min="1" max="12" id="hours-day" placeholder="e.g. 8" />
+        <span class="field-note">BCEA max: 9 hours/day (5-day week) or 8 hours (6-day week)</span>
+      </div>
+      <div class="field">
+        <label>Start Time</label>
+        <input type="time" id="work-start" value="08:00" />
+      </div>
+      <div class="field">
+        <label>End Time</label>
+        <input type="time" id="work-end" value="17:00" />
+      </div>
+      <div class="field">
+        <label>Schedule Type</label>
+        <select id="schedule-type">
+          <option value="fixed">Fixed Hours</option>
+          <option value="flexi">Flexitime (core hours apply)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Core Hours <span style="font-weight:400; text-transform:none; color:var(--text-muted)">(if flexi)</span></label>
+        <input type="text" id="core-hours" placeholder="e.g. 10:00 – 15:00" />
+      </div>
+    </div>
+  </div>
+
+  <!-- ── LEAVE ── -->
+  <div class="form-card">
+    <div class="form-section-title">
+      <div class="form-section-icon" style="background:var(--amber-soft); color:var(--amber)">🌴</div>
+      <span class="form-section-name">Leave Entitlements</span>
+    </div>
+    <div class="field-grid">
+      <div class="field">
+        <label>Annual Leave (days per year)</label>
+        <input type="number" min="15" id="annual-leave" value="15" />
+        <span class="field-note">BCEA minimum: 15 days per year (21 consecutive days)</span>
+      </div>
+      <div class="field">
+        <label>Sick Leave Cycle</label>
+        <select id="sick-leave">
+          <option value="BCEA standard (6 weeks per 36-month cycle)">BCEA standard — 6 weeks per 36-month cycle</option>
+          <option value="10 days per year">10 days per year (enhanced)</option>
+          <option value="15 days per year">15 days per year (enhanced)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Family Responsibility Leave (days/year)</label>
+        <input type="number" min="3" id="family-leave" value="3" />
+        <span class="field-note">BCEA minimum: 3 days per year</span>
+      </div>
+      <div class="field">
+        <label>Maternity Leave</label>
+        <input type="text" id="maternity-leave" value="4 months (unpaid per BCEA / UIF applicable)" />
+      </div>
+    </div>
+  </div>
+
+  <!-- ── BENEFITS ── -->
+  <div class="form-card">
+    <div class="form-section-title">
+      <div class="form-section-icon" style="background:rgba(248,113,113,0.1); color:var(--red)">🏥</div>
+      <span class="form-section-name">Benefits</span>
+    </div>
+
+    <div class="toggle-row">
+      <span class="toggle-label">Medical Aid Contribution</span>
+      <label class="toggle-switch">
+        <input type="checkbox" id="medical-toggle" onchange="toggleConditional('medical-toggle','medical-fields')" />
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+    <div class="conditional" id="medical-fields">
+      <div class="field-grid" style="margin-top:14px">
+        <div class="field">
+          <label>Medical Aid Fund Name</label>
+          <input type="text" id="medical-name" placeholder="e.g. Discovery Health, Bonitas" />
+        </div>
+        <div class="field">
+          <label>Employer Contribution (%)</label>
+          <input type="number" min="0" max="100" id="medical-employer-pct" placeholder="e.g. 50" />
+        </div>
+        <div class="field">
+          <label>Employee Contribution (%)</label>
+          <input type="number" min="0" max="100" id="medical-employee-pct" placeholder="e.g. 50" />
+        </div>
+      </div>
+    </div>
+
+    <div class="toggle-row">
+      <span class="toggle-label">Pension / Provident Fund</span>
+      <label class="toggle-switch">
+        <input type="checkbox" id="pension-toggle" onchange="toggleConditional('pension-toggle','pension-fields')" />
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+    <div class="conditional" id="pension-fields">
+      <div class="field-grid" style="margin-top:14px">
+        <div class="field">
+          <label>Fund Name</label>
+          <input type="text" id="pension-name" placeholder="e.g. Old Mutual Group Provident Fund" />
+        </div>
+        <div class="field">
+          <label>Fund Type</label>
+          <select id="pension-type">
+            <option value="Provident Fund">Provident Fund</option>
+            <option value="Pension Fund">Pension Fund</option>
+            <option value="Retirement Annuity">Retirement Annuity</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Employer Contribution (%)</label>
+          <input type="number" min="0" max="30" id="pension-employer-pct" placeholder="e.g. 7.5" step="0.5" />
+        </div>
+        <div class="field">
+          <label>Employee Contribution (%)</label>
+          <input type="number" min="0" max="30" id="pension-employee-pct" placeholder="e.g. 7.5" step="0.5" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── NOTICE PERIOD ── -->
+  <div class="form-card">
+    <div class="form-section-title">
+      <div class="form-section-icon" style="background:var(--purple-soft,rgba(167,139,250,0.1)); color:var(--purple)">📄</div>
+      <span class="form-section-name">Notice Period &amp; Restraint of Trade</span>
+    </div>
+
+    <div class="field-grid">
+      <div class="field">
+        <label>Notice Period</label>
+        <select id="notice-period" onchange="updateNoticeNote()">
+          <option value="1 week">1 week (< 6 months' service)</option>
+          <option value="2 weeks">2 weeks (6 months – 1 year)</option>
+          <option value="4 weeks" selected>4 weeks (> 1 year — BCEA minimum)</option>
+          <option value="1 month">1 calendar month</option>
+          <option value="2 months">2 calendar months</option>
+          <option value="3 months">3 calendar months</option>
+        </select>
+        <span class="field-note suggest" id="notice-note">BCEA auto-suggestion: 4 weeks for > 1 year service (recommended for most hires)</span>
+      </div>
+    </div>
+
+    <hr class="subsection-divider" />
+
+    <div class="toggle-row">
+      <span class="toggle-label">Restraint of Trade</span>
+      <label class="toggle-switch">
+        <input type="checkbox" id="rot-toggle" onchange="toggleConditional('rot-toggle','rot-fields')" />
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+    <div class="conditional" id="rot-fields">
+      <div class="notice-auto" style="margin-bottom:14px">
+        ⚠ Restraint of trade clauses must be reasonable in scope, geography, and duration to be enforceable under South African law. Consult a labour attorney.
+      </div>
+      <div class="field-grid" style="margin-top:4px">
+        <div class="field">
+          <label>Duration</label>
+          <select id="rot-duration">
+            <option value="6 months">6 months</option>
+            <option value="12 months" selected>12 months</option>
+            <option value="24 months">24 months</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Geographic Area</label>
+          <input type="text" id="rot-area" placeholder="e.g. Gauteng, or South Africa" />
+        </div>
+        <div class="field full-width">
+          <label>Activities Restrained</label>
+          <textarea id="rot-activities" placeholder="e.g. Providing similar services to competitors in the same industry, soliciting the Employer's clients or employees…"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ADDITIONAL CLAUSES ── -->
+  <div class="form-card">
+    <div class="form-section-title">
+      <div class="form-section-icon" style="background:var(--accent-soft); color:var(--accent)">📝</div>
+      <span class="form-section-name">Additional Clauses (Optional)</span>
+    </div>
+    <div class="field-grid">
+      <div class="field full-width">
+        <label>Additional Terms</label>
+        <textarea id="additional-terms" rows="4" placeholder="e.g. Remote work policy, travel allowance, performance bonus structure, equipment provided…"></textarea>
+        <span class="field-note">These will be appended to the contract verbatim. Keep it formal.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- GENERATE -->
+  <div class="generate-wrap">
+    <button class="btn-generate" onclick="generateContract()">⚡ Generate Contract</button>
+    <p class="generate-note">Contract is generated client-side. Nothing is sent to any server.</p>
+  </div>
+
+  <!-- ── CONTRACT OUTPUT ── -->
+  <div id="contract-section">
+    <div class="contract-toolbar">
+      <h2>Generated Contract</h2>
+      <button class="btn btn-green" onclick="copyContract()">📋 Copy Full Contract</button>
+      <button class="btn" onclick="window.print()">🖨 Print / Save PDF</button>
+    </div>
+    <div id="contract-output"></div>
+  </div>
+
+  <!-- UPSELL -->
+  <div class="upsell">
+    <div class="upsell-badge">Premium Version</div>
+    <h2>SA Employment Contract Generator — Full Pack</h2>
+    <p>Unlock additional contract templates: independent contractor agreements, NDA templates, disciplinary policy, and leave policy documents — all BCEA-aligned.</p>
+    <div class="upsell-price"><sup>R</sup>149</div>
+    <div class="upsell-features">
+      <span class="upsell-feature">✓ Contractor Agreement</span>
+      <span class="upsell-feature">✓ NDA Template</span>
+      <span class="upsell-feature">✓ Disciplinary Policy</span>
+      <span class="upsell-feature">✓ Leave Policy</span>
+      <span class="upsell-feature">✓ Lifetime Updates</span>
+    </div>
+    <a href="https://paypal.me/mrbtmkhabela/14900ZAR" class="btn btn-accent" target="_blank" rel="noopener">Buy Full Pack via PayPal — R149</a>
+  </div>
+
+</div><!-- /app-wrapper -->
+
+<script>
+  // ── HELPERS
+  const get = id => (document.getElementById(id)?.value || '').trim();
+  const checked = id => document.getElementById(id)?.checked;
+  const radioVal = name => document.querySelector(`input[name="${name}"]:checked`)?.value || '';
+
+  function fmt(n) {
+    const num = parseFloat(n);
+    if (isNaN(num)) return 'to be agreed';
+    return 'R ' + num.toLocaleString('en-ZA', {minimumFractionDigits:2, maximumFractionDigits:2});
+  }
+  function fmtDate(d) {
+    if (!d) return '[DATE NOT SET]';
+    const dt = new Date(d + 'T00:00:00');
+    return dt.toLocaleDateString('en-ZA', {day:'numeric', month:'long', year:'numeric'});
+  }
+  function blank(val, fallback) {
+    return val || fallback || '[NOT PROVIDED]';
+  }
+
+  // ── UI HELPERS
+  function toggleSection(id) { document.getElementById(id)?.classList.toggle('open'); }
+
+  function toggleConditional(toggleId, fieldId) {
+    const isOn = document.getElementById(toggleId)?.checked;
+    const el = document.getElementById(fieldId);
+    if (el) el.classList.toggle('visible', isOn);
+  }
+
+  function onEmpTypeChange() {
+    const type = radioVal('emp-type');
+    const ftFields = document.getElementById('fixed-term-fields');
+    if (ftFields) ftFields.classList.toggle('visible', type === 'fixed-term');
+  }
+
+  function updateNoticeNote() {
+    const notices = {
+      '1 week':    'BCEA: Appropriate for employees with less than 6 months of service.',
+      '2 weeks':   'BCEA: Appropriate for employees with 6 months to 1 year of service.',
+      '4 weeks':   'BCEA: Minimum for employees with more than 1 year of service (recommended).',
+      '1 month':   'Enhanced notice — exceeds BCEA minimum. Common for supervisory roles.',
+      '2 months':  'Enhanced notice — appropriate for senior or specialist roles.',
+      '3 months':  'Enhanced notice — appropriate for executive or critical key-man roles.',
+    };
+    const note = document.getElementById('notice-note');
+    if (note) note.textContent = notices[get('notice-period')] || '';
+  }
+
+  function scrollToContract() {
+    document.getElementById('contract-section')?.scrollIntoView({behavior:'smooth'});
+  }
+
+  function resetForm() {
+    if (!confirm('Reset all fields? This cannot be undone.')) return;
+    document.querySelectorAll('input:not([type=radio]):not([type=checkbox]), select, textarea').forEach(el => {
+      if (el.type === 'date') el.value = '';
+      else if (el.tagName === 'SELECT') el.selectedIndex = 0;
+      else el.value = '';
+    });
+    document.querySelectorAll('input[type=checkbox]').forEach(el => { el.checked = false; });
+    document.querySelectorAll('.conditional').forEach(el => el.classList.remove('visible'));
+    document.querySelector('input[name="emp-type"][value="permanent"]').checked = true;
+    document.getElementById('annual-leave').value = '15';
+    document.getElementById('family-leave').value = '3';
+    document.getElementById('work-start').value = '08:00';
+    document.getElementById('work-end').value = '17:00';
+    document.getElementById('maternity-leave').value = '4 months (unpaid per BCEA / UIF applicable)';
+    document.getElementById('contract-section').classList.remove('visible');
+  }
+
+  // ── CONTRACT GENERATOR
+  function generateContract() {
+    const empName     = blank(get('emp-name'), '[EMPLOYER NAME]');
+    const empReg      = get('emp-reg');
+    const empAddress  = blank(get('emp-address'), '[EMPLOYER ADDRESS]');
+    const empRep      = blank(get('emp-rep'), '[REPRESENTATIVE]');
+    const empRepTitle = get('emp-rep-title') || 'Representative';
+    const eeName      = blank(get('ee-name'), '[EMPLOYEE NAME]');
+    const eeId        = blank(get('ee-id'), '[ID NUMBER]');
+    const eeAddress   = blank(get('ee-address'), '[EMPLOYEE ADDRESS]');
+    const eeTitle     = blank(get('ee-title'), '[JOB TITLE]');
+    const eeDept      = get('ee-dept') || 'General';
+    const eeWorkplace = get('ee-workplace') || empAddress;
+    const startDate   = fmtDate(get('start-date'));
+    const probation   = get('probation');
+    const empType     = radioVal('emp-type');
+    const endDate     = empType === 'fixed-term' ? fmtDate(get('end-date')) : null;
+    const fixedReason = get('fixed-reason');
+    const salary      = fmt(get('salary'));
+    const payFreq     = get('pay-freq');
+    const payMethod   = get('pay-method');
+    const bankName    = get('bank-name');
+    const bankAcc     = get('bank-acc');
+    const bankBranch  = get('bank-branch');
+    const workDays    = get('work-days');
+    const hoursDay    = get('hours-day') || '8';
+    const workStart   = get('work-start') || '08:00';
+    const workEnd     = get('work-end') || '17:00';
+    const schedType   = get('schedule-type');
+    const coreHours   = get('core-hours');
+    const annualLeave = get('annual-leave') || '15';
+    const sickLeave   = get('sick-leave');
+    const famLeave    = get('family-leave') || '3';
+    const matLeave    = get('maternity-leave');
+    const noticePeriod= get('notice-period');
+    const hasMedical  = checked('medical-toggle');
+    const medName     = get('medical-name');
+    const medEmpPct   = get('medical-employer-pct');
+    const medEePct    = get('medical-employee-pct');
+    const hasPension  = checked('pension-toggle');
+    const pensName    = get('pension-name');
+    const pensType    = get('pension-type');
+    const pensEmpPct  = get('pension-employer-pct');
+    const pensEePct   = get('pension-employee-pct');
+    const hasRot      = checked('rot-toggle');
+    const rotDuration = get('rot-duration');
+    const rotArea     = get('rot-area');
+    const rotActivities=get('rot-activities');
+    const additional  = get('additional-terms');
+    const today       = new Date().toLocaleDateString('en-ZA', {day:'numeric', month:'long', year:'numeric'});
+
+    const empTypeLabel = empType === 'permanent' ? 'Permanent' : empType === 'fixed-term' ? 'Fixed-Term' : 'Part-Time';
+    const payFreqLabel = {monthly:'Monthly',weekly:'Weekly','bi-weekly':'Bi-Weekly'}[payFreq] || payFreq;
+
+    let html = `
+      <h2>Employment Contract</h2>
+      <div class="contract-sub">Basic Conditions of Employment Act 75 of 1997 &amp; Labour Relations Act 66 of 1995 compliant template</div>
+
+      <div class="contract-parties">
+        <div class="parties-title">Parties to this Agreement</div>
+        <div class="parties-row">
+          <div class="party-block">
+            <div class="party-label">Employer</div>
+            <div class="party-name">${empName}</div>
+            <div class="party-detail">${empReg ? 'Reg No: ' + empReg + '<br>' : ''}${empAddress}</div>
+          </div>
+          <div class="party-block">
+            <div class="party-label">Employee</div>
+            <div class="party-name">${eeName}</div>
+            <div class="party-detail">ID: ${eeId}<br>${eeAddress}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-title">1. Commencement &amp; Nature of Employment</div>
+        <p>1.1 This contract of employment commences on <strong>${startDate}</strong>.</p>
+        <p>1.2 The nature of this employment is <strong>${empTypeLabel}</strong>.${
+          empType === 'fixed-term'
+            ? ` This fixed-term contract will terminate on <strong>${endDate || '[END DATE]'}</strong>${fixedReason ? ' due to: ' + fixedReason : ''}. The Employee acknowledges that this contract does not automatically renew.`
+            : empType === 'part-time'
+            ? ' The Employee is engaged on a part-time basis and the working hours specified herein represent the agreed schedule.'
+            : ' This is a permanent contract of employment subject to the terms herein and applicable South African labour legislation.'
+        }</p>
+        ${probation !== 'none' ? `<p>1.3 The Employee will be subject to a probationary period of <strong>${probation}</strong> commencing on the start date. During this period, either party may terminate this agreement on one (1) week's written notice. The Employer may extend the probationary period by agreement if performance warrants it.</p>` : ''}
+        <p>${probation !== 'none' ? '1.4' : '1.3'} The Employee's place of work is <strong>${eeWorkplace}</strong>, or such other location as the Employer may reasonably require from time to time.</p>
+      </div>
+
+      <div class="clause">
+        <div class="clause-title">2. Position &amp; Duties</div>
+        <p>2.1 The Employee is employed in the position of <strong>${eeTitle}</strong> within the <strong>${eeDept}</strong> department, reporting to such person as the Employer designates.</p>
+        <p>2.2 The Employee shall perform all duties reasonably associated with this position and such other duties as the Employer may reasonably require from time to time.</p>
+        <p>2.3 The Employee undertakes to perform their duties to the best of their ability, honestly, and in the best interests of the Employer.</p>
+      </div>
+
+      <div class="clause">
+        <div class="clause-title">3. Remuneration</div>
+        <p>3.1 The Employee shall receive a gross basic salary of <strong>${salary} per month</strong>, payable <strong>${payFreqLabel.toLowerCase()}</strong> by <strong>${payMethod}</strong>${
+          payMethod === 'EFT' && bankName
+            ? ` to ${bankName}, account number ${bankAcc || '[ACC NO]'}, branch code ${bankBranch || '[BRANCH CODE]'}`
+            : ''
+        }.</p>
+        <p>3.2 The Employer shall deduct from remuneration all amounts required by law, including PAYE, UIF contributions (currently 1% employee / 1% employer), and SDL where applicable, as prescribed by SARS and applicable legislation.</p>
+        <p>3.3 The Employee's salary shall be reviewed annually at the Employer's discretion. A salary review does not guarantee an increase.</p>
+        <p>3.4 The Employer shall provide the Employee with a payslip each pay period detailing earnings and all deductions, in accordance with section 33 of the BCEA.</p>
+      </div>
+
+      <div class="clause">
+        <div class="clause-title">4. Working Hours</div>
+        <p>4.1 The Employee's ordinary hours of work are <strong>${workDays}</strong>, <strong>${hoursDay} hours per day</strong>${
+          schedType === 'fixed'
+            ? `, from <strong>${workStart}</strong> to <strong>${workEnd}</strong>.`
+            : `, on a flexitime arrangement. Core hours during which the Employee must be available are <strong>${coreHours || '[CORE HOURS]'}</strong>.`
+        }</p>
+        <p>4.2 The ordinary hours of work shall not exceed those prescribed by the Basic Conditions of Employment Act 75 of 1997.</p>
+        <p>4.3 Overtime shall be worked only if agreed to by the Employee, shall not exceed 10 hours per week, and shall be compensated at one and one-third (1⅓) times the Employee's ordinary rate of remuneration, or by time off in lieu by agreement.</p>
+        <p>4.4 The Employee is entitled to a meal interval of at least one (1) hour after five (5) consecutive hours of work, which may by agreement be reduced to 30 minutes and is unpaid.</p>
+      </div>
+
+      <div class="clause">
+        <div class="clause-title">5. Leave</div>
+        <p>5.1 <strong>Annual Leave:</strong> The Employee is entitled to <strong>${annualLeave} consecutive days' annual leave</strong> per leave cycle (12 months), exclusive of public holidays. Leave must be taken at a time mutually convenient to both parties.</p>
+        <p>5.2 <strong>Sick Leave:</strong> ${sickLeave}. During the first six (6) months of employment, the Employee is entitled to one (1) day's paid sick leave for every 26 days worked. The Employer may require a medical certificate for absences exceeding two (2) consecutive days or on a pattern basis.</p>
+        <p>5.3 <strong>Family Responsibility Leave:</strong> The Employee is entitled to <strong>${famLeave} days' paid family responsibility leave</strong> per year, applicable when a child is born, when a child is ill, or in the event of the death of a spouse, life partner, parent, adoptive parent, grandparent, child, adopted child, grandchild, or sibling.</p>
+        <p>5.4 <strong>Maternity Leave:</strong> ${matLeave}. The Employee may apply for UIF Maternity Benefits through the Department of Employment and Labour.</p>
+        <p>5.5 <strong>Public Holidays:</strong> The Employee is entitled to all South African public holidays as gazetted under the Public Holidays Act 36 of 1994 on full pay.</p>
+        <p>5.6 Leave may not be exchanged for cash except on termination of employment where any accrued untaken annual leave shall be paid out at the Employee's ordinary rate of remuneration.</p>
+      </div>
+
+      <div class="clause">
+        <div class="clause-title">6. Benefits</div>
+        ${hasMedical ? `<p>6.1 <strong>Medical Aid:</strong> The Employer shall contribute <strong>${medEmpPct || '[X]'}%</strong> of the cost of membership of <strong>${medName || '[FUND NAME]'}</strong>. The Employee shall contribute the remaining <strong>${medEePct || '[X]'}%</strong> by deduction from remuneration.</p>` : `<p>6.1 <strong>Medical Aid:</strong> The Employee is not entitled to an employer medical aid contribution under this contract. The Employee is encouraged to obtain their own medical cover.</p>`}
+        ${hasPension ? `<p>6.${hasMedical?2:1} <strong>${pensType || 'Retirement Fund'}:</strong> The Employee shall be enrolled in the <strong>${pensName || '[FUND NAME]'}</strong>. The Employer shall contribute <strong>${pensEmpPct || '[X]'}%</strong> of the Employee's basic salary. The Employee shall contribute <strong>${pensEePct || '[X]'}%</strong> by deduction from remuneration. Membership is subject to the rules of the fund.</p>` : ''}
+        ${!hasMedical && !hasPension ? '<p>No additional benefits are provided under this contract beyond statutory entitlements.</p>' : ''}
+      </div>
+
+      <div class="clause">
+        <div class="clause-title">7. Notice Period &amp; Termination</div>
+        <p>7.1 After completion of any probationary period, either party may terminate this contract by giving <strong>${noticePeriod}</strong> written notice to the other party.</p>
+        <p>7.2 Notice must be given in writing and shall be delivered by hand, email, or registered post. Notice given by the Employer shall not run concurrently with any period of annual leave.</p>
+        <p>7.3 The Employer may pay remuneration in lieu of notice.</p>
+        <p>7.4 The Employer may summarily dismiss the Employee for serious misconduct following a fair disciplinary process in accordance with Schedule 8 of the Labour Relations Act 66 of 1995.</p>
+        <p>7.5 Upon termination for any reason, the Employee shall return all property belonging to the Employer, including equipment, access cards, documents, and confidential information.</p>
+      </div>
+
+      <div class="clause">
+        <div class="clause-title">8. Confidentiality</div>
+        <p>8.1 The Employee acknowledges that, in the course of employment, they will have access to confidential information of the Employer, including but not limited to trade secrets, financial data, client lists, pricing, technical data, and business strategies ("Confidential Information").</p>
+        <p>8.2 The Employee undertakes not to disclose any Confidential Information to any third party during or after employment, except where required by law or with the Employer's prior written consent.</p>
+        <p>8.3 This obligation of confidentiality survives the termination of this agreement indefinitely.</p>
+      </div>
+
+      <div class="clause">
+        <div class="clause-title">9. Intellectual Property</div>
+        <p>9.1 Any work product, invention, discovery, development, software, design, or intellectual property created by the Employee in the course of their employment or using the Employer's resources shall vest in and be the sole property of the Employer.</p>
+        <p>9.2 The Employee irrevocably assigns to the Employer all present and future intellectual property rights in such works and undertakes to execute any documents necessary to give effect to this assignment.</p>
+      </div>
+`;
+
+    if (hasRot) {
+      html += `
+      <div class="clause">
+        <div class="clause-title">10. Restraint of Trade</div>
+        <p>10.1 For a period of <strong>${rotDuration}</strong> after termination of this contract, for whatever reason, the Employee shall not, within <strong>${rotArea || '[GEOGRAPHIC AREA]'}</strong>:</p>
+        <ul>
+          ${rotActivities ? `<li>${rotActivities}</li>` : `<li>Carry on or be engaged in any business or activity which is in direct competition with the business of the Employer.</li><li>Solicit or entice away any client, customer, or employee of the Employer.</li>`}
+        </ul>
+        <p>10.2 The Employee acknowledges that this restraint is reasonable and necessary to protect the legitimate business interests of the Employer, taking into account the Employee's access to trade secrets and confidential information.</p>
+        <p>10.3 A breach of this clause will entitle the Employer to seek urgent interdictory relief.</p>
+      </div>`;
+    }
+
+    const clauseNum = hasRot ? 11 : 10;
+
+    if (additional) {
+      html += `
+      <div class="clause">
+        <div class="clause-title">${clauseNum}. Additional Terms</div>
+        <p>${additional.replace(/\n/g, '</p><p>')}</p>
+      </div>`;
+    }
+
+    const finalClause = additional ? clauseNum + 1 : clauseNum;
+
+    html += `
+      <div class="clause">
+        <div class="clause-title">${finalClause}. General Provisions</div>
+        <p>${finalClause}.1 <strong>Governing Law:</strong> This agreement shall be governed by the laws of the Republic of South Africa. Any disputes arising shall be subject to the jurisdiction of the Commission for Conciliation, Mediation and Arbitration (CCMA) and the Labour Court, as applicable under the Labour Relations Act 66 of 1995 and the Basic Conditions of Employment Act 75 of 1997.</p>
+        <p>${finalClause}.2 <strong>Entire Agreement:</strong> This contract constitutes the entire agreement between the parties with respect to the Employee's employment and supersedes all prior agreements, representations, and understandings, whether written or oral.</p>
+        <p>${finalClause}.3 <strong>Amendment:</strong> No amendment, variation, or addition to this agreement shall be valid unless in writing and signed by both parties.</p>
+        <p>${finalClause}.4 <strong>Severability:</strong> If any provision of this agreement is found to be invalid, illegal, or unenforceable, the remaining provisions shall continue in full force and effect.</p>
+        <p>${finalClause}.5 <strong>Acknowledgement:</strong> The Employee confirms that they have read and understood this contract, have had an opportunity to seek independent legal advice, and agree to be bound by its terms.</p>
+      </div>
+
+      <div class="sig-block">
+        <div class="sig-party">
+          <div class="sig-line"></div>
+          <div class="sig-label"><strong>${empName}</strong><br>Represented by: ${empRep} (${empRepTitle})<br>Date: ________________</div>
+        </div>
+        <div class="sig-party">
+          <div class="sig-line"></div>
+          <div class="sig-label"><strong>${eeName}</strong><br>ID Number: ${eeId}<br>Date: ________________</div>
+        </div>
+      </div>
+
+      <div class="sig-block" style="margin-top:24px">
+        <div class="sig-party">
+          <div class="sig-line"></div>
+          <div class="sig-label">Witness 1 — Name &amp; Signature<br>Date: ________________</div>
+        </div>
+        <div class="sig-party">
+          <div class="sig-line"></div>
+          <div class="sig-label">Witness 2 — Name &amp; Signature<br>Date: ________________</div>
+        </div>
+      </div>
+
+      <div class="contract-footer">
+        Generated by SA Tools (satoolsstore.co.za) on ${today}. This is a template only. Not legal advice. Ensure this contract is reviewed by a qualified South African labour law practitioner before use. The generator relies on publicly available statutory minimums under the BCEA 75 of 1997 and LRA 66 of 1995.
+      </div>`;
+
+    const output = document.getElementById('contract-output');
+    output.innerHTML = html;
+    const section = document.getElementById('contract-section');
+    section.classList.add('visible');
+    setTimeout(() => section.scrollIntoView({behavior:'smooth', block:'start'}), 100);
+  }
+
+  function copyContract() {
+    const el = document.getElementById('contract-output');
+    const text = el.innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = event.target;
+      const orig = btn.textContent;
+      btn.textContent = '✓ Copied!';
+      setTimeout(() => btn.textContent = orig, 2000);
+    }).catch(() => {
+      const range = document.createRange();
+      range.selectNodeContents(el);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      document.execCommand('copy');
+      window.getSelection().removeAllRanges();
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    updateNoticeNote();
+    // set today as default start date
+    const d = new Date();
+    const iso = d.toISOString().slice(0,10);
+    document.getElementById('start-date').value = iso;
+  });
+</script>
+</body>
+</html>
