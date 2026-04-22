@@ -256,6 +256,28 @@
       </div>
     </div>
 
+    <!-- BBBEE Checklist -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-gold">📋</div>
+        <div class="card-badge badge-new">Interactive</div>
+        <h3>BBBEE Compliance Checklist</h3>
+        <p>Interactive B-BBEE compliance checker for EME, QSE, and Generic enterprises. Score tracker, level calculator, and evidence checklist — all in one tool.</p>
+      </div>
+      <div class="card-features">
+        <div class="feature">EME automatic Level 4 — what you need</div>
+        <div class="feature">QSE four-pillar scoring with point tracker</div>
+        <div class="feature">Required evidence per checklist item</div>
+        <div class="feature">Projected BBBEE level as you tick off items</div>
+        <div class="feature">Printable compliance summary report</div>
+        <div class="feature">Built on Codes of Good Practice</div>
+      </div>
+      <div class="card-footer">
+        <div class="price">R99 <span class="price-note">once-off · instant download</span></div>
+        <button class="btn" onclick="openModal('bbbee')">Buy Now</button>
+      </div>
+    </div>
+
     <!-- Prompt Pack -->
     <div class="card">
       <div class="card-header">
@@ -333,6 +355,20 @@
 
 <script>
 const products = {
+  bbbee: {
+    name: 'BBBEE Compliance Checklist for SA Small Business',
+    price: 'R99',
+    features: [
+      'EME automatic Level 4 requirements',
+      'QSE four-pillar scoring tracker',
+      'Required evidence per checklist item',
+      'Live BBBEE level calculator',
+      'Printable compliance summary',
+      'Works offline forever'
+    ],
+    file: 'bbbee-checklist.html',
+    paypal: 'https://paypal.me/mrbtmkhabela/9900ZAR'
+  },
   tax: {
     name: 'SA Income Tax Calculator 2025/26',
     price: 'R149',
