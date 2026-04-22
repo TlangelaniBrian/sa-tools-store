@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B-BBEE Compliance Checklist — SA Small Business Tool</title>
+<style>
+  :root {
+    --bg-primary: #0d0f14;
+    --bg-secondary: #151820;
+    --bg-card: #1c2030;
+    --bg-card-hover: #212538;
+    --border: #2a2f45;
+    --border-accent: #3a4060;
+    --text-primary: #e8eaf0;
+    --text-secondary: #9ba3c0;
+    --text-muted: #5a6080;
+    --accent-green: #22c55e;
+    --accent-green-dim: #16a34a;
+    --accent-blue: #3b82f6;
+    --accent-blue-dim: #1d4ed8;
+    --accent-amber: #f59e0b;
+    --accent-amber-dim: #d97706;
+    --accent-red: #ef4444;
+    --accent-purple: #a855f7;
+    --level-1: #22c55e;
+    --level-2: #4ade80;
+    --level-3: #86efac;
+    --level-4: #bbf7d0;
+    --level-5: #fde68a;
+    --level-6: #fcd34d;
+    --level-7: #fb923c;
+    --level-8: #f87171;
+    --non-compliant: #991b1b;
+    --font: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* ── PRINT HEADER (screen only) ── */
+  .screen-header {
+    background: linear-gradient(135deg, #1c2030 0%, #0d0f14 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .logo-area h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+  }
+
+  .logo-area .subtitle {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(34,197,94,0.1);
+    border: 1px solid rgba(34,197,94,0.3);
+    color: var(--accent-green);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+
+  /* ── MAIN LAYOUT ── */
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 32px 20px 80px;
+  }
+
+  /* ── SELECTOR ── */
+  .selector-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+    margin-bottom: 28px;
+  }
+
+  .selector-card h2 {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 18px;
+  }
+
+  .entity-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+  }
+
+  .entity-btn {
+    background: var(--bg-secondary);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+    color: var(--text-primary);
+  }
+
+  .entity-btn:hover {
+    border-color: var(--accent-blue);
+    background: rgba(59,130,246,0.05);
+  }
+
+  .entity-btn.active {
+    border-color: var(--accent-blue);
+    background: rgba(59,130,246,0.1);
+  }
+
+  .entity-btn .entity-name {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .entity-btn .entity-range {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+  }
+
+  .entity-btn .entity-note {
+    font-size: 0.75rem;
+    color: var(--accent-blue);
+    font-weight: 500;
+  }
+
+  /* ── PROGRESS TRACKER ── */
+  .progress-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+    margin-bottom: 28px;
+    display: none;
+  }
+
+  .progress-card.visible { display: block; }
+
+  .progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .score-display {
+    text-align: center;
+  }
+
+  .score-number {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--accent-green);
+  }
+
+  .score-label {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    margin-top: 4px;
+  }
+
+  .level-display {
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 16px 24px;
+    text-align: center;
+    min-width: 160px;
+    border: 2px solid var(--border);
+  }
+
+  .level-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .level-value {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-top: 4px;
+  }
+
+  .level-recognition {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 4px;
+  }
+
+  .progress-bar-wrap {
+    margin-top: 16px;
+  }
+
+  .progress-bar-bg {
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    height: 10px;
+    overflow: hidden;
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    border-radius: 8px;
+    background: linear-gradient(90deg, var(--accent-green-dim), var(--accent-green));
+    transition: width 0.4s ease;
+  }
+
+  .progress-bar-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  /* ── LEVEL TABLE ── */
+  .level-table-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+    margin-bottom: 28px;
+  }
+
+  .section-heading {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-heading::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .level-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+  }
+
+  .level-table th {
+    text-align: left;
+    padding: 10px 14px;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-bottom: 1px solid var(--border);
+    font-weight: 600;
+  }
+
+  .level-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(42,47,69,0.5);
+    vertical-align: middle;
+  }
+
+  .level-table tr:last-child td { border-bottom: none; }
+
+  .level-pill {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .current-row td { background: rgba(59,130,246,0.05); }
+  .current-row td:first-child { border-left: 3px solid var(--accent-blue); }
+
+  /* ── PILLAR SECTIONS ── */
+  .pillar-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    display: none;
+  }
+
+  .pillar-card.visible { display: block; }
+
+  .pillar-header {
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s;
+  }
+
+  .pillar-header:hover { background: var(--bg-card-hover); }
+
+  .pillar-title-area {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .pillar-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+  }
+
+  .pillar-title { font-size: 1rem; font-weight: 700; }
+  .pillar-max-pts {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 2px;
+  }
+
+  .pillar-score-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .pillar-pts-earned {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--accent-green);
+  }
+
+  .chevron {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    transition: transform 0.2s;
+  }
+
+  .pillar-card.open .chevron { transform: rotate(180deg); }
+
+  .pillar-body {
+    padding: 0 24px 20px;
+    display: none;
+  }
+
+  .pillar-card.open .pillar-body { display: block; }
+
+  .pillar-progress-bar {
+    height: 4px;
+    background: var(--bg-secondary);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 18px;
+  }
+
+  .pillar-progress-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.3s;
+  }
+
+  /* ── CHECKLIST ITEMS ── */
+  .checklist-item {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 12px;
+    align-items: start;
+    transition: border-color 0.15s;
+  }
+
+  .checklist-item:hover { border-color: var(--border-accent); }
+
+  .checklist-item.checked {
+    border-color: rgba(34,197,94,0.3);
+    background: rgba(34,197,94,0.04);
+  }
+
+  .item-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--accent-green);
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .item-content { min-width: 0; }
+
+  .item-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+
+  .item-description {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  .item-evidence {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    background: rgba(255,255,255,0.03);
+    border-left: 2px solid var(--border-accent);
+    padding: 6px 10px;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .item-evidence strong {
+    color: var(--accent-amber);
+    font-weight: 600;
+  }
+
+  .item-points {
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .pts-value {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--text-primary);
+  }
+
+  .pts-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+  }
+
+  /* ── EME SECTION ── */
+  .eme-section {
+    display: none;
+  }
+
+  .eme-section.visible { display: block; }
+
+  .eme-alert {
+    background: rgba(34,197,94,0.08);
+    border: 1px solid rgba(34,197,94,0.25);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+  }
+
+  .eme-alert h3 {
+    color: var(--accent-green);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .eme-alert p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .eme-alert ul {
+    margin-top: 10px;
+    padding-left: 18px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+
+  .eme-alert ul li { margin-bottom: 4px; }
+
+  /* ── ACTION ITEMS ── */
+  .action-card {
+    background: rgba(245,158,11,0.06);
+    border: 1px solid rgba(245,158,11,0.2);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-top: 24px;
+    display: none;
+  }
+
+  .action-card.visible { display: block; }
+
+  .action-card h3 {
+    color: var(--accent-amber);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 14px;
+  }
+
+  .action-list { list-style: none; }
+
+  .action-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(245,158,11,0.1);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+
+  .action-list li:last-child { border-bottom: none; }
+  .action-list li::before {
+    content: '→';
+    color: var(--accent-amber);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* ── BUTTONS ── */
+  .btn-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 28px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 22px;
+    border-radius: 10px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.15s;
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background: var(--accent-blue);
+    color: #fff;
+  }
+
+  .btn-primary:hover { background: var(--accent-blue-dim); }
+
+  .btn-secondary {
+    background: transparent;
+    border: 1px solid var(--border-accent);
+    color: var(--text-secondary);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--accent-blue);
+    color: var(--text-primary);
+  }
+
+  .btn-green {
+    background: var(--accent-green-dim);
+    color: #fff;
+  }
+
+  .btn-green:hover { background: #15803d; }
+
+  /* ── PAYPAL CTA ── */
+  .paypal-cta {
+    background: linear-gradient(135deg, #1c2030 0%, #151820 100%);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px;
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  .paypal-cta h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .paypal-cta p {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin-bottom: 20px;
+  }
+
+  .paypal-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #0070ba;
+    color: #fff;
+    padding: 14px 32px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+
+  .paypal-btn:hover { background: #005ea6; }
+
+  .price-tag {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--accent-green);
+    margin-bottom: 8px;
+  }
+
+  /* ── PRINT STYLES ── */
+  @media print {
+    body { background: #fff; color: #000; }
+    .screen-header, .paypal-cta, .btn-row, .entity-options { display: none !important; }
+    .selector-card, .level-table-card { display: none; }
+    .pillar-card { display: block !important; border: 1px solid #ccc; page-break-inside: avoid; }
+    .pillar-body { display: block !important; }
+    .pillar-header { cursor: default; background: #f5f5f5; }
+    .pillar-title, .pillar-max-pts, .item-title, .item-description { color: #000; }
+    .item-description, .section-heading, .pts-label { color: #555; }
+    .item-evidence { background: #f9f9f9; border-left-color: #999; }
+    .checklist-item { border-color: #ddd; background: #fff; }
+    .progress-card { display: block !important; border: 1px solid #ccc; }
+    .score-number { color: #16a34a; }
+    .bg-secondary, .bg-card { background: #f9f9f9; }
+    .eme-section { display: block !important; }
+    .action-card { display: block !important; border: 1px solid #fcd34d; background: #fffbeb; }
+    .print-title {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+    @page { margin: 20mm; }
+  }
+
+  .print-title { display: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .checklist-item { grid-template-columns: auto 1fr; }
+    .item-points { display: none; }
+    .progress-header { flex-direction: column; }
+  }
+
+  /* ── TOOLTIP ── */
+  .tooltip {
+    position: relative;
+    display: inline-block;
+  }
+
+  .tooltip-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--border-accent);
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: help;
+    vertical-align: middle;
+    margin-left: 4px;
+  }
+
+  .sub-label {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 10px;
+    margin-top: 18px;
+  }
+</style>
+</head>
+<body>
+
+<header class="screen-header">
+  <div class="logo-area">
+    <h1>B-BBEE Compliance Checklist</h1>
+    <div class="subtitle">B-BBEE Codes of Good Practice · South Africa</div>
+  </div>
+  <span class="badge">✓ 2024 Codes Aligned</span>
+</header>
+
+<div class="container">
+
+  <p class="print-title">B-BBEE Compliance Checklist — Summary Report</p>
+
+  <!-- ── ENTITY TYPE SELECTOR ── -->
+  <div class="selector-card">
+    <h2>Step 1 — Select Your Business Category</h2>
+    <div class="entity-options">
+      <button class="entity-btn" data-type="eme" onclick="selectType('eme')">
+        <div class="entity-name">EME</div>
+        <div class="entity-range">Annual Turnover &lt; R10 million</div>
+        <div class="entity-note">Exempted Micro Enterprise — Automatic Level 4</div>
+      </button>
+      <button class="entity-btn" data-type="qse" onclick="selectType('qse')">
+        <div class="entity-name">QSE</div>
+        <div class="entity-range">Annual Turnover R10m – R50m</div>
+        <div class="entity-note">Qualifying Small Enterprise — 4 Pillars</div>
+      </button>
+      <button class="entity-btn" data-type="generic" onclick="selectType('generic')">
+        <div class="entity-name">Generic Enterprise</div>
+        <div class="entity-range">Annual Turnover &gt; R50 million</div>
+        <div class="entity-note">All 5 Elements — Full Scorecard</div>
+      </button>
+    </div>
+  </div>
+
+  <!-- ── PROGRESS TRACKER ── -->
+  <div class="progress-card" id="progressCard">
+    <div class="progress-header">
+      <div>
+        <div class="section-heading" style="font-size:0.85rem; margin-bottom:4px;">Your B-BBEE Score</div>
+        <div class="score-number" id="totalScore">0</div>
+        <div class="score-label" id="scoreOutOf">/ 0 points</div>
+      </div>
+      <div class="level-display">
+        <div class="level-label">Projected Level</div>
+        <div class="level-value" id="levelValue" style="color:#22c55e;">—</div>
+        <div class="level-recognition" id="recognitionRate">—</div>
+      </div>
+    </div>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressFill" style="width:0%"></div>
+      </div>
+      <div class="progress-bar-meta">
+        <span id="progressPct">0% of available points</span>
+        <span id="nextLevelHint"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── B-BBEE LEVEL TABLE ── -->
+  <div class="level-table-card">
+    <div class="section-heading">B-BBEE Level Reference Table</div>
+    <table class="level-table" id="levelTable">
+      <thead>
+        <tr>
+          <th>Level</th>
+          <th>Score Threshold</th>
+          <th>Procurement Recognition</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-min="100"><td><span class="level-pill" style="background:rgba(34,197,94,0.15);color:#22c55e">Level 1</span></td><td>≥ 100 points</td><td>135%</td><td>Highest status</td></tr>
+        <tr data-min="95"><td><span class="level-pill" style="background:rgba(74,222,128,0.15);color:#4ade80">Level 2</span></td><td>≥ 95 points</td><td>125%</td><td>Excellent</td></tr>
+        <tr data-min="90"><td><span class="level-pill" style="background:rgba(134,239,172,0.15);color:#86efac">Level 3</span></td><td>≥ 90 points</td><td>110%</td><td>Good standing</td></tr>
+        <tr data-min="80"><td><span class="level-pill" style="background:rgba(187,247,208,0.15);color:#bbf7d0">Level 4</span></td><td>≥ 80 points</td><td>100%</td><td>EME automatic minimum</td></tr>
+        <tr data-min="75"><td><span class="level-pill" style="background:rgba(253,230,138,0.15);color:#fde68a">Level 5</span></td><td>≥ 75 points</td><td>80%</td><td>Satisfactory</td></tr>
+        <tr data-min="70"><td><span class="level-pill" style="background:rgba(252,211,77,0.15);color:#fcd34d">Level 6</span></td><td>≥ 70 points</td><td>60%</td><td>Adequate</td></tr>
+        <tr data-min="55"><td><span class="level-pill" style="background:rgba(251,146,60,0.15);color:#fb923c">Level 7</span></td><td>≥ 55 points</td><td>50%</td><td>Below average</td></tr>
+        <tr data-min="40"><td><span class="level-pill" style="background:rgba(248,113,113,0.15);color:#f87171">Level 8</span></td><td>≥ 40 points</td><td>10%</td><td>Poor standing</td></tr>
+        <tr data-min="0"><td><span class="level-pill" style="background:rgba(153,27,27,0.2);color:#fca5a5">Non-Compliant</span></td><td>&lt; 40 points</td><td>0%</td><td>No recognition</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── EME SECTION ── -->
+  <div class="eme-section" id="emeSection">
+    <div class="eme-alert">
+      <h3>✅ Good News — You Qualify as an EME!</h3>
+      <p>
+        Exempted Micro Enterprises (annual turnover under R10 million) <strong>automatically qualify as B-BBEE Level 4</strong> contributors, regardless of ownership structure — unless the entity is <em>51% or more black-owned</em> (Level 2) or <em>100% black-owned</em> (Level 1).
+      </p>
+      <ul>
+        <li>If <strong>51%–99% black-owned</strong>: automatic <strong>Level 2</strong> (125% procurement recognition)</li>
+        <li>If <strong>100% black-owned</strong>: automatic <strong>Level 1</strong> (135% procurement recognition)</li>
+        <li>Otherwise: automatic <strong>Level 4</strong> (100% procurement recognition)</li>
+      </ul>
+    </div>
+
+    <div class="pillar-card visible open" id="emeAffidavit">
+      <div class="pillar-header" onclick="togglePillar('emeAffidavit')">
+        <div class="pillar-title-area">
+          <div class="pillar-icon" style="background:rgba(34,197,94,0.1)">📋</div>
+          <div>
+            <div class="pillar-title">EME Affidavit Requirements</div>
+            <div class="pillar-max-pts">Complete to confirm your EME status with clients</div>
+          </div>
+        </div>
+        <div class="pillar-score-badge">
+          <span class="chevron">▼</span>
+        </div>
+      </div>
+      <div class="pillar-body">
+        <div class="pillar-progress-bar"><div class="pillar-progress-fill" id="emeFill" style="width:0%;background:#22c55e"></div></div>
+
+        <div class="sub-label">Affidavit &amp; Documentation</div>
+        <div class="checklist-item" id="eme_1">
+          <input type="checkbox" class="item-checkbox" onchange="updateEME()">
+          <div class="item-content">
+            <div class="item-title">Sworn Affidavit from SAPS Commissioner or Notary</div>
+            <div class="item-description">An EME affidavit must be commissioned by a South African Police Service commissioner of oaths, a notary public, or a registered auditor. It must confirm annual turnover below R10 million and the ownership percentage of black persons.</div>
+            <div class="item-evidence"><strong>Evidence:</strong> Original commissioned affidavit, signed and stamped within the last 12 months</div>
+          </div>
+          <div class="item-points"><div class="pts-value">✓</div><div class="pts-label">Required</div></div>
+        </div>
+
+        <div class="checklist-item" id="eme_2">
+          <input type="checkbox" class="item-checkbox" onchange="updateEME()">
+          <div class="item-content">
+            <div class="item-title">Confirmation of Annual Turnover Below R10 Million</div>
+            <div class="item-description">The affidavit must clearly state that your business's total annual revenue from all sources does not exceed R10 million for the most recent financial year.</div>
+            <div class="item-evidence"><strong>Evidence:</strong> Most recent annual financial statements or management accounts. Turnover figure must match affidavit.</div>
+          </div>
+          <div class="item-points"><div class="pts-value">✓</div><div class="pts-label">Required</div></div>
+        </div>
+
+        <div class="checklist-item" id="eme_3">
+          <input type="checkbox" class="item-checkbox" onchange="updateEME()">
+          <div class="item-content">
+            <div class="item-title">Business Registration Documents</div>
+            <div class="item-description">Certified copies of the company's registration documents (CIPC) or, for sole traders, a valid business licence or municipal certificate.</div>
+            <div class="item-evidence"><strong>Evidence:</strong> CIPC registration certificate (CoR14.3), partnership agreement, or sole trader business licence</div>
+          </div>
+          <div class="item-points"><div class="pts-value">✓</div><div class="pts-label">Required</div></div>
+        </div>
+
+        <div class="checklist-item" id="eme_4">
+          <input type="checkbox" class="item-checkbox" onchange="updateEME()">
+          <div class="item-content">
+            <div class="item-title">Black Ownership Declaration (if claiming Level 1 or 2)</div>
+            <div class="item-description">If your business is 51%+ black-owned, the affidavit must state the exact percentage of black ownership to claim Level 2 or Level 1 status. Certified IDs of black owners may be required by clients.</div>
+            <div class="item-evidence"><strong>Evidence:</strong> Certified copies of South African IDs of black owners, shareholding register or partnership agreement showing % ownership</div>
+          </div>
+          <div class="item-points"><div class="pts-value">✓</div><div class="pts-label">If applicable</div></div>
+        </div>
+
+        <div class="checklist-item" id="eme_5">
+          <input type="checkbox" class="item-checkbox" onchange="updateEME()">
+          <div class="item-content">
+            <div class="item-title">Valid SARS Tax Clearance / Good Standing Certificate</div>
+            <div class="item-description">Many clients require a valid Tax Clearance Certificate (TCC) or SARS PIN confirming good standing, even from EMEs. Obtain via eFiling or SARS branch.</div>
+            <div class="item-evidence"><strong>Evidence:</strong> SARS TCC or Good Standing Certificate (not older than 12 months), or SARS eFiling PIN</div>
+          </div>
+          <div class="item-points"><div class="pts-value">✓</div><div class="pts-label">Recommended</div></div>
+        </div>
+
+        <div class="checklist-item" id="eme_6">
+          <input type="checkbox" class="item-checkbox" onchange="updateEME()">
+          <div class="item-content">
+            <div class="item-title">Annual Affidavit Renewal</div>
+            <div class="item-description">The EME affidavit must be renewed each financial year. Ensure you have a system in place to renew before expiry to avoid losing compliant status with clients.</div>
+            <div class="item-evidence"><strong>Evidence:</strong> Calendar reminder or compliance calendar showing next renewal date. Affidavit date should not exceed 12 months.</div>
+          </div>
+          <div class="item-points"><div class="pts-value">✓</div><div class="pts-label">Annual</div></div>
+        </div>
+
+        <div class="sub-label" style="margin-top:22px">Good Practice Items</div>
+
+        <div class="checklist-item" id="eme_7">
+          <input type="checkbox" class="item-checkbox" onchange="updateEME()">
+          <div class="item-content">
+            <div class="item-title">B-BBEE Certificate Issued by Verification Agency (Optional)</div>
+            <div class="item-description">While not required for EMEs, some large clients and government entities prefer a formal B-BBEE certificate issued by an accredited verification agency. This costs more but removes any affidavit queries.</div>
+            <div class="item-evidence"><strong>Evidence:</strong> B-BBEE verification certificate from SANAS-accredited agency, valid for 12 months</div>
+          </div>
+          <div class="item-points"><div class="pts-value">✓</div><div class="pts-label">Optional</div></div>
+        </div>
+
+        <div class="checklist-item" id="eme_8">
+          <input type="checkbox" class="item-checkbox" onchange="updateEME()">
+          <div class="item-content">
+            <div class="item-title">Supplier Database Registration (Central Supplier Database)</div>
+            <div class="item-description">Register on the National Treasury's Central Supplier Database (CSD) to be eligible for government contracts. Your B-BBEE affidavit information is captured here.</div>
+            <div class="item-evidence"><strong>Evidence:</strong> CSD supplier number and active profile at www.csd.gov.za</div>
+          </div>
+          <div class="item-points"><div class="pts-value">✓</div><div class="pts-label">Recommended</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-card visible" id="emeActions">
+      <h3>⚡ Priority Actions</h3>
+      <ul class="action-list" id="emeActionList">
+        <li>Commission your EME affidavit at the nearest SAPS office — it's free of charge</li>
+        <li>Ensure your financial statements are up to date to support the turnover declaration</li>
+        <li>Register on the CSD if you intend to supply to government entities</li>
+        <li>Diarise your affidavit renewal date 30 days before expiry</li>
+      </ul>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="window.print()">🖨 Print Summary</button>
+      <button class="btn btn-secondary" onclick="resetAll()">↩ Start Over</button>
+    </div>
+  </div>
+
+  <!-- ── QSE SECTIONS ── -->
+  <div id="qseSection" style="display:none">
+
+    <!-- Ownership -->
+    <div class="pillar-card visible" id="pillarOwnership">
+      <div class="pillar-header" onclick="togglePillar('pillarOwnership')">
+        <div class="pillar-title-area">
+          <div class="pillar-icon" style="background:rgba(168,85,247,0.1)">🏦</div>
+          <div>
+            <div class="pillar-title">Ownership</div>
+            <div class="pillar-max-pts">Maximum: 25 points</div>
+          </div>
+        </div>
+        <div class="pillar-score-badge">
+          <span class="pillar-pts-earned" id="ownershipScore">0</span>
+          <span style="color:var(--text-muted);font-size:0.8rem">/25 pts</span>
+          <span class="chevron">▼</span>
+        </div>
+      </div>
+      <div class="pillar-body">
+        <div class="pillar-progress-bar"><div class="pillar-progress-fill" id="ownershipFill" style="width:0%;background:#a855f7"></div></div>
+
+        <div class="sub-label">Voting Rights</div>
+        <div class="checklist-item" id="own_1">
+          <input type="checkbox" class="item-checkbox" data-pts="3" onchange="updateQSE()">
+          <div class="item-content">
+            <div class="item-title">Black Voting Rights ≥ 25%</div>
+            <div class="item-description">At least 25% of exercisable voting rights in the enterprise must be held by black persons as defined in the B-BBEE Act.</div>
+            <div class="item-evidence"><strong>Evidence:</strong> Shareholding register, memorandum of incorporation (MOI), certified IDs of black shareholders</div>
+          </div>
+          <div class="item-points"><div class="pts-value">3</div><div class="pts-label">pts</div></div>
+        </div>
+
+        <div class="checklist-item" id="own_2">
+          <input type="checkbox" class="item-checkbox" data-pts="4" onchange="updateQSE()">
+          <div class="item-content">
+            <div class="item-title">Black Women Voting Rights ≥ 10%</div>
+            <div class="item-description">At least 10% of exercisable voting rights held by black women specifically.</div>
+            <div class="item-evidence"><strong>Evidence:</strong> Shareholding register indicating gender; certified IDs confirming black women shareholders</div>
+          </div>
+          <div class="item-points"><div class="pts-value">4</div><div class="pts-label">pts</div></div>
+        </div>
+
+        <div class="sub-label">Economic Interest</div>
+        <div class="checklist-item" id="own_3">
+          <input type="checkbox" class="item-checkbox" data-pts="4" onchange="updateQSE()">
+          <div class="item-content">
+            <div class="item-title">Black Economic Interest ≥ 25%</div>
+            <div class="item-description">At least 25% of the economic interest (dividends, distributions, profit share) must flow to black persons.</div>
+            <div class="item-evidence"><strong>Evidence:</strong> Dividend policy, distribution records, trust deed (if applicable), or partnership agreement</div>
+          </div>
+          <div class="item-points"><div class="pts-value">4</div><div class="pts-label">pts</div></div>
+        </div>
+
+        <div class="checklist-item" id="own_4">
+          <input type="checkbox" class="item-checkbox" data-pts="4" onchange="updateQSE()">
+          <div class="item-content">
+            <div class="item-title">Black Women Economic Interest ≥ 10%</div>
+            <div class="item-description">At least 10% of economic interest attributable to black women.</div>
+            <div class="item-evidence"><strong>Evidence:</strong> Dividend/profit distribution records; founding documents showing economic interest allocation</div>
+          </div>
+          <div class="item-points"><div class="pts-value">4</div><div class="pts-label">pts</div></div>
+        </div>
+
+        <div class="sub-label">Ownership Fulfilment</div>
+        <div class="checklist-item" id="own_5">
+          <input type="checkbox" class="item-checkbox" data-pts="6" onchange="updateQSE()">
+          <div class="item-content">
+            <div class="item-title">Realisation Points — Ownership Fulfilment ≥ 25%</div>
+            <div class="item-description">Measures the extent to which ownership obligations have been met without using third-party financing (i.e., "modified flow-through" principle). Tracks how much of the ownership is "real" and unencumbered.</div>
+            <div class="item-evidence"><strong>Evidence:</strong> Loan agreements, sale-of-shares agreements, vendor finance arrangements, audited equity structures</div>
+          </div>
+          <div class="item-points"><div class="pts-value">6</div><div class="pts-label">pts</div></div>
+        </div>
+
+        <div class="checklist-item" id="own_6">
+          <input type="checkbox" class="item-checkbox" data-pts="4" onchange="updateQSE()">
+          <div class="item-content">
+            <div class="item-title">Net Value / Unencumbered Ownership Growing Over Time</div>
+            <div class="item-description">The net value of black ownership (shares net of debt used to acquire them) should be increasing year-on-year, indicating genuine economic empowerment progress.</div>
+            <div class="item-evidence"><strong>Evidence:</strong> Annual B-BBEE ownership schedule from auditor; loan amortisation schedules</div>
+          </div>
+          <div class="item-points"><div class="pts-value">4</div><div class="pts-label">pts</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Management Control -->
+    <div class="pillar-card visible" id="pillarManagement">
+      <div class="pillar-header" onclick="togglePillar('pillarManagement')">
+        <div class="pillar-title-area">
+          <div class="pillar-icon" style="background:rgba(59,130,246,0.1)">👥</div>
+          <div>
+            <div class="pillar-title">Management Control</div>
+            <div class="pillar-max-pts">Maximum: 25 points</div>
+          </div>
+        </div>
+        <div class="pillar-score-badge">
+          <span class="pillar-pts-earned" id="managementScore">0</span>
+          <span style="color:var(--text-muted);font-size:0.8rem">/25 pts</span>
+          <span class="chevron">▼</span>
+        </div>
+      </div>
+      <div class="pillar-body">
+        <div class="pillar-progress-bar"><div class="pillar-progress-fill" id="managementFill" style="width:0%;background:#3b82f6"></div></div>
+
+        <div class="sub-label">Board Representation</div>
+        <div class="checklist-item" id="mgmt_1">
+          <input type="checkbox" class="item-checkbox" data-pts="3" onchange="updateQSE()">
+          <div class="item-content">
+            <div class="item-title">Black Board Members ≥ 50%</div>
+            <div class="item-description">At least 50% of all board members or equivalent governing body must be black persons.</div>
+            <div class="item-evidence"><strong>Evidence:</strong> Board resolution, company register, board meeting minutes, certified IDs</div>
+          </div>
+          <div class="item-points"><div class="pts-value">3</div><div class="pts-label">pts</div></div>
+        </div>
+
+        <div class="checklist-item" id="mgmt_2">
+          <input type="checkbox" class="item-checkbox" data-pts="4" onchange="updateQSE()">
+          <div class="item-content">
+            <div class="item-title">Black Women Board Members ≥ 25%</div>
+            <div class="item-description">At least 25% of all board positions occupied by black women.</div>
+            <div class="item-evidence"><strong>Evidence:</strong> Board composition schedule; certified IDs confirming gender and race</div>
+          </div>
+          <div class="item-points"><div class="pts-value">4</div><div class="pts-label">pts</div></div>
+        </div>
+
+        <div class="sub-label">Executive Management</div>
+        <div class="checklist-item" id="mgmt_3">
+          <input type="checkbox" class="item-checkbox" data-pts="4" onchange="updateQSE()">
+          <div class="item-content">
+            <div class="item-title">Black Executive Directors / Executives ≥ 50%</div>
+            <div class="item-description">Executive-level managers (CEO, CFO, COO or equivalent) must be at least 50% black persons.</div>
+            <div class="item-evidence"><strong>Evidence:</strong> Organogram, employment contracts, payroll records showing designation and race</div>
+          </div>
+          <div class="item-points"><div class="pts-value">4</div><div class="pts-label">pts</div></div>
+        </div>
+
+        <div class="checklist-item" id="mgmt_4">
+          <input type="checkbox" class="item-checkbox" data-pts="4" onchange="updateQSE()">
+          <div class="item-content">
+            <div class="item-title">Black Women Executives ≥ 25%</div>
+            <div class="item-description">At least 25% of executive-level management positions held by black women.</div>
+            <div class="item-evidence"><strong>Evidence:</strong> Employment contracts; organogram; HR records confirming gender classification</div>
+          </div>
+          <div class="item-points"><div class="pts-value">4</div><div class="pts-label">pts</div></div>
+        </div>
+
+        <div class="sub-label">Senior Management</div>
+        <div class="checklist-item" id="mgmt_5">
+          <input type="checkbox" class="item-checkbox" data-pts="4" onchange="updateQSE()">
+          <div class="item-content">
+            <div class="item-title">Black Senior Managers ≥ 40%</div>
+            <div class="item-description">At least 40% of the senior management (one level below executive) must be black persons.</div>
+            <div class="item-evidence"><strong>Evidence:</strong> HR report showing management levels, race, and gender. SETA-registered skills plan (WSP) may include this data.</div>
+          </div>
+          <div class="item-points"><div class="pts-value">4</div><div class="pts-label">pts</div></div>
+        </div>
+
+        <div class="checklist-item" id="mgmt_6">
+          <input type="checkbox" class="item-checkbox" data-pts="6" onchange="updateQSE()">
+          <div class="item-content">
+            <div class="item-title">Black Women Senior Managers ≥ 20%</div>
+            <div class="item-description">At least 20% of senior management positions occupied by black women.</div>
+            <div class="item-evidence"><strong>Evidence:</strong> HR report; WSP submission; employment contracts with race and gender classification (using SA population groups)</div>
+          </div>
+          <div class="item-points"><div class="pts-value">6</div><div class="pts-label">pts</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills Development -->
+    <div class="pillar-card visible" id="pillarSkills">
+      <div class="pillar-header" onclick="togglePillar('pillarSkills')">
+        <div class="pillar-title-area">
+          <div class="pillar-icon" style="background:rgba(245,158,11,0.1)">📚</div>
+          <div>
+            <div class="pillar-title">Skills Development</div>
+            <div class="pillar-max-pts">Maximum: 25 points</div>
+          </div>
+        </div>
+        <div class="pillar-score-badge">
+          <span class="pillar-pts-earned" id="skillsScore">0</span>
+          <span style="color:var(--text-muted);font-size:0.8rem">/25 pts</span>
+          <span class="chevron">▼</span>
+        </div>
+      </div>
+      <div class="pillar-body">
+        <div class="pillar-progress-bar"><div class="pillar-progress-fill" id="skillsFill" style="width:0%;background:#f59e0b"></div></div>
+
+        <div class="sub-label">Training Spend</div>
+        <div class="checklist-item" id="skl_1">
+          <input type="checkbox" class="item-checkbox" data-pts="8" onchange="updateQSE()">
+          <div class="item-content">
+            <div class="item-title">Skills Spend ≥ 2% of Leviable Amount on Black Employees</div>
+            <div class="item-description">At least 2% of the total annual wage bill (leviable amount) must be spent on training and skills development for black employees. Spend on bursaries, learnerships, courses, and skills programmes qualifies.</div>
+            <div class="item-evidence"><strong>Evidence:</strong> Training invoices, proof of payment, learnership agreements, bursary agreements, WSP/ATR submitted to SETA</div>
+          </div>
+          <div class="item-points"><div class="pts-value">8</div><div class="pts-label">pts</div></div>
+        </div>
+
+        <div class="checklist-item" id="skl_2">
+          <input type="checkbox" class="item-checkbox" data-pts="4" onchange="updateQSE()">
+          <div class="item-content">
+            <div class="item-title">Skills Spend on Black Women ≥ 1% of Leviable Amount</div>
+            <div class="item-description">At least 1% of the leviable amount directed to training specifically for black women employees.</div>
+            <div class="item-evidence"><strong>Evidence:</strong> Training records segregated by gender; invoices; learnership enrolment forms</div>
+          </div>
+          <div class="item-points"><div class="pts-value">4</div><div class="pts-label">pts</div></div>
+        </div>
+
+        <div class="sub-label">Learnerships &amp; Programmes</div>
+        <div class="checklist-item" id="skl_3">
+          <input type="checkbox" class="item-checkbox" data-pts="5" onchange="updateQSE()">
+          <div class="item-content">
+            <div class="item-title">Black Learnership / Apprenticeship / Internship Participants</div>
+            <div class="item-description">Hosting or funding at least one registered learnership, apprenticeship, or workplace-based internship for black learners qualifies for points. NQF-registered programmes score highest.</div>
+            <div class="item-evidence"><strong>Evidence:</strong> Signed learnership agreements with SETA, attendance registers, NQF registration confirmation</div>
+          </div>
+          <div class="item-points"><div class="pts-value">5</div><div class="pts-label">pts</div></div>
+        </div>
+
+        <div class="checklist-item" id="skl_4">
+          <input type="checkbox" class="item-checkbox" data-pts="4" onchange="updateQSE()">
+          <div class="item-content">
+            <div class="item-title">WSP &amp; ATR Submitted to Relevant SETA</div>
+            <div class="item-description">The Workplace Skills Plan (WSP) and Annual Training Report (ATR) must be submitted to your SETA before 30 June each year. Failure to submit disqualifies skills spend points.</div>
+            <div class="item-evidence"><strong>Evidence:</strong> SETA acknowledgement / confirmation of WSP/ATR submission; SETA grant approval letter</div>
+          </div>
+          <div class="item-points"><div class="pts-value">4</div><div class="pts-label">pts</div></div>
+        </div>
+
+        <div class="checklist-item" id="skl_5">
+          <input type="checkbox" class="item-checkbox" data-pts="4" onchange="updateQSE()">
+          <div class="item-content">
+            <div class="item-title">Bursaries / Scholarships for Black Students</div>
+            <div class="item-description">Financial contributions to black students at registered tertiary institutions (universities, TVET colleges) qualify as skills spend.</div>
+            <div class="item-evidence"><strong>Evidence:</strong> Bursary agreements, university registration letters, proof of payment, student ID</div>
+          </div>
+          <div class="item-points"><div class="pts-value">4</div><div class="pts-label">pts</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Socio-Economic Development -->
+    <div class="pillar-card visible" id="pillarSED">
+      <div class="pillar-header" onclick="togglePillar('pillarSED')">
+        <div class="pillar-title-area">
+          <div class="pillar-icon" style="background:rgba(34,197,94,0.1)">🌱</div>
+          <div>
+            <div class="pillar-title">Socio-Economic Development (SED)</div>
+            <div class="pillar-max-pts">Maximum: 25 points</div>
+          </div>
+        </div>
+        <div class="pillar-score-badge">
+          <span class="pillar-pts-earned" id="sedScore">0</span>
+          <span style="color:var(--text-muted);font-size:0.8rem">/25 pts</span>
+          <span class="chevron">▼</span>
+        </div>
+      </div>
+      <div class="pillar-body">
+        <div class="pillar-progress-bar"><div class="pillar-progress-fill" id="sedFill" style="width:0%;background:#22c55e"></div></div>
+
+        <div class="sub-label">SED Contributions</div>
+        <div class="checklist-item" id="sed_1">
+          <input type="checkbox" class="item-checkbox" data-pts="12" onchange="updateQSE()">
+          <div class="item-content">
+            <div class="item-title">SED Spend ≥ 1% of Net Profit After Tax (NPAT)</div>
+            <div class="item-description">At least 1% of your NPAT must be contributed to qualifying SED beneficiaries: black people, organisations serving black communities, or programmes that advance black socio-economic upliftment.</div>
+            <div class="item-evidence"><strong>Evidence:</strong> Audited NPAT figure; bank statements / EFT proof; beneficiary letters; NPO registration of recipient (if applicable)</div>
+          </div>
+          <div class="item-points"><div class="pts-value">12</div><div class="pts-label">pts</div></div>
+        </div>
+
+        <div class="checklist-item" id="sed_2">
+          <input type="checkbox" class="item-checkbox" data-pts="5" onchange="updateQSE()">
+          <div class="item-content">
+            <div class="item-title">Beneficiaries Are Black Persons or Black-Serving Organisations</div>
+            <div class="item-description">Contributions must flow to black beneficiaries. Qualifying recipients include black-owned SMMEs, registered NPOs/NGOs primarily serving black communities, schools in previously disadvantaged areas, and bursary funds.</div>
+            <div class="item-evidence"><strong>Evidence:</strong> Beneficiary profile/description, NPO registration certificate, confirmation of black beneficiary demographics</div>
+          </div>
+          <div class="item-points"><div class="pts-value">5</div><div class="pts-label">pts</div></div>
+        </div>
+
+        <div class="checklist-item" id="sed_3">
+          <input type="checkbox" class="item-checkbox" data-pts="4" onchange="updateQSE()">
+          <div class="item-content">
+            <div class="item-title">SED Contribution Documentation and Receipts</div>
+            <div class="item-description">All SED contributions must be supported by proper documentation. The verification agency will require written agreements or letters from beneficiaries confirming receipt and purpose of funds.</div>
+            <div class="item-evidence"><strong>Evidence:</strong> Section 18A certificates (if donation), beneficiary acknowledgement letters, EFT proof of payment, board resolution authorising contribution</div>
+          </div>
+          <div class="item-points"><div class="pts-value">4</div><div class="pts-label">pts</div></div>
+        </div>
+
+        <div class="checklist-item" id="sed_4">
+          <input type="checkbox" class="item-checkbox" data-pts="4" onchange="updateQSE()">
+          <div class="item-content">
+            <div class="item-title">SED Recorded in Financial Statements</div>
+            <div class="item-description">SED contributions must appear as a line item in the annual financial statements or be evidenced in a management accounts schedule for the financial year being measured.</div>
+            <div class="item-evidence"><strong>Evidence:</strong> Annual financial statements noting SED expense; management account with SED line; auditor confirmation</div>
+          </div>
+          <div class="item-points"><div class="pts-value">4</div><div class="pts-label">pts</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-card" id="qseActions">
+      <h3>⚡ Priority Actions to Improve Your Score</h3>
+      <ul class="action-list" id="qseActionList"></ul>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="window.print()">🖨 Print Summary</button>
+      <button class="btn btn-secondary" onclick="resetAll()">↩ Start Over</button>
+    </div>
+  </div>
+
+  <!-- ── GENERIC MESSAGE ── -->
+  <div id="genericSection" style="display:none">
+    <div class="eme-alert" style="background:rgba(59,130,246,0.08);border-color:rgba(59,130,246,0.25)">
+      <h3 style="color:#3b82f6">ℹ Generic Enterprise Scorecard</h3>
+      <p>
+        Generic enterprises (turnover above R50 million) are subject to the full B-BBEE scorecard with <strong>5 elements</strong>: Ownership, Management Control, Skills Development, Enterprise &amp; Supplier Development, and Socio-Economic Development. They also face <strong>Priority Elements</strong> with sub-minimum thresholds.
+      </p>
+      <ul style="margin-top:12px">
+        <li>Maximum scorecard points: <strong>109 points</strong> (including bonus points)</li>
+        <li>Priority Elements: Ownership, Skills Development, Enterprise &amp; Supplier Development</li>
+        <li>Sub-minimum thresholds apply — failure triggers an automatic one-level discount</li>
+        <li>Generic enterprises <strong>must</strong> obtain verification from a SANAS-accredited agency</li>
+        <li>Strongly recommended: engage a specialist B-BBEE consultant for Generic scorecards</li>
+      </ul>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="resetAll()">↩ Select Different Category</button>
+    </div>
+  </div>
+
+  <!-- ── PAYPAL CTA ── -->
+  <div class="paypal-cta">
+    <div class="price-tag">R99</div>
+    <h3>Get the Full Editable B-BBEE Compliance Toolkit</h3>
+    <p>Includes this interactive checklist + editable Word/Excel evidence tracker + EME affidavit template + QSE score calculator spreadsheet</p>
+    <a href="https://paypal.me/mrbtmkhabela/9900ZAR" class="paypal-btn">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M7.076 21.337H2.47a.641.641 0 01-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 00-.607-.541c-.013.076-.026.175-.041.254-.59 3.025-2.566 6.082-8.558 6.082H9.824l-1.175 7.48H12.6c.458 0 .85-.334.922-.788l.038-.196.731-4.63.047-.255c.072-.453.463-.788.921-.788h.58c3.757 0 6.698-1.525 7.556-5.938.358-1.843.173-3.383-.773-4.68z"/></svg>
+      Purchase Now — R99
+    </a>
+    <p style="margin-top:14px;font-size:0.75rem;color:var(--text-muted)">Instant download · Secure payment · VAT invoice included</p>
+  </div>
+
+</div>
+
+<script>
+  let currentType = null;
+
+  const QSE_MAX = 100;
+
+  const levels = [
+    { min: 100, level: 'Level 1', recognition: '135% Procurement Recognition', color: '#22c55e' },
+    { min: 95,  level: 'Level 2', recognition: '125% Procurement Recognition', color: '#4ade80' },
+    { min: 90,  level: 'Level 3', recognition: '110% Procurement Recognition', color: '#86efac' },
+    { min: 80,  level: 'Level 4', recognition: '100% Procurement Recognition', color: '#bbf7d0' },
+    { min: 75,  level: 'Level 5', recognition: '80% Procurement Recognition',  color: '#fde68a' },
+    { min: 70,  level: 'Level 6', recognition: '60% Procurement Recognition',  color: '#fcd34d' },
+    { min: 55,  level: 'Level 7', recognition: '50% Procurement Recognition',  color: '#fb923c' },
+    { min: 40,  level: 'Level 8', recognition: '10% Procurement Recognition',  color: '#f87171' },
+    { min: 0,   level: 'Non-Compliant', recognition: '0% — No Recognition',   color: '#fca5a5' },
+  ];
+
+  function selectType(type) {
+    currentType = type;
+
+    document.querySelectorAll('.entity-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.type === type);
+    });
+
+    document.getElementById('emeSection').classList.remove('visible');
+    document.getElementById('emeSection').style.display = 'none';
+    document.getElementById('qseSection').style.display = 'none';
+    document.getElementById('genericSection').style.display = 'none';
+
+    const pc = document.getElementById('progressCard');
+    pc.classList.remove('visible');
+
+    if (type === 'eme') {
+      document.getElementById('emeSection').style.display = 'block';
+      document.getElementById('emeSection').classList.add('visible');
+      document.getElementById('scoreOutOf').textContent = '— Affidavit Compliance';
+      pc.classList.add('visible');
+      document.getElementById('totalScore').textContent = '—';
+      document.getElementById('levelValue').textContent = 'Level 4';
+      document.getElementById('levelValue').style.color = '#bbf7d0';
+      document.getElementById('recognitionRate').textContent = '100% Procurement Recognition (minimum)';
+      document.getElementById('progressFill').style.width = '100%';
+      document.getElementById('progressPct').textContent = 'Automatic Level 4 — complete affidavit items below to confirm status';
+      document.getElementById('nextLevelHint').textContent = '51%+ black ownership → Level 2 | 100% black ownership → Level 1';
+      updateEME();
+    } else if (type === 'qse') {
+      document.getElementById('qseSection').style.display = 'block';
+      pc.classList.add('visible');
+      updateQSE();
+    } else {
+      document.getElementById('genericSection').style.display = 'block';
+    }
+  }
+
+  function updateEME() {
+    const checks = document.querySelectorAll('#emeAffidavit .item-checkbox');
+    let done = 0;
+    checks.forEach((cb, i) => {
+      const item = cb.closest('.checklist-item');
+      item.classList.toggle('checked', cb.checked);
+      if (cb.checked) done++;
+    });
+    const pct = Math.round((done / checks.length) * 100);
+    document.getElementById('emeFill').style.width = pct + '%';
+  }
+
+  function updateQSE() {
+    const pillars = [
+      { selector: '#pillarOwnership .item-checkbox', max: 25, scoreEl: 'ownershipScore', fillEl: 'ownershipFill' },
+      { selector: '#pillarManagement .item-checkbox', max: 25, scoreEl: 'managementScore', fillEl: 'managementFill' },
+      { selector: '#pillarSkills .item-checkbox', max: 25, scoreEl: 'skillsScore', fillEl: 'skillsFill' },
+      { selector: '#pillarSED .item-checkbox', max: 25, scoreEl: 'sedScore', fillEl: 'sedFill' },
+    ];
+
+    let totalScore = 0;
+    let totalMax = 0;
+    const actionItems = [];
+
+    pillars.forEach(p => {
+      const checks = document.querySelectorAll(p.selector);
+      let earned = 0;
+      let uncheckedPts = [];
+      checks.forEach(cb => {
+        const pts = parseInt(cb.dataset.pts || 0);
+        const item = cb.closest('.checklist-item');
+        item.classList.toggle('checked', cb.checked);
+        if (cb.checked) {
+          earned += pts;
+        } else {
+          const title = item.querySelector('.item-title').textContent;
+          uncheckedPts.push({ title, pts });
+        }
+      });
+      const pct = Math.round((earned / p.max) * 100);
+      document.getElementById(p.scoreEl).textContent = earned;
+      document.getElementById(p.fillEl).style.width = Math.min(pct, 100) + '%';
+      totalScore += earned;
+      totalMax += p.max;
+
+      // Top unchecked item becomes an action item
+      uncheckedPts.sort((a, b) => b.pts - a.pts);
+      if (uncheckedPts.length > 0) {
+        actionItems.push(uncheckedPts[0]);
+      }
+    });
+
+    document.getElementById('totalScore').textContent = totalScore;
+    document.getElementById('scoreOutOf').textContent = '/ 100 points';
+
+    const pct = Math.round((totalScore / QSE_MAX) * 100);
+    document.getElementById('progressFill').style.width = Math.min(pct, 100) + '%';
+    document.getElementById('progressPct').textContent = pct + '% of available points earned';
+
+    // Determine level
+    let currentLevel = levels[levels.length - 1];
+    for (const lv of levels) {
+      if (totalScore >= lv.min) {
+        currentLevel = lv;
+        break;
+      }
+    }
+
+    document.getElementById('levelValue').textContent = currentLevel.level;
+    document.getElementById('levelValue').style.color = currentLevel.color;
+    document.getElementById('recognitionRate').textContent = currentLevel.recognition;
+
+    // Next level hint
+    let nextHint = '';
+    const idx = levels.indexOf(currentLevel);
+    if (idx > 0) {
+      const nextLv = levels[idx - 1];
+      const needed = nextLv.min - totalScore;
+      if (needed > 0) nextHint = `+${needed} pts → ${nextLv.level}`;
+    }
+    document.getElementById('nextLevelHint').textContent = nextHint;
+
+    // Highlight current row
+    document.querySelectorAll('#levelTable tbody tr').forEach(row => {
+      row.classList.remove('current-row');
+      const min = parseInt(row.dataset.min || -1);
+      if (min === currentLevel.min) row.classList.add('current-row');
+    });
+
+    // Action items
+    const actionCard = document.getElementById('qseActions');
+    const actionList = document.getElementById('qseActionList');
+    if (actionItems.length > 0) {
+      actionList.innerHTML = actionItems.map(a =>
+        `<li>${a.title} <span style="color:var(--accent-green);font-weight:700;margin-left:6px">+${a.pts} pts</span></li>`
+      ).join('');
+      actionCard.classList.add('visible');
+    } else {
+      actionCard.classList.remove('visible');
+    }
+  }
+
+  function togglePillar(id) {
+    const card = document.getElementById(id);
+    card.classList.toggle('open');
+  }
+
+  function resetAll() {
+    currentType = null;
+    document.querySelectorAll('.entity-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('emeSection').style.display = 'none';
+    document.getElementById('emeSection').classList.remove('visible');
+    document.getElementById('qseSection').style.display = 'none';
+    document.getElementById('genericSection').style.display = 'none';
+    document.getElementById('progressCard').classList.remove('visible');
+    document.querySelectorAll('.item-checkbox').forEach(cb => {
+      cb.checked = false;
+      cb.closest('.checklist-item').classList.remove('checked');
+    });
+  }
+</script>
+</body>
+</html>
