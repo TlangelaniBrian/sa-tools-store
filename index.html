@@ -256,6 +256,28 @@
       </div>
     </div>
 
+    <!-- Freelancer Pack -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-purple">💼</div>
+        <div class="card-badge badge-new">4 Templates</div>
+        <h3>SA Freelancer Business Pack</h3>
+        <p>Professional quotation, invoice, service agreement, and rate calculator. BCEA and NCA compliant. Built for South African independent contractors.</p>
+      </div>
+      <div class="card-features">
+        <div class="feature">Quotation with VAT, deposits, 30-day terms</div>
+        <div class="feature">Tax invoice (SARS VAT Act compliant)</div>
+        <div class="feature">Independent contractor agreement (10 clauses)</div>
+        <div class="feature">Rate calculator: day rate, hourly, project + buffer</div>
+        <div class="feature">Load-shedding force majeure clause included</div>
+        <div class="feature">Copy, print, or save — works offline</div>
+      </div>
+      <div class="card-footer">
+        <div class="price">R149 <span class="price-note">once-off · instant download</span></div>
+        <button class="btn" onclick="openModal('freelancer')">Buy Now</button>
+      </div>
+    </div>
+
     <!-- BBBEE Checklist -->
     <div class="card">
       <div class="card-header">
@@ -355,6 +377,20 @@
 
 <script>
 const products = {
+  freelancer: {
+    name: 'SA Freelancer Business Pack',
+    price: 'R149',
+    features: [
+      'Professional quotation template (VAT, deposits, T&Cs)',
+      'Tax invoice template (NCA compliant)',
+      'Independent contractor service agreement',
+      'Rate calculator (day rate, hourly, project + buffer)',
+      'BCEA and NCA compliant language throughout',
+      'Copy, print, or save — works offline'
+    ],
+    file: 'freelancer-pack.html',
+    paypal: 'https://paypal.me/mrbtmkhabela/14900ZAR'
+  },
   bbbee: {
     name: 'BBBEE Compliance Checklist for SA Small Business',
     price: 'R99',
