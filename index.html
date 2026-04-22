@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA Business Tools — Professional South African Calculators & Templates</title>
+<meta name="description" content="Professional South African tax calculators, property investment tools, and AI business prompt packs. Instant download. Built for SA professionals.">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #13131a;
+    --surface2: #1c1c26;
+    --border: #2a2a3a;
+    --accent: #6c63ff;
+    --accent2: #00d4aa;
+    --text: #e8e8f0;
+    --muted: #8888a8;
+    --green: #00d4aa;
+    --gold: #f0a500;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; }
+
+  /* NAV */
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 2rem; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(10,10,15,0.95); backdrop-filter: blur(10px); z-index: 100; }
+  .logo { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.5px; }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+
+  /* HERO */
+  .hero { text-align: center; padding: 5rem 2rem 4rem; max-width: 700px; margin: 0 auto; }
+  .hero-badge { display: inline-block; background: rgba(108,99,255,0.15); border: 1px solid rgba(108,99,255,0.3); color: var(--accent); padding: 0.3rem 1rem; border-radius: 100px; font-size: 0.8rem; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 1.5rem; }
+  .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; letter-spacing: -1px; margin-bottom: 1rem; line-height: 1.15; }
+  .hero h1 em { color: var(--accent); font-style: normal; }
+  .hero p { color: var(--muted); font-size: 1.1rem; max-width: 520px; margin: 0 auto 2rem; }
+  .hero-stats { display: flex; justify-content: center; gap: 3rem; }
+  .stat { text-align: center; }
+  .stat-n { font-size: 1.8rem; font-weight: 800; color: var(--accent2); }
+  .stat-l { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+
+  /* PRODUCTS */
+  .products { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+  .section-label { text-align: center; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 0.5rem; }
+  .section-title { text-align: center; font-size: 1.8rem; font-weight: 700; margin-bottom: 3rem; letter-spacing: -0.5px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: transform 0.2s, border-color 0.2s; }
+  .card:hover { transform: translateY(-4px); border-color: var(--accent); }
+  .card-header { padding: 1.5rem 1.5rem 0; }
+  .card-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 1rem; }
+  .icon-purple { background: rgba(108,99,255,0.15); }
+  .icon-teal { background: rgba(0,212,170,0.15); }
+  .icon-gold { background: rgba(240,165,0,0.15); }
+  .card-badge { display: inline-block; font-size: 0.72rem; font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 6px; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
+  .badge-new { background: rgba(108,99,255,0.2); color: var(--accent); }
+  .badge-popular { background: rgba(0,212,170,0.2); color: var(--accent2); }
+  .card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.3px; }
+  .card p { color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
+  .card-features { padding: 1.2rem 1.5rem; }
+  .feature { display: flex; align-items: flex-start; gap: 0.6rem; margin-bottom: 0.5rem; font-size: 0.85rem; color: var(--muted); }
+  .feature::before { content: '✓'; color: var(--accent2); font-weight: 700; flex-shrink: 0; }
+  .card-footer { padding: 1.2rem 1.5rem 1.5rem; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border); margin-top: 0.5rem; }
+  .price { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.5px; }
+  .price-note { font-size: 0.72rem; color: var(--muted); display: block; font-weight: 400; }
+  .btn { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--accent); color: white; border: none; padding: 0.7rem 1.4rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: opacity 0.2s, transform 0.1s; }
+  .btn:hover { opacity: 0.9; transform: scale(1.02); }
+  .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text); }
+  .btn-outline:hover { border-color: var(--accent); }
+
+  /* PREVIEW SECTION */
+  .preview-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 4rem 2rem; text-align: center; }
+  .preview-section h2 { font-size: 1.6rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .preview-section p { color: var(--muted); margin-bottom: 2rem; font-size: 0.95rem; }
+  .preview-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  /* TRUST */
+  .trust { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; }
+  .trust-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+  .trust-item { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; text-align: center; }
+  .trust-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+  .trust-item h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.4rem; }
+  .trust-item p { color: var(--muted); font-size: 0.82rem; }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; color: var(--muted); font-size: 0.83rem; }
+  footer a { color: var(--muted); text-decoration: none; }
+
+  /* MODAL */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); z-index: 1000; align-items: center; justify-content: center; }
+  .modal-overlay.open { display: flex; }
+  .modal { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; max-width: 480px; width: 90%; position: relative; }
+  .modal-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: var(--muted); font-size: 1.4rem; cursor: pointer; }
+  .modal h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .modal p { color: var(--muted); font-size: 0.88rem; margin-bottom: 1.5rem; }
+  .modal .price-big { font-size: 2.5rem; font-weight: 800; color: var(--accent); margin-bottom: 1.5rem; }
+  .modal-features { margin-bottom: 1.5rem; }
+  .modal-features .feature { margin-bottom: 0.6rem; }
+  .btn-paypal { background: #0070ba; width: 100%; justify-content: center; font-size: 1rem; padding: 0.9rem; border-radius: 12px; margin-bottom: 0.8rem; }
+  .btn-preview { background: var(--surface2); border: 1px solid var(--border); width: 100%; justify-content: center; color: var(--text); padding: 0.8rem; border-radius: 12px; }
+  .modal-note { text-align: center; font-size: 0.75rem; color: var(--muted); }
+
+  @media (max-width: 600px) {
+    .hero-stats { gap: 1.5rem; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">SA<span>Tools</span>.store</div>
+  <ul class="nav-links">
+    <li><a href="#products">Products</a></li>
+    <li><a href="#preview">Free Preview</a></li>
+    <li><a href="#trust">About</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">South African Professional Tools</div>
+  <h1>Tools built for <em>South African</em> professionals</h1>
+  <p>Accurate calculators, compliance templates, and AI prompt packs. Built on real SARS tables and SA legislation. Download instantly.</p>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-n">3</div>
+      <div class="stat-l">Products</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">100%</div>
+      <div class="stat-l">SA-Specific</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">Instant</div>
+      <div class="stat-l">Download</div>
+    </div>
+  </div>
+</section>
+
+<section class="products" id="products">
+  <div class="section-label">Digital Downloads</div>
+  <div class="section-title">Professional tools. One-time price.</div>
+  <div class="grid">
+
+    <!-- Tax Calculator -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-purple">🧮</div>
+        <div class="card-badge badge-new">2025/26</div>
+        <h3>SA Income Tax Calculator</h3>
+        <p>Instant PAYE, UIF, and medical aid credit breakdown for the 2025/26 tax year. Built on official SARS tables. Know your real take-home pay.</p>
+      </div>
+      <div class="card-features">
+        <div class="feature">All 7 SARS tax brackets for 2025/26</div>
+        <div class="feature">UIF capped correctly at R177.12/month</div>
+        <div class="feature">Medical aid credits per dependant</div>
+        <div class="feature">Age-group rebates (under 65, 65–74, 75+)</div>
+        <div class="feature">Monthly and annual breakdown</div>
+        <div class="feature">Works offline — no login, no subscription</div>
+      </div>
+      <div class="card-footer">
+        <div class="price">R149 <span class="price-note">once-off · instant download</span></div>
+        <button class="btn" onclick="openModal('tax')">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Property Calculator -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-teal">🏠</div>
+        <div class="card-badge badge-popular">Most Popular</div>
+        <h3>Property Investment Calculator</h3>
+        <p>Bond repayments, rental yields, monthly cash flow, and 10-year equity projections. Transfer duty auto-calculated. Built for SA investors.</p>
+      </div>
+      <div class="card-features">
+        <div class="feature">Transfer duty auto-calculated (SARS 2024/25)</div>
+        <div class="feature">Gross and net rental yield</div>
+        <div class="feature">Monthly cash flow with vacancy & maintenance</div>
+        <div class="feature">5-year and 10-year equity projections</div>
+        <div class="feature">Break-even rental calculation</div>
+        <div class="feature">Cash-on-cash return on deposit</div>
+      </div>
+      <div class="card-footer">
+        <div class="price">R249 <span class="price-note">once-off · instant download</span></div>
+        <button class="btn" onclick="openModal('property')">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Prompt Pack -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-gold">🤖</div>
+        <div class="card-badge badge-new">60+ Prompts</div>
+        <h3>AI Prompt Pack for SA Business</h3>
+        <p>60+ tested AI prompts written for South African business owners. POPIA compliance, BBBEE letters, client emails, SARS correspondence, HR notices.</p>
+      </div>
+      <div class="card-features">
+        <div class="feature">POPIA-compliant privacy policy prompts</div>
+        <div class="feature">BBBEE affidavit and supplier letters</div>
+        <div class="feature">CCMA-aligned HR notices and warnings</div>
+        <div class="feature">SARS correspondence and VAT prompts</div>
+        <div class="feature">Client quotes, invoices, follow-ups</div>
+        <div class="feature">Works with ChatGPT, Claude, or any AI</div>
+      </div>
+      <div class="card-footer">
+        <div class="price">R199 <span class="price-note">once-off · instant download</span></div>
+        <button class="btn" onclick="openModal('prompts')">Buy Now</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Free Preview -->
+<section class="preview-section" id="preview">
+  <h2>Try before you buy</h2>
+  <p>The interactive calculators are free to use online. Buy the offline download version to keep forever.</p>
+  <div class="preview-btns">
+    <a href="sa-tax-calculator.html" class="btn btn-outline" target="_blank">Open Tax Calculator →</a>
+    <a href="sa-property-calculator.html" class="btn btn-outline" target="_blank">Open Property Calculator →</a>
+  </div>
+</section>
+
+<!-- Trust -->
+<section class="trust" id="trust">
+  <div class="section-label">Why SATools</div>
+  <div class="section-title" style="margin-bottom:2rem;">Built for South Africa. Specifically.</div>
+  <div class="trust-grid">
+    <div class="trust-item">
+      <div class="trust-icon">📋</div>
+      <h4>Official SARS Tables</h4>
+      <p>Every number sourced from official SARS publications for the 2025/26 tax year.</p>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🔒</div>
+      <h4>No Data Collected</h4>
+      <p>Everything runs in your browser. No account, no cloud sync, no tracking.</p>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">⚡</div>
+      <h4>Instant Download</h4>
+      <p>Pay via PayPal and get your download link immediately. No waiting.</p>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🇿🇦</div>
+      <h4>SA-Specific</h4>
+      <p>Not adapted from US or UK tools. Built from scratch for South African professionals.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 SATools.store · All products are digital downloads · Questions? <a href="mailto:mrbtmkhabela@gmail.com">mrbtmkhabela@gmail.com</a></p>
+</footer>
+
+<!-- Modals -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal-box">
+    <button class="modal-close" onclick="closeModalDirect()">✕</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<script>
+const products = {
+  tax: {
+    name: 'SA Income Tax Calculator 2025/26',
+    price: 'R149',
+    amount: '149',
+    currency: 'ZAR',
+    features: [
+      'All 7 SARS tax brackets for 2025/26',
+      'Correct UIF cap at R177.12/month',
+      'Medical aid credits per dependant',
+      'Age-group rebates included',
+      'Standalone HTML + CSV version',
+      'Works offline forever'
+    ],
+    file: 'sa-tax-calculator.html',
+    paypal: 'PAYPAL_LINK_TAX'
+  },
+  property: {
+    name: 'SA Property Investment Calculator',
+    price: 'R249',
+    amount: '249',
+    currency: 'ZAR',
+    features: [
+      'Transfer duty auto-calculated (SARS scale)',
+      'Bond repayment and rental yields',
+      'Monthly cash flow after all costs',
+      '5yr and 10yr equity projections',
+      'Break-even rental calculator',
+      'Works offline forever'
+    ],
+    file: 'sa-property-calculator.html',
+    paypal: 'PAYPAL_LINK_PROPERTY'
+  },
+  prompts: {
+    name: 'AI Prompt Pack for SA Business',
+    price: 'R199',
+    amount: '199',
+    currency: 'ZAR',
+    features: [
+      '60+ tested, ready-to-use prompts',
+      'POPIA compliance language',
+      'BBBEE affidavit and supplier letters',
+      'HR notices (CCMA-aligned)',
+      'SARS correspondence drafts',
+      'PDF + plain text included'
+    ],
+    file: 'sa-ai-prompt-pack.html',
+    paypal: 'PAYPAL_LINK_PROMPTS'
+  }
+};
+
+function openModal(id) {
+  const p = products[id];
+  document.getElementById('modal-content').innerHTML = `
+    <h3>${p.name}</h3>
+    <p>One-time purchase · Instant download · No subscription</p>
+    <div class="price-big">${p.price}</div>
+    <div class="modal-features">
+      ${p.features.map(f => `<div class="feature">${f}</div>`).join('')}
+    </div>
+    <a href="${p.paypal}" class="btn btn-paypal" target="_blank">
+      Pay with PayPal — ${p.price}
+    </a>
+    <a href="${p.file}" class="btn btn-preview" target="_blank">
+      Preview free online version →
+    </a>
+    <p class="modal-note" style="margin-top:1rem;">After payment, your download link will be sent to your PayPal email within minutes.</p>
+  `;
+  document.getElementById('modal-overlay').classList.add('open');
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('modal-overlay')) closeModalDirect();
+}
+function closeModalDirect() {
+  document.getElementById('modal-overlay').classList.remove('open');
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalDirect(); });
+</script>
+</body>
+</html>

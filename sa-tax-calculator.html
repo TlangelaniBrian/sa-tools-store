@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SA Income Tax Calculator 2025/26 | SARS PAYE</title>
+  <style>
+    /* =============================================
+       DESIGN TOKENS
+    ============================================= */
+    :root {
+      --bg-page:        #0f1117;
+      --bg-card:        #181c27;
+      --bg-card-hover:  #1e2335;
+      --bg-input:       #12151f;
+      --bg-input-focus: #161929;
+      --bg-result:      #0d1020;
+
+      --border:         rgba(255,255,255,0.07);
+      --border-focus:   rgba(99,179,237,0.5);
+
+      --accent:         #4f8ef7;
+      --accent-soft:    rgba(79,142,247,0.12);
+      --accent-glow:    rgba(79,142,247,0.25);
+      --green:          #34d399;
+      --green-soft:     rgba(52,211,153,0.12);
+      --amber:          #fbbf24;
+      --amber-soft:     rgba(251,191,36,0.10);
+      --red-soft:       rgba(248,113,113,0.10);
+      --red:            #f87171;
+
+      --text-primary:   #f0f4ff;
+      --text-secondary: #8b9cc8;
+      --text-muted:     #4a5578;
+
+      --radius-sm:      6px;
+      --radius-md:      12px;
+      --radius-lg:      18px;
+      --radius-xl:      24px;
+
+      --shadow-card:    0 4px 24px rgba(0,0,0,0.4);
+      --shadow-glow:    0 0 40px rgba(79,142,247,0.08);
+
+      --transition:     all 0.2s ease;
+    }
+
+    [data-theme="light"] {
+      --bg-page:        #f0f4fb;
+      --bg-card:        #ffffff;
+      --bg-card-hover:  #f7f9ff;
+      --bg-input:       #f3f6fc;
+      --bg-input-focus: #eef2ff;
+      --bg-result:      #f8faff;
+
+      --border:         rgba(0,0,0,0.08);
+      --border-focus:   rgba(79,142,247,0.5);
+
+      --accent:         #3b76e8;
+      --accent-soft:    rgba(59,118,232,0.08);
+      --accent-glow:    rgba(59,118,232,0.15);
+      --green:          #059669;
+      --green-soft:     rgba(5,150,105,0.08);
+      --amber:          #d97706;
+      --amber-soft:     rgba(217,119,6,0.08);
+      --red-soft:       rgba(220,38,38,0.07);
+      --red:            #dc2626;
+
+      --text-primary:   #0f1117;
+      --text-secondary: #4a5578;
+      --text-muted:     #8b9cc8;
+
+      --shadow-card:    0 4px 24px rgba(0,0,0,0.08);
+      --shadow-glow:    0 0 40px rgba(59,118,232,0.05);
+    }
+
+    /* =============================================
+       RESET & BASE
+    ============================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg-page);
+      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    /* =============================================
+       LAYOUT
+    ============================================= */
+    .app-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 24px 16px 64px;
+    }
+
+    /* =============================================
+       HEADER
+    ============================================= */
+    .header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 36px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-text {}
+
+    .header-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid var(--accent-glow);
+      border-radius: 100px;
+      padding: 4px 10px;
+      margin-bottom: 12px;
+    }
+
+    .header-eyebrow::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    h1 {
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      line-height: 1.15;
+    }
+
+    .header-sub {
+      margin-top: 6px;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    /* Theme toggle */
+    .theme-toggle {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 8px 14px;
+      cursor: pointer;
+      color: var(--text-secondary);
+      font-size: 13px;
+      font-weight: 500;
+      transition: var(--transition);
+      user-select: none;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--accent-glow);
+      color: var(--text-primary);
+      background: var(--bg-card-hover);
+    }
+
+    .theme-icon { font-size: 16px; }
+
+    /* =============================================
+       CARDS
+    ============================================= */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      box-shadow: var(--shadow-card);
+      margin-bottom: 20px;
+    }
+
+    .card-title {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    /* =============================================
+       FORM INPUTS
+    ============================================= */
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .field-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .field-hint {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: -4px;
+    }
+
+    input[type="number"],
+    select {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-size: 15px;
+      font-weight: 500;
+      padding: 12px 14px;
+      outline: none;
+      transition: var(--transition);
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    input[type="number"]:focus,
+    select:focus {
+      background: var(--bg-input-focus);
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+
+    input[type="number"]::placeholder { color: var(--text-muted); }
+
+    .select-wrapper {
+      position: relative;
+    }
+
+    .select-wrapper::after {
+      content: '▾';
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+      font-size: 12px;
+    }
+
+    .input-prefix {
+      position: relative;
+    }
+
+    .input-prefix span {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 14px;
+      font-weight: 500;
+      pointer-events: none;
+    }
+
+    .input-prefix input {
+      padding-left: 30px;
+    }
+
+    /* Range slider */
+    input[type="range"] {
+      width: 100%;
+      height: 4px;
+      border-radius: 4px;
+      background: var(--border);
+      outline: none;
+      border: none;
+      cursor: pointer;
+      accent-color: var(--accent);
+      padding: 0;
+    }
+
+    .range-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .range-value {
+      min-width: 32px;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border-radius: var(--radius-sm);
+      padding: 2px 8px;
+    }
+
+    /* =============================================
+       CALCULATE BUTTON
+    ============================================= */
+    .calc-btn {
+      width: 100%;
+      margin-top: 24px;
+      padding: 15px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .calc-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.08);
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+
+    .calc-btn:hover::after { opacity: 1; }
+    .calc-btn:active { transform: scale(0.99); }
+
+    /* =============================================
+       RESULTS SECTION
+    ============================================= */
+    .results {
+      display: none;
+    }
+
+    .results.visible {
+      display: block;
+      animation: fadeUp 0.4s ease;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Summary strip */
+    .summary-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .summary-tile {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .summary-tile.highlight {
+      background: linear-gradient(135deg, var(--green-soft), var(--bg-card));
+      border-color: rgba(52,211,153,0.2);
+    }
+
+    .summary-tile.highlight-tax {
+      background: linear-gradient(135deg, var(--red-soft), var(--bg-card));
+      border-color: rgba(248,113,113,0.15);
+    }
+
+    .tile-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .tile-value {
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+
+    .summary-tile.highlight .tile-value { color: var(--green); }
+    .summary-tile.highlight-tax .tile-value { color: var(--red); }
+
+    .tile-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+
+    /* Breakdown table */
+    .breakdown-title {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .breakdown-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .breakdown-table th,
+    .breakdown-table td {
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+    }
+
+    .breakdown-table th {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      background: var(--bg-result);
+    }
+
+    .breakdown-table th:last-child,
+    .breakdown-table td:last-child {
+      text-align: right;
+    }
+
+    .breakdown-table tr:hover td {
+      background: var(--bg-card-hover);
+    }
+
+    .breakdown-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .row-label { color: var(--text-secondary); }
+
+    .row-positive { color: var(--green); font-weight: 600; }
+    .row-deduction { color: var(--red); font-weight: 500; }
+    .row-neutral { color: var(--amber); font-weight: 500; }
+    .row-total { color: var(--text-primary); font-weight: 700; }
+    .row-divider td {
+      background: var(--bg-result) !important;
+      padding: 6px 14px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
+    /* Tax bracket visualiser */
+    .bracket-section {
+      margin-top: 20px;
+    }
+
+    .bracket-bar-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .bracket-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .bracket-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .bracket-rate {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .bracket-range {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .bracket-bar-bg {
+      width: 100%;
+      height: 8px;
+      background: var(--border);
+      border-radius: 100px;
+      overflow: hidden;
+      margin-top: 4px;
+    }
+
+    .bracket-bar-fill {
+      height: 100%;
+      border-radius: 100px;
+      background: var(--accent);
+      transition: width 0.6s cubic-bezier(0.34,1.56,0.64,1);
+    }
+
+    .bracket-amount {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      white-space: nowrap;
+      text-align: right;
+      min-width: 90px;
+    }
+
+    .bracket-amount.zero { color: var(--text-muted); font-weight: 400; }
+
+    /* Rate chips */
+    .rate-chips {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .rate-chip {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      background: var(--accent-soft);
+      border: 1px solid var(--accent-glow);
+      border-radius: var(--radius-md);
+      padding: 10px 16px;
+    }
+
+    .rate-chip-label {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+    }
+
+    .rate-chip-value {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+
+    /* =============================================
+       UPSELL BANNER
+    ============================================= */
+    .upsell-banner {
+      background: linear-gradient(135deg, #1a2040 0%, #14182e 100%);
+      border: 1px solid rgba(79,142,247,0.2);
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      margin-top: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    [data-theme="light"] .upsell-banner {
+      background: linear-gradient(135deg, #eef3ff 0%, #e8f0fe 100%);
+      border-color: rgba(59,118,232,0.2);
+    }
+
+    .upsell-banner::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 180px; height: 180px;
+      background: radial-gradient(circle, rgba(79,142,247,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .upsell-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .upsell-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border-radius: 100px;
+      padding: 3px 10px;
+      margin-bottom: 8px;
+    }
+
+    .upsell-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+
+    .upsell-sub {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    .upsell-price {
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .price-amount {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -0.03em;
+    }
+
+    .price-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .upsell-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .upsell-feature {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .upsell-feature::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .upsell-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .upsell-cta:hover {
+      background: #3a7ae0;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px var(--accent-glow);
+    }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    .footer {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .footer strong { color: var(--text-secondary); }
+
+    /* =============================================
+       UTILITIES & RESPONSIVE
+    ============================================= */
+    .mt-0 { margin-top: 0; }
+    .overflow-auto { overflow-x: auto; }
+
+    @media (max-width: 600px) {
+      .card { padding: 20px 16px; }
+      .header { flex-direction: column; }
+      .upsell-top { flex-direction: column; }
+      .upsell-price { text-align: left; }
+      .summary-strip { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 380px) {
+      .summary-strip { grid-template-columns: 1fr; }
+    }
+
+    /* Print styles */
+    @media print {
+      .theme-toggle, .calc-btn, .upsell-banner { display: none !important; }
+      .results { display: block !important; }
+      body { background: white; color: black; }
+      .card { border: 1px solid #ccc; box-shadow: none; }
+    }
+  </style>
+</head>
+<body data-theme="dark">
+
+<div class="app-wrapper">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-text">
+      <div class="header-eyebrow">2025/26 Tax Year</div>
+      <h1>SA Income Tax<br>Calculator</h1>
+      <p class="header-sub">PAYE · UIF · Medical Aid Credits · SARS compliant</p>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+      <span class="theme-icon" id="theme-icon">☀️</span>
+      <span id="theme-label">Light</span>
+    </button>
+  </header>
+
+  <!-- INPUT CARD -->
+  <div class="card">
+    <div class="card-title">Your Details</div>
+
+    <div class="form-grid">
+
+      <div class="field" style="grid-column: 1 / -1;">
+        <label class="field-label" for="salary">Annual Gross Salary</label>
+        <div class="input-prefix">
+          <span>R</span>
+          <input
+            type="number"
+            id="salary"
+            placeholder="e.g. 360 000"
+            min="0"
+            max="100000000"
+            step="1000"
+          />
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="age">Age Group</label>
+        <div class="select-wrapper">
+          <select id="age">
+            <option value="under65">Under 65</option>
+            <option value="65to74">65 – 74 years</option>
+            <option value="75plus">75 years and older</option>
+          </select>
+        </div>
+        <p class="field-hint">Affects rebates and tax threshold</p>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="dependants">Medical Aid Dependants</label>
+        <p class="field-hint">Total people covered (including yourself)</p>
+        <div class="range-row">
+          <input
+            type="range"
+            id="dependants"
+            min="0"
+            max="10"
+            value="1"
+            oninput="updateDependantDisplay(this.value)"
+          />
+          <div class="range-value" id="dependant-display">1</div>
+        </div>
+        <p class="field-hint" id="med-credit-hint">Medical credit: R364/month</p>
+      </div>
+
+    </div>
+
+    <button class="calc-btn" onclick="calculate()">
+      Calculate My Tax
+    </button>
+  </div>
+
+  <!-- RESULTS -->
+  <section class="results" id="results">
+
+    <!-- Summary tiles -->
+    <div class="summary-strip">
+      <div class="summary-tile highlight">
+        <div class="tile-label">Monthly Take-Home</div>
+        <div class="tile-value" id="tile-monthly-net">—</div>
+        <div class="tile-sub">after all deductions</div>
+      </div>
+      <div class="summary-tile highlight">
+        <div class="tile-label">Annual Take-Home</div>
+        <div class="tile-value" id="tile-annual-net">—</div>
+        <div class="tile-sub">net of PAYE &amp; UIF</div>
+      </div>
+      <div class="summary-tile highlight-tax">
+        <div class="tile-label">Monthly PAYE</div>
+        <div class="tile-value" id="tile-monthly-tax">—</div>
+        <div class="tile-sub">income tax after rebates</div>
+      </div>
+      <div class="summary-tile">
+        <div class="tile-label">Monthly UIF</div>
+        <div class="tile-value" id="tile-monthly-uif">—</div>
+        <div class="tile-sub">1% · capped at R177.12</div>
+      </div>
+    </div>
+
+    <!-- Rate chips -->
+    <div class="rate-chips">
+      <div class="rate-chip">
+        <div class="rate-chip-label">Effective Tax Rate</div>
+        <div class="rate-chip-value" id="chip-effective">—</div>
+      </div>
+      <div class="rate-chip">
+        <div class="rate-chip-label">Marginal Tax Rate</div>
+        <div class="rate-chip-value" id="chip-marginal">—</div>
+      </div>
+    </div>
+
+    <!-- Full breakdown -->
+    <div class="card" style="margin-top: 20px;">
+      <div class="breakdown-title">Full Breakdown</div>
+      <div class="overflow-auto">
+        <table class="breakdown-table" id="breakdown-table">
+          <thead>
+            <tr>
+              <th>Description</th>
+              <th>Annual</th>
+              <th>Monthly</th>
+            </tr>
+          </thead>
+          <tbody id="breakdown-body">
+            <!-- populated by JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Tax bracket visualiser -->
+    <div class="card bracket-section">
+      <div class="breakdown-title">Tax Bracket Breakdown</div>
+      <div class="bracket-bar-wrap" id="bracket-bars">
+        <!-- populated by JS -->
+      </div>
+    </div>
+
+  </section>
+
+  <!-- UPSELL BANNER -->
+  <div class="upsell-banner">
+    <div class="upsell-top">
+      <div>
+        <div class="upsell-badge">Spreadsheet Version</div>
+        <div class="upsell-title">Get the Full Google Sheets Calculator</div>
+        <div class="upsell-sub">Unlock scenario comparisons, salary negotiation tools &amp; more.</div>
+      </div>
+      <div class="upsell-price">
+        <div class="price-amount">R149</div>
+        <div class="price-label">once-off · instant download</div>
+      </div>
+    </div>
+    <div class="upsell-features">
+      <div class="upsell-feature">Compare up to 3 salary scenarios</div>
+      <div class="upsell-feature">Bonus &amp; commission tax estimator</div>
+      <div class="upsell-feature">Retirement annuity (RA) deduction</div>
+      <div class="upsell-feature">Monthly vs annual cost-to-company view</div>
+      <div class="upsell-feature">Travel allowance &amp; fringe benefits</div>
+      <div class="upsell-feature">Printable payslip summary sheet</div>
+    </div>
+    <a href="[PAYPAL_LINK]" class="upsell-cta">
+      Get the Spreadsheet — R149 →
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>
+      <strong>Disclaimer:</strong> This calculator is for informational purposes only and does not constitute
+      tax advice. Figures are based on <strong>SARS 2025/26 tax tables</strong> published for the tax year
+      1 March 2025 – 28 February 2026. Always consult a registered tax practitioner for your specific
+      situation. UIF employee contribution is 1% of remuneration, capped at the legislated ceiling.
+    </p>
+    <p style="margin-top: 8px;">Built for South African employees. Not affiliated with SARS.</p>
+  </footer>
+
+</div><!-- end .app-wrapper -->
+
+<script>
+  /* =============================================
+     CONSTANTS — SARS 2025/26
+  ============================================= */
+  const BRACKETS = [
+    { min: 0,         max: 237100,    base: 0,       rate: 0.18 },
+    { min: 237101,    max: 370500,    base: 42678,    rate: 0.26 },
+    { min: 370501,    max: 512800,    base: 77362,    rate: 0.31 },
+    { min: 512801,    max: 673000,    base: 121475,   rate: 0.36 },
+    { min: 673001,    max: 857900,    base: 179147,   rate: 0.39 },
+    { min: 857901,    max: 1817000,   base: 251258,   rate: 0.41 },
+    { min: 1817001,   max: Infinity,  base: 644489,   rate: 0.45 },
+  ];
+
+  const REBATES = {
+    primary:   17235,
+    secondary: 9444,
+    tertiary:  3145,
+  };
+
+  const THRESHOLDS = {
+    under65: 95750,
+    '65to74': 148217,
+    '75plus': 165689,
+  };
+
+  const UIF_RATE       = 0.01;
+  const UIF_MONTHLY_CAP = 177.12;
+
+  const MED_MAIN      = 364;   // per month
+  const MED_FIRST_DEP = 246;   // per month
+  const MED_EXTRA_DEP = 246;   // per month (each additional)
+
+  /* =============================================
+     THEME
+  ============================================= */
+  function toggleTheme() {
+    const body = document.body;
+    const isDark = body.getAttribute('data-theme') === 'dark';
+    body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    document.getElementById('theme-icon').textContent  = isDark ? '🌙' : '☀️';
+    document.getElementById('theme-label').textContent = isDark ? 'Dark' : 'Light';
+  }
+
+  /* =============================================
+     DEPENDANT DISPLAY
+  ============================================= */
+  function updateDependantDisplay(val) {
+    const n = parseInt(val, 10);
+    document.getElementById('dependant-display').textContent = n;
+
+    let monthly = 0;
+    if (n >= 1) monthly += MED_MAIN;
+    if (n >= 2) monthly += MED_FIRST_DEP;
+    if (n >= 3) monthly += MED_EXTRA_DEP * (n - 2);
+
+    const hint = n === 0
+      ? 'No medical aid credit'
+      : `Medical credit: ${fmt(monthly)}/month (R${(monthly * 12).toLocaleString()}/yr)`;
+
+    document.getElementById('med-credit-hint').textContent = hint;
+  }
+
+  /* =============================================
+     FORMATTING
+  ============================================= */
+  function fmt(value) {
+    if (value < 0) return '−' + fmt(-value);
+    return 'R ' + Math.abs(value).toLocaleString('en-ZA', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+  }
+
+  function pct(value) {
+    return value.toFixed(2) + '%';
+  }
+
+  /* =============================================
+     TAX CALCULATION ENGINE
+  ============================================= */
+  function calcAnnualTax(grossAnnual) {
+    for (const b of BRACKETS) {
+      if (grossAnnual <= b.max) {
+        return b.base + (grossAnnual - b.min + 1) * b.rate;
+      }
+    }
+    // Should never reach here but guard anyway
+    const last = BRACKETS[BRACKETS.length - 1];
+    return last.base + (grossAnnual - last.min + 1) * last.rate;
+  }
+
+  function getMarginalRate(grossAnnual) {
+    for (const b of BRACKETS) {
+      if (grossAnnual <= b.max) return b.rate;
+    }
+    return BRACKETS[BRACKETS.length - 1].rate;
+  }
+
+  function getTotalRebate(ageGroup) {
+    let rebate = REBATES.primary;
+    if (ageGroup === '65to74' || ageGroup === '75plus') rebate += REBATES.secondary;
+    if (ageGroup === '75plus') rebate += REBATES.tertiary;
+    return rebate;
+  }
+
+  function calcMedCredit(dependants) {
+    // Returns annual credit
+    if (dependants === 0) return 0;
+    let monthly = MED_MAIN;
+    if (dependants >= 2) monthly += MED_FIRST_DEP;
+    if (dependants > 2)  monthly += MED_EXTRA_DEP * (dependants - 2);
+    return monthly * 12;
+  }
+
+  function bracketTaxAmounts(grossAnnual) {
+    const results = [];
+    for (const b of BRACKETS) {
+      if (grossAnnual <= b.min) {
+        results.push(0);
+        continue;
+      }
+      const taxable = Math.min(grossAnnual, b.max) - b.min + 1;
+      results.push(taxable * b.rate);
+    }
+    return results;
+  }
+
+  /* =============================================
+     MAIN CALCULATE FUNCTION
+  ============================================= */
+  function calculate() {
+    const salary     = parseFloat(document.getElementById('salary').value) || 0;
+    const ageGroup   = document.getElementById('age').value;
+    const dependants = parseInt(document.getElementById('dependants').value, 10);
+
+    if (salary <= 0) {
+      alert('Please enter a valid annual salary.');
+      return;
+    }
+
+    // 1. Tax before rebates
+    const grossTax      = calcAnnualTax(salary);
+    const totalRebate   = getTotalRebate(ageGroup);
+    const medCredit     = calcMedCredit(dependants);
+
+    // 2. Net PAYE (floored at 0)
+    const netTax = Math.max(0, grossTax - totalRebate - medCredit);
+
+    // 3. Check threshold
+    const threshold = THRESHOLDS[ageGroup];
+    const finalTax  = salary < threshold ? 0 : netTax;
+
+    // 4. UIF (employee side only, monthly, capped)
+    const uifMonthly  = Math.min((salary / 12) * UIF_RATE, UIF_MONTHLY_CAP);
+    const uifAnnual   = uifMonthly * 12;
+
+    // 5. Net income
+    const netAnnual  = salary - finalTax - uifAnnual;
+    const netMonthly = netAnnual / 12;
+
+    // 6. Rates
+    const effectiveRate = salary > 0 ? (finalTax / salary) * 100 : 0;
+    const marginalRate  = getMarginalRate(salary) * 100;
+
+    // 7. Bracket breakdown
+    const bktAmounts = bracketTaxAmounts(salary);
+
+    // ——— Render ———
+    renderSummary(netMonthly, netAnnual, finalTax / 12, uifMonthly, effectiveRate, marginalRate);
+    renderBreakdown({
+      salary, grossTax, totalRebate, medCredit, finalTax, uifAnnual, uifMonthly, netAnnual, netMonthly,
+    });
+    renderBrackets(bktAmounts, grossTax);
+
+    document.getElementById('results').classList.add('visible');
+    document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  /* =============================================
+     RENDER FUNCTIONS
+  ============================================= */
+  function renderSummary(netMonthly, netAnnual, taxMonthly, uifMonthly, effectiveRate, marginalRate) {
+    document.getElementById('tile-monthly-net').textContent = fmt(netMonthly);
+    document.getElementById('tile-annual-net').textContent  = fmt(netAnnual);
+    document.getElementById('tile-monthly-tax').textContent = fmt(taxMonthly);
+    document.getElementById('tile-monthly-uif').textContent = fmt(uifMonthly);
+    document.getElementById('chip-effective').textContent   = pct(effectiveRate);
+    document.getElementById('chip-marginal').textContent    = pct(getMarginalRate(
+      parseFloat(document.getElementById('salary').value)) * 100);
+  }
+
+  function renderBreakdown({ salary, grossTax, totalRebate, medCredit, finalTax, uifAnnual, uifMonthly, netAnnual, netMonthly }) {
+    const rows = [
+      { label: 'Gross Annual Salary',        annual: salary,           monthly: salary / 12,      cls: 'row-positive' },
+      { divider: 'Tax Calculation' },
+      { label: 'Gross Tax (before rebates)', annual: grossTax,         monthly: grossTax / 12,    cls: 'row-deduction' },
+      { label: 'Primary Rebate',             annual: REBATES.primary,  monthly: REBATES.primary / 12, cls: 'row-neutral' },
+      { label: 'Secondary Rebate (65+)',     annual: (document.getElementById('age').value !== 'under65' ? REBATES.secondary : 0), monthly: (document.getElementById('age').value !== 'under65' ? REBATES.secondary : 0) / 12, cls: 'row-neutral', skip: document.getElementById('age').value === 'under65' },
+      { label: 'Tertiary Rebate (75+)',      annual: (document.getElementById('age').value === '75plus' ? REBATES.tertiary : 0), monthly: (document.getElementById('age').value === '75plus' ? REBATES.tertiary : 0) / 12, cls: 'row-neutral', skip: document.getElementById('age').value !== '75plus' },
+      { label: 'Medical Aid Tax Credit',    annual: medCredit,         monthly: medCredit / 12,   cls: 'row-neutral', skip: medCredit === 0 },
+      { label: 'Net PAYE',                   annual: finalTax,         monthly: finalTax / 12,    cls: 'row-deduction', bold: true },
+      { divider: 'Other Deductions' },
+      { label: 'UIF (employee 1%)',          annual: uifAnnual,        monthly: uifMonthly,       cls: 'row-deduction' },
+      { divider: 'Take-Home Pay' },
+      { label: 'Net Take-Home Pay',          annual: netAnnual,        monthly: netMonthly,       cls: 'row-total', bold: true },
+    ];
+
+    const tbody = document.getElementById('breakdown-body');
+    tbody.innerHTML = '';
+
+    for (const r of rows) {
+      if (r.skip) continue;
+
+      if (r.divider) {
+        const tr = document.createElement('tr');
+        tr.className = 'row-divider';
+        tr.innerHTML = `<td colspan="3">${r.divider}</td>`;
+        tbody.appendChild(tr);
+        continue;
+      }
+
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td class="row-label">${r.label}</td>
+        <td class="${r.cls}${r.bold ? ' row-total' : ''}">${fmt(r.annual)}</td>
+        <td class="${r.cls}${r.bold ? ' row-total' : ''}">${fmt(r.monthly)}</td>
+      `;
+      tbody.appendChild(tr);
+    }
+  }
+
+  function renderBrackets(amounts, grossTax) {
+    const labels = ['18%', '26%', '31%', '36%', '39%', '41%', '45%'];
+    const ranges = [
+      'R0 – R237,100',
+      'R237,101 – R370,500',
+      'R370,501 – R512,800',
+      'R512,801 – R673,000',
+      'R673,001 – R857,900',
+      'R857,901 – R1,817,000',
+      'Above R1,817,000',
+    ];
+
+    const maxAmount = Math.max(...amounts, 1);
+    const container = document.getElementById('bracket-bars');
+    container.innerHTML = '';
+
+    for (let i = 0; i < BRACKETS.length; i++) {
+      const amt = amounts[i];
+      const barWidth = amt > 0 ? Math.max((amt / maxAmount) * 100, 2) : 0;
+      const isZero = amt === 0;
+
+      const el = document.createElement('div');
+      el.className = 'bracket-item';
+      el.innerHTML = `
+        <div class="bracket-meta">
+          <div class="bracket-rate">${labels[i]} — ${ranges[i]}</div>
+          <div class="bracket-bar-bg">
+            <div class="bracket-bar-fill" style="width:${barWidth}%; opacity:${isZero ? 0.2 : 1};"></div>
+          </div>
+        </div>
+        <div class="bracket-amount${isZero ? ' zero' : ''}">${isZero ? '—' : fmt(amt)}</div>
+      `;
+      container.appendChild(el);
+    }
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SA Property Investment Calculator | Professional Edition</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-base: #0a0c0f;
+      --bg-surface: #111418;
+      --bg-card: #161b22;
+      --bg-card-hover: #1c2230;
+      --bg-input: #0d1117;
+      --border: #21262d;
+      --border-accent: #30363d;
+      --text-primary: #e6edf3;
+      --text-secondary: #8b949e;
+      --text-muted: #484f58;
+      --accent-gold: #d4a017;
+      --accent-gold-dim: #a07a10;
+      --accent-gold-glow: rgba(212, 160, 23, 0.12);
+      --accent-green: #3fb950;
+      --accent-green-dim: rgba(63, 185, 80, 0.15);
+      --accent-red: #f85149;
+      --accent-red-dim: rgba(248, 81, 73, 0.12);
+      --accent-blue: #58a6ff;
+      --accent-blue-dim: rgba(88, 166, 255, 0.1);
+      --accent-purple: #bc8cff;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --shadow-card: 0 4px 24px rgba(0,0,0,0.4);
+      --shadow-glow: 0 0 40px rgba(212, 160, 23, 0.08);
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      background-image:
+        radial-gradient(ellipse at 20% 0%, rgba(212,160,23,0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 100%, rgba(88,166,255,0.03) 0%, transparent 50%);
+    }
+
+    /* ── HEADER ── */
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      background: rgba(10, 12, 15, 0.95);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-dim));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .logo-text {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+    }
+
+    .logo-text span {
+      color: var(--accent-gold);
+    }
+
+    .header-badge {
+      font-size: 0.7rem;
+      background: var(--accent-gold-glow);
+      border: 1px solid var(--accent-gold-dim);
+      color: var(--accent-gold);
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 4rem 2rem 2rem;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-gold);
+      margin-bottom: 1rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #e6edf3 30%, #8b949e 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 580px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .hero-stat {
+      text-align: center;
+    }
+
+    .hero-stat-value {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--accent-gold);
+      letter-spacing: -0.02em;
+    }
+
+    .hero-stat-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .main {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem 4rem;
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .main { grid-template-columns: 1fr; }
+    }
+
+    /* ── PANEL / CARD ── */
+    .panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+    }
+
+    .panel-header {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .panel-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    .panel-icon.gold { background: var(--accent-gold-glow); color: var(--accent-gold); border: 1px solid var(--accent-gold-dim); }
+    .panel-icon.blue { background: var(--accent-blue-dim); color: var(--accent-blue); border: 1px solid rgba(88,166,255,0.2); }
+    .panel-icon.green { background: var(--accent-green-dim); color: var(--accent-green); border: 1px solid rgba(63,185,80,0.2); }
+    .panel-icon.purple { background: rgba(188,140,255,0.1); color: var(--accent-purple); border: 1px solid rgba(188,140,255,0.2); }
+
+    .panel-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: 0.01em;
+    }
+
+    .panel-subtitle {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+
+    .panel-body { padding: 1.25rem 1.5rem; }
+    .panel-body.tight { padding: 1rem 1.5rem; }
+
+    /* ── SECTION SEPARATOR ── */
+    .field-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .field-group-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── FORM FIELDS ── */
+    .field {
+      margin-bottom: 0.9rem;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.35rem;
+      font-weight: 500;
+    }
+
+    .input-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-prefix,
+    .input-suffix {
+      position: absolute;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      pointer-events: none;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+
+    .input-prefix { left: 10px; }
+    .input-suffix { right: 10px; }
+
+    input[type="number"],
+    input[type="text"],
+    select {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      font-size: 0.85rem;
+      padding: 8px 12px;
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      -moz-appearance: textfield;
+      font-family: inherit;
+    }
+
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; }
+
+    .has-prefix input { padding-left: 28px; }
+    .has-suffix input { padding-right: 30px; }
+
+    input:focus, select:focus {
+      border-color: var(--accent-gold);
+      box-shadow: 0 0 0 3px var(--accent-gold-glow);
+    }
+
+    .deposit-toggle {
+      display: flex;
+      gap: 0;
+      background: var(--bg-input);
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-sm);
+      padding: 3px;
+      margin-bottom: 0.5rem;
+    }
+
+    .deposit-toggle button {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .deposit-toggle button.active {
+      background: var(--accent-gold);
+      color: #0a0c0f;
+    }
+
+    /* ── TRANSFER DUTY INDICATOR ── */
+    .td-indicator {
+      margin-top: 0.5rem;
+      padding: 8px 12px;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .td-label { font-size: 0.72rem; color: var(--text-muted); }
+    .td-value { font-size: 0.8rem; font-weight: 700; color: var(--accent-gold); }
+    .td-rate { font-size: 0.65rem; color: var(--text-muted); }
+
+    /* ── CALCULATE BUTTON ── */
+    .btn-calculate {
+      width: 100%;
+      padding: 13px;
+      background: linear-gradient(135deg, var(--accent-gold) 0%, #b8860b 100%);
+      color: #0a0c0f;
+      font-size: 0.9rem;
+      font-weight: 800;
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      letter-spacing: 0.02em;
+      margin-top: 0.75rem;
+      transition: opacity 0.15s, transform 0.1s, box-shadow 0.15s;
+      box-shadow: 0 4px 20px rgba(212, 160, 23, 0.3);
+    }
+
+    .btn-calculate:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 28px rgba(212, 160, 23, 0.4);
+    }
+
+    .btn-calculate:active {
+      transform: translateY(0);
+    }
+
+    /* ── RESULTS COLUMN ── */
+    .results-col {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    /* ── KEY METRICS GRID ── */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    @media (max-width: 640px) {
+      .metrics-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .metric-cell {
+      background: var(--bg-card);
+      padding: 1.25rem 1rem;
+      text-align: center;
+      transition: background 0.15s;
+    }
+
+    .metric-cell:hover { background: var(--bg-card-hover); }
+
+    .metric-label {
+      font-size: 0.67rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .metric-value {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .metric-value.gold { color: var(--accent-gold); }
+    .metric-value.green { color: var(--accent-green); }
+    .metric-value.red { color: var(--accent-red); }
+    .metric-value.blue { color: var(--accent-blue); }
+    .metric-value.purple { color: var(--accent-purple); }
+    .metric-value.neutral { color: var(--text-primary); }
+
+    .metric-sub {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+    }
+
+    /* ── CASH FLOW DISPLAY ── */
+    .cashflow-display {
+      padding: 1.5rem;
+      border-radius: var(--radius-md);
+      border: 1px solid;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .cashflow-display.positive {
+      background: var(--accent-green-dim);
+      border-color: rgba(63,185,80,0.3);
+    }
+
+    .cashflow-display.negative {
+      background: var(--accent-red-dim);
+      border-color: rgba(248,81,73,0.3);
+    }
+
+    .cashflow-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .cashflow-display.positive .cashflow-label { color: var(--accent-green); }
+    .cashflow-display.negative .cashflow-label { color: var(--accent-red); }
+
+    .cashflow-desc {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
+
+    .cashflow-amount {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      white-space: nowrap;
+    }
+
+    .cashflow-display.positive .cashflow-amount { color: var(--accent-green); }
+    .cashflow-display.negative .cashflow-amount { color: var(--accent-red); }
+
+    /* ── TABLE ── */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+
+    .data-table th {
+      text-align: left;
+      padding: 0.6rem 1rem;
+      font-size: 0.67rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      font-weight: 700;
+    }
+
+    .data-table td {
+      padding: 0.7rem 1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-secondary);
+    }
+
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+    .data-table td.val {
+      text-align: right;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--text-primary);
+    }
+
+    .data-table td.val.gold { color: var(--accent-gold); }
+    .data-table td.val.green { color: var(--accent-green); }
+    .data-table td.val.red { color: var(--accent-red); }
+
+    /* ── PROJECTION BARS ── */
+    .projection-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1rem 1.5rem;
+    }
+
+    .proj-row {
+      display: grid;
+      grid-template-columns: 80px 1fr 110px;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .proj-year {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+    }
+
+    .proj-bar-track {
+      height: 8px;
+      background: var(--bg-input);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .proj-bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      width: 0%;
+    }
+
+    .proj-bar-fill.gold {
+      background: linear-gradient(90deg, var(--accent-gold-dim), var(--accent-gold));
+    }
+
+    .proj-bar-fill.blue {
+      background: linear-gradient(90deg, rgba(88,166,255,0.4), var(--accent-blue));
+    }
+
+    .proj-bar-fill.green {
+      background: linear-gradient(90deg, rgba(63,185,80,0.3), var(--accent-green));
+    }
+
+    .proj-value {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-align: right;
+    }
+
+    .proj-value.gold { color: var(--accent-gold); }
+    .proj-value.blue { color: var(--accent-blue); }
+    .proj-value.green { color: var(--accent-green); }
+
+    /* ── COST BREAKDOWN ── */
+    .cost-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.82rem;
+    }
+
+    .cost-row:last-child { border-bottom: none; }
+    .cost-name { color: var(--text-secondary); }
+    .cost-amount { font-weight: 600; color: var(--text-primary); }
+    .cost-row.total { padding-top: 0.8rem; margin-top: 0.2rem; border-top: 1px solid var(--border-accent); border-bottom: none; }
+    .cost-row.total .cost-name { font-weight: 700; color: var(--text-primary); }
+    .cost-row.total .cost-amount { color: var(--accent-gold); font-size: 0.95rem; }
+
+    /* ── BREAKEVEN ── */
+    .breakeven-display {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      padding: 1.25rem 1.5rem;
+    }
+
+    .breakeven-amount {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--accent-blue);
+      letter-spacing: -0.03em;
+      white-space: nowrap;
+    }
+
+    .breakeven-desc {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .breakeven-desc strong {
+      color: var(--text-primary);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    /* ── PLACEHOLDER STATE ── */
+    .results-placeholder {
+      text-align: center;
+      padding: 3rem 2rem;
+      color: var(--text-muted);
+    }
+
+    .placeholder-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0.4;
+    }
+
+    .placeholder-text {
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+
+    /* ── UPSELL BANNER ── */
+    .upsell-banner {
+      background: linear-gradient(135deg, rgba(212,160,23,0.08) 0%, rgba(88,166,255,0.05) 100%);
+      border: 1px solid rgba(212,160,23,0.2);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+
+    .upsell-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+
+    .upsell-text h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .upsell-text p {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .upsell-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 0.75rem;
+      padding: 7px 16px;
+      background: var(--accent-gold);
+      color: #0a0c0f;
+      font-size: 0.78rem;
+      font-weight: 800;
+      border-radius: 20px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: opacity 0.15s;
+    }
+
+    .upsell-btn:hover { opacity: 0.85; }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-disclaimer {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      line-height: 1.5;
+    }
+
+    .footer-right {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0.75rem 0;
+    }
+
+    /* ── ANIMATION ── */
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-in {
+      animation: fadeSlideIn 0.35s ease-out forwards;
+    }
+
+    /* ── TOOLTIP ── */
+    .tooltip-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .tooltip-icon {
+      width: 14px;
+      height: 14px;
+      background: var(--bg-input);
+      border: 1px solid var(--border-accent);
+      border-radius: 50%;
+      font-size: 9px;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: help;
+      font-style: normal;
+    }
+
+    /* ── SARS BADGE ── */
+    .sars-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.65rem;
+      padding: 2px 8px;
+      border-radius: 12px;
+      background: rgba(63,185,80,0.1);
+      border: 1px solid rgba(63,185,80,0.2);
+      color: var(--accent-green);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-left: auto;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .hero { padding: 2.5rem 1rem 1.5rem; }
+      .main { padding: 0 1rem 3rem; }
+      .site-footer { padding: 1.25rem 1rem; }
+      .site-header { padding: 0 1rem; }
+      .cashflow-amount { font-size: 1.5rem; }
+      .breakeven-amount { font-size: 1.4rem; }
+      .upsell-banner { flex-direction: column; text-align: center; }
+      .proj-row { grid-template-columns: 60px 1fr 90px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════ HEADER ══════════════ -->
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="#">
+      <div class="logo-icon">🏠</div>
+      <div>
+        <div class="logo-text">SA <span>Property</span> Calculator</div>
+      </div>
+    </a>
+    <div class="header-badge">Professional Edition</div>
+  </div>
+</header>
+
+<!-- ══════════════ HERO ══════════════ -->
+<div class="hero">
+  <div class="hero-eyebrow">South African Property Investment Tool</div>
+  <h1 class="hero-title">Know Your Numbers<br>Before You Buy</h1>
+  <p class="hero-subtitle">Precise bond repayments, real yields, cash flow projections, and SARS-compliant transfer duty — all in one place.</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-value">12+</div>
+      <div class="hero-stat-label">Input Variables</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-value">10yr</div>
+      <div class="hero-stat-label">Projections</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-value">SARS</div>
+      <div class="hero-stat-label">Compliant Duty</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-value">R0</div>
+      <div class="hero-stat-label">Cost to Use</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ MAIN ══════════════ -->
+<main class="main">
+
+  <!-- ═══ INPUT PANEL ═══ -->
+  <div class="panel" style="position: sticky; top: 72px;">
+    <div class="panel-header">
+      <div class="panel-icon gold">⚙</div>
+      <div>
+        <div class="panel-title">Investment Parameters</div>
+        <div class="panel-subtitle">Fill in your property details below</div>
+      </div>
+    </div>
+    <div class="panel-body">
+
+      <!-- ACQUISITION -->
+      <div class="field-group">
+        <div class="field-group-label">Acquisition</div>
+
+        <div class="field">
+          <label>Purchase Price (ZAR)</label>
+          <div class="input-wrap has-prefix">
+            <span class="input-prefix">R</span>
+            <input type="number" id="purchasePrice" value="1500000" min="0" step="10000" oninput="onPriceChange()" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Deposit</label>
+          <div class="deposit-toggle">
+            <button id="toggleZAR" class="active" onclick="setDepositMode('ZAR')">Rand (R)</button>
+            <button id="togglePct" onclick="setDepositMode('%')">Percent (%)</button>
+          </div>
+          <div class="input-wrap has-prefix" id="depositZARWrap">
+            <span class="input-prefix">R</span>
+            <input type="number" id="depositZAR" value="150000" min="0" step="5000" oninput="syncDeposit('ZAR')" />
+          </div>
+          <div class="input-wrap has-suffix" id="depositPctWrap" style="display:none;">
+            <input type="number" id="depositPct" value="10" min="0" max="100" step="1" oninput="syncDeposit('%')" />
+            <span class="input-suffix">%</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Transfer Duty <span class="sars-badge">&#10003; SARS 2024/25</span></label>
+          <div class="td-indicator">
+            <div>
+              <div class="td-label">Auto-calculated</div>
+              <div class="td-rate" id="tdRateText">Based on purchase price</div>
+            </div>
+            <div class="td-value" id="tdValue">—</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Conveyancing Fees (estimate)</label>
+          <div class="input-wrap has-prefix">
+            <span class="input-prefix">R</span>
+            <input type="number" id="conveyancing" value="25000" min="0" step="1000" />
+          </div>
+        </div>
+      </div>
+
+      <!-- BOND -->
+      <div class="field-group">
+        <div class="field-group-label">Bond Terms</div>
+
+        <div class="field-row">
+          <div class="field">
+            <label>Bond Term (years)</label>
+            <div class="input-wrap">
+              <input type="number" id="bondTerm" value="20" min="5" max="30" step="1" />
+            </div>
+          </div>
+          <div class="field">
+            <label>Interest Rate</label>
+            <div class="input-wrap has-suffix">
+              <input type="number" id="interestRate" value="11.75" min="1" max="30" step="0.25" />
+              <span class="input-suffix">%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MONTHLY COSTS -->
+      <div class="field-group">
+        <div class="field-group-label">Monthly Costs</div>
+
+        <div class="field-row">
+          <div class="field">
+            <label>Levy (sectional title)</label>
+            <div class="input-wrap has-prefix">
+              <span class="input-prefix">R</span>
+              <input type="number" id="levy" value="0" min="0" step="100" />
+            </div>
+          </div>
+          <div class="field">
+            <label>Rates &amp; Taxes</label>
+            <div class="input-wrap has-prefix">
+              <span class="input-prefix">R</span>
+              <input type="number" id="rates" value="800" min="0" step="50" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RENTAL -->
+      <div class="field-group">
+        <div class="field-group-label">Rental Income</div>
+
+        <div class="field">
+          <label>Expected Monthly Rental</label>
+          <div class="input-wrap has-prefix">
+            <span class="input-prefix">R</span>
+            <input type="number" id="monthlyRental" value="12000" min="0" step="500" />
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label>Annual Rental Escalation</label>
+            <div class="input-wrap has-suffix">
+              <input type="number" id="rentalEscalation" value="8" min="0" max="30" step="0.5" />
+              <span class="input-suffix">%</span>
+            </div>
+          </div>
+          <div class="field">
+            <label>Vacancy Allowance</label>
+            <div class="input-wrap has-suffix">
+              <input type="number" id="vacancyPct" value="8" min="0" max="50" step="1" />
+              <span class="input-suffix">%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GROWTH -->
+      <div class="field-group">
+        <div class="field-group-label">Growth Assumptions</div>
+
+        <div class="field-row">
+          <div class="field">
+            <label>Property Appreciation</label>
+            <div class="input-wrap has-suffix">
+              <input type="number" id="appreciation" value="6" min="0" max="25" step="0.5" />
+              <span class="input-suffix">%</span>
+            </div>
+          </div>
+          <div class="field">
+            <label>Maintenance (% of value)</label>
+            <div class="input-wrap has-suffix">
+              <input type="number" id="maintenancePct" value="1" min="0" max="5" step="0.1" />
+              <span class="input-suffix">%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn-calculate" onclick="calculate()">Calculate Investment &#8594;</button>
+    </div>
+  </div>
+
+  <!-- ═══ RESULTS COLUMN ═══ -->
+  <div class="results-col" id="resultsCol">
+
+    <!-- PLACEHOLDER -->
+    <div class="panel" id="placeholderPanel">
+      <div class="results-placeholder">
+        <div class="placeholder-icon">📊</div>
+        <p class="placeholder-text">Enter your property details on the left and click <strong>Calculate Investment</strong> to see your full analysis — bond repayments, yields, cash flow, and 10-year projections.</p>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer class="site-footer">
+  <p class="footer-disclaimer">
+    This calculator is for indicative purposes only. Transfer duty rates reflect SARS 2024/25 scales. Bond repayments are calculated using a standard reducing-balance amortisation formula. All projections are estimates based on your inputs — actual returns may vary. Consult a registered property practitioner or financial adviser before investing.
+  </p>
+  <div class="footer-right">SA Property Calculator &copy; 2025</div>
+</footer>
+
+<script>
+  // ─── STATE ───────────────────────────────────────────────────
+  let depositMode = 'ZAR';
+
+  // ─── UTILS ───────────────────────────────────────────────────
+  const fmt = (n, decimals = 0) =>
+    'R ' + Math.round(n).toLocaleString('en-ZA', {
+      minimumFractionDigits: decimals,
+      maximumFractionDigits: decimals
+    });
+
+  const fmtPct = (n, d = 2) => n.toFixed(d) + '%';
+
+  const get = id => parseFloat(document.getElementById(id).value) || 0;
+
+  // ─── TRANSFER DUTY (SARS 2024/25) ────────────────────────────
+  function calcTransferDuty(price) {
+    if (price <= 1100000) return { duty: 0, rate: '0%', band: 'Exempt' };
+    if (price <= 1512500) return {
+      duty: (price - 1100000) * 0.03,
+      rate: '3%',
+      band: 'R1.1M – R1.51M'
+    };
+    if (price <= 2117500) return {
+      duty: 12375 + (price - 1512500) * 0.06,
+      rate: '6%',
+      band: 'R1.51M – R2.12M'
+    };
+    if (price <= 2722500) return {
+      duty: 48675 + (price - 2117500) * 0.08,
+      rate: '8%',
+      band: 'R2.12M – R2.72M'
+    };
+    if (price <= 12100000) return {
+      duty: 97075 + (price - 2722500) * 0.11,
+      rate: '11%',
+      band: 'R2.72M – R12.1M'
+    };
+    return {
+      duty: 1128600 + (price - 12100000) * 0.13,
+      rate: '13%',
+      band: 'Above R12.1M'
+    };
+  }
+
+  // ─── BOND REPAYMENT (PMT) ─────────────────────────────────────
+  function calcBondRepayment(principal, annualRate, years) {
+    if (principal <= 0) return 0;
+    const r = annualRate / 100 / 12;
+    const n = years * 12;
+    if (r === 0) return principal / n;
+    return principal * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+  }
+
+  // ─── DEPOSIT SYNC ─────────────────────────────────────────────
+  function setDepositMode(mode) {
+    depositMode = mode;
+    document.getElementById('toggleZAR').classList.toggle('active', mode === 'ZAR');
+    document.getElementById('togglePct').classList.toggle('active', mode === '%');
+    document.getElementById('depositZARWrap').style.display = mode === 'ZAR' ? '' : 'none';
+    document.getElementById('depositPctWrap').style.display = mode === '%' ? '' : 'none';
+  }
+
+  function syncDeposit(from) {
+    const price = get('purchasePrice');
+    if (from === 'ZAR') {
+      const pct = price > 0 ? (get('depositZAR') / price) * 100 : 0;
+      document.getElementById('depositPct').value = pct.toFixed(1);
+    } else {
+      const zarVal = price * (get('depositPct') / 100);
+      document.getElementById('depositZAR').value = zarVal.toFixed(0);
+    }
+    updateTD();
+  }
+
+  function onPriceChange() {
+    syncDeposit(depositMode === 'ZAR' ? '%' : 'ZAR');
+    updateTD();
+  }
+
+  function updateTD() {
+    const price = get('purchasePrice');
+    const td = calcTransferDuty(price);
+    document.getElementById('tdValue').textContent = price > 0 ? fmt(td.duty) : '—';
+    document.getElementById('tdRateText').textContent = price > 0 ? `${td.rate} marginal · ${td.band}` : 'Based on purchase price';
+  }
+
+  // ─── PROJECTION HELPER ────────────────────────────────────────
+  function projValue(base, rate, years) {
+    return base * Math.pow(1 + rate / 100, years);
+  }
+
+  // ─── REMAINING BOND BALANCE ───────────────────────────────────
+  function remainingBalance(principal, annualRate, years, monthsPaid) {
+    const r = annualRate / 100 / 12;
+    const n = years * 12;
+    if (r === 0) return principal * (1 - monthsPaid / n);
+    const pmt = principal * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+    return principal * Math.pow(1 + r, monthsPaid) - pmt * (Math.pow(1 + r, monthsPaid) - 1) / r;
+  }
+
+  // ─── MAIN CALCULATE ──────────────────────────────────────────
+  function calculate() {
+    const price         = get('purchasePrice');
+    const depositZAR    = depositMode === 'ZAR' ? get('depositZAR') : price * get('depositPct') / 100;
+    const bondTerm      = get('bondTerm');
+    const interestRate  = get('interestRate');
+    const conveyancing  = get('conveyancing');
+    const levy          = get('levy');
+    const rates         = get('rates');
+    const rental        = get('monthlyRental');
+    const rentalEsc     = get('rentalEscalation');
+    const vacancyPct    = get('vacancyPct');
+    const appreciation  = get('appreciation');
+    const maintPct      = get('maintenancePct');
+
+    if (price <= 0) { alert('Please enter a valid purchase price.'); return; }
+
+    // Core calcs
+    const td            = calcTransferDuty(price);
+    const loanAmount    = price - depositZAR;
+    const monthlyBond   = calcBondRepayment(loanAmount, interestRate, bondTerm);
+    const totalAcqCost  = price + td.duty + conveyancing;
+
+    // Rental
+    const effectiveRental = rental * (1 - vacancyPct / 100);
+    const grossYield    = price > 0 ? (rental * 12 / price) * 100 : 0;
+
+    // Monthly costs
+    const monthlyMaint  = (price * maintPct / 100) / 12;
+    const totalMonthlyCosts = monthlyBond + levy + rates + monthlyMaint;
+    const netMonthlyCashFlow = effectiveRental - totalMonthlyCosts;
+
+    // Net yield (annual)
+    const annualNetIncome = (effectiveRental - levy - rates - monthlyMaint) * 12;
+    const netYield      = price > 0 ? (annualNetIncome / price) * 100 : 0;
+
+    // Break-even rent
+    const breakEvenRent = (monthlyBond + levy + rates + monthlyMaint) / (1 - vacancyPct / 100);
+
+    // Cash-on-cash return (using deposit as invested capital)
+    const annualCashFlow = netMonthlyCashFlow * 12;
+    const cashOnCash    = depositZAR > 0 ? (annualCashFlow / depositZAR) * 100 : 0;
+
+    // Projections
+    const val5yr  = projValue(price, appreciation, 5);
+    const val10yr = projValue(price, appreciation, 10);
+    const bal5yr  = remainingBalance(loanAmount, interestRate, bondTerm, 60);
+    const bal10yr = remainingBalance(loanAmount, interestRate, bondTerm, 120);
+    const eq5yr   = val5yr - bal5yr;
+    const eq10yr  = val10yr - bal10yr;
+
+    // Render results
+    renderResults({
+      price, depositZAR, loanAmount, bondTerm, interestRate,
+      td, conveyancing, levy, rates, monthlyMaint,
+      monthlyBond, totalAcqCost, grossYield, netYield,
+      effectiveRental, netMonthlyCashFlow, totalMonthlyCosts,
+      val5yr, val10yr, eq5yr, eq10yr,
+      breakEvenRent, cashOnCash, rental, annualCashFlow,
+      vacancyPct
+    });
+  }
+
+  // ─── RENDER ──────────────────────────────────────────────────
+  function renderResults(d) {
+    const col = document.getElementById('resultsCol');
+    const cfClass = d.netMonthlyCashFlow >= 0 ? 'positive' : 'negative';
+    const cfSign  = d.netMonthlyCashFlow >= 0 ? '+' : '';
+    const cfArrow = d.netMonthlyCashFlow >= 0 ? '&#8593;' : '&#8595;';
+
+    // Bar widths (normalised)
+    const maxVal = d.val10yr;
+    const w5val  = (d.val5yr / maxVal * 100).toFixed(1);
+    const w10val = 100;
+    const w5eq   = Math.min((d.eq5yr / maxVal * 100), 100).toFixed(1);
+    const w10eq  = Math.min((d.eq10yr / maxVal * 100), 100).toFixed(1);
+
+    col.innerHTML = `
+
+      <!-- ── KEY METRICS GRID ── -->
+      <div class="panel animate-in">
+        <div class="panel-header">
+          <div class="panel-icon gold">&#9733;</div>
+          <div>
+            <div class="panel-title">Key Investment Metrics</div>
+            <div class="panel-subtitle">Calculated from your inputs</div>
+          </div>
+        </div>
+        <div class="metrics-grid">
+          <div class="metric-cell">
+            <div class="metric-label">Monthly Bond</div>
+            <div class="metric-value gold" style="font-size:1.1rem;">${fmt(d.monthlyBond)}</div>
+            <div class="metric-sub">${d.bondTerm}yr @ ${d.interestRate}%</div>
+          </div>
+          <div class="metric-cell">
+            <div class="metric-label">Gross Yield</div>
+            <div class="metric-value ${d.grossYield >= 8 ? 'green' : d.grossYield >= 5 ? 'gold' : 'red'}">${fmtPct(d.grossYield)}</div>
+            <div class="metric-sub">Annualised</div>
+          </div>
+          <div class="metric-cell">
+            <div class="metric-label">Net Yield</div>
+            <div class="metric-value ${d.netYield >= 5 ? 'green' : d.netYield >= 2 ? 'gold' : 'red'}">${fmtPct(d.netYield)}</div>
+            <div class="metric-sub">After all costs</div>
+          </div>
+          <div class="metric-cell">
+            <div class="metric-label">Total Acquisition</div>
+            <div class="metric-value neutral" style="font-size:1rem;">${fmt(d.totalAcqCost)}</div>
+            <div class="metric-sub">Price + duty + fees</div>
+          </div>
+          <div class="metric-cell">
+            <div class="metric-label">Transfer Duty</div>
+            <div class="metric-value ${d.td.duty === 0 ? 'green' : 'gold'}" style="font-size:1rem;">${fmt(d.td.duty)}</div>
+            <div class="metric-sub">${d.td.rate} marginal</div>
+          </div>
+          <div class="metric-cell">
+            <div class="metric-label">Cash-on-Cash</div>
+            <div class="metric-value ${d.cashOnCash >= 5 ? 'green' : d.cashOnCash >= 0 ? 'gold' : 'red'}">${d.depositZAR > 0 ? fmtPct(d.cashOnCash) : 'N/A'}</div>
+            <div class="metric-sub">Return on deposit</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── MONTHLY CASH FLOW ── -->
+      <div class="panel animate-in" style="animation-delay:0.05s;">
+        <div class="panel-header">
+          <div class="panel-icon ${d.netMonthlyCashFlow >= 0 ? 'green' : 'gold'}">&#36;</div>
+          <div>
+            <div class="panel-title">Monthly Cash Flow</div>
+            <div class="panel-subtitle">Net income after all deductions</div>
+          </div>
+        </div>
+        <div class="cashflow-display ${cfClass}">
+          <div>
+            <div class="cashflow-label">${d.netMonthlyCashFlow >= 0 ? 'Positive Cash Flow' : 'Negative Cash Flow'} ${cfArrow}</div>
+            <div class="cashflow-desc">${d.netMonthlyCashFlow >= 0
+              ? 'This property generates surplus income above all costs.'
+              : 'You will top up <strong>' + fmt(Math.abs(d.netMonthlyCashFlow)) + '/mo</strong> from your own pocket.'}</div>
+          </div>
+          <div class="cashflow-amount">${cfSign}${fmt(d.netMonthlyCashFlow)}</div>
+        </div>
+        <div class="panel-body tight">
+          <table class="data-table">
+            <thead>
+              <tr><th>Income / Cost Item</th><th style="text-align:right;">Monthly</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Rental income (gross)</td><td class="val green">+${fmt(d.rental)}</td></tr>
+              <tr><td>Less vacancy (${d.vacancyPct}%)</td><td class="val red">−${fmt(d.rental * d.vacancyPct / 100)}</td></tr>
+              <tr><td>Effective rental income</td><td class="val">${fmt(d.effectiveRental)}</td></tr>
+              <tr><td style="padding-top:0.9rem;color:var(--text-muted);font-size:0.75rem;" colspan="2">EXPENSES</td></tr>
+              <tr><td>Bond repayment</td><td class="val red">−${fmt(d.monthlyBond)}</td></tr>
+              ${d.levy > 0 ? `<tr><td>Body corporate levy</td><td class="val red">−${fmt(d.levy)}</td></tr>` : ''}
+              <tr><td>Rates &amp; taxes</td><td class="val red">−${fmt(d.rates)}</td></tr>
+              <tr><td>Maintenance provision</td><td class="val red">−${fmt(d.monthlyMaint)}</td></tr>
+              <tr><td><strong>Net monthly cash flow</strong></td>
+                  <td class="val ${d.netMonthlyCashFlow >= 0 ? 'green' : 'red'}"><strong>${cfSign}${fmt(d.netMonthlyCashFlow)}</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ── BREAK-EVEN ── -->
+      <div class="panel animate-in" style="animation-delay:0.1s;">
+        <div class="panel-header">
+          <div class="panel-icon blue">&#9650;</div>
+          <div>
+            <div class="panel-title">Break-Even Rental</div>
+            <div class="panel-subtitle">Minimum rent needed to cover all costs</div>
+          </div>
+        </div>
+        <div class="breakeven-display">
+          <div class="breakeven-amount">${fmt(d.breakEvenRent)}<span style="font-size:0.9rem;font-weight:500;color:var(--text-muted)">/mo</span></div>
+          <div class="breakeven-desc">
+            <strong>Your target: ${fmt(d.rental)}/mo</strong>
+            ${d.rental >= d.breakEvenRent
+              ? `You are <span style="color:var(--accent-green);font-weight:700;">${fmt(d.rental - d.breakEvenRent)}/mo</span> above break-even.`
+              : `You are <span style="color:var(--accent-red);font-weight:700;">${fmt(d.breakEvenRent - d.rental)}/mo</span> below break-even after vacancy.`
+            }
+            <br>Includes bond, levy, rates, maintenance, and vacancy allowance.
+          </div>
+        </div>
+      </div>
+
+      <!-- ── ACQUISITION COST BREAKDOWN ── -->
+      <div class="panel animate-in" style="animation-delay:0.12s;">
+        <div class="panel-header">
+          <div class="panel-icon gold">&#128196;</div>
+          <div>
+            <div class="panel-title">Acquisition Cost Breakdown</div>
+            <div class="panel-subtitle">Total cash required to complete purchase</div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="cost-row">
+            <span class="cost-name">Purchase price</span>
+            <span class="cost-amount">${fmt(d.price)}</span>
+          </div>
+          <div class="cost-row">
+            <span class="cost-name">Deposit (${d.price > 0 ? (d.depositZAR/d.price*100).toFixed(1) : 0}%)</span>
+            <span class="cost-amount">${fmt(d.depositZAR)}</span>
+          </div>
+          <div class="cost-row">
+            <span class="cost-name">Bond amount</span>
+            <span class="cost-amount">${fmt(d.loanAmount)}</span>
+          </div>
+          <div class="divider"></div>
+          <div class="cost-row">
+            <span class="cost-name">Transfer duty <small style="color:var(--text-muted);">(${d.td.rate} marginal · ${d.td.band})</small></span>
+            <span class="cost-amount">${fmt(d.td.duty)}</span>
+          </div>
+          <div class="cost-row">
+            <span class="cost-name">Conveyancing fees</span>
+            <span class="cost-amount">${fmt(d.conveyancing)}</span>
+          </div>
+          <div class="cost-row total">
+            <span class="cost-name">Total cash required at registration</span>
+            <span class="cost-amount">${fmt(d.depositZAR + d.td.duty + d.conveyancing)}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PROJECTIONS ── -->
+      <div class="panel animate-in" style="animation-delay:0.15s;">
+        <div class="panel-header">
+          <div class="panel-icon purple">&#128200;</div>
+          <div>
+            <div class="panel-title">10-Year Property Projections</div>
+            <div class="panel-subtitle">${get('appreciation')}% annual appreciation · ${get('rentalEscalation')}% rental escalation</div>
+          </div>
+        </div>
+        <div class="projection-bars">
+
+          <div class="proj-row">
+            <span class="proj-year" style="color:var(--text-secondary);font-size:0.68rem;text-transform:uppercase;letter-spacing:0.08em;">Property Value</span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <div class="proj-row">
+            <span class="proj-year">Today</span>
+            <div class="proj-bar-track">
+              <div class="proj-bar-fill gold" style="width:${(d.price/maxVal*100).toFixed(1)}%"></div>
+            </div>
+            <span class="proj-value gold">${fmt(d.price)}</span>
+          </div>
+
+          <div class="proj-row">
+            <span class="proj-year">5 Years</span>
+            <div class="proj-bar-track">
+              <div class="proj-bar-fill gold" style="width:${w5val}%"></div>
+            </div>
+            <span class="proj-value gold">${fmt(d.val5yr)}</span>
+          </div>
+
+          <div class="proj-row">
+            <span class="proj-year">10 Years</span>
+            <div class="proj-bar-track">
+              <div class="proj-bar-fill gold" style="width:${w10val}%"></div>
+            </div>
+            <span class="proj-value gold">${fmt(d.val10yr)}</span>
+          </div>
+
+          <div class="divider" style="margin:0.5rem 0;"></div>
+
+          <div class="proj-row">
+            <span class="proj-year" style="color:var(--text-secondary);font-size:0.68rem;text-transform:uppercase;letter-spacing:0.08em;">Equity Position</span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <div class="proj-row">
+            <span class="proj-year">Today</span>
+            <div class="proj-bar-track">
+              <div class="proj-bar-fill green" style="width:${(d.depositZAR/maxVal*100).toFixed(1)}%"></div>
+            </div>
+            <span class="proj-value green">${fmt(d.depositZAR)}</span>
+          </div>
+
+          <div class="proj-row">
+            <span class="proj-year">5 Years</span>
+            <div class="proj-bar-track">
+              <div class="proj-bar-fill green" style="width:${w5eq}%"></div>
+            </div>
+            <span class="proj-value green">${fmt(d.eq5yr)}</span>
+          </div>
+
+          <div class="proj-row">
+            <span class="proj-year">10 Years</span>
+            <div class="proj-bar-track">
+              <div class="proj-bar-fill green" style="width:${w10eq}%"></div>
+            </div>
+            <span class="proj-value green">${fmt(d.eq10yr)}</span>
+          </div>
+        </div>
+
+        <div class="panel-body tight" style="padding-top:0;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th style="text-align:right;">5 Years</th>
+                <th style="text-align:right;">10 Years</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Estimated property value</td>
+                <td class="val gold">${fmt(d.val5yr)}</td>
+                <td class="val gold">${fmt(d.val10yr)}</td>
+              </tr>
+              <tr>
+                <td>Remaining bond balance</td>
+                <td class="val red">${fmt(Math.max(0, remainingBalance(d.loanAmount, d.interestRate, d.bondTerm, 60)))}</td>
+                <td class="val red">${fmt(Math.max(0, remainingBalance(d.loanAmount, d.interestRate, d.bondTerm, 120)))}</td>
+              </tr>
+              <tr>
+                <td>Estimated equity</td>
+                <td class="val green">${fmt(d.eq5yr)}</td>
+                <td class="val green">${fmt(d.eq10yr)}</td>
+              </tr>
+              <tr>
+                <td>Rental income (monthly, escalated)</td>
+                <td class="val">${fmt(d.rental * Math.pow(1 + get('rentalEscalation')/100, 5))}</td>
+                <td class="val">${fmt(d.rental * Math.pow(1 + get('rentalEscalation')/100, 10))}</td>
+              </tr>
+              <tr>
+                <td>Cumulative gross rental collected</td>
+                <td class="val">${fmt(cumulativeRental(d.rental, get('rentalEscalation'), 5))}</td>
+                <td class="val">${fmt(cumulativeRental(d.rental, get('rentalEscalation'), 10))}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ── UPSELL ── -->
+      <div class="upsell-banner animate-in" style="animation-delay:0.2s;">
+        <div class="upsell-icon">📋</div>
+        <div class="upsell-text">
+          <h4>Get the Full Excel / Google Sheets Version — R249</h4>
+          <p>Includes a full amortisation schedule, multi-property comparison (up to 5 properties), tax scenario modelling, and a printable investment report — all pre-built and unlocked.</p>
+          <a class="upsell-btn" href="[PAYPAL_LINK]" target="_blank" rel="noopener">
+            Buy Now &rarr;
+          </a>
+        </div>
+      </div>
+    `;
+  }
+
+  // ─── CUMULATIVE RENTAL (geometric series) ─────────────────────
+  function cumulativeRental(monthlyRent, annualEscPct, years) {
+    const esc = 1 + annualEscPct / 100;
+    let total = 0;
+    for (let y = 0; y < years; y++) {
+      total += monthlyRent * Math.pow(esc, y) * 12;
+    }
+    return total;
+  }
+
+  // ─── INIT ─────────────────────────────────────────────────────
+  updateTD();
+  // Auto-calculate on load for good UX
+  window.addEventListener('load', () => {
+    calculate();
+  });
+</script>
+
+</body>
+</html>
