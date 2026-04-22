@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Prompt Pack for South African Business Owners</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0f1117;
+    --ink-soft: #3a3d4a;
+    --ink-muted: #6b7280;
+    --surface: #ffffff;
+    --surface-tint: #f8f9fc;
+    --border: #e5e7ef;
+    --accent: #1a56db;
+    --accent-light: #eff4ff;
+    --accent-mid: #bfcfff;
+    --gold: #c9952a;
+    --gold-light: #fef9ec;
+    --green: #0f7b55;
+    --green-light: #ecfdf5;
+    --orange: #c14e0a;
+    --orange-light: #fff7ed;
+    --purple: #6d28d9;
+    --purple-light: #f5f3ff;
+    --teal: #0e7490;
+    --teal-light: #ecfeff;
+    --rose: #be185d;
+    --rose-light: #fdf2f8;
+    --header-bg: #0d1526;
+    --header-mid: #1a2845;
+    --radius: 12px;
+    --radius-sm: 8px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.07), 0 4px 16px rgba(0,0,0,0.06);
+    --shadow-lg: 0 4px 6px rgba(0,0,0,0.05), 0 10px 40px rgba(0,0,0,0.1);
+  }
+
+  html { font-size: 16px; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #eef1f8;
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 24px 80px;
+  }
+
+  /* ── COVER PAGE ─────────────────────────────────────── */
+  .cover {
+    background: var(--header-bg);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 48px;
+    position: relative;
+    box-shadow: var(--shadow-lg);
+    page-break-after: always;
+  }
+
+  .cover-noise {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse 80% 60% at 70% 30%, rgba(26,86,219,0.28) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 20% 80%, rgba(201,149,42,0.18) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .cover-inner {
+    position: relative;
+    z-index: 1;
+    padding: 72px 64px 56px;
+  }
+
+  .cover-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(201,149,42,0.18);
+    border: 1px solid rgba(201,149,42,0.4);
+    color: #f0c060;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+
+  .cover-badge::before {
+    content: '◆';
+    font-size: 8px;
+  }
+
+  .cover-flag {
+    font-size: 22px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .cover h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(36px, 5vw, 54px);
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+  }
+
+  .cover h1 span {
+    color: #f0c060;
+  }
+
+  .cover-subtitle {
+    font-size: 17px;
+    color: rgba(255,255,255,0.65);
+    font-weight: 400;
+    margin-bottom: 48px;
+    max-width: 520px;
+    line-height: 1.6;
+  }
+
+  .cover-stats {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 56px;
+    flex-wrap: wrap;
+  }
+
+  .cover-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .cover-stat-num {
+    font-size: 36px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .cover-stat-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .cover-divider {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 32px;
+  }
+
+  .cover-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .cover-meta-left {
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+  }
+
+  .cover-price {
+    background: rgba(201,149,42,0.15);
+    border: 1px solid rgba(201,149,42,0.35);
+    color: #f0c060;
+    font-size: 22px;
+    font-weight: 800;
+    padding: 10px 22px;
+    border-radius: 10px;
+    letter-spacing: -0.01em;
+  }
+
+  /* ── TABLE OF CONTENTS ──────────────────────────────── */
+  .toc-card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 44px 48px;
+    margin-bottom: 48px;
+    page-break-after: always;
+  }
+
+  .toc-card h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .toc-intro {
+    font-size: 14px;
+    color: var(--ink-muted);
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .toc-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .toc-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    cursor: default;
+  }
+
+  .toc-item:last-child { border-bottom: none; }
+
+  .toc-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .toc-title {
+    flex: 1;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .toc-count {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 100px;
+  }
+
+  /* ── SECTION HEADER ─────────────────────────────────── */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 56px 0 24px;
+  }
+
+  .section-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .section-title-wrap h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+
+  .section-title-wrap p {
+    font-size: 14px;
+    color: var(--ink-muted);
+    margin-top: 3px;
+  }
+
+  /* ── PROMPT CARD ────────────────────────────────────── */
+  .prompt-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 16px;
+  }
+
+  .prompt-card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    page-break-inside: avoid;
+  }
+
+  .prompt-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .prompt-num {
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .prompt-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    flex: 1;
+  }
+
+  .prompt-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 100px;
+  }
+
+  .prompt-body {
+    padding: 20px;
+    background: var(--surface-tint);
+  }
+
+  .prompt-text {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    font-family: 'Inter', monospace;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .prompt-text strong, .prompt-text b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .placeholder {
+    background: rgba(26,86,219,0.08);
+    color: #1a56db;
+    font-weight: 600;
+    border-radius: 4px;
+    padding: 1px 5px;
+    font-size: 13px;
+  }
+
+  /* ── COLOUR THEMES PER SECTION ──────────────────────── */
+  /* 1 – Client Communication: accent/blue */
+  .theme-blue .toc-num        { background: var(--accent-light); color: var(--accent); }
+  .theme-blue .toc-count      { background: var(--accent-light); color: var(--accent); }
+  .theme-blue .section-icon   { background: var(--accent-light); }
+  .theme-blue .prompt-num     { background: var(--accent-light); color: var(--accent); }
+  .theme-blue .prompt-tag     { background: var(--accent-light); color: var(--accent); }
+  .theme-blue .prompt-card-header { background: #f5f8ff; }
+
+  /* 2 – POPIA: green */
+  .theme-green .toc-num        { background: var(--green-light); color: var(--green); }
+  .theme-green .toc-count      { background: var(--green-light); color: var(--green); }
+  .theme-green .section-icon   { background: var(--green-light); }
+  .theme-green .prompt-num     { background: var(--green-light); color: var(--green); }
+  .theme-green .prompt-tag     { background: var(--green-light); color: var(--green); }
+  .theme-green .prompt-card-header { background: #f0fdf8; }
+
+  /* 3 – BBBEE: gold */
+  .theme-gold .toc-num        { background: var(--gold-light); color: var(--gold); }
+  .theme-gold .toc-count      { background: var(--gold-light); color: var(--gold); }
+  .theme-gold .section-icon   { background: var(--gold-light); }
+  .theme-gold .prompt-num     { background: var(--gold-light); color: var(--gold); }
+  .theme-gold .prompt-tag     { background: var(--gold-light); color: var(--gold); }
+  .theme-gold .prompt-card-header { background: #fffdf5; }
+
+  /* 4 – HR: orange */
+  .theme-orange .toc-num        { background: var(--orange-light); color: var(--orange); }
+  .theme-orange .toc-count      { background: var(--orange-light); color: var(--orange); }
+  .theme-orange .section-icon   { background: var(--orange-light); }
+  .theme-orange .prompt-num     { background: var(--orange-light); color: var(--orange); }
+  .theme-orange .prompt-tag     { background: var(--orange-light); color: var(--orange); }
+  .theme-orange .prompt-card-header { background: #fff9f5; }
+
+  /* 5 – Finance: purple */
+  .theme-purple .toc-num        { background: var(--purple-light); color: var(--purple); }
+  .theme-purple .toc-count      { background: var(--purple-light); color: var(--purple); }
+  .theme-purple .section-icon   { background: var(--purple-light); }
+  .theme-purple .prompt-num     { background: var(--purple-light); color: var(--purple); }
+  .theme-purple .prompt-tag     { background: var(--purple-light); color: var(--purple); }
+  .theme-purple .prompt-card-header { background: #faf5ff; }
+
+  /* 6 – Marketing: teal */
+  .theme-teal .toc-num        { background: var(--teal-light); color: var(--teal); }
+  .theme-teal .toc-count      { background: var(--teal-light); color: var(--teal); }
+  .theme-teal .section-icon   { background: var(--teal-light); }
+  .theme-teal .prompt-num     { background: var(--teal-light); color: var(--teal); }
+  .theme-teal .prompt-tag     { background: var(--teal-light); color: var(--teal); }
+  .theme-teal .prompt-card-header { background: #f0feff; }
+
+  /* 7 – Contracts: rose */
+  .theme-rose .toc-num        { background: var(--rose-light); color: var(--rose); }
+  .theme-rose .toc-count      { background: var(--rose-light); color: var(--rose); }
+  .theme-rose .section-icon   { background: var(--rose-light); }
+  .theme-rose .prompt-num     { background: var(--rose-light); color: var(--rose); }
+  .theme-rose .prompt-tag     { background: var(--rose-light); color: var(--rose); }
+  .theme-rose .prompt-card-header { background: #fdf5fb; }
+
+  /* ── USAGE TIPS BOX ─────────────────────────────────── */
+  .tips-box {
+    background: linear-gradient(135deg, #0d1526 0%, #1a2845 100%);
+    border-radius: var(--radius);
+    padding: 36px 40px;
+    margin: 56px 0 48px;
+    color: white;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .tips-box h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #f0c060;
+  }
+
+  .tips-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .tips-list li {
+    display: flex;
+    gap: 12px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.6;
+  }
+
+  .tips-list li::before {
+    content: '→';
+    color: #f0c060;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── DISCLAIMER ─────────────────────────────────────── */
+  .disclaimer {
+    background: #fffbf0;
+    border: 1px solid #f0d080;
+    border-radius: var(--radius-sm);
+    padding: 20px 24px;
+    margin-top: 56px;
+    font-size: 12.5px;
+    color: #7a6010;
+    line-height: 1.7;
+  }
+
+  .disclaimer strong { color: #5a4400; }
+
+  /* ── FOOTER ─────────────────────────────────────────── */
+  .footer {
+    text-align: center;
+    padding: 32px 0 0;
+    font-size: 12px;
+    color: var(--ink-muted);
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+  }
+
+  /* ── PRINT TWEAKS ───────────────────────────────────── */
+  @media print {
+    body { background: white; }
+    .page-wrap { padding: 0; max-width: 100%; }
+    .cover { border-radius: 0; margin-bottom: 0; }
+    .prompt-card { box-shadow: none; border: 1px solid #ddd; }
+    .toc-card { box-shadow: none; }
+  }
+
+  @media (max-width: 600px) {
+    .cover-inner { padding: 40px 28px 36px; }
+    .toc-card { padding: 28px 24px; }
+    .cover-stats { gap: 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- ══════════════════════════════════════════════════
+       COVER PAGE
+  ══════════════════════════════════════════════════ -->
+  <div class="cover">
+    <div class="cover-noise"></div>
+    <div class="cover-inner">
+      <div class="cover-badge">Premium Digital Resource</div>
+      <span class="cover-flag">🇿🇦</span>
+      <h1>AI Prompt Pack for<br><span>South African</span><br>Business Owners</h1>
+      <p class="cover-subtitle">
+        60+ ready-to-use AI prompts built specifically for the South African business
+        environment — from POPIA compliance to SARS correspondence, BBBEE documentation,
+        CCMA-aligned HR letters, and beyond.
+      </p>
+      <div class="cover-stats">
+        <div class="cover-stat">
+          <div class="cover-stat-num">60+</div>
+          <div class="cover-stat-label">Prompts</div>
+        </div>
+        <div class="cover-stat">
+          <div class="cover-stat-num">7</div>
+          <div class="cover-stat-label">Categories</div>
+        </div>
+        <div class="cover-stat">
+          <div class="cover-stat-num">SA</div>
+          <div class="cover-stat-label">Contextualised</div>
+        </div>
+        <div class="cover-stat">
+          <div class="cover-stat-num">∞</div>
+          <div class="cover-stat-label">Reusable</div>
+        </div>
+      </div>
+      <hr class="cover-divider">
+      <div class="cover-meta">
+        <span class="cover-meta-left">Copy · Paste · Customise · Done</span>
+        <div class="cover-price">R199</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+       TABLE OF CONTENTS
+  ══════════════════════════════════════════════════ -->
+  <div class="toc-card">
+    <h2>Table of Contents</h2>
+    <p class="toc-intro">Seven categories purpose-built for the South African regulatory and business landscape. Each prompt includes placeholder variables in <span class="placeholder">[SQUARE BRACKETS]</span> for easy customisation.</p>
+
+    <ul class="toc-list">
+      <li class="toc-item theme-blue">
+        <div class="toc-num">1</div>
+        <span class="toc-title">Client Communication — Quotations, invoices, scope of work &amp; late payment</span>
+        <span class="toc-count">10 prompts</span>
+      </li>
+      <li class="toc-item theme-green">
+        <div class="toc-num">2</div>
+        <span class="toc-title">POPIA Compliance — Privacy policy, data breach, consent &amp; staff policy</span>
+        <span class="toc-count">10 prompts</span>
+      </li>
+      <li class="toc-item theme-gold">
+        <div class="toc-num">3</div>
+        <span class="toc-title">BBBEE &amp; Compliance — Affidavit letters, supplier declarations &amp; checklists</span>
+        <span class="toc-count">9 prompts</span>
+      </li>
+      <li class="toc-item theme-orange">
+        <div class="toc-num">4</div>
+        <span class="toc-title">HR &amp; Staff — Employment summaries, disciplinary notices &amp; leave policy</span>
+        <span class="toc-count">10 prompts</span>
+      </li>
+      <li class="toc-item theme-purple">
+        <div class="toc-num">5</div>
+        <span class="toc-title">Finance &amp; Tax — SARS correspondence, VAT checks &amp; provisional tax</span>
+        <span class="toc-count">9 prompts</span>
+      </li>
+      <li class="toc-item theme-teal">
+        <div class="toc-num">6</div>
+        <span class="toc-title">Marketing — Social media captions, Google Business, WhatsApp &amp; reviews</span>
+        <span class="toc-count">9 prompts</span>
+      </li>
+      <li class="toc-item theme-rose">
+        <div class="toc-num">7</div>
+        <span class="toc-title">Contracts &amp; Legal — NDA, freelance agreement &amp; contractor checklist</span>
+        <span class="toc-count">7 prompts</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+       HOW TO USE
+  ══════════════════════════════════════════════════ -->
+  <div class="tips-box">
+    <h3>How to Use These Prompts</h3>
+    <ul class="tips-list">
+      <li>Copy any prompt and paste it directly into ChatGPT, Claude, Gemini, or any AI assistant.</li>
+      <li>Replace every <span style="color:#f0c060;font-weight:600;">[PLACEHOLDER]</span> in square brackets with your actual business details before submitting.</li>
+      <li>Review and edit the AI output before sending — these are starting points, not final documents.</li>
+      <li>For legal, tax, or HR matters, have a qualified South African professional review the final document.</li>
+      <li>Save your completed prompts as templates inside your AI tool for even faster future use.</li>
+    </ul>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+       SECTION 1 — CLIENT COMMUNICATION
+  ══════════════════════════════════════════════════ -->
+  <div class="section-header theme-blue">
+    <div class="section-icon theme-blue">✉️</div>
+    <div class="section-title-wrap">
+      <h2>Client Communication</h2>
+      <p>Professional, SA-contextualised client correspondence — quotations, invoices, scope of work &amp; payment follow-ups</p>
+    </div>
+  </div>
+
+  <div class="prompt-grid">
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-blue">
+        <div class="prompt-num theme-blue">01</div>
+        <span class="prompt-label">Professional Quotation Email</span>
+        <span class="prompt-tag theme-blue">Quotation</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a professional quotation email for a South African business. The email is from <span class="placeholder">[YOUR BUSINESS NAME]</span>, a <span class="placeholder">[TYPE OF BUSINESS, e.g. graphic design studio]</span> based in <span class="placeholder">[CITY]</span>. The client is <span class="placeholder">[CLIENT NAME / COMPANY]</span>. The quoted service is <span class="placeholder">[DESCRIPTION OF SERVICE]</span> at a total cost of <span class="placeholder">[AMOUNT IN RANDS]</span> (VAT <span class="placeholder">[inclusive / exclusive]</span>). Quote validity is <span class="placeholder">[NUMBER]</span> days. Payment terms are <span class="placeholder">[e.g. 50% upfront, 50% on delivery]</span>. Use a warm but professional South African business tone. Include a clear breakdown line, a VAT note if applicable, and a polite call to action to accept the quote.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-blue">
+        <div class="prompt-num theme-blue">02</div>
+        <span class="prompt-label">Invoice Follow-Up Email — First Reminder</span>
+        <span class="prompt-tag theme-blue">Invoice</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a polite first-reminder email to a client whose invoice is <span class="placeholder">[NUMBER]</span> days overdue. Business name: <span class="placeholder">[YOUR BUSINESS NAME]</span>. Client name: <span class="placeholder">[CLIENT NAME]</span>. Invoice number: <span class="placeholder">[INVOICE NUMBER]</span>. Amount outstanding: R<span class="placeholder">[AMOUNT]</span>. Original due date: <span class="placeholder">[DATE]</span>. Payment reference: <span class="placeholder">[REFERENCE]</span>. Banking details: <span class="placeholder">[BANK, ACCOUNT NAME, ACCOUNT NUMBER, BRANCH CODE]</span>. Tone should be friendly and assume the non-payment was an oversight. End with a clear call to action and offer to resend the invoice if needed.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-blue">
+        <div class="prompt-num theme-blue">03</div>
+        <span class="prompt-label">Invoice Follow-Up Email — Final Demand</span>
+        <span class="prompt-tag theme-blue">Invoice</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a firm but professional final-demand letter for an overdue invoice in a South African context. The amount owed is R<span class="placeholder">[AMOUNT]</span> on invoice <span class="placeholder">[INVOICE NUMBER]</span>, now <span class="placeholder">[NUMBER]</span> days overdue. State that if payment is not received within <span class="placeholder">[NUMBER, e.g. 5]</span> business days, the matter will be referred to a debt collector and/or the business reserves the right to charge interest at the prescribed legal rate under the National Credit Act. Keep the tone firm and professional. Include banking details: <span class="placeholder">[BANKING DETAILS]</span>.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-blue">
+        <div class="prompt-num theme-blue">04</div>
+        <span class="prompt-label">Scope of Work Email</span>
+        <span class="prompt-tag theme-blue">Scope</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a detailed scope-of-work email to a client confirming the agreed deliverables for a project. Business: <span class="placeholder">[YOUR BUSINESS NAME]</span>. Client: <span class="placeholder">[CLIENT NAME / COMPANY]</span>. Project name: <span class="placeholder">[PROJECT NAME]</span>. Deliverables: <span class="placeholder">[LIST DELIVERABLES]</span>. Start date: <span class="placeholder">[DATE]</span>. Completion date: <span class="placeholder">[DATE]</span>. What is NOT included (exclusions): <span class="placeholder">[LIST EXCLUSIONS]</span>. Revision rounds included: <span class="placeholder">[NUMBER]</span>. Total fee: R<span class="placeholder">[AMOUNT]</span>. Payment schedule: <span class="placeholder">[PAYMENT TERMS]</span>. The email should be structured with clear headings, confirm mutual understanding, and ask the client to reply with written approval to proceed.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-blue">
+        <div class="prompt-num theme-blue">05</div>
+        <span class="prompt-label">Scope Creep Response Email</span>
+        <span class="prompt-tag theme-blue">Boundary</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a professional email addressing scope creep with a client. The client has requested <span class="placeholder">[DESCRIPTION OF ADDITIONAL WORK]</span>, which falls outside the agreed scope of work. Remind the client of the original scope agreed on <span class="placeholder">[DATE]</span> and explain that this additional work will require a separate quotation of approximately R<span class="placeholder">[AMOUNT]</span>. Keep the tone respectful and solution-focused — the goal is to preserve the relationship while protecting the business from unpaid work. Offer to send a new quotation promptly if the client wishes to proceed.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-blue">
+        <div class="prompt-num theme-blue">06</div>
+        <span class="prompt-label">Project Delay Notification to Client</span>
+        <span class="prompt-tag theme-blue">Update</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a professional email notifying a client of a delay in project delivery. Business: <span class="placeholder">[YOUR BUSINESS NAME]</span>. Client: <span class="placeholder">[CLIENT NAME]</span>. Project: <span class="placeholder">[PROJECT NAME]</span>. Original deadline: <span class="placeholder">[DATE]</span>. New expected deadline: <span class="placeholder">[DATE]</span>. Reason for delay: <span class="placeholder">[BRIEF REASON — e.g. supplier delays, illness, dependencies from client side]</span>. Apologise sincerely without making excessive excuses, explain the revised timeline clearly, and reassure the client of your commitment to quality delivery. If the delay is partly the client's fault (e.g. late feedback), mention this diplomatically.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-blue">
+        <div class="prompt-num theme-blue">07</div>
+        <span class="prompt-label">Client Onboarding Welcome Email</span>
+        <span class="prompt-tag theme-blue">Onboarding</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a warm and professional onboarding email for a new client of a South African <span class="placeholder">[TYPE OF BUSINESS]</span>. Client name: <span class="placeholder">[CLIENT NAME]</span>. Business name: <span class="placeholder">[YOUR BUSINESS NAME]</span>. Main contact person: <span class="placeholder">[YOUR NAME AND ROLE]</span>. Contact details: <span class="placeholder">[PHONE / EMAIL]</span>. Next step in the process: <span class="placeholder">[e.g. discovery call on DATE, kickoff meeting, sending intake form]</span>. Include a brief explanation of how you work, your communication style, and what the client can expect in terms of turnaround times and feedback cycles. The tone should make the client feel welcomed and confident they made the right choice.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-blue">
+        <div class="prompt-num theme-blue">08</div>
+        <span class="prompt-label">Project Completion & Handover Email</span>
+        <span class="prompt-tag theme-blue">Handover</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a professional project completion and handover email. Business: <span class="placeholder">[YOUR BUSINESS NAME]</span>. Client: <span class="placeholder">[CLIENT NAME]</span>. Project: <span class="placeholder">[PROJECT NAME]</span>. Deliverables handed over: <span class="placeholder">[LIST WHAT WAS DELIVERED]</span>. How deliverables were sent: <span class="placeholder">[e.g. Google Drive link, email attachment, physical delivery]</span>. Any important usage notes or instructions: <span class="placeholder">[e.g. passwords, file formats, how to update the website]</span>. Outstanding balance due: R<span class="placeholder">[AMOUNT]</span> (if any). Thank the client warmly, invite them to reach out with any queries, and subtly mention your availability for future work or referrals.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-blue">
+        <div class="prompt-num theme-blue">09</div>
+        <span class="prompt-label">Price Increase Notification Letter</span>
+        <span class="prompt-tag theme-blue">Pricing</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a professional price increase notification email for a South African small business. The increase is effective from <span class="placeholder">[DATE]</span>. New pricing for <span class="placeholder">[SERVICE OR PRODUCT]</span> will be R<span class="placeholder">[NEW AMOUNT]</span>, up from R<span class="placeholder">[OLD AMOUNT]</span>. Reason for increase: <span class="placeholder">[e.g. rising supplier costs, load-shedding operational costs, inflation, increased service scope]</span>. Mention that South Africa's current economic environment, including the impact of CPI and fuel costs, has necessitated this adjustment. Give clients at least <span class="placeholder">[NUMBER]</span> days notice. Keep the tone empathetic, confident, and value-focused — remind clients of the quality and reliability they receive.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-blue">
+        <div class="prompt-num theme-blue">10</div>
+        <span class="prompt-label">Complaint Response Email</span>
+        <span class="prompt-tag theme-blue">Complaints</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a professional response to a client complaint for a South African business. Business: <span class="placeholder">[YOUR BUSINESS NAME]</span>. Client: <span class="placeholder">[CLIENT NAME]</span>. Nature of complaint: <span class="placeholder">[DESCRIBE THE ISSUE THE CLIENT RAISED]</span>. What happened from your side: <span class="placeholder">[YOUR UNDERSTANDING OF EVENTS]</span>. Proposed resolution: <span class="placeholder">[HOW YOU INTEND TO RESOLVE IT]</span>. Acknowledge the client's frustration sincerely, take accountability where appropriate without admitting undue legal liability, and outline the concrete next steps. The goal is to de-escalate and retain the client relationship wherever possible.</div>
+      </div>
+    </div>
+
+  </div><!-- end prompt-grid -->
+
+
+  <!-- ══════════════════════════════════════════════════
+       SECTION 2 — POPIA COMPLIANCE
+  ══════════════════════════════════════════════════ -->
+  <div class="section-header theme-green">
+    <div class="section-icon theme-green">🔒</div>
+    <div class="section-title-wrap">
+      <h2>POPIA Compliance</h2>
+      <p>Protection of Personal Information Act — privacy policy, data breach notices, consent forms &amp; staff data-handling policy</p>
+    </div>
+  </div>
+
+  <div class="prompt-grid">
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-green">
+        <div class="prompt-num theme-green">11</div>
+        <span class="prompt-label">Business Privacy Policy (POPIA-Compliant)</span>
+        <span class="prompt-tag theme-green">Privacy Policy</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a POPIA-compliant privacy policy for a South African <span class="placeholder">[TYPE OF BUSINESS, e.g. online retail store / consulting firm / medical practice]</span>. Business name: <span class="placeholder">[BUSINESS NAME]</span>. Registration number: <span class="placeholder">[REG NUMBER]</span>. Information Officer: <span class="placeholder">[NAME AND EMAIL]</span>. Website: <span class="placeholder">[WEBSITE URL]</span>. Types of personal information collected: <span class="placeholder">[e.g. name, email, ID number, banking details, health information]</span>. Purpose for collection: <span class="placeholder">[e.g. billing, service delivery, marketing with consent]</span>. Third parties data is shared with: <span class="placeholder">[e.g. payment processors, accountants]</span>. Include sections on data subject rights, retention periods, how to lodge a complaint with the Information Regulator, and cookie policy where applicable. Write in plain English.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-green">
+        <div class="prompt-num theme-green">12</div>
+        <span class="prompt-label">Data Breach Notification to Affected Parties</span>
+        <span class="prompt-tag theme-green">Breach Notice</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a POPIA-compliant data breach notification letter to affected data subjects. The breach occurred at <span class="placeholder">[BUSINESS NAME]</span> on or around <span class="placeholder">[DATE DISCOVERED]</span>. Nature of the breach: <span class="placeholder">[DESCRIBE WHAT HAPPENED, e.g. unauthorised access to a database containing email addresses and phone numbers]</span>. Information compromised: <span class="placeholder">[LIST DATA TYPES EXPOSED]</span>. Steps taken to contain the breach: <span class="placeholder">[ACTIONS TAKEN]</span>. Recommended actions for affected individuals: <span class="placeholder">[e.g. change passwords, monitor bank accounts]</span>. Contact for queries: <span class="placeholder">[NAME, EMAIL, PHONE]</span>. The letter should be clear, factual, and reassuring — and note that the Information Regulator of South Africa has been notified as required under Section 22 of POPIA.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-green">
+        <div class="prompt-num theme-green">13</div>
+        <span class="prompt-label">Data Breach Report to the Information Regulator</span>
+        <span class="prompt-tag theme-green">Regulator Report</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Draft a formal security compromise notification to the Information Regulator of South Africa (inforeg.org.za) as required under Section 22 of POPIA. Responsible party: <span class="placeholder">[BUSINESS NAME]</span>. Information Officer: <span class="placeholder">[NAME]</span>. Registration number: <span class="placeholder">[REG NUMBER]</span>. Date and time of breach: <span class="placeholder">[DATE / APPROXIMATE TIME]</span>. Description of the incident: <span class="placeholder">[DETAILED DESCRIPTION]</span>. Categories of data subjects affected: <span class="placeholder">[e.g. customers, employees]</span>. Approximate number of affected persons: <span class="placeholder">[NUMBER]</span>. Mitigation steps taken: <span class="placeholder">[ACTIONS]</span>. Format it as a formal letter with all required POPIA Section 22 fields addressed.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-green">
+        <div class="prompt-num theme-green">14</div>
+        <span class="prompt-label">Customer Consent Form (Marketing &amp; Communications)</span>
+        <span class="prompt-tag theme-green">Consent</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write POPIA-compliant consent form language for a South African business to obtain customer consent for marketing communications. Business: <span class="placeholder">[BUSINESS NAME]</span>. Types of communication: <span class="placeholder">[e.g. WhatsApp messages, email newsletters, SMS promotions]</span>. Frequency: <span class="placeholder">[e.g. maximum twice per week]</span>. The consent wording must be specific, informed, and freely given as required by POPIA. Include a clear opt-out mechanism and state how data will be stored and protected. Write both a long-form version (for a website or printed form) and a short-form version (for a WhatsApp or SMS double-opt-in message).</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-green">
+        <div class="prompt-num theme-green">15</div>
+        <span class="prompt-label">Staff Data Handling Policy</span>
+        <span class="prompt-tag theme-green">Staff Policy</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a POPIA-compliant internal staff data handling policy for a South African business with <span class="placeholder">[NUMBER]</span> employees. Business: <span class="placeholder">[BUSINESS NAME]</span>. The policy must cover: what constitutes personal information under POPIA, how employees may access and process customer and colleague data, rules around sharing data externally or via personal devices, what to do if they suspect a breach, consequences of non-compliance, and how to handle a data subject access request (DSAR). Write it in plain, accessible language suitable for staff who are not legally trained. Include a staff acknowledgement signature block at the end.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-green">
+        <div class="prompt-num theme-green">16</div>
+        <span class="prompt-label">POPI Act Compliance Self-Assessment Prompt</span>
+        <span class="prompt-tag theme-green">Audit</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">You are a POPIA compliance consultant. Help me conduct a basic self-assessment of my South African business's POPIA readiness. My business is a <span class="placeholder">[TYPE OF BUSINESS]</span> with approximately <span class="placeholder">[NUMBER]</span> customers and <span class="placeholder">[NUMBER]</span> employees. We currently <span class="placeholder">[DO / DO NOT]</span> have a privacy policy. We <span class="placeholder">[DO / DO NOT]</span> have a designated Information Officer. We collect the following types of personal information: <span class="placeholder">[LIST]</span>. Ask me questions across the eight POPIA conditions for lawful processing and provide a gap analysis with practical next steps for each gap identified.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-green">
+        <div class="prompt-num theme-green">17</div>
+        <span class="prompt-label">Data Subject Access Request Response</span>
+        <span class="prompt-tag theme-green">DSAR</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a formal response to a Data Subject Access Request (DSAR) received from <span class="placeholder">[DATA SUBJECT NAME]</span> on <span class="placeholder">[DATE RECEIVED]</span>. They have requested: <span class="placeholder">[e.g. a copy of all personal information held, deletion of their data, correction of inaccurate data]</span>. Business name: <span class="placeholder">[BUSINESS NAME]</span>. Information Officer: <span class="placeholder">[NAME]</span>. Under POPIA, the response must be provided within 30 days. The information requested is: <span class="placeholder">[AVAILABLE IN FULL / PARTIALLY AVAILABLE — EXPLAIN / NOT HELD]</span>. Draft a professional letter acknowledging the request, explaining the outcome, and informing the data subject of their right to escalate to the Information Regulator if dissatisfied.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-green">
+        <div class="prompt-num theme-green">18</div>
+        <span class="prompt-label">Third-Party Processor Data Sharing Agreement Clause</span>
+        <span class="prompt-tag theme-green">Operator Agreement</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Draft a POPIA-compliant data processing clause to include in a service agreement with a third-party operator (processor). Our business (<span class="placeholder">[BUSINESS NAME]</span>) is the responsible party. The operator is <span class="placeholder">[THIRD PARTY NAME]</span>, who will process personal information for the purpose of <span class="placeholder">[e.g. payroll processing, email marketing, cloud storage]</span>. The clause must address: the purpose and scope of processing, the operator's obligation to implement appropriate safeguards, prohibition on processing beyond the agreed purpose, notification obligations in case of a breach, and audit rights. Write it in clear legal-but-accessible language.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-green">
+        <div class="prompt-num theme-green">19</div>
+        <span class="prompt-label">Employee Privacy Notice</span>
+        <span class="prompt-tag theme-green">HR Privacy</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a POPIA-compliant employee privacy notice for a South African employer. Business: <span class="placeholder">[BUSINESS NAME]</span>. This notice must explain: what personal information is collected from employees, why it is collected and the lawful basis, who it is shared with (e.g. UIF, pension fund, medical aid, SARS), how long it is retained, employees' rights under POPIA, and how to contact the Information Officer with queries or complaints. Write it clearly for use in an employment contract appendix or staff handbook. Information Officer contact: <span class="placeholder">[NAME, EMAIL]</span>.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-green">
+        <div class="prompt-num theme-green">20</div>
+        <span class="prompt-label">Website Cookie Notice (POPIA-Aligned)</span>
+        <span class="prompt-tag theme-green">Cookie Policy</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a POPIA-aligned cookie notice and consent banner text for a South African business website. Business: <span class="placeholder">[BUSINESS NAME]</span>. Website: <span class="placeholder">[WEBSITE URL]</span>. Cookies used: <span class="placeholder">[e.g. Google Analytics (analytics), Facebook Pixel (marketing), session cookies (essential), Hotjar (behaviour tracking)]</span>. Provide: (1) a short banner pop-up text with accept/decline options, (2) a longer cookie policy page that explains each cookie category, purpose, and retention period, and (3) instructions for users on how to manage or withdraw cookie consent. Keep language plain and jargon-free.</div>
+      </div>
+    </div>
+
+  </div><!-- end prompt-grid -->
+
+
+  <!-- ══════════════════════════════════════════════════
+       SECTION 3 — BBBEE & COMPLIANCE
+  ══════════════════════════════════════════════════ -->
+  <div class="section-header theme-gold">
+    <div class="section-icon theme-gold">📋</div>
+    <div class="section-title-wrap">
+      <h2>BBBEE &amp; Compliance</h2>
+      <p>Broad-Based Black Economic Empowerment — EME/QSE affidavit letters, supplier declarations &amp; compliance summaries</p>
+    </div>
+  </div>
+
+  <div class="prompt-grid">
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-gold">
+        <div class="prompt-num theme-gold">21</div>
+        <span class="prompt-label">BBBEE Affidavit Cover Letter (EME)</span>
+        <span class="prompt-tag theme-gold">EME Affidavit</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a professional cover letter to accompany a BBBEE EME (Exempt Micro Enterprise) sworn affidavit. Business name: <span class="placeholder">[BUSINESS NAME]</span>. Registration number: <span class="placeholder">[REG NUMBER]</span>. Owner/director: <span class="placeholder">[NAME]</span>. Annual turnover: R<span class="placeholder">[AMOUNT]</span> (confirming the business qualifies as an EME — turnover below R10 million). Black ownership percentage: <span class="placeholder">[PERCENTAGE]</span>%. BBBEE level achieved: <span class="placeholder">[LEVEL 1 / LEVEL 2 / LEVEL 4]</span>. The letter is addressed to <span class="placeholder">[RECIPIENT / PROSPECTIVE CLIENT OR TENDER OFFICE]</span> and serves to confirm the entity's BBBEE status. Keep the tone formal and concise.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-gold">
+        <div class="prompt-num theme-gold">22</div>
+        <span class="prompt-label">BBBEE Affidavit Cover Letter (QSE)</span>
+        <span class="prompt-tag theme-gold">QSE Affidavit</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a professional cover letter to accompany a BBBEE QSE (Qualifying Small Enterprise) certificate. Business name: <span class="placeholder">[BUSINESS NAME]</span>. Registration number: <span class="placeholder">[REG NUMBER]</span>. Annual turnover: R<span class="placeholder">[AMOUNT]</span> (between R10m and R50m — confirming QSE status). BBBEE verification agency: <span class="placeholder">[AGENCY NAME]</span>. Certificate validity period: <span class="placeholder">[DATE TO DATE]</span>. BBBEE level: <span class="placeholder">[LEVEL]</span>. Ownership: <span class="placeholder">[BLACK OWNERSHIP %]</span>% black-owned. Addressed to: <span class="placeholder">[RECIPIENT]</span>. Include a brief statement on the business's commitment to transformation and an invitation to contact the business for further details.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-gold">
+        <div class="prompt-num theme-gold">23</div>
+        <span class="prompt-label">Supplier BBBEE Declaration Request</span>
+        <span class="prompt-tag theme-gold">Supplier</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a professional email requesting a supplier's BBBEE certificate or sworn affidavit. Our business: <span class="placeholder">[YOUR BUSINESS NAME]</span>. Supplier: <span class="placeholder">[SUPPLIER NAME]</span>. Reason for request: <span class="placeholder">[e.g. annual BBBEE scorecard compliance, procurement policy requirement, tender requirement]</span>. Deadline: <span class="placeholder">[DATE]</span>. Specify that if they qualify as an EME (turnover under R10m), a notarised sworn affidavit is acceptable. If they are a QSE or large enterprise, they must provide a certificate from an accredited BBBEE verification agency. Keep the tone professional and collaborative — not demanding.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-gold">
+        <div class="prompt-num theme-gold">24</div>
+        <span class="prompt-label">BBBEE Compliance Checklist Email to Client</span>
+        <span class="prompt-tag theme-gold">Checklist</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a clear, professional summary email outlining the BBBEE compliance documents and information required from a client or supplier for a procurement or tender process. Our business: <span class="placeholder">[YOUR BUSINESS NAME]</span>. Recipient: <span class="placeholder">[CLIENT / SUPPLIER NAME]</span>. Tender or contract reference: <span class="placeholder">[REFERENCE NUMBER]</span>. Required documents include: valid BBBEE certificate or EME affidavit, company registration documents, tax clearance certificate (good standing from SARS), and <span class="placeholder">[ANY OTHER DOCUMENTS REQUIRED]</span>. Submission deadline: <span class="placeholder">[DATE]</span>. Explain where and how documents should be submitted.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-gold">
+        <div class="prompt-num theme-gold">25</div>
+        <span class="prompt-label">Enterprise &amp; Supplier Development (ESD) Programme Proposal</span>
+        <span class="prompt-tag theme-gold">ESD</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a professional proposal email or letter for a South African business seeking to participate in another company's Enterprise and Supplier Development (ESD) programme. Applying business: <span class="placeholder">[YOUR BUSINESS NAME]</span>. Target company's ESD programme: <span class="placeholder">[COMPANY NAME]</span>. Products or services offered: <span class="placeholder">[DESCRIPTION]</span>. Black ownership level: <span class="placeholder">[PERCENTAGE]</span>%. BBBEE level: <span class="placeholder">[LEVEL]</span>. Years in operation: <span class="placeholder">[NUMBER]</span>. What development support is sought: <span class="placeholder">[e.g. mentorship, preferential procurement, financial support, skills training]</span>. The tone should be persuasive but professional, demonstrating the business's potential and transformation credentials.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-gold">
+        <div class="prompt-num theme-gold">26</div>
+        <span class="prompt-label">Tax Clearance Good Standing Letter Request</span>
+        <span class="prompt-tag theme-gold">Tax Clearance</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a professional internal checklist and email template to assist a South African business owner in obtaining or renewing their SARS Tax Clearance Certificate (now called a "Tax Compliance Status" or TCS pin via eFiling). Business: <span class="placeholder">[BUSINESS NAME]</span>. Tax number: <span class="placeholder">[TAX REFERENCE NUMBER]</span>. Required for: <span class="placeholder">[e.g. a government tender, BBBEE compliance, bank account opening]</span>. Include a step-by-step reminder of the eFiling process to generate the TCS pin, common reasons why the certificate may be withheld (outstanding returns, debt), and a suggested checklist to ensure the business is in good standing before applying.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-gold">
+        <div class="prompt-num theme-gold">27</div>
+        <span class="prompt-label">Tender Submission Cover Letter</span>
+        <span class="prompt-tag theme-gold">Tender</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a professional tender cover letter for a South African business responding to a government or corporate tender. Business name: <span class="placeholder">[BUSINESS NAME]</span>. Registration number: <span class="placeholder">[REG NUMBER]</span>. Tender reference: <span class="placeholder">[TENDER NUMBER AND NAME]</span>. Issuing entity: <span class="placeholder">[GOVERNMENT DEPARTMENT / COMPANY NAME]</span>. Services or goods being tendered for: <span class="placeholder">[DESCRIPTION]</span>. BBBEE level: <span class="placeholder">[LEVEL]</span>. Years of relevant experience: <span class="placeholder">[NUMBER]</span>. Key differentiator: <span class="placeholder">[WHAT SETS YOUR BUSINESS APART]</span>. The letter should be formal, reference compliance with PFMA or SCM policy where relevant, and indicate that all required documents are enclosed.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-gold">
+        <div class="prompt-num theme-gold">28</div>
+        <span class="prompt-label">Skills Development Workplace Training Plan Summary</span>
+        <span class="prompt-tag theme-gold">Skills Dev</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a skills development plan summary for a South African business's BBBEE scorecard and SETA reporting. Business: <span class="placeholder">[BUSINESS NAME]</span>. SETA: <span class="placeholder">[RELEVANT SETA NAME]</span>. SDL number: <span class="placeholder">[NUMBER]</span>. Number of employees: <span class="placeholder">[NUMBER]</span>. Training planned for the financial year: <span class="placeholder">[LIST TRAINING PROGRAMMES, PROVIDERS, DURATION]</span>. Beneficiaries: <span class="placeholder">[e.g. 5 black female employees for financial management training]</span>. Budget allocated: R<span class="placeholder">[AMOUNT]</span>. Draft this as a clear internal communication or email to the HR/accounts team explaining the plan, the SDL levy submission deadline, and the importance of claiming back the 20% SETA grants.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-gold">
+        <div class="prompt-num theme-gold">29</div>
+        <span class="prompt-label">CSD (Central Supplier Database) Registration Reminder</span>
+        <span class="prompt-tag theme-gold">CSD / Gov</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a professional internal memo or email reminding a South African business owner or operations manager to maintain their Central Supplier Database (CSD) registration (csd.gov.za). Include a checklist of: information required to register (company registration documents, banking details, tax reference number, BBBEE certificate), how to keep the profile updated annually, why an active CSD profile is required for government procurement and BBBEE compliance, and what happens if the profile lapses. Keep it practical and action-oriented. Business: <span class="placeholder">[BUSINESS NAME]</span>. Responsible person: <span class="placeholder">[NAME]</span>.</div>
+      </div>
+    </div>
+
+  </div><!-- end prompt-grid -->
+
+
+  <!-- ══════════════════════════════════════════════════
+       SECTION 4 — HR & STAFF
+  ══════════════════════════════════════════════════ -->
+  <div class="section-header theme-orange">
+    <div class="section-icon theme-orange">👥</div>
+    <div class="section-title-wrap">
+      <h2>HR &amp; Staff</h2>
+      <p>CCMA-aligned HR documentation — employment summaries, disciplinary notices, warnings, leave policy &amp; UIF</p>
+    </div>
+  </div>
+
+  <div class="prompt-grid">
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-orange">
+        <div class="prompt-num theme-orange">30</div>
+        <span class="prompt-label">Employment Contract Summary Email</span>
+        <span class="prompt-tag theme-orange">Employment</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a professional email to accompany an employment contract sent to a new employee of a South African business. Business: <span class="placeholder">[BUSINESS NAME]</span>. Employee name: <span class="placeholder">[NAME]</span>. Job title: <span class="placeholder">[JOB TITLE]</span>. Start date: <span class="placeholder">[DATE]</span>. Monthly salary: R<span class="placeholder">[AMOUNT]</span> <span class="placeholder">[gross / net]</span>. Probation period: <span class="placeholder">[NUMBER]</span> months. Working hours: <span class="placeholder">[HOURS PER WEEK]</span>. Benefits: <span class="placeholder">[e.g. medical aid contribution, pension, travel allowance]</span>. Instruct the employee to read the contract carefully, highlight any questions before signing, and return a signed copy by <span class="placeholder">[DATE]</span>. Reference compliance with the Basic Conditions of Employment Act (BCEA).</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-orange">
+        <div class="prompt-num theme-orange">31</div>
+        <span class="prompt-label">Disciplinary Hearing Notice (CCMA-Aligned)</span>
+        <span class="prompt-tag theme-orange">Disciplinary</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a formal disciplinary hearing notice for a South African employee that is aligned with the CCMA Code of Good Practice: Dismissal (Schedule 8 of the Labour Relations Act). Employee name: <span class="placeholder">[NAME]</span>. Date of notice: <span class="placeholder">[DATE]</span>. Charges: <span class="placeholder">[LIST MISCONDUCT CHARGES, e.g. repeated absenteeism without leave approval, gross insubordination]</span>. Date, time, and venue of hearing: <span class="placeholder">[DETAILS]</span>. Presiding officer: <span class="placeholder">[NAME AND ROLE]</span>. Inform the employee of their right to be accompanied by a shop steward or colleague, their right to present a defence, and the potential sanction if found guilty. Keep the tone formal and legally sound.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-orange">
+        <div class="prompt-num theme-orange">32</div>
+        <span class="prompt-label">Written Warning Letter (First Offence)</span>
+        <span class="prompt-tag theme-orange">Warning</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a formal written warning letter for a South African employee. Employee: <span class="placeholder">[NAME]</span>. Job title: <span class="placeholder">[TITLE]</span>. Date of incident: <span class="placeholder">[DATE]</span>. Nature of misconduct: <span class="placeholder">[DESCRIBE THE SPECIFIC CONDUCT, e.g. arriving late three times in one week without valid reason]</span>. This is a <span class="placeholder">[FIRST / SECOND / FINAL]</span> written warning. The warning is valid for <span class="placeholder">[NUMBER, typically 6 or 12]</span> months. State clearly what improvement is expected and that further misconduct may result in a more serious sanction, up to and including dismissal. Include a signature block for the employee to acknowledge receipt (not agreement). Align with the Basic Conditions of Employment Act and LRA.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-orange">
+        <div class="prompt-num theme-orange">33</div>
+        <span class="prompt-label">Employee Leave Policy Summary</span>
+        <span class="prompt-tag theme-orange">Leave Policy</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a clear and practical employee leave policy for a South African small business, fully compliant with the Basic Conditions of Employment Act (BCEA). Business: <span class="placeholder">[BUSINESS NAME]</span>. Include the following leave types and entitlements under the BCEA: annual leave (15 working days per year / 1.25 days per month), sick leave (30 days in a 36-month cycle), family responsibility leave (3 days per year), maternity leave (4 months unpaid), parental leave (10 consecutive days), and study leave (if offered — <span class="placeholder">[DAYS PER YEAR]</span>). Include the procedure for applying for leave, notice requirements, public holidays policy, and what happens to unused leave. Write in plain language accessible to all staff.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-orange">
+        <div class="prompt-num theme-orange">34</div>
+        <span class="prompt-label">UIF Registration Reminder for New Employee</span>
+        <span class="prompt-tag theme-orange">UIF</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a clear internal reminder or email for a South African business owner or HR administrator to complete UIF (Unemployment Insurance Fund) registration obligations for a new employee. Business: <span class="placeholder">[BUSINESS NAME]</span>. New employee: <span class="placeholder">[NAME]</span>. Start date: <span class="placeholder">[DATE]</span>. Include: the legal requirement to register within 7 days of commencement, how to register on uFiling (ufiling.labour.gov.za), the employee's monthly UIF contribution (1% of gross salary capped at R17,712/month, matched by the employer), how to declare the employee's details, and the consequences of non-registration. Keep it practical and checklist-style.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-orange">
+        <div class="prompt-num theme-orange">35</div>
+        <span class="prompt-label">Retrenchment Consultation Letter (Section 189)</span>
+        <span class="prompt-tag theme-orange">Retrenchment</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Draft a formal Section 189 retrenchment consultation notice for a South African employer. This letter initiates the required consultation process under the Labour Relations Act before any retrenchment decision is made. Business: <span class="placeholder">[BUSINESS NAME]</span>. Employee(s) affected: <span class="placeholder">[NAME(S) OR CATEGORY]</span>. Reason for proposed retrenchment: <span class="placeholder">[e.g. operational requirements, economic downturn, restructuring]</span>. Proposed date of retrenchment: <span class="placeholder">[DATE]</span>. Alternatives considered: <span class="placeholder">[e.g. reduced hours, temporary lay-off, voluntary retrenchment]</span>. The letter must invite the employee(s) to a consultation meeting on <span class="placeholder">[DATE]</span> and indicate that the employer is open to alternatives. Confirm the right to union or shop steward representation.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-orange">
+        <div class="prompt-num theme-orange">36</div>
+        <span class="prompt-label">Performance Improvement Plan (PIP) Letter</span>
+        <span class="prompt-tag theme-orange">PIP</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a formal Performance Improvement Plan (PIP) letter for a South African employee who is underperforming. Employee: <span class="placeholder">[NAME]</span>. Job title: <span class="placeholder">[TITLE]</span>. Manager/supervisor: <span class="placeholder">[NAME]</span>. Performance concerns: <span class="placeholder">[LIST SPECIFIC ISSUES, e.g. consistently missing sales targets, poor quality of work output, failure to meet deadlines]</span>. PIP duration: <span class="placeholder">[NUMBER]</span> weeks/months. Specific measurable targets to be achieved: <span class="placeholder">[LIST TARGETS]</span>. Support to be provided: <span class="placeholder">[e.g. mentoring, training, weekly check-ins]</span>. Consequence of failure to improve: <span class="placeholder">[e.g. further disciplinary action]</span>. Align with the CCMA Code of Good Practice on Poor Work Performance.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-orange">
+        <div class="prompt-num theme-orange">37</div>
+        <span class="prompt-label">Remote Work Policy for SA Business</span>
+        <span class="prompt-tag theme-orange">Remote Work</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a practical remote work policy for a South African small business. Business: <span class="placeholder">[BUSINESS NAME]</span>. Number of employees working remotely: <span class="placeholder">[NUMBER]</span>. Remote work arrangement: <span class="placeholder">[FULLY REMOTE / HYBRID — NUMBER OF DAYS IN OFFICE]</span>. Cover: eligibility criteria, required home office setup, core working hours, availability and responsiveness expectations, data security and POPIA obligations when working from home, load-shedding contingency plans (important context for SA), expense reimbursement (if any), performance monitoring, and the employer's right to recall employees to office with <span class="placeholder">[NUMBER]</span> days' notice. Write in plain, accessible language.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-orange">
+        <div class="prompt-num theme-orange">38</div>
+        <span class="prompt-label">Employee Resignation Acknowledgement &amp; Offboarding Email</span>
+        <span class="prompt-tag theme-orange">Resignation</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a professional email acknowledging an employee's resignation and outlining the offboarding process. Employee: <span class="placeholder">[NAME]</span>. Last day of employment: <span class="placeholder">[DATE]</span>. Notice period: <span class="placeholder">[NUMBER]</span> weeks. Offboarding tasks to cover: return of company property (list: <span class="placeholder">[ITEMS]</span>), handover of responsibilities, final payslip and leave payout details, UIF documentation, and completion of a separation certificate (UI-19 form). Confirm the employee's accumulated leave balance of <span class="placeholder">[NUMBER]</span> days will be paid out at R<span class="placeholder">[AMOUNT]</span> per day. Keep the tone professional, respectful, and leave the relationship in good standing.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-orange">
+        <div class="prompt-num theme-orange">39</div>
+        <span class="prompt-label">Workplace Harassment Policy Statement</span>
+        <span class="prompt-tag theme-orange">Harassment Policy</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a workplace harassment and sexual harassment policy statement for a South African business, aligned with the Employment Equity Act and the Code of Good Practice on the Handling of Sexual Harassment Cases. Business: <span class="placeholder">[BUSINESS NAME]</span>. This policy must cover: the business's zero-tolerance stance on harassment, definition of harassment and sexual harassment, examples of prohibited conduct, how to report an incident (reporting to: <span class="placeholder">[DESIGNATED PERSON OR POSITION]</span>), confidentiality guarantee, investigation process, consequences for perpetrators, and protection of complainants from victimisation. Include a brief statement from management affirming commitment to a safe workplace.</div>
+      </div>
+    </div>
+
+  </div><!-- end prompt-grid -->
+
+
+  <!-- ══════════════════════════════════════════════════
+       SECTION 5 — FINANCE & TAX
+  ══════════════════════════════════════════════════ -->
+  <div class="section-header theme-purple">
+    <div class="section-icon theme-purple">💰</div>
+    <div class="section-title-wrap">
+      <h2>Finance &amp; Tax</h2>
+      <p>SARS correspondence, VAT invoice requirements, payment arrangements &amp; provisional tax reminders</p>
+    </div>
+  </div>
+
+  <div class="prompt-grid">
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-purple">
+        <div class="prompt-num theme-purple">40</div>
+        <span class="prompt-label">SARS Outstanding Return Response Letter</span>
+        <span class="prompt-tag theme-purple">SARS Letter</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a formal response letter to SARS regarding an outstanding return query or audit notification. Business/taxpayer: <span class="placeholder">[NAME]</span>. Tax reference number: <span class="placeholder">[NUMBER]</span>. SARS case or audit reference: <span class="placeholder">[REFERENCE]</span>. The query relates to: <span class="placeholder">[e.g. outstanding IRP6, outstanding VAT201, income tax return for the year of assessment ending DATE]</span>. Reason for any delay: <span class="placeholder">[BRIEF EXPLANATION]</span>. Proposed resolution: <span class="placeholder">[e.g. submission by DATE, request for extension]</span>. Keep the tone formal, cooperative, and professional — demonstrating willingness to comply. Include taxpayer details in the letterhead format.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-purple">
+        <div class="prompt-num theme-purple">41</div>
+        <span class="prompt-label">VAT Invoice Requirements Compliance Check Prompt</span>
+        <span class="prompt-tag theme-purple">VAT Invoices</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">You are a South African tax compliance expert. Review my business's current invoice template and confirm whether it meets all SARS requirements for a valid tax invoice under the Value-Added Tax Act (VAT Act 89 of 1991). My business VAT number is <span class="placeholder">[VAT NUMBER]</span>. Current invoice elements: <span class="placeholder">[PASTE OR LIST CURRENT INVOICE FIELDS]</span>. Check for all required fields including: the words "Tax Invoice", supplier's name and VAT number, customer's name and address, invoice number, date, description of goods/services, quantity, unit price, VAT amount separately stated, and total amount. Identify any missing or incorrect fields and provide corrected invoice template language.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-purple">
+        <div class="prompt-num theme-purple">42</div>
+        <span class="prompt-label">SARS Payment Arrangement Request Letter</span>
+        <span class="prompt-tag theme-purple">SARS Payment</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a formal payment arrangement request letter to SARS on behalf of a South African taxpayer who is unable to pay their full tax debt in one payment. Taxpayer name: <span class="placeholder">[BUSINESS OR INDIVIDUAL NAME]</span>. Tax reference number: <span class="placeholder">[NUMBER]</span>. Outstanding amount: R<span class="placeholder">[AMOUNT]</span>. Tax type: <span class="placeholder">[e.g. income tax, VAT, PAYE]</span>. Reason for financial difficulty: <span class="placeholder">[BRIEF EXPLANATION, e.g. cash flow pressure, business downturn, COVID-19 recovery]</span>. Proposed monthly instalment: R<span class="placeholder">[AMOUNT]</span>. Proposed start date: <span class="placeholder">[DATE]</span>. Reference the SARS Instalment Payment Agreement under Section 167 of the Tax Administration Act. Keep the tone cooperative and compliant.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-purple">
+        <div class="prompt-num theme-purple">43</div>
+        <span class="prompt-label">Provisional Tax Reminder &amp; Calculation Guide</span>
+        <span class="prompt-tag theme-purple">Prov Tax</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a practical provisional tax reminder and guide for a South African sole proprietor or small business owner. My tax reference number is <span class="placeholder">[NUMBER]</span>. Financial year end: <span class="placeholder">[DATE]</span>. First provisional tax payment (IRP6) is due: <span class="placeholder">[DATE — typically 6 months into the tax year]</span>. Second payment is due: <span class="placeholder">[DATE — on the last day of the tax year]</span>. Explain: what provisional tax is, how to estimate taxable income using the basic amount method vs actual income, the 80% rule and penalties for under-estimation, how to submit the IRP6 on SARS eFiling, and a simple worked example using estimated annual income of R<span class="placeholder">[ESTIMATED INCOME]</span>. Write in plain language.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-purple">
+        <div class="prompt-num theme-purple">44</div>
+        <span class="prompt-label">VAT Registration Advisory Letter</span>
+        <span class="prompt-tag theme-purple">VAT Reg</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write an advisory memo or email for a South African business owner on when and how to register for VAT. Business: <span class="placeholder">[BUSINESS NAME]</span>. Current annual turnover: R<span class="placeholder">[AMOUNT]</span>. Nature of business: <span class="placeholder">[DESCRIPTION]</span>. Explain: the compulsory registration threshold (R1 million in any 12-month period), the voluntary registration threshold (R50,000), the advantages of early voluntary registration, zero-rated vs exempt supplies, the registration process on SARS eFiling (VAT101 form), documents required, and the typical processing timeline. Include a section on common mistakes new VAT vendors make in their first few months of registration.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-purple">
+        <div class="prompt-num theme-purple">45</div>
+        <span class="prompt-label">Monthly Bookkeeping Checklist for SA Business</span>
+        <span class="prompt-tag theme-purple">Bookkeeping</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a comprehensive monthly bookkeeping and compliance checklist for a South African small business owner. Business: <span class="placeholder">[BUSINESS NAME]</span>. The business is <span class="placeholder">[VAT registered / not VAT registered]</span> and has <span class="placeholder">[NUMBER]</span> employees. The checklist must cover: reconciling bank statements, issuing invoices and recording income, capturing supplier invoices and payments, PAYE/UIF/SDL submission and payment (7th of the month), VAT201 submission if applicable (<span class="placeholder">[MONTHLY / BI-MONTHLY]</span>), reviewing debtor aging, checking cash flow, and updating the fixed asset register. Organise by week within the month and format clearly for practical daily use.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-purple">
+        <div class="prompt-num theme-purple">46</div>
+        <span class="prompt-label">SARS Objection Letter (Assessment Dispute)</span>
+        <span class="prompt-tag theme-purple">Objection</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a formal objection letter to SARS disputing an incorrect tax assessment. Taxpayer name: <span class="placeholder">[NAME]</span>. Tax reference number: <span class="placeholder">[NUMBER]</span>. Assessment number being disputed: <span class="placeholder">[NUMBER]</span>. Tax type and year of assessment: <span class="placeholder">[TYPE AND YEAR]</span>. Date of assessment: <span class="placeholder">[DATE]</span>. Ground(s) for objection: <span class="placeholder">[DESCRIBE THE ERROR OR DISPUTE, e.g. income incorrectly classified, deduction disallowed without basis, double counting of income]</span>. Supporting evidence: <span class="placeholder">[LIST DOCUMENTS ATTACHED]</span>. The objection must be submitted within 30 business days of the assessment date under Section 104 of the Tax Administration Act. Keep the tone formal, factual, and professional.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-purple">
+        <div class="prompt-num theme-purple">47</div>
+        <span class="prompt-label">Annual Tax Return Prep Document Request to Accountant</span>
+        <span class="prompt-tag theme-purple">Tax Prep</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a professional and organised email to my accountant requesting assistance with my annual tax return preparation. Business: <span class="placeholder">[BUSINESS NAME]</span>. Financial year ended: <span class="placeholder">[DATE]</span>. Accountant: <span class="placeholder">[NAME / FIRM]</span>. I will provide the following documents: <span class="placeholder">[LIST AVAILABLE DOCUMENTS, e.g. bank statements, invoices, payroll records, expense receipts]</span>. Outstanding queries I need help with: <span class="placeholder">[e.g. home office deduction calculation, vehicle claim, depreciation on equipment]</span>. Deadline: <span class="placeholder">[DATE]</span>. Request a meeting or call by <span class="placeholder">[DATE]</span>. Ask the accountant to confirm which additional documents or information they require from my side.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-purple">
+        <div class="prompt-num theme-purple">48</div>
+        <span class="prompt-label">PAYE &amp; SDL Compliance Reminder for Employers</span>
+        <span class="prompt-tag theme-purple">PAYE / SDL</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a monthly payroll compliance reminder for a South African employer. Business: <span class="placeholder">[BUSINESS NAME]</span>. Payroll period: <span class="placeholder">[MONTH AND YEAR]</span>. Number of employees: <span class="placeholder">[NUMBER]</span>. This reminder must cover: submission of the EMP201 return on eFiling, PAYE payment due by the 7th of the following month, UIF contribution (1% employer + 1% employee), Skills Development Levy (SDL) of 1% of gross payroll if the annual wage bill exceeds R500,000, how to handle employees below the tax threshold, and a reminder to issue employees their payslips as required by the BCEA. Format as a clear action checklist.</div>
+      </div>
+    </div>
+
+  </div><!-- end prompt-grid -->
+
+
+  <!-- ══════════════════════════════════════════════════
+       SECTION 6 — MARKETING
+  ══════════════════════════════════════════════════ -->
+  <div class="section-header theme-teal">
+    <div class="section-icon theme-teal">📣</div>
+    <div class="section-title-wrap">
+      <h2>Marketing</h2>
+      <p>South African audience — social media captions, Google Business profiles, WhatsApp broadcasts &amp; review requests</p>
+    </div>
+  </div>
+
+  <div class="prompt-grid">
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-teal">
+        <div class="prompt-num theme-teal">49</div>
+        <span class="prompt-label">Instagram / Facebook Caption for SA Audience</span>
+        <span class="prompt-tag theme-teal">Social Media</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write 3 different social media captions for a South African <span class="placeholder">[TYPE OF BUSINESS]</span> promoting <span class="placeholder">[PRODUCT OR SERVICE]</span>. Target audience: <span class="placeholder">[DESCRIBE YOUR AUDIENCE, e.g. black female entrepreneurs in Johannesburg aged 25–40]</span>. Brand tone: <span class="placeholder">[e.g. warm and empowering / professional and authoritative / fun and relatable]</span>. Price or key offer: <span class="placeholder">[OFFER OR PRICE POINT]</span>. Call to action: <span class="placeholder">[e.g. DM us, visit our website, book now, WhatsApp us]</span>. Make the captions feel authentically South African — include relevant local context, aspirational language, and appropriate hashtags mixing local and global tags. Vary the length: one short (under 50 words), one medium, one longer storytelling format.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-teal">
+        <div class="prompt-num theme-teal">50</div>
+        <span class="prompt-label">Google Business Profile Description</span>
+        <span class="prompt-tag theme-teal">Google Business</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write an optimised Google Business Profile description for a South African <span class="placeholder">[TYPE OF BUSINESS]</span>. Business name: <span class="placeholder">[BUSINESS NAME]</span>. Location: <span class="placeholder">[AREA / CITY]</span>. Main services or products: <span class="placeholder">[LIST]</span>. Unique selling proposition: <span class="placeholder">[WHAT MAKES YOU DIFFERENT]</span>. Years in business: <span class="placeholder">[NUMBER]</span>. Key local search terms customers would use: <span class="placeholder">[LIST KEYWORDS, e.g. "accountant in Sandton", "African hair salon Durban"]</span>. The description must be under 750 characters, include relevant keywords naturally, speak directly to the local community, include a clear call to action, and feel human — not robotic. Do not use the business name in the first sentence.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-teal">
+        <div class="prompt-num theme-teal">51</div>
+        <span class="prompt-label">WhatsApp Broadcast Promotional Message</span>
+        <span class="prompt-tag theme-teal">WhatsApp</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a WhatsApp broadcast message for a South African <span class="placeholder">[TYPE OF BUSINESS]</span> promoting a special offer. Business: <span class="placeholder">[BUSINESS NAME]</span>. Offer: <span class="placeholder">[DESCRIBE THE OFFER, e.g. 20% off all services in January, free delivery on orders over R500]</span>. Validity period: <span class="placeholder">[DATE RANGE]</span>. How to claim: <span class="placeholder">[e.g. reply YES, use code SAVE20, call or WhatsApp us]</span>. Contact: <span class="placeholder">[PHONE NUMBER]</span>. The message must be warm and conversational — like a message from a friend — under 200 words, include an emoji or two naturally, and have a clear deadline to create urgency. Do not make it feel like spam. End with the POPIA-compliant opt-out line: "Reply STOP to unsubscribe."</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-teal">
+        <div class="prompt-num theme-teal">52</div>
+        <span class="prompt-label">Google Review Request Email / Message</span>
+        <span class="prompt-tag theme-teal">Reviews</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a friendly email or WhatsApp message asking a satisfied South African customer to leave a Google review. Business: <span class="placeholder">[BUSINESS NAME]</span>. Customer name: <span class="placeholder">[CUSTOMER NAME]</span>. Service or product recently purchased: <span class="placeholder">[DESCRIPTION]</span>. Google review link: <span class="placeholder">[GOOGLE REVIEW LINK]</span>. Keep the message warm, genuine, and brief (under 100 words). Mention why reviews matter to a small South African business — community trust, helping other local customers find reliable services. Do not offer incentives for reviews (this violates Google's policies). Write both an email version and a WhatsApp version.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-teal">
+        <div class="prompt-num theme-teal">53</div>
+        <span class="prompt-label">LinkedIn Post for SA Business Owner</span>
+        <span class="prompt-tag theme-teal">LinkedIn</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a compelling LinkedIn post for a South African business owner or professional. Author: <span class="placeholder">[YOUR NAME AND BUSINESS]</span>. Topic or key message: <span class="placeholder">[e.g. a business lesson learned, a client success story, a thought on the South African economy, a service announcement, a milestone reached]</span>. Target readers: <span class="placeholder">[e.g. other entrepreneurs, corporate procurement managers, HR professionals]</span>. Tone: <span class="placeholder">[PROFESSIONAL / PERSONAL AND REFLECTIVE / EDUCATIONAL]</span>. Length: 150–300 words. The post must have a strong opening line that stops the scroll, a relatable middle section, and a clear closing question or call to action to drive comments and engagement. Include 3–5 relevant hashtags at the end.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-teal">
+        <div class="prompt-num theme-teal">54</div>
+        <span class="prompt-label">Email Newsletter for SA Customers</span>
+        <span class="prompt-tag theme-teal">Newsletter</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a monthly email newsletter for South African customers of a <span class="placeholder">[TYPE OF BUSINESS]</span>. Business: <span class="placeholder">[BUSINESS NAME]</span>. Month: <span class="placeholder">[MONTH AND YEAR]</span>. Sections to include: (1) a warm personal greeting from the owner, (2) a featured product or service highlight with pricing, (3) a useful tip or piece of advice relevant to the industry, (4) a customer spotlight or testimonial quote, (5) upcoming events or promotions. Length: approximately 400 words. Tone: <span class="placeholder">[FRIENDLY AND PERSONAL / PROFESSIONAL / INSPIRATIONAL]</span>. Include a clear unsubscribe link notice at the footer for POPIA compliance.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-teal">
+        <div class="prompt-num theme-teal">55</div>
+        <span class="prompt-label">TikTok / Reels Script for SA Business</span>
+        <span class="prompt-tag theme-teal">Video Script</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a 30–45 second TikTok or Instagram Reels script for a South African <span class="placeholder">[TYPE OF BUSINESS]</span>. Hook (first 3 seconds): <span class="placeholder">[DESCRIBE WHAT SHOULD GRAB ATTENTION, e.g. "This R50 changed my business forever"]</span>. Content format: <span class="placeholder">[e.g. "day in my life as a [job]", "3 things I wish I knew", "before and after", "watch me make [product]"]</span>. Key message to convey: <span class="placeholder">[WHAT YOU WANT VIEWERS TO KNOW OR FEEL]</span>. Call to action: <span class="placeholder">[e.g. follow, visit link in bio, WhatsApp us, comment their city]</span>. Make the script feel authentic and conversational for a South African audience — avoid overly formal language. Include directions for on-screen text and suggested audio type.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-teal">
+        <div class="prompt-num theme-teal">56</div>
+        <span class="prompt-label">Negative Google Review Response</span>
+        <span class="prompt-tag theme-teal">Reputation</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a professional, empathetic public response to a negative Google review for a South African business. Business: <span class="placeholder">[BUSINESS NAME]</span>. The reviewer's complaint: <span class="placeholder">[PASTE OR DESCRIBE THE REVIEW]</span>. The true situation from the business's side: <span class="placeholder">[BRIEF EXPLANATION]</span>. Resolution offered (if any): <span class="placeholder">[WHAT YOU'VE DONE OR ARE WILLING TO DO]</span>. The response must: acknowledge the customer's frustration, avoid being defensive or dismissive, demonstrate that you take feedback seriously, correct any factual inaccuracies politely, and invite the reviewer to contact you directly to resolve the matter. Keep it under 150 words — this is a public response that other potential customers will read.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-teal">
+        <div class="prompt-num theme-teal">57</div>
+        <span class="prompt-label">Business Referral Programme Launch Announcement</span>
+        <span class="prompt-tag theme-teal">Referrals</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a friendly announcement email or WhatsApp message launching a customer referral programme for a South African <span class="placeholder">[TYPE OF BUSINESS]</span>. Business: <span class="placeholder">[BUSINESS NAME]</span>. Referral reward for the referring customer: <span class="placeholder">[e.g. R100 off their next order, a free service, a gift]</span>. Reward for the new customer they refer: <span class="placeholder">[e.g. 10% off their first order]</span>. How to refer: <span class="placeholder">[e.g. share a unique referral code, tell them to mention your name when booking]</span>. Programme validity: <span class="placeholder">[DATES OR ONGOING]</span>. The message must feel exciting and community-oriented — South African customers respond well to word-of-mouth trust and community spirit. Keep it under 150 words.</div>
+      </div>
+    </div>
+
+  </div><!-- end prompt-grid -->
+
+
+  <!-- ══════════════════════════════════════════════════
+       SECTION 7 — CONTRACTS & LEGAL
+  ══════════════════════════════════════════════════ -->
+  <div class="section-header theme-rose">
+    <div class="section-icon theme-rose">📄</div>
+    <div class="section-title-wrap">
+      <h2>Contracts &amp; Legal</h2>
+      <p>South African NDA, freelance service agreements &amp; contractor vs employee classification checklists</p>
+    </div>
+  </div>
+
+  <div class="prompt-grid">
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-rose">
+        <div class="prompt-num theme-rose">58</div>
+        <span class="prompt-label">Non-Disclosure Agreement (NDA) for SA Use</span>
+        <span class="prompt-tag theme-rose">NDA</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Draft a mutual Non-Disclosure Agreement (NDA) suitable for South African law. Disclosing party: <span class="placeholder">[PARTY A NAME, REGISTRATION NUMBER, ADDRESS]</span>. Receiving party: <span class="placeholder">[PARTY B NAME, REGISTRATION NUMBER, ADDRESS]</span>. Purpose of disclosure: <span class="placeholder">[e.g. exploring a potential business partnership, providing a service quote, due diligence]</span>. Duration of confidentiality obligation: <span class="placeholder">[NUMBER]</span> years. Definition of confidential information: <span class="placeholder">[DESCRIBE TYPES OF INFORMATION TO BE PROTECTED]</span>. Governing law: South Africa. Include standard clauses covering: definition of confidential information, permitted disclosures, obligations of the receiving party, exclusions from confidentiality, remedies for breach (including interdict relief), and the jurisdiction of South African courts.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-rose">
+        <div class="prompt-num theme-rose">59</div>
+        <span class="prompt-label">Freelance Service Agreement for South Africa</span>
+        <span class="prompt-tag theme-rose">Freelance Agreement</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Draft a freelance service agreement for South African use between a service provider and a client. Service provider: <span class="placeholder">[NAME / BUSINESS NAME, REGISTRATION NUMBER]</span>. Client: <span class="placeholder">[NAME / COMPANY, REGISTRATION NUMBER]</span>. Services to be provided: <span class="placeholder">[DETAILED DESCRIPTION]</span>. Fee: R<span class="placeholder">[AMOUNT]</span> <span class="placeholder">[per project / per hour / per month]</span>. VAT: <span class="placeholder">[APPLICABLE / NOT APPLICABLE — VAT NUMBER IF APPLICABLE]</span>. Payment terms: <span class="placeholder">[e.g. 30 days from invoice, 50% upfront]</span>. Intellectual property: <span class="placeholder">[who owns work created — transfer to client upon full payment / provider retains until paid]</span>. Termination notice: <span class="placeholder">[NUMBER]</span> days. Include clauses on deliverables, revisions, confidentiality, independent contractor status (not employee), and limitation of liability. Govern under South African law.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-rose">
+        <div class="prompt-num theme-rose">60</div>
+        <span class="prompt-label">Independent Contractor vs Employee Classification Checklist</span>
+        <span class="prompt-tag theme-rose">Contractor vs Employee</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">You are a South African labour law expert. Help me determine whether a person I engage for work should be classified as an independent contractor or an employee under South African law, including the Labour Relations Act, the Basic Conditions of Employment Act, and SARS guidelines. The person's name or role: <span class="placeholder">[NAME OR ROLE]</span>. Ask me 15 diagnostic questions across the key factors considered by the CCMA and SARS — including control, integration, economic dependency, ownership of tools, risk, and exclusivity. After my answers, provide a risk rating (high/medium/low risk of misclassification), explain the tax and labour consequences of misclassification, and recommend the most appropriate engagement structure.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-rose">
+        <div class="prompt-num theme-rose">61</div>
+        <span class="prompt-label">Service Level Agreement (SLA) for SA Business</span>
+        <span class="prompt-tag theme-rose">SLA</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Draft a Service Level Agreement (SLA) for a South African <span class="placeholder">[TYPE OF SERVICE BUSINESS, e.g. IT support company, cleaning company, security provider]</span>. Service provider: <span class="placeholder">[BUSINESS NAME, REGISTRATION NUMBER]</span>. Client: <span class="placeholder">[CLIENT NAME / COMPANY]</span>. Services covered: <span class="placeholder">[DETAILED DESCRIPTION]</span>. Service hours: <span class="placeholder">[e.g. Monday–Friday 08h00–17h00]</span>. Response time commitment: <span class="placeholder">[e.g. within 4 hours for critical issues]</span>. Monthly fee: R<span class="placeholder">[AMOUNT]</span>. Exclusions: <span class="placeholder">[WHAT IS NOT COVERED]</span>. Penalties for SLA breach: <span class="placeholder">[e.g. service credit of X% of monthly fee]</span>. Review period: every <span class="placeholder">[NUMBER]</span> months. Govern under South African law. Include termination and dispute resolution clauses.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-rose">
+        <div class="prompt-num theme-rose">62</div>
+        <span class="prompt-label">Letter of Intent (LOI) for Business Partnership</span>
+        <span class="prompt-tag theme-rose">LOI</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a non-binding Letter of Intent (LOI) between two South African businesses exploring a potential partnership or joint venture. Party A: <span class="placeholder">[BUSINESS NAME, REGISTRATION NUMBER]</span>. Party B: <span class="placeholder">[BUSINESS NAME, REGISTRATION NUMBER]</span>. Nature of intended collaboration: <span class="placeholder">[e.g. joint bidding on government tenders, co-marketing agreement, shared service delivery]</span>. Key terms under consideration: <span class="placeholder">[e.g. revenue split, roles and responsibilities, exclusivity period]</span>. Proposed due diligence period: <span class="placeholder">[NUMBER]</span> weeks. The LOI must make clear that it is not legally binding (except for any confidentiality clause included), sets out the intention to negotiate in good faith, and specifies a deadline by which a formal agreement will be concluded or negotiations will lapse.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-rose">
+        <div class="prompt-num theme-rose">63</div>
+        <span class="prompt-label">Terms and Conditions for Online Store (South Africa)</span>
+        <span class="prompt-tag theme-rose">T&amp;Cs</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write comprehensive Terms and Conditions for a South African online store. Business: <span class="placeholder">[BUSINESS NAME]</span>. Registration number: <span class="placeholder">[REG NUMBER]</span>. Website: <span class="placeholder">[URL]</span>. Products sold: <span class="placeholder">[DESCRIPTION]</span>. The T&Cs must be compliant with the Electronic Communications and Transactions Act (ECT Act) and the Consumer Protection Act (CPA). Include sections on: acceptance of terms, ordering and payment process, pricing and VAT, delivery policy and timeframes, returns and refunds (as required by the CPA — 7-business-day cooling off right for online purchases), limitation of liability, intellectual property, governing law (South Africa), and dispute resolution. Write in plain English.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-card-header theme-rose">
+        <div class="prompt-num theme-rose">64</div>
+        <span class="prompt-label">Demand Letter for Breach of Contract</span>
+        <span class="prompt-tag theme-rose">Legal Demand</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-text">Write a formal letter of demand for breach of contract to be sent to a South African individual or company. Sender: <span class="placeholder">[YOUR NAME / BUSINESS NAME]</span>. Recipient: <span class="placeholder">[NAME / COMPANY]</span>. Nature of contract: <span class="placeholder">[DESCRIBE THE AGREEMENT AND DATE IT WAS SIGNED OR CONCLUDED]</span>. Breach: <span class="placeholder">[DESCRIBE SPECIFICALLY HOW THE RECIPIENT BREACHED THE CONTRACT]</span>. Amount claimed or remedy sought: <span class="placeholder">[R AMOUNT / SPECIFIC PERFORMANCE / OTHER]</span>. Deadline to remedy: <span class="placeholder">[NUMBER]</span> calendar days from date of letter. State that failure to remedy within the deadline will result in legal proceedings being instituted without further notice, and that the recipient will be held liable for legal costs. Keep the tone formal and unambiguous.</div>
+      </div>
+    </div>
+
+  </div><!-- end prompt-grid -->
+
+  <!-- ══════════════════════════════════════════════════
+       DISCLAIMER
+  ══════════════════════════════════════════════════ -->
+  <div class="disclaimer">
+    <strong>Important Disclaimer:</strong> The prompts in this pack are designed to help South African business owners generate useful first-draft documents using AI tools. They do not constitute legal, tax, HR, or financial advice. All AI-generated output should be reviewed by a qualified South African professional (attorney, tax practitioner, HR consultant, or accountant) before being used in any official capacity. Laws and regulations referenced (including POPIA, the LRA, BCEA, VAT Act, and BBBEE Codes) are subject to amendment — always verify current requirements with the relevant regulatory authority or your advisor.
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════════ -->
+  <div class="footer">
+    <p>AI Prompt Pack for South African Business Owners &nbsp;·&nbsp; 64 Prompts &nbsp;·&nbsp; 7 Categories &nbsp;·&nbsp; R199</p>
+    <p style="margin-top:6px;">For personal and business use. Not for resale or redistribution.</p>
+  </div>
+
+</div><!-- end page-wrap -->
+</body>
+</html>

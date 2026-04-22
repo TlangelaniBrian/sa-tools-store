@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Download — SATools</title>
+<style>
+  :root { --bg:#0a0a0f; --surface:#13131a; --border:#2a2a3a; --accent:#6c63ff; --accent2:#00d4aa; --text:#e8e8f0; --muted:#8888a8; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:2rem; }
+  .box { background:var(--surface); border:1px solid var(--border); border-radius:20px; padding:2.5rem; max-width:560px; width:100%; text-align:center; }
+  .check { font-size:3rem; margin-bottom:1rem; }
+  h1 { font-size:1.6rem; font-weight:800; margin-bottom:0.5rem; letter-spacing:-0.5px; }
+  .sub { color:var(--muted); margin-bottom:2rem; font-size:0.9rem; }
+  .products { display:flex; flex-direction:column; gap:0.8rem; margin-bottom:2rem; }
+  .product-row { background:#1c1c26; border:1px solid var(--border); border-radius:12px; padding:1.2rem 1.5rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+  .product-info { text-align:left; }
+  .product-info h3 { font-size:0.95rem; font-weight:600; margin-bottom:0.2rem; }
+  .product-info p { color:var(--muted); font-size:0.8rem; }
+  .btn-dl { display:inline-flex; align-items:center; gap:0.4rem; background:var(--accent); color:white; text-decoration:none; padding:0.6rem 1.2rem; border-radius:8px; font-size:0.85rem; font-weight:600; white-space:nowrap; transition:opacity 0.2s; }
+  .btn-dl:hover { opacity:0.85; }
+  .note { background:rgba(108,99,255,0.08); border:1px solid rgba(108,99,255,0.2); border-radius:10px; padding:1rem 1.2rem; font-size:0.82rem; color:var(--muted); line-height:1.6; margin-bottom:1.5rem; text-align:left; }
+  .note strong { color:var(--text); }
+  .back { color:var(--muted); font-size:0.83rem; text-decoration:none; }
+  .back:hover { color:var(--text); }
+</style>
+</head>
+<body>
+<div class="box">
+  <div class="check">✅</div>
+  <h1>Payment received — thank you!</h1>
+  <p class="sub">Download your files below. Links are permanent — bookmark this page.</p>
+
+  <div class="products">
+    <div class="product-row">
+      <div class="product-info">
+        <h3>🧮 SA Tax Calculator 2025/26</h3>
+        <p>HTML calculator + CSV reference tables</p>
+      </div>
+      <a href="https://github.com/TlangelaniBrian/sa-tools-store/releases/download/v1.0-tax/sa-tax-calculator.html" class="btn-dl" download>Download</a>
+    </div>
+    <div class="product-row">
+      <div class="product-info">
+        <h3>📊 Tax Calculator CSV</h3>
+        <p>Spreadsheet version with all SARS tables</p>
+      </div>
+      <a href="https://github.com/TlangelaniBrian/sa-tools-store/releases/download/v1.0-tax/sa-tax-calculator.csv" class="btn-dl" download>Download</a>
+    </div>
+    <div class="product-row">
+      <div class="product-info">
+        <h3>🏠 Property Investment Calculator</h3>
+        <p>Full HTML calculator with transfer duty</p>
+      </div>
+      <a href="https://github.com/TlangelaniBrian/sa-tools-store/releases/download/v1.0-property/sa-property-calculator.html" class="btn-dl" download>Download</a>
+    </div>
+    <div class="product-row" id="prompts-row" style="display:none">
+      <div class="product-info">
+        <h3>🤖 AI Prompt Pack for SA Business</h3>
+        <p>60+ prompts — HTML + plain text</p>
+      </div>
+      <a href="https://github.com/TlangelaniBrian/sa-tools-store/releases/download/v1.0-prompts/sa-ai-prompt-pack.html" class="btn-dl" download>Download</a>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>Which files did you buy?</strong> Download only the product(s) you purchased. All links are permanent — you can return to this page anytime. If you have questions, email <strong>mrbtmkhabela@gmail.com</strong> with your PayPal transaction ID.
+  </div>
+
+  <a href="index.html" class="back">← Back to store</a>
+</div>
+
+<script>
+  // Show prompt pack row if bought (URL param)
+  const p = new URLSearchParams(window.location.search);
+  if (p.get('product') === 'prompts' || p.get('product') === 'all') {
+    document.getElementById('prompts-row').style.display = 'flex';
+  }
+</script>
+</body>
+</html>
