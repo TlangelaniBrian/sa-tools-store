@@ -193,7 +193,7 @@
   <p>Accurate calculators, compliance templates, and AI prompt packs. Built on real SARS tables and SA legislation. Download instantly.</p>
   <div class="hero-stats">
     <div class="stat">
-      <div class="stat-n">7</div>
+      <div class="stat-n">9</div>
       <div class="stat-l">Products</div>
     </div>
     <div class="stat">
@@ -366,6 +366,50 @@
       </div>
     </div>
 
+    <!-- Budget Planner -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">💰</div>
+        <div class="card-title">SA Personal Budget Planner</div>
+        <div class="card-badge">New</div>
+      </div>
+      <p>South African household budget tracker with TFSA cap alerts, load-shedding cost tracking, BNPL debt (TymeBank/PayJustNow/Payflex), and CSV export for your accountant.</p>
+      <div class="features">
+        <div class="feature">Live dashboard: surplus, savings rate, emergency fund</div>
+        <div class="feature">TFSA R36,000 annual cap tracker with alert</div>
+        <div class="feature">Load-shedding and solar repayment cost fields</div>
+        <div class="feature">BNPL debt tracking (TymeBank/PayJustNow/Payflex)</div>
+        <div class="feature">CSV export for your accountant</div>
+        <div class="feature">Auto-saves to your browser — works offline</div>
+      </div>
+      <div class="card-footer">
+        <div class="price">R99 <span class="price-note">once-off · instant download</span></div>
+        <button class="btn" onclick="openModal('budget')">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Employment Contract -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📝</div>
+        <div class="card-title">SA Employment Contract Generator</div>
+        <div class="card-badge">New</div>
+      </div>
+      <p>BCEA-compliant employment contract generator for South African employers. Fill in the form and generate a ready-to-sign contract in seconds.</p>
+      <div class="features">
+        <div class="feature">Permanent, fixed-term, and part-time contracts</div>
+        <div class="feature">BCEA notice periods auto-calculated</div>
+        <div class="feature">Medical aid and pension/provident fund clauses</div>
+        <div class="feature">Restraint of trade clause (toggle on/off)</div>
+        <div class="feature">Signature blocks with witness fields</div>
+        <div class="feature">Print-ready with one click</div>
+      </div>
+      <div class="card-footer">
+        <div class="price">R149 <span class="price-note">once-off · instant download</span></div>
+        <button class="btn" onclick="openModal('contract')">Buy Now</button>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -524,6 +568,34 @@ const products = {
     ],
     file: 'startup-checklist.html',
     paypal: 'https://paypal.me/mrbtmkhabela/9900ZAR'
+  },
+  budget: {
+    name: 'SA Personal Budget Planner',
+    price: 'R99',
+    features: [
+      'Live dashboard: surplus, savings rate, emergency fund',
+      'TFSA R36,000 annual cap tracker with alert',
+      'Load-shedding and solar repayment cost fields',
+      'BNPL debt tracking (TymeBank/PayJustNow/Payflex)',
+      'CSV export for your accountant',
+      'Auto-saves to your browser — works offline'
+    ],
+    file: 'budget-planner.html',
+    paypal: 'https://paypal.me/mrbtmkhabela/9900ZAR'
+  },
+  contract: {
+    name: 'SA Employment Contract Generator',
+    price: 'R149',
+    features: [
+      'Permanent, fixed-term, and part-time contracts',
+      'BCEA notice periods auto-calculated',
+      'Medical aid and pension/provident fund clauses',
+      'Restraint of trade clause (toggle on/off)',
+      'Signature blocks with witness fields',
+      'Print-ready with one click'
+    ],
+    file: 'employment-contract.html',
+    paypal: 'https://paypal.me/mrbtmkhabela/14900ZAR'
   }
 };
 
