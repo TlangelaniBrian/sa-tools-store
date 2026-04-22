@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA Freelancer Business Pack — Complete Template Suite</title>
+<style>
+  :root {
+    --bg-primary: #0b0d11;
+    --bg-secondary: #131620;
+    --bg-card: #191d2b;
+    --bg-card2: #1e2233;
+    --border: #262c42;
+    --border-accent: #333c5a;
+    --text-primary: #eaedf5;
+    --text-secondary: #8892b0;
+    --text-muted: #4a5270;
+    --accent-blue: #4f8ef7;
+    --accent-blue-dim: #2563eb;
+    --accent-green: #22c55e;
+    --accent-green-dim: #16a34a;
+    --accent-amber: #f59e0b;
+    --accent-purple: #a78bfa;
+    --accent-teal: #2dd4bf;
+    --font: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: linear-gradient(180deg, #1a1e2e 0%, #0b0d11 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .brand h1 { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em; }
+  .brand .tagline { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
+
+  .header-badges { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .badge-blue { background: rgba(79,142,247,0.12); border: 1px solid rgba(79,142,247,0.3); color: var(--accent-blue); }
+  .badge-green { background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); color: var(--accent-green); }
+  .badge-amber { background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.3); color: var(--accent-amber); }
+
+  /* ── TABS ── */
+  .tab-bar {
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .tab-bar::-webkit-scrollbar { display: none; }
+
+  .tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 18px;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: all 0.15s;
+    font-family: var(--font);
+  }
+
+  .tab-btn:hover { color: var(--text-primary); }
+  .tab-btn.active {
+    color: var(--accent-blue);
+    border-bottom-color: var(--accent-blue);
+  }
+
+  .tab-icon { font-size: 1rem; }
+
+  /* ── PANELS ── */
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 20px 80px;
+  }
+
+  /* ── TOOLBAR ── */
+  .doc-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .doc-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  .doc-subtitle {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  .toolbar-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 18px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.15s;
+    font-family: var(--font);
+    text-decoration: none;
+  }
+
+  .btn-blue { background: var(--accent-blue); color: #fff; }
+  .btn-blue:hover { background: var(--accent-blue-dim); }
+  .btn-outline {
+    background: transparent;
+    border: 1px solid var(--border-accent);
+    color: var(--text-secondary);
+  }
+  .btn-outline:hover { border-color: var(--accent-blue); color: var(--text-primary); }
+  .btn-green { background: var(--accent-green-dim); color: #fff; }
+  .btn-green:hover { background: #15803d; }
+
+  /* ── TEMPLATE WRAPPER ── */
+  .template-wrapper {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  /* ── DOCUMENT SURFACE ── */
+  .doc-surface {
+    background: #f8f9fc;
+    color: #1a1a2e;
+    padding: 48px;
+    font-family: 'Georgia', serif;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    min-height: 500px;
+    position: relative;
+  }
+
+  .doc-surface .doc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #1a1a2e;
+  }
+
+  .doc-surface .company-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: var(--font);
+    color: #1a1a2e;
+    letter-spacing: -0.02em;
+  }
+
+  .doc-surface .company-details {
+    font-size: 0.78rem;
+    color: #555;
+    margin-top: 6px;
+    line-height: 1.5;
+    font-family: var(--font);
+  }
+
+  .doc-surface .doc-type-label {
+    text-align: right;
+  }
+
+  .doc-surface .doc-type-label h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #1a1a2e;
+    font-family: var(--font);
+    letter-spacing: -0.03em;
+  }
+
+  .doc-surface .doc-type-label .doc-number {
+    font-size: 0.8rem;
+    color: #666;
+    font-family: var(--font);
+    margin-top: 4px;
+  }
+
+  .doc-surface .parties-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 28px;
+  }
+
+  .doc-surface .party-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #888;
+    font-family: var(--font);
+    margin-bottom: 6px;
+  }
+
+  .doc-surface .party-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    font-family: var(--font);
+  }
+
+  .doc-surface .party-detail {
+    font-size: 0.82rem;
+    color: #444;
+    line-height: 1.5;
+    font-family: var(--font);
+  }
+
+  .doc-surface table.items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: var(--font);
+    font-size: 0.85rem;
+  }
+
+  .doc-surface table.items-table thead tr {
+    background: #1a1a2e;
+    color: #fff;
+  }
+
+  .doc-surface table.items-table th {
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .doc-surface table.items-table th:last-child,
+  .doc-surface table.items-table td:last-child {
+    text-align: right;
+  }
+
+  .doc-surface table.items-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #e2e5ec;
+    color: #333;
+    vertical-align: top;
+  }
+
+  .doc-surface table.items-table tbody tr:nth-child(even) {
+    background: #f0f2f7;
+  }
+
+  .doc-surface .totals-block {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+  }
+
+  .doc-surface .totals-table {
+    width: 280px;
+    font-family: var(--font);
+  }
+
+  .doc-surface .totals-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    font-size: 0.85rem;
+    border-bottom: 1px solid #e2e5ec;
+    color: #333;
+  }
+
+  .doc-surface .totals-row.total-final {
+    border-top: 2px solid #1a1a2e;
+    border-bottom: none;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #1a1a2e;
+    margin-top: 4px;
+    padding-top: 8px;
+  }
+
+  .doc-surface .terms-section {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid #d0d4e0;
+    font-family: var(--font);
+    font-size: 0.78rem;
+    color: #555;
+  }
+
+  .doc-surface .terms-section h4 {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #1a1a2e;
+    margin-bottom: 8px;
+  }
+
+  .doc-surface .terms-section ul {
+    padding-left: 16px;
+    line-height: 1.7;
+  }
+
+  .doc-surface .sig-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 36px;
+    font-family: var(--font);
+    font-size: 0.82rem;
+  }
+
+  .doc-surface .sig-line {
+    border-top: 1px solid #333;
+    padding-top: 8px;
+    color: #333;
+    margin-top: 36px;
+  }
+
+  .doc-surface .bank-details {
+    background: #eef0f7;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-top: 20px;
+    font-family: var(--font);
+    font-size: 0.82rem;
+  }
+
+  .doc-surface .bank-details h4 {
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #1a1a2e;
+    font-size: 0.85rem;
+  }
+
+  .doc-surface .bank-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 0;
+    color: #444;
+  }
+
+  .doc-surface .bank-row span:first-child {
+    color: #888;
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .doc-surface .doc-footer-note {
+    font-size: 0.72rem;
+    color: #999;
+    margin-top: 20px;
+    font-family: var(--font);
+    font-style: italic;
+  }
+
+  .placeholder {
+    color: #3b82f6;
+    font-weight: 600;
+  }
+
+  /* ── AGREEMENT STYLES ── */
+  .doc-surface .agreement-title {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 800;
+    font-family: var(--font);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 24px;
+    color: #1a1a2e;
+  }
+
+  .doc-surface .agreement-parties {
+    background: #eef0f7;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    font-family: var(--font);
+    font-size: 0.85rem;
+    color: #333;
+  }
+
+  .doc-surface .clause {
+    margin-bottom: 16px;
+  }
+
+  .doc-surface .clause h4 {
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #1a1a2e;
+    font-family: var(--font);
+    margin-bottom: 6px;
+    border-left: 3px solid #1a1a2e;
+    padding-left: 10px;
+  }
+
+  .doc-surface .clause p {
+    font-size: 0.82rem;
+    color: #444;
+    font-family: var(--font);
+    line-height: 1.65;
+  }
+
+  /* ── RATE CALCULATOR ── */
+  .calc-panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px;
+  }
+
+  .calc-intro {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin-bottom: 28px;
+    line-height: 1.6;
+  }
+
+  .calc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 28px;
+  }
+
+  @media (max-width: 600px) { .calc-grid { grid-template-columns: 1fr; } }
+
+  .input-group { display: flex; flex-direction: column; gap: 8px; }
+
+  .input-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .input-sublabel {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-top: -4px;
+  }
+
+  .input-field {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-accent);
+    border-radius: 8px;
+    color: var(--text-primary);
+    padding: 12px 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: var(--font);
+    outline: none;
+    transition: border-color 0.15s;
+    width: 100%;
+  }
+
+  .input-field:focus { border-color: var(--accent-blue); }
+
+  .calc-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 8px 0 24px;
+  }
+
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .result-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+  }
+
+  .result-label {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .result-value {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+  }
+
+  .result-sub {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-top: 4px;
+  }
+
+  .result-card.highlight {
+    background: rgba(79,142,247,0.08);
+    border-color: rgba(79,142,247,0.3);
+  }
+
+  .result-card.highlight .result-value { color: var(--accent-blue); }
+  .result-card.featured .result-value { color: var(--accent-green); }
+
+  .calc-note {
+    background: rgba(245,158,11,0.07);
+    border: 1px solid rgba(245,158,11,0.2);
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  .calc-note strong { color: var(--accent-amber); }
+
+  .calc-assumptions {
+    margin-top: 20px;
+  }
+
+  .assumptions-heading {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+
+  .assumption-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.82rem;
+  }
+
+  .assumption-row:last-child { border-bottom: none; }
+  .assumption-label { color: var(--text-secondary); flex: 1; }
+  .assumption-value {
+    font-weight: 700;
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+  }
+
+  input[type=range] {
+    width: 100%;
+    accent-color: var(--accent-blue);
+    margin-top: 6px;
+  }
+
+  /* ── TOAST ── */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #22c55e;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.25s;
+    z-index: 9999;
+    pointer-events: none;
+  }
+
+  .toast.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── PAYPAL CTA ── */
+  .paypal-cta {
+    background: linear-gradient(135deg, #1a1e2e 0%, #0b0d11 100%);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px;
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  .price-tag {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent-green);
+    margin-bottom: 8px;
+  }
+
+  .paypal-cta h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+  .paypal-cta p { color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 20px; }
+
+  .paypal-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #0070ba;
+    color: #fff;
+    padding: 14px 32px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+
+  .paypal-btn:hover { background: #005ea6; }
+
+  /* ── PRINT STYLES ── */
+  @media print {
+    .site-header, .tab-bar, .doc-toolbar, .paypal-cta, .toolbar-actions { display: none !important; }
+    body { background: #fff; }
+    .panel { display: block !important; }
+    .doc-surface { box-shadow: none; }
+    .template-wrapper { border: none; }
+    .panel + .panel { page-break-before: always; }
+    .calc-panel { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .doc-surface { padding: 24px 16px; }
+    .doc-surface .parties-grid { grid-template-columns: 1fr; }
+    .doc-surface .sig-block { grid-template-columns: 1fr; }
+    .doc-surface .doc-header { flex-direction: column; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <h1>SA Freelancer Business Pack</h1>
+    <div class="tagline">Professional templates for independent South African professionals</div>
+  </div>
+  <div class="header-badges">
+    <span class="badge badge-green">✓ VAT 15% Compliant</span>
+    <span class="badge badge-blue">✓ SA Law Aligned</span>
+    <span class="badge badge-amber">✓ Print Ready</span>
+  </div>
+</header>
+
+<nav class="tab-bar" role="tablist">
+  <button class="tab-btn active" onclick="showTab('quotation')" role="tab">
+    <span class="tab-icon">📄</span> Quotation / Proposal
+  </button>
+  <button class="tab-btn" onclick="showTab('invoice')" role="tab">
+    <span class="tab-icon">🧾</span> Invoice
+  </button>
+  <button class="tab-btn" onclick="showTab('agreement')" role="tab">
+    <span class="tab-icon">📝</span> Service Agreement
+  </button>
+  <button class="tab-btn" onclick="showTab('calculator')" role="tab">
+    <span class="tab-icon">🧮</span> Rate Calculator
+  </button>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     TAB 1 — QUOTATION / PROPOSAL
+══════════════════════════════════════════ -->
+<div id="tab-quotation" class="panel active">
+  <div class="container">
+    <div class="doc-toolbar">
+      <div>
+        <div class="doc-title">Service Quotation Template</div>
+        <div class="doc-subtitle">Professional proposal with VAT, payment terms &amp; acceptance block</div>
+      </div>
+      <div class="toolbar-actions">
+        <button class="btn btn-outline" onclick="copyDoc('quotation-doc')">📋 Copy to Clipboard</button>
+        <button class="btn btn-blue" onclick="printDoc()">🖨 Print / Save PDF</button>
+      </div>
+    </div>
+
+    <div class="template-wrapper">
+      <div class="doc-surface" id="quotation-doc">
+
+        <div class="doc-header">
+          <div>
+            <div class="company-name"><span class="placeholder">[YOUR NAME / BUSINESS NAME]</span></div>
+            <div class="company-details">
+              <span class="placeholder">[Street Address, Suburb]</span><br>
+              <span class="placeholder">[City, Province, Postal Code]</span><br>
+              Tel: <span class="placeholder">[+27 XX XXX XXXX]</span><br>
+              Email: <span class="placeholder">[your@email.co.za]</span><br>
+              VAT No: <span class="placeholder">[4XXXXXXXXXX]</span> <em style="font-size:0.72rem;color:#999">(if registered)</em>
+            </div>
+          </div>
+          <div class="doc-type-label">
+            <h2>QUOTATION</h2>
+            <div class="doc-number">
+              No: <span class="placeholder">QUO-2024-001</span><br>
+              Date: <span class="placeholder">[DD Month YYYY]</span><br>
+              Valid Until: <span class="placeholder">[DD Month YYYY]</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="parties-grid">
+          <div>
+            <div class="party-label">Prepared For (Client)</div>
+            <div class="party-name"><span class="placeholder">[CLIENT NAME / COMPANY]</span></div>
+            <div class="party-detail">
+              Attn: <span class="placeholder">[CONTACT PERSON]</span><br>
+              <span class="placeholder">[Client Address]</span><br>
+              <span class="placeholder">[City, Province]</span><br>
+              Email: <span class="placeholder">[client@company.co.za]</span>
+            </div>
+          </div>
+          <div>
+            <div class="party-label">Project Reference</div>
+            <div class="party-name"><span class="placeholder">[PROJECT NAME]</span></div>
+            <div class="party-detail">
+              Start Date: <span class="placeholder">[DD Month YYYY]</span><br>
+              Est. Duration: <span class="placeholder">[X weeks / months]</span><br>
+              Delivery: <span class="placeholder">[Remote / On-site]</span>
+            </div>
+          </div>
+        </div>
+
+        <table class="items-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Description of Services</th>
+              <th>Qty / Hours</th>
+              <th>Unit Rate (ZAR)</th>
+              <th>Amount (ZAR)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td><strong><span class="placeholder">[Service Item 1]</span></strong><br><span style="color:#666;font-size:0.78rem"><span class="placeholder">[Brief description of deliverable or milestone]</span></span></td>
+              <td>1</td>
+              <td style="text-align:right">R <span class="placeholder">5,000.00</span></td>
+              <td>R <span class="placeholder">5,000.00</span></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td><strong><span class="placeholder">[Service Item 2]</span></strong><br><span style="color:#666;font-size:0.78rem"><span class="placeholder">[e.g. Revisions — up to 2 rounds]</span></span></td>
+              <td><span class="placeholder">8 hrs</span></td>
+              <td style="text-align:right">R <span class="placeholder">650.00</span></td>
+              <td>R <span class="placeholder">5,200.00</span></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td><strong><span class="placeholder">[Service Item 3 / Optional Add-on]</span></strong><br><span style="color:#666;font-size:0.78rem"><span class="placeholder">[e.g. Monthly retainer / maintenance]</span></span></td>
+              <td>1</td>
+              <td style="text-align:right">R <span class="placeholder">2,500.00</span></td>
+              <td>R <span class="placeholder">2,500.00</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="totals-block">
+          <div class="totals-table">
+            <div class="totals-row"><span>Subtotal (excl. VAT)</span><span>R <span class="placeholder">12,700.00</span></span></div>
+            <div class="totals-row"><span>VAT @ 15%</span><span>R <span class="placeholder">1,905.00</span></span></div>
+            <div class="totals-row total-final"><span>TOTAL DUE</span><span>R <span class="placeholder">14,605.00</span></span></div>
+          </div>
+        </div>
+
+        <div class="bank-details">
+          <h4>Payment via EFT — Banking Details</h4>
+          <div class="bank-row"><span>Bank</span><span><span class="placeholder">[FNB / ABSA / Standard Bank / Nedbank / Capitec]</span></span></div>
+          <div class="bank-row"><span>Account Name</span><span><span class="placeholder">[YOUR NAME / ENTITY NAME]</span></span></div>
+          <div class="bank-row"><span>Account Number</span><span><span class="placeholder">[XXXXXXXXXXXX]</span></span></div>
+          <div class="bank-row"><span>Branch Code</span><span><span class="placeholder">[XXXXXX]</span></span></div>
+          <div class="bank-row"><span>Account Type</span><span><span class="placeholder">[Cheque / Current / Savings]</span></span></div>
+          <div class="bank-row"><span>Reference</span><span><span class="placeholder">QUO-2024-001 / [Client Name]</span></span></div>
+        </div>
+
+        <div class="terms-section">
+          <h4>Payment Terms &amp; Conditions</h4>
+          <ul>
+            <li>This quotation is valid for <strong>30 calendar days</strong> from the date of issue.</li>
+            <li>A <strong>50% deposit</strong> is required before commencement of work. The balance is due within 30 days of final delivery.</li>
+            <li>Payment by EFT only. Work does not commence until deposit reflects in our account.</li>
+            <li>Scope changes will be quoted separately and require written approval before implementation.</li>
+            <li>Late payments attract interest at the maximum rate permitted under the <strong>National Credit Act (NCA) 34 of 2005</strong>.</li>
+            <li>All intellectual property created under this engagement transfers to the client upon receipt of full payment.</li>
+            <li>This quotation does not constitute a binding contract until signed by both parties or a purchase order is issued.</li>
+          </ul>
+        </div>
+
+        <div class="sig-block">
+          <div>
+            <div class="party-label">Client Acceptance</div>
+            <div class="sig-line">Signature</div>
+            <div style="margin-top:8px;font-size:0.8rem;color:#555;font-family:var(--font)">
+              Name: <span class="placeholder">________________________</span><br>
+              Title: <span class="placeholder">________________________</span><br>
+              Date: <span class="placeholder">________________________</span>
+            </div>
+          </div>
+          <div>
+            <div class="party-label">Freelancer / Service Provider</div>
+            <div class="sig-line">Signature</div>
+            <div style="margin-top:8px;font-size:0.8rem;color:#555;font-family:var(--font)">
+              Name: <span class="placeholder">[YOUR NAME]</span><br>
+              Date: <span class="placeholder">________________________</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="doc-footer-note">
+          This document was prepared by <span class="placeholder">[YOUR NAME / BUSINESS NAME]</span>. All amounts in South African Rand (ZAR). E&amp;OE.
+        </div>
+
+      </div>
+    </div>
+
+    <div class="paypal-cta">
+      <div class="price-tag">R149</div>
+      <h3>Get the Full Editable SA Freelancer Business Pack</h3>
+      <p>All 4 templates in editable Word/Google Docs format + Excel rate calculator + bonus invoice tracker spreadsheet</p>
+      <a href="https://paypal.me/mrbtmkhabela/14900ZAR" class="paypal-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.076 21.337H2.47a.641.641 0 01-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 00-.607-.541c-.013.076-.026.175-.041.254-.59 3.025-2.566 6.082-8.558 6.082H9.824l-1.175 7.48H12.6c.458 0 .85-.334.922-.788l.038-.196.731-4.63.047-.255c.072-.453.463-.788.921-.788h.58c3.757 0 6.698-1.525 7.556-5.938.358-1.843.173-3.383-.773-4.68z"/></svg>
+        Purchase Now — R149
+      </a>
+      <p style="margin-top:14px;font-size:0.75rem;color:var(--text-muted)">Instant download · Secure payment · VAT invoice included</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB 2 — INVOICE
+══════════════════════════════════════════ -->
+<div id="tab-invoice" class="panel">
+  <div class="container">
+    <div class="doc-toolbar">
+      <div>
+        <div class="doc-title">Tax Invoice Template</div>
+        <div class="doc-subtitle">VAT-compliant invoice with banking details, due date &amp; late payment notice</div>
+      </div>
+      <div class="toolbar-actions">
+        <button class="btn btn-outline" onclick="copyDoc('invoice-doc')">📋 Copy to Clipboard</button>
+        <button class="btn btn-blue" onclick="printDoc()">🖨 Print / Save PDF</button>
+      </div>
+    </div>
+
+    <div class="template-wrapper">
+      <div class="doc-surface" id="invoice-doc">
+
+        <div class="doc-header">
+          <div>
+            <div class="company-name"><span class="placeholder">[YOUR NAME / BUSINESS NAME]</span></div>
+            <div class="company-details">
+              <span class="placeholder">[Street Address, Suburb]</span><br>
+              <span class="placeholder">[City, Province, Postal Code]</span><br>
+              Tel: <span class="placeholder">[+27 XX XXX XXXX]</span> &nbsp;|&nbsp; Email: <span class="placeholder">[your@email.co.za]</span><br>
+              VAT Registration No: <span class="placeholder">[4XXXXXXXXXX]</span>
+            </div>
+          </div>
+          <div class="doc-type-label">
+            <h2>TAX INVOICE</h2>
+            <div class="doc-number">
+              Invoice No: <span class="placeholder">INV-2024-001</span><br>
+              Invoice Date: <span class="placeholder">[DD Month YYYY]</span><br>
+              Due Date: <span class="placeholder">[DD Month YYYY]</span><br>
+              <span style="color:#e53e3e;font-weight:700;font-size:0.8rem">30-Day Payment Terms</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="parties-grid">
+          <div>
+            <div class="party-label">Bill To</div>
+            <div class="party-name"><span class="placeholder">[CLIENT COMPANY NAME]</span></div>
+            <div class="party-detail">
+              Attn: <span class="placeholder">[ACCOUNTS PAYABLE / CONTACT]</span><br>
+              <span class="placeholder">[Client Address]</span><br>
+              <span class="placeholder">[City, Province, Code]</span><br>
+              VAT No: <span class="placeholder">[Client VAT Number]</span><br>
+              Email: <span class="placeholder">[accounts@client.co.za]</span>
+            </div>
+          </div>
+          <div>
+            <div class="party-label">Quotation / PO Reference</div>
+            <div class="party-name" style="font-size:0.9rem"><span class="placeholder">QUO-2024-001 / PO-XXXX</span></div>
+            <div class="party-detail">
+              Project: <span class="placeholder">[PROJECT NAME]</span><br>
+              Period: <span class="placeholder">[Month YYYY]</span><br>
+              Delivery Date: <span class="placeholder">[DD Month YYYY]</span>
+            </div>
+          </div>
+        </div>
+
+        <table class="items-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Description</th>
+              <th>Qty</th>
+              <th>Unit Price (ZAR)</th>
+              <th>Amount (ZAR)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td><strong><span class="placeholder">[Deliverable / Milestone 1]</span></strong><br><span style="color:#666;font-size:0.78rem"><span class="placeholder">[e.g. Brand identity design — final files delivered DD/MM/YYYY]</span></span></td>
+              <td>1</td>
+              <td style="text-align:right">R <span class="placeholder">5,000.00</span></td>
+              <td>R <span class="placeholder">5,000.00</span></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td><strong><span class="placeholder">[Deliverable / Milestone 2]</span></strong><br><span style="color:#666;font-size:0.78rem"><span class="placeholder">[e.g. Development hours — 8hrs @ R650/hr]</span></span></td>
+              <td><span class="placeholder">8 hrs</span></td>
+              <td style="text-align:right">R <span class="placeholder">650.00</span></td>
+              <td>R <span class="placeholder">5,200.00</span></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td><strong>Less: Deposit Received</strong><br><span style="color:#666;font-size:0.78rem">Received <span class="placeholder">[DD Month YYYY]</span> — ref: <span class="placeholder">[EFT reference]</span></span></td>
+              <td>1</td>
+              <td style="text-align:right; color:#e53e3e">− R <span class="placeholder">5,000.00</span></td>
+              <td style="color:#e53e3e">− R <span class="placeholder">5,000.00</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="totals-block">
+          <div class="totals-table">
+            <div class="totals-row"><span>Subtotal (excl. VAT)</span><span>R <span class="placeholder">5,200.00</span></span></div>
+            <div class="totals-row"><span>VAT @ 15%</span><span>R <span class="placeholder">780.00</span></span></div>
+            <div class="totals-row"><span>Less: Deposit (incl. VAT)</span><span style="color:#e53e3e">− R <span class="placeholder">5,000.00</span></span></div>
+            <div class="totals-row total-final"><span>BALANCE DUE</span><span>R <span class="placeholder">980.00</span></span></div>
+          </div>
+        </div>
+
+        <div class="bank-details">
+          <h4>EFT Payment Details</h4>
+          <div class="bank-row"><span>Bank</span><span><span class="placeholder">[Bank Name]</span></span></div>
+          <div class="bank-row"><span>Account Name</span><span><span class="placeholder">[YOUR NAME / ENTITY]</span></span></div>
+          <div class="bank-row"><span>Account No.</span><span><span class="placeholder">[XXXXXXXXXXXX]</span></span></div>
+          <div class="bank-row"><span>Branch Code</span><span><span class="placeholder">[XXXXXX]</span></span></div>
+          <div class="bank-row"><span>Account Type</span><span><span class="placeholder">[Cheque / Current]</span></span></div>
+          <div class="bank-row"><span>Reference</span><span><span class="placeholder">INV-2024-001 / [Your Company]</span></span></div>
+        </div>
+
+        <div class="terms-section">
+          <h4>Payment Notice</h4>
+          <ul>
+            <li>Payment is due within <strong>30 days</strong> of invoice date. Please use the invoice number as your EFT reference.</li>
+            <li>Late payment interest will be charged at <strong>the prime lending rate + 2%</strong> per annum, calculated daily, as permitted under the <strong>National Credit Act 34 of 2005</strong>.</li>
+            <li>Overdue accounts may be referred to a debt collection agency and/or reported to credit bureaux.</li>
+            <li>Queries must be raised within <strong>5 business days</strong> of invoice date. Thereafter the invoice is deemed accepted.</li>
+            <li>This is a valid <strong>Tax Invoice</strong> as required by <strong>SARS</strong> under the Value-Added Tax Act 89 of 1991.</li>
+            <li>Please send remittance advice to <span class="placeholder">[your@email.co.za]</span> after payment.</li>
+          </ul>
+        </div>
+
+        <div class="doc-footer-note">
+          <span class="placeholder">[YOUR NAME / BUSINESS NAME]</span> · Reg No: <span class="placeholder">[CIPC Reg / ID No]</span> · VAT: <span class="placeholder">[4XXXXXXXXXX]</span> · E&amp;OE
+        </div>
+
+      </div>
+    </div>
+
+    <div class="paypal-cta">
+      <div class="price-tag">R149</div>
+      <h3>Get the Full Editable SA Freelancer Business Pack</h3>
+      <p>Editable Word/Google Docs format + Excel invoice tracker + all 4 templates</p>
+      <a href="https://paypal.me/mrbtmkhabela/14900ZAR" class="paypal-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.076 21.337H2.47a.641.641 0 01-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 00-.607-.541c-.013.076-.026.175-.041.254-.59 3.025-2.566 6.082-8.558 6.082H9.824l-1.175 7.48H12.6c.458 0 .85-.334.922-.788l.038-.196.731-4.63.047-.255c.072-.453.463-.788.921-.788h.58c3.757 0 6.698-1.525 7.556-5.938.358-1.843.173-3.383-.773-4.68z"/></svg>
+        Purchase Now — R149
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB 3 — SERVICE AGREEMENT
+══════════════════════════════════════════ -->
+<div id="tab-agreement" class="panel">
+  <div class="container">
+    <div class="doc-toolbar">
+      <div>
+        <div class="doc-title">Independent Contractor Service Agreement</div>
+        <div class="doc-subtitle">SA-law aligned · Covers scope, IP, confidentiality &amp; cancellation</div>
+      </div>
+      <div class="toolbar-actions">
+        <button class="btn btn-outline" onclick="copyDoc('agreement-doc')">📋 Copy to Clipboard</button>
+        <button class="btn btn-blue" onclick="printDoc()">🖨 Print / Save PDF</button>
+      </div>
+    </div>
+
+    <div class="template-wrapper">
+      <div class="doc-surface" id="agreement-doc">
+
+        <div class="agreement-title">Independent Contractor Service Agreement</div>
+
+        <div class="agreement-parties">
+          <strong>This Agreement</strong> is entered into on <span class="placeholder">[DD Month YYYY]</span> between:<br><br>
+          <strong>Service Provider ("Contractor"):</strong> <span class="placeholder">[YOUR FULL NAME / ENTITY NAME]</span>, identity number / registration number <span class="placeholder">[ID/Reg No]</span>, residing at / registered at <span class="placeholder">[Your Address]</span>.<br><br>
+          <strong>Client ("Client"):</strong> <span class="placeholder">[CLIENT COMPANY / FULL NAME]</span>, registration number <span class="placeholder">[Reg No]</span>, represented by <span class="placeholder">[AUTHORISED SIGNATORY NAME]</span> in the capacity of <span class="placeholder">[TITLE]</span>, with principal place of business at <span class="placeholder">[Client Address]</span>.<br><br>
+          Together referred to as "the Parties."
+        </div>
+
+        <div class="clause">
+          <h4>1. Appointment &amp; Nature of Relationship</h4>
+          <p>The Client appoints the Contractor as an independent service provider, and the Contractor accepts such appointment, on the terms set out herein. The Contractor is not an employee of the Client. Nothing in this Agreement creates an employment relationship, partnership, joint venture, or agency between the Parties. The Contractor retains the right to provide services to other clients, provided there is no conflict of interest with obligations owed to the Client under this Agreement.</p>
+        </div>
+
+        <div class="clause">
+          <h4>2. Scope of Work &amp; Deliverables</h4>
+          <p>The Contractor will provide the following services: <span class="placeholder">[Describe services clearly — e.g. "Brand identity design including logo, colour palette, typography guide, and business card design in agreed formats"]</span>. The specific deliverables, acceptance criteria, and milestones are set out in the attached Schedule of Work / Statement of Work (SOW). Any work outside the agreed scope will be quoted separately in writing before commencement. The Contractor reserves the right to decline out-of-scope requests.</p>
+        </div>
+
+        <div class="clause">
+          <h4>3. Fees &amp; Payment Terms</h4>
+          <p>The Client will pay the Contractor the fees set out in the agreed Quotation / Schedule of Fees, which forms part of this Agreement. Unless otherwise agreed in writing: (a) a deposit of 50% of the total fee is payable before work commences; (b) the balance is payable within 30 days of final delivery or the date of invoice, whichever is earlier; (c) VAT is payable in addition to the quoted fee where the Contractor is VAT-registered; (d) late payments attract interest at the prime overdraft rate plus 2% per annum, calculated daily and compounded monthly, as permitted under the National Credit Act 34 of 2005; (e) the Contractor may suspend services and withhold deliverables until all outstanding amounts are settled in full.</p>
+        </div>
+
+        <div class="clause">
+          <h4>4. Intellectual Property</h4>
+          <p>All intellectual property created specifically and exclusively for the Client under this Agreement shall vest in the Client upon receipt of full and final payment of all fees and expenses. Until payment is received in full, all rights, title, and interest in all work product remain with the Contractor. The Contractor retains the right to use work created under this Agreement in their portfolio and for self-promotional purposes, unless the Client requests otherwise in writing and the Parties agree on specific non-disclosure terms. Pre-existing intellectual property, tools, frameworks, and know-how owned by the Contractor prior to this engagement remain the exclusive property of the Contractor.</p>
+        </div>
+
+        <div class="clause">
+          <h4>5. Confidentiality</h4>
+          <p>Each Party undertakes to keep confidential all proprietary, commercially sensitive, or business information ("Confidential Information") disclosed by the other Party during the term of this Agreement and for a period of two (2) years after termination. Confidential Information does not include information that: (a) is or becomes publicly known through no breach of this Agreement; (b) was already known to the receiving Party before disclosure; (c) is lawfully obtained from a third party without restriction; or (d) must be disclosed by law or court order. The Contractor may disclose to subcontractors on a need-to-know basis, provided such subcontractors are bound by equivalent confidentiality obligations.</p>
+        </div>
+
+        <div class="clause">
+          <h4>6. Timeline &amp; Force Majeure</h4>
+          <p>The Contractor will use reasonable endeavours to deliver by the agreed dates. Delays caused by the Client (including late provision of content, feedback, or approvals) will extend delivery timelines accordingly. The Contractor is not liable for delays caused by circumstances beyond their reasonable control, including load-shedding, connectivity failures, illness, or other force majeure events, provided the Contractor notifies the Client promptly of any such delay.</p>
+        </div>
+
+        <div class="clause">
+          <h4>7. Cancellation &amp; Termination</h4>
+          <p>Either Party may terminate this Agreement by giving <span class="placeholder">[14 / 30]</span> calendar days' written notice to the other Party. Upon termination: (a) the Client will pay the Contractor for all work completed up to the date of termination, calculated on a pro-rata basis or per agreed milestones; (b) if the Client cancels after work has commenced, the deposit paid is non-refundable and covers work completed to date; (c) if work completed at termination exceeds the deposit, the balance is immediately due; (d) the Contractor will deliver all completed work product to the Client upon receipt of payment for same. Either Party may terminate immediately if the other Party commits a material breach that remains unremedied for 7 days after written notice, or becomes insolvent.</p>
+        </div>
+
+        <div class="clause">
+          <h4>8. Limitation of Liability</h4>
+          <p>To the maximum extent permitted by South African law, the Contractor's total liability to the Client under or in connection with this Agreement shall not exceed the total fees paid by the Client in the three (3) months preceding the event giving rise to the claim. The Contractor is not liable for indirect, consequential, special, or punitive damages, loss of profit, or loss of business opportunity, howsoever arising. The Contractor's obligations under this Agreement are obligations of means, not of result, except where specifically stated.</p>
+        </div>
+
+        <div class="clause">
+          <h4>9. Governing Law &amp; Dispute Resolution</h4>
+          <p>This Agreement is governed by the laws of the Republic of South Africa. In the event of a dispute, the Parties agree to first attempt to resolve the matter through good-faith negotiation within 14 days of written notice. If unresolved, the dispute shall be referred to mediation before any legal proceedings are instituted. The jurisdiction for any court proceedings is the <span class="placeholder">[Gauteng / Western Cape / KwaZulu-Natal]</span> High Court or the appropriate Magistrate's Court, as determined by the quantum of the claim.</p>
+        </div>
+
+        <div class="clause">
+          <h4>10. Entire Agreement</h4>
+          <p>This Agreement, together with any attached Schedule of Work or Quotation, constitutes the entire agreement between the Parties with respect to its subject matter and supersedes all prior negotiations, representations, or agreements. Amendments must be in writing and signed by both Parties. If any provision is found to be unenforceable, the remaining provisions continue in full force and effect.</p>
+        </div>
+
+        <div class="sig-block">
+          <div>
+            <div class="party-label">Signed for &amp; on behalf of the Client</div>
+            <div class="sig-line">Authorised Signature</div>
+            <div style="margin-top:10px;font-size:0.8rem;color:#555;font-family:var(--font)">
+              Name: <span class="placeholder">_______________________</span><br>
+              Designation: <span class="placeholder">_______________________</span><br>
+              Date: <span class="placeholder">_______________________</span><br>
+              Place: <span class="placeholder">_______________________</span>
+            </div>
+          </div>
+          <div>
+            <div class="party-label">Signed by the Contractor</div>
+            <div class="sig-line">Signature</div>
+            <div style="margin-top:10px;font-size:0.8rem;color:#555;font-family:var(--font)">
+              Name: <span class="placeholder">[YOUR NAME]</span><br>
+              Designation: <span class="placeholder">Independent Contractor</span><br>
+              Date: <span class="placeholder">_______________________</span><br>
+              Place: <span class="placeholder">_______________________</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="doc-footer-note" style="margin-top:24px">
+          <strong>Disclaimer:</strong> This template is provided for general informational purposes and does not constitute legal advice. For complex engagements, high-value contracts, or specialist industries, consult a qualified South African attorney before signing.
+        </div>
+
+      </div>
+    </div>
+
+    <div class="paypal-cta">
+      <div class="price-tag">R149</div>
+      <h3>Get the Full Editable SA Freelancer Business Pack</h3>
+      <p>All templates in Word/Google Docs format + full rate calculator + invoice tracker</p>
+      <a href="https://paypal.me/mrbtmkhabela/14900ZAR" class="paypal-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.076 21.337H2.47a.641.641 0 01-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 00-.607-.541c-.013.076-.026.175-.041.254-.59 3.025-2.566 6.082-8.558 6.082H9.824l-1.175 7.48H12.6c.458 0 .85-.334.922-.788l.038-.196.731-4.63.047-.255c.072-.453.463-.788.921-.788h.58c3.757 0 6.698-1.525 7.556-5.938.358-1.843.173-3.383-.773-4.68z"/></svg>
+        Purchase Now — R149
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB 4 — RATE CALCULATOR
+══════════════════════════════════════════ -->
+<div id="tab-calculator" class="panel">
+  <div class="container">
+    <div class="doc-toolbar">
+      <div>
+        <div class="doc-title">Freelance Rate Calculator</div>
+        <div class="doc-subtitle">Work backwards from take-home pay to find your optimal day rate</div>
+      </div>
+    </div>
+
+    <div class="calc-panel">
+      <p class="calc-intro">
+        Enter your target monthly take-home (after tax and expenses) and your available billable days. The calculator works backwards to give you the minimum rates you need to charge — and suggests a project rate with a 20% buffer to cover non-billable time, revisions, and business costs.
+      </p>
+
+      <div class="calc-grid">
+        <div class="input-group">
+          <label class="input-label" for="takeHome">Desired Monthly Take-Home</label>
+          <div class="input-sublabel">After personal expenses, in ZAR</div>
+          <input type="number" id="takeHome" class="input-field" value="30000" min="1000" step="500" oninput="calculateRates()">
+        </div>
+        <div class="input-group">
+          <label class="input-label" for="billableDays">Billable Days per Month</label>
+          <div class="input-sublabel">Realistic billable days (exclude admin, marketing, leave)</div>
+          <input type="number" id="billableDays" class="input-field" value="15" min="1" max="22" oninput="calculateRates()">
+          <input type="range" id="billableDaysSlider" min="5" max="22" value="15" oninput="syncSlider(this)">
+        </div>
+        <div class="input-group">
+          <label class="input-label" for="taxRate">Estimated Tax Rate (%)</label>
+          <div class="input-sublabel">Provisonal tax rate (SARS brackets — 18%–45%)</div>
+          <input type="number" id="taxRate" class="input-field" value="25" min="0" max="45" step="1" oninput="calculateRates()">
+        </div>
+        <div class="input-group">
+          <label class="input-label" for="bizExpenses">Monthly Business Expenses (ZAR)</label>
+          <div class="input-sublabel">Software, internet, office, phone, insurance</div>
+          <input type="number" id="bizExpenses" class="input-field" value="3000" min="0" step="100" oninput="calculateRates()">
+        </div>
+        <div class="input-group">
+          <label class="input-label" for="hoursPerDay">Billable Hours per Day</label>
+          <div class="input-sublabel">Typically 6–7 hrs (8 hrs is rarely realistic)</div>
+          <input type="number" id="hoursPerDay" class="input-field" value="7" min="1" max="12" oninput="calculateRates()">
+        </div>
+        <div class="input-group">
+          <label class="input-label" for="bufferPct">Project Rate Buffer (%)</label>
+          <div class="input-sublabel">Extra % to cover revisions, scope creep, slow periods</div>
+          <input type="number" id="bufferPct" class="input-field" value="20" min="0" max="100" oninput="calculateRates()">
+        </div>
+      </div>
+
+      <hr class="calc-divider">
+
+      <div class="results-grid">
+        <div class="result-card">
+          <div class="result-label">Required Gross Revenue / Month</div>
+          <div class="result-value" id="grossRequired">R 0</div>
+          <div class="result-sub">Before tax &amp; expenses</div>
+        </div>
+        <div class="result-card highlight">
+          <div class="result-label">Minimum Day Rate</div>
+          <div class="result-value" id="dayRate">R 0</div>
+          <div class="result-sub">Per billable day (excl. VAT)</div>
+        </div>
+        <div class="result-card">
+          <div class="result-label">Minimum Hourly Rate</div>
+          <div class="result-value" id="hourlyRate">R 0</div>
+          <div class="result-sub">Per billable hour (excl. VAT)</div>
+        </div>
+        <div class="result-card featured">
+          <div class="result-label">Suggested Project Day Rate</div>
+          <div class="result-value" id="projectRate">R 0</div>
+          <div class="result-sub" id="bufferNote">Includes 20% buffer</div>
+        </div>
+        <div class="result-card">
+          <div class="result-label">Suggested Hourly (Buffered)</div>
+          <div class="result-value" id="projectHourly">R 0</div>
+          <div class="result-sub">Good for ad-hoc / retainer billing</div>
+        </div>
+        <div class="result-card">
+          <div class="result-label">VAT-Inclusive Day Rate</div>
+          <div class="result-value" id="vatRate">R 0</div>
+          <div class="result-sub">If you are VAT-registered (15%)</div>
+        </div>
+      </div>
+
+      <div class="calc-note">
+        <strong>South African Tax Note:</strong> As a freelancer you pay provisional tax (IRP6) twice a year — in August and February. SARS expects you to estimate annual taxable income and pay accordingly. Keep at least <strong><span id="taxSetAsideNote">25%</span> of every payment received</strong> in a separate savings account for your tax obligation. Register for provisional tax using an <strong>IRP6 form</strong> on eFiling. If your turnover exceeds <strong>R1 million per year</strong>, you must register for VAT.
+      </div>
+
+      <div class="calc-assumptions">
+        <div class="assumptions-heading">Your Numbers at a Glance</div>
+        <div class="assumption-row">
+          <span class="assumption-label">Target monthly take-home</span>
+          <span class="assumption-value" id="sumTakeHome">R 30,000</span>
+        </div>
+        <div class="assumption-row">
+          <span class="assumption-label">Monthly tax provision</span>
+          <span class="assumption-value" id="sumTax">R 0</span>
+        </div>
+        <div class="assumption-row">
+          <span class="assumption-label">Monthly business expenses</span>
+          <span class="assumption-value" id="sumExpenses">R 0</span>
+        </div>
+        <div class="assumption-row">
+          <span class="assumption-label">Total gross revenue needed</span>
+          <span class="assumption-value" id="sumGross">R 0</span>
+        </div>
+        <div class="assumption-row">
+          <span class="assumption-label">Revenue per billable day needed</span>
+          <span class="assumption-value" id="sumPerDay">R 0</span>
+        </div>
+        <div class="assumption-row">
+          <span class="assumption-label">Billable days × hours</span>
+          <span class="assumption-value" id="sumDaysHours">15 days × 7 hrs = 105 hrs</span>
+        </div>
+        <div class="assumption-row">
+          <span class="assumption-label">Annual revenue target (min.)</span>
+          <span class="assumption-value" id="sumAnnual">R 0</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="paypal-cta">
+      <div class="price-tag">R149</div>
+      <h3>Get the Full SA Freelancer Business Pack</h3>
+      <p>Includes editable Quotation, Invoice &amp; Service Agreement in Word format + this calculator in Excel with a 12-month income tracker</p>
+      <a href="https://paypal.me/mrbtmkhabela/14900ZAR" class="paypal-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.076 21.337H2.47a.641.641 0 01-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 00-.607-.541c-.013.076-.026.175-.041.254-.59 3.025-2.566 6.082-8.558 6.082H9.824l-1.175 7.48H12.6c.458 0 .85-.334.922-.788l.038-.196.731-4.63.047-.255c.072-.453.463-.788.921-.788h.58c3.757 0 6.698-1.525 7.556-5.938.358-1.843.173-3.383-.773-4.68z"/></svg>
+        Purchase Now — R149
+      </a>
+      <p style="margin-top:14px;font-size:0.75rem;color:var(--text-muted)">Instant download · Secure payment · VAT invoice included</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── TOAST ── -->
+<div class="toast" id="toast">Copied to clipboard!</div>
+
+<script>
+  /* ── TAB NAVIGATION ── */
+  function showTab(name) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    event.currentTarget.classList.add('active');
+  }
+
+  /* ── PRINT ── */
+  function printDoc() {
+    window.print();
+  }
+
+  /* ── COPY TO CLIPBOARD ── */
+  function copyDoc(id) {
+    const el = document.getElementById(id);
+    const text = el.innerText || el.textContent;
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text).then(showToast);
+    } else {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      showToast();
+    }
+  }
+
+  function showToast() {
+    const t = document.getElementById('toast');
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2500);
+  }
+
+  /* ── SLIDER SYNC ── */
+  function syncSlider(slider) {
+    document.getElementById('billableDays').value = slider.value;
+    calculateRates();
+  }
+
+  /* ── RATE CALCULATOR ── */
+  function fmt(n) {
+    return 'R ' + Math.round(n).toLocaleString('en-ZA');
+  }
+
+  function calculateRates() {
+    const takeHome    = parseFloat(document.getElementById('takeHome').value) || 0;
+    const days        = parseFloat(document.getElementById('billableDays').value) || 1;
+    const taxRate     = parseFloat(document.getElementById('taxRate').value) / 100 || 0;
+    const expenses    = parseFloat(document.getElementById('bizExpenses').value) || 0;
+    const hoursPerDay = parseFloat(document.getElementById('hoursPerDay').value) || 7;
+    const bufferPct   = parseFloat(document.getElementById('bufferPct').value) / 100 || 0.2;
+
+    // Sync slider
+    document.getElementById('billableDaysSlider').value = days;
+
+    // How much gross is needed?
+    // gross × (1 - taxRate) = takeHome + expenses
+    // => gross = (takeHome + expenses) / (1 - taxRate)
+    const taxMultiplier = 1 - taxRate;
+    const gross = taxMultiplier > 0 ? (takeHome + expenses) / taxMultiplier : (takeHome + expenses);
+    const taxAmount = gross - takeHome - expenses;
+
+    const totalHours = days * hoursPerDay;
+    const dayRate    = gross / days;
+    const hourlyRate = gross / totalHours;
+    const projectDay = dayRate * (1 + bufferPct);
+    const projectHr  = hourlyRate * (1 + bufferPct);
+    const vatDayRate = projectDay * 1.15;
+
+    document.getElementById('grossRequired').textContent   = fmt(gross);
+    document.getElementById('dayRate').textContent         = fmt(dayRate);
+    document.getElementById('hourlyRate').textContent      = fmt(hourlyRate);
+    document.getElementById('projectRate').textContent     = fmt(projectDay);
+    document.getElementById('projectHourly').textContent   = fmt(projectHr);
+    document.getElementById('vatRate').textContent         = fmt(vatDayRate);
+    document.getElementById('bufferNote').textContent      = `Includes ${Math.round(bufferPct * 100)}% buffer`;
+    document.getElementById('taxSetAsideNote').textContent = Math.round(taxRate * 100) + '%';
+
+    document.getElementById('sumTakeHome').textContent   = fmt(takeHome);
+    document.getElementById('sumTax').textContent        = fmt(taxAmount);
+    document.getElementById('sumExpenses').textContent   = fmt(expenses);
+    document.getElementById('sumGross').textContent      = fmt(gross);
+    document.getElementById('sumPerDay').textContent     = fmt(dayRate);
+    document.getElementById('sumDaysHours').textContent  = `${days} days × ${hoursPerDay} hrs = ${totalHours} hrs`;
+    document.getElementById('sumAnnual').textContent     = fmt(gross * 12);
+  }
+
+  // Run on load
+  calculateRates();
+</script>
+</body>
+</html>
