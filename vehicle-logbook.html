@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SA Vehicle Logbook for SARS | Travel Deduction Tool</title>
+  <style>
+    /* =============================================
+       DESIGN TOKENS
+    ============================================= */
+    :root {
+      --bg-page:        #0f1117;
+      --bg-card:        #181c27;
+      --bg-card-hover:  #1e2335;
+      --bg-input:       #12151f;
+      --bg-input-focus: #161929;
+
+      --border:         rgba(255,255,255,0.07);
+      --border-focus:   rgba(99,179,237,0.5);
+
+      --accent:         #4f8ef7;
+      --accent-soft:    rgba(79,142,247,0.12);
+      --accent-glow:    rgba(79,142,247,0.25);
+      --green:          #34d399;
+      --green-soft:     rgba(52,211,153,0.12);
+      --amber:          #fbbf24;
+      --amber-soft:     rgba(251,191,36,0.10);
+      --red:            #f87171;
+      --red-soft:       rgba(248,113,113,0.10);
+      --purple:         #a78bfa;
+      --purple-soft:    rgba(167,139,250,0.12);
+
+      --text-primary:   #f0f4ff;
+      --text-secondary: #8b9cc8;
+      --text-muted:     #4a5578;
+
+      --radius-sm:      6px;
+      --radius-md:      12px;
+      --radius-lg:      18px;
+      --radius-xl:      24px;
+
+      --shadow-card:    0 4px 24px rgba(0,0,0,0.4);
+      --transition:     all 0.2s ease;
+
+      --sars-rate:      4.84;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* =============================================
+       LAYOUT
+    ============================================= */
+    .page-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1rem 4rem;
+    }
+
+    /* =============================================
+       HEADER
+    ============================================= */
+    .site-header {
+      background: linear-gradient(180deg, #0a0d16 0%, var(--bg-page) 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+
+    .site-header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .brand-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #4f8ef7, #6366f1);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .brand-text h1 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+
+    .brand-text p {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    /* =============================================
+       HERO BANNER
+    ============================================= */
+    .hero {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--accent-soft);
+      border: 1px solid rgba(79,142,247,0.25);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.3rem 0.75rem;
+      border-radius: 99px;
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .hero h2 {
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero h2 span {
+      background: linear-gradient(135deg, var(--accent), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* =============================================
+       CARDS
+    ============================================= */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-card);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .card-icon.blue  { background: var(--accent-soft); }
+    .card-icon.green { background: var(--green-soft); }
+    .card-icon.amber { background: var(--amber-soft); }
+    .card-icon.purple { background: var(--purple-soft); }
+
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .card-subtitle {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* =============================================
+       DASHBOARD GRID
+    ============================================= */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .stat-card {
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1rem;
+      text-align: center;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+
+    .stat-value {
+      font-size: 1.6rem;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    .stat-value.blue   { color: var(--accent); }
+    .stat-value.green  { color: var(--green); }
+    .stat-value.amber  { color: var(--amber); }
+    .stat-value.purple { color: var(--purple); }
+    .stat-value.red    { color: var(--red); }
+
+    .stat-sub {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    /* =============================================
+       PROGRESS BAR (business %)
+    ============================================= */
+    .business-bar-wrap {
+      margin-bottom: 1rem;
+    }
+
+    .business-bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.4rem;
+    }
+
+    .business-bar-track {
+      height: 8px;
+      background: var(--bg-input);
+      border-radius: 99px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .business-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--green));
+      border-radius: 99px;
+      transition: width 0.5s ease;
+      width: 0%;
+    }
+
+    /* =============================================
+       FORM
+    ============================================= */
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group.full { grid-column: 1 / -1; }
+
+    label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      letter-spacing: 0.02em;
+    }
+
+    input, select, textarea {
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      padding: 0.65rem 0.85rem;
+      outline: none;
+      transition: var(--transition);
+      font-family: inherit;
+      width: 100%;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--border-focus);
+      background: var(--bg-input-focus);
+      box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      filter: invert(0.7);
+      cursor: pointer;
+    }
+
+    select option { background: #1e2335; }
+
+    .km-display {
+      background: var(--green-soft);
+      border: 1px solid rgba(52,211,153,0.2);
+      border-radius: var(--radius-sm);
+      padding: 0.65rem 0.85rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* =============================================
+       BUTTONS
+    ============================================= */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.65rem 1.25rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: var(--transition);
+      font-family: inherit;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn-primary:hover { background: #3b76e8; transform: translateY(-1px); box-shadow: 0 4px 16px var(--accent-glow); }
+
+    .btn-success {
+      background: var(--green);
+      color: #0f1117;
+    }
+    .btn-success:hover { background: #10b981; transform: translateY(-1px); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { background: var(--bg-card-hover); color: var(--text-primary); }
+
+    .btn-danger {
+      background: var(--red-soft);
+      color: var(--red);
+      border: 1px solid rgba(248,113,113,0.2);
+      padding: 0.3rem 0.6rem;
+      font-size: 0.75rem;
+    }
+    .btn-danger:hover { background: rgba(248,113,113,0.25); }
+
+    .btn-sm { padding: 0.4rem 0.8rem; font-size: 0.8rem; }
+
+    /* =============================================
+       TABLE
+    ============================================= */
+    .table-wrapper {
+      overflow-x: auto;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+
+    thead th {
+      background: var(--bg-input);
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: var(--bg-card-hover); }
+
+    tbody td {
+      padding: 0.75rem 1rem;
+      color: var(--text-secondary);
+      vertical-align: middle;
+    }
+
+    tbody td:first-child { color: var(--text-primary); font-weight: 500; }
+
+    .purpose-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 99px;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .purpose-business { background: var(--accent-soft); color: var(--accent); }
+    .purpose-private  { background: var(--red-soft); color: var(--red); }
+    .purpose-both     { background: var(--amber-soft); color: var(--amber); }
+
+    .empty-state {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--text-muted);
+    }
+
+    .empty-state .empty-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+    .empty-state p { font-size: 0.9rem; }
+
+    /* =============================================
+       COMPLIANCE NOTE
+    ============================================= */
+    .compliance-box {
+      background: var(--amber-soft);
+      border: 1px solid rgba(251,191,36,0.2);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+    }
+
+    .compliance-box h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--amber);
+      margin-bottom: 0.65rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .compliance-box ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .compliance-box li {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .compliance-box li::before {
+      content: '✓';
+      color: var(--amber);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* =============================================
+       UPSELL
+    ============================================= */
+    .upsell-banner {
+      background: linear-gradient(135deg, rgba(79,142,247,0.08), rgba(167,139,250,0.08));
+      border: 1px solid rgba(79,142,247,0.2);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .upsell-banner .upsell-text h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .upsell-banner .upsell-text p {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+
+    .upsell-price {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    /* =============================================
+       SECTION SPACING
+    ============================================= */
+    .section { margin-bottom: 1.75rem; }
+
+    .section-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    /* =============================================
+       TOAST
+    ============================================= */
+    #toast {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: var(--green);
+      color: #0f1117;
+      padding: 0.75rem 1.25rem;
+      border-radius: var(--radius-md);
+      font-size: 0.875rem;
+      font-weight: 700;
+      box-shadow: 0 8px 32px rgba(52,211,153,0.3);
+      transform: translateY(2rem);
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 1000;
+      pointer-events: none;
+    }
+
+    #toast.show { transform: translateY(0); opacity: 1; }
+
+    /* =============================================
+       PRINT STYLES
+    ============================================= */
+    @media print {
+      body { background: #fff; color: #000; }
+      .site-header, .hero, .form-section, .upsell-banner, .btn, .header-actions { display: none !important; }
+      .card { border: 1px solid #ccc; box-shadow: none; page-break-inside: avoid; }
+      .stat-value { color: #000 !important; }
+      .purpose-business { background: #e8f4ff; color: #004aad; }
+      .purpose-private  { background: #fff0f0; color: #c00; }
+      .purpose-both     { background: #fffbe8; color: #a07000; }
+      table { font-size: 0.8rem; }
+      thead th { background: #f0f0f0; color: #333; }
+      tbody td { color: #333; }
+      .compliance-box { background: #fffbe8; border-color: #c8a000; }
+    }
+
+    /* =============================================
+       RESPONSIVE
+    ============================================= */
+    @media (max-width: 640px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .dashboard-grid { grid-template-columns: repeat(2, 1fr); }
+      .upsell-banner { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- STICKY HEADER -->
+  <header class="site-header">
+    <div class="site-header-inner">
+      <div class="brand">
+        <div class="brand-icon">🚗</div>
+        <div class="brand-text">
+          <h1>SA Vehicle Logbook</h1>
+          <p>SARS-compliant travel record · 2025/26 tax year</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="btn btn-ghost btn-sm" onclick="exportCSV()">⬇ Export CSV</button>
+        <button class="btn btn-ghost btn-sm" onclick="window.print()">🖨 Print</button>
+        <button class="btn btn-danger btn-sm" onclick="confirmClearAll()">✕ Clear All</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-wrapper">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-badge">📋 SARS Section 8(1)(b) Compliant</div>
+      <h2>Track Every Trip.<br><span>Claim Every Kilometre.</span></h2>
+      <p>Keep an accurate, SARS-approved vehicle logbook to support your travel deduction claim. All data is stored locally — nothing is sent to a server.</p>
+    </div>
+
+    <!-- SUMMARY DASHBOARD -->
+    <div class="section">
+      <div class="section-title">Summary Dashboard</div>
+      <div class="card">
+        <div class="dashboard-grid">
+          <div class="stat-card">
+            <div class="stat-label">Total Trips</div>
+            <div class="stat-value blue" id="stat-trips">0</div>
+            <div class="stat-sub">logged</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Total km</div>
+            <div class="stat-value blue" id="stat-total-km">0</div>
+            <div class="stat-sub">all trips</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Business km</div>
+            <div class="stat-value green" id="stat-biz-km">0</div>
+            <div class="stat-sub">deductible</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Private km</div>
+            <div class="stat-value red" id="stat-priv-km">0</div>
+            <div class="stat-sub">non-deductible</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Business %</div>
+            <div class="stat-value purple" id="stat-biz-pct">0%</div>
+            <div class="stat-sub">of total</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Est. Deduction</div>
+            <div class="stat-value amber" id="stat-deduction">R0</div>
+            <div class="stat-sub">@R4.84/km (SARS 2025)</div>
+          </div>
+        </div>
+        <div class="business-bar-wrap">
+          <div class="business-bar-label">
+            <span>Business use proportion</span>
+            <span id="bar-label">0%</span>
+          </div>
+          <div class="business-bar-track">
+            <div class="business-bar-fill" id="biz-bar"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRIP ENTRY FORM -->
+    <div class="section form-section">
+      <div class="section-title">Add a Trip</div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon blue">➕</div>
+          <div>
+            <div class="card-title">New Trip Entry</div>
+            <div class="card-subtitle">Fill in all fields — SARS requires complete records for each trip</div>
+          </div>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="trip-date">Date</label>
+            <input type="date" id="trip-date" required />
+          </div>
+          <div class="form-group">
+            <label for="trip-purpose">Purpose</label>
+            <select id="trip-purpose">
+              <option value="Business">Business</option>
+              <option value="Private">Private</option>
+              <option value="Both">Both (split evenly)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="trip-from">From (origin)</label>
+            <input type="text" id="trip-from" placeholder="e.g. Home — 14 Oak St, Sandton" />
+          </div>
+          <div class="form-group">
+            <label for="trip-to">To (destination)</label>
+            <input type="text" id="trip-to" placeholder="e.g. Client office — 7 Main Rd, Rosebank" />
+          </div>
+          <div class="form-group">
+            <label for="odo-start">Odometer Start (km)</label>
+            <input type="number" id="odo-start" placeholder="e.g. 45200" min="0" step="1" />
+          </div>
+          <div class="form-group">
+            <label for="odo-end">Odometer End (km)</label>
+            <input type="number" id="odo-end" placeholder="e.g. 45347" min="0" step="1" />
+          </div>
+          <div class="form-group">
+            <label>Distance (auto-calculated)</label>
+            <div class="km-display" id="km-preview">— km</div>
+          </div>
+          <div class="form-group">
+            <label for="trip-notes">Notes / Client Name (optional)</label>
+            <input type="text" id="trip-notes" placeholder="e.g. Meeting with Thabo at Investec" />
+          </div>
+        </div>
+        <div style="margin-top:1.25rem; display:flex; gap:0.75rem; flex-wrap:wrap;">
+          <button class="btn btn-primary" onclick="addTrip()">+ Add Trip</button>
+          <button class="btn btn-ghost" onclick="clearForm()">Clear Form</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRIP LOG TABLE -->
+    <div class="section">
+      <div class="section-title">Trip Log</div>
+      <div class="card" style="padding: 0;">
+        <div class="table-wrapper">
+          <table id="trip-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Purpose</th>
+                <th>Odo Start</th>
+                <th>Odo End</th>
+                <th>km</th>
+                <th>Notes</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="trip-tbody">
+              <tr>
+                <td colspan="9">
+                  <div class="empty-state">
+                    <div class="empty-icon">🗺️</div>
+                    <p>No trips logged yet. Add your first trip above.</p>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPLIANCE NOTE -->
+    <div class="section">
+      <div class="section-title">SARS Compliance Requirements</div>
+      <div class="compliance-box">
+        <h3>⚠️ What SARS requires in your vehicle logbook</h3>
+        <ul>
+          <li>Date of each trip</li>
+          <li>Starting point (origin address or description)</li>
+          <li>Ending point (destination address or description)</li>
+          <li>Purpose of the trip (business or private)</li>
+          <li>Odometer reading at the start of the trip</li>
+          <li>Odometer reading at the end of the trip</li>
+          <li>Total kilometres travelled per trip</li>
+          <li>Opening odometer on 1 March and closing odometer on 28/29 February for the full tax year</li>
+          <li>Records must be kept for 5 years after the tax return is submitted (s73 TAA)</li>
+          <li>The 2025 SARS deemed cost rate is <strong>R4.84 per km</strong> for vehicles up to 3,500kg (ITR12 source code 3701/3702)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- UPSELL -->
+    <div class="section">
+      <div class="upsell-banner">
+        <div class="upsell-text">
+          <h3>🚀 Unlock the full SA Business Toolkit</h3>
+          <p>Get the SA Business Startup Checklist, SARS Tax Calculator, BBBEE Affidavit Guide and more — all in one purchase.</p>
+        </div>
+        <div style="display:flex; align-items:center; gap:1.25rem; flex-wrap:wrap;">
+          <div class="upsell-price">R79</div>
+          <a href="https://paypal.me/mrbtmkhabela/7900ZAR" class="btn btn-primary">Buy Now · PayPal</a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end page-wrapper -->
+
+  <div id="toast">Trip added!</div>
+
+  <script>
+    // =============================================
+    // STATE
+    // =============================================
+    const STORAGE_KEY = 'sa_vehicle_logbook_v1';
+    const SARS_RATE   = 4.84; // R per km, 2025 tax year
+
+    let trips = [];
+
+    function loadTrips() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) trips = JSON.parse(raw);
+      } catch (e) {
+        trips = [];
+      }
+    }
+
+    function saveTrips() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(trips));
+    }
+
+    // =============================================
+    // FORM LOGIC
+    // =============================================
+    function setDefaultDate() {
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('trip-date').value = today;
+    }
+
+    function updateKmPreview() {
+      const start = parseFloat(document.getElementById('odo-start').value);
+      const end   = parseFloat(document.getElementById('odo-end').value);
+      const el    = document.getElementById('km-preview');
+
+      if (!isNaN(start) && !isNaN(end) && end > start) {
+        el.textContent = (end - start).toFixed(1) + ' km';
+      } else if (!isNaN(start) && !isNaN(end) && end <= start) {
+        el.textContent = '⚠ End must be greater than start';
+        el.style.color = 'var(--red)';
+        return;
+      } else {
+        el.textContent = '— km';
+      }
+      el.style.color = 'var(--green)';
+    }
+
+    document.getElementById('odo-start').addEventListener('input', updateKmPreview);
+    document.getElementById('odo-end').addEventListener('input', updateKmPreview);
+
+    function addTrip() {
+      const date    = document.getElementById('trip-date').value;
+      const from    = document.getElementById('trip-from').value.trim();
+      const to      = document.getElementById('trip-to').value.trim();
+      const purpose = document.getElementById('trip-purpose').value;
+      const odoS    = parseFloat(document.getElementById('odo-start').value);
+      const odoE    = parseFloat(document.getElementById('odo-end').value);
+      const notes   = document.getElementById('trip-notes').value.trim();
+
+      if (!date || !from || !to) {
+        alert('Please fill in date, from, and to fields.');
+        return;
+      }
+      if (isNaN(odoS) || isNaN(odoE)) {
+        alert('Please enter valid odometer readings.');
+        return;
+      }
+      if (odoE <= odoS) {
+        alert('Odometer end must be greater than odometer start.');
+        return;
+      }
+
+      const km = parseFloat((odoE - odoS).toFixed(1));
+
+      const trip = {
+        id: Date.now(),
+        date,
+        from,
+        to,
+        purpose,
+        odoStart: odoS,
+        odoEnd: odoE,
+        km,
+        notes
+      };
+
+      trips.push(trip);
+      saveTrips();
+      renderTable();
+      updateDashboard();
+      clearForm();
+      showToast('✓ Trip added!');
+    }
+
+    function clearForm() {
+      document.getElementById('trip-from').value    = '';
+      document.getElementById('trip-to').value      = '';
+      document.getElementById('odo-start').value    = '';
+      document.getElementById('odo-end').value      = '';
+      document.getElementById('trip-notes').value   = '';
+      document.getElementById('trip-purpose').value = 'Business';
+      document.getElementById('km-preview').textContent = '— km';
+      setDefaultDate();
+    }
+
+    function deleteTrip(id) {
+      if (!confirm('Delete this trip?')) return;
+      trips = trips.filter(t => t.id !== id);
+      saveTrips();
+      renderTable();
+      updateDashboard();
+    }
+
+    function confirmClearAll() {
+      if (!confirm('Delete ALL trips? This cannot be undone.')) return;
+      trips = [];
+      saveTrips();
+      renderTable();
+      updateDashboard();
+    }
+
+    // =============================================
+    // RENDER TABLE
+    // =============================================
+    function formatDate(iso) {
+      const [y, m, d] = iso.split('-');
+      return `${d}/${m}/${y}`;
+    }
+
+    function purposeBadge(p) {
+      const cls = p === 'Business' ? 'purpose-business'
+                : p === 'Private'  ? 'purpose-private'
+                : 'purpose-both';
+      return `<span class="purpose-badge ${cls}">${p}</span>`;
+    }
+
+    function renderTable() {
+      const tbody = document.getElementById('trip-tbody');
+      if (trips.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="9">
+          <div class="empty-state">
+            <div class="empty-icon">🗺️</div>
+            <p>No trips logged yet. Add your first trip above.</p>
+          </div></td></tr>`;
+        return;
+      }
+
+      const sorted = [...trips].sort((a, b) => b.date.localeCompare(a.date));
+
+      tbody.innerHTML = sorted.map(t => `
+        <tr>
+          <td>${formatDate(t.date)}</td>
+          <td title="${escHtml(t.from)}">${truncate(escHtml(t.from), 28)}</td>
+          <td title="${escHtml(t.to)}">${truncate(escHtml(t.to), 28)}</td>
+          <td>${purposeBadge(t.purpose)}</td>
+          <td>${t.odoStart.toLocaleString('en-ZA')}</td>
+          <td>${t.odoEnd.toLocaleString('en-ZA')}</td>
+          <td><strong>${t.km.toLocaleString('en-ZA')}</strong></td>
+          <td style="color:var(--text-muted); font-size:0.8rem;">${escHtml(t.notes || '—')}</td>
+          <td><button class="btn btn-danger" onclick="deleteTrip(${t.id})">✕</button></td>
+        </tr>
+      `).join('');
+    }
+
+    function escHtml(s) {
+      return String(s)
+        .replace(/&/g,'&amp;')
+        .replace(/</g,'&lt;')
+        .replace(/>/g,'&gt;')
+        .replace(/"/g,'&quot;');
+    }
+
+    function truncate(s, n) {
+      return s.length > n ? s.substring(0, n) + '…' : s;
+    }
+
+    // =============================================
+    // DASHBOARD
+    // =============================================
+    function updateDashboard() {
+      let totalKm  = 0;
+      let bizKm    = 0;
+      let privKm   = 0;
+
+      trips.forEach(t => {
+        totalKm += t.km;
+        if (t.purpose === 'Business') {
+          bizKm += t.km;
+        } else if (t.purpose === 'Private') {
+          privKm += t.km;
+        } else { // Both
+          bizKm  += t.km / 2;
+          privKm += t.km / 2;
+        }
+      });
+
+      const bizPct   = totalKm > 0 ? Math.round((bizKm / totalKm) * 100) : 0;
+      const deduction = (bizKm * SARS_RATE).toFixed(2);
+
+      document.getElementById('stat-trips').textContent    = trips.length;
+      document.getElementById('stat-total-km').textContent = totalKm.toFixed(0);
+      document.getElementById('stat-biz-km').textContent   = bizKm.toFixed(0);
+      document.getElementById('stat-priv-km').textContent  = privKm.toFixed(0);
+      document.getElementById('stat-biz-pct').textContent  = bizPct + '%';
+      document.getElementById('stat-deduction').textContent = 'R' + parseFloat(deduction).toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+      document.getElementById('biz-bar').style.width = bizPct + '%';
+      document.getElementById('bar-label').textContent = bizPct + '%';
+    }
+
+    // =============================================
+    // EXPORT CSV
+    // =============================================
+    function exportCSV() {
+      if (trips.length === 0) {
+        alert('No trips to export.');
+        return;
+      }
+
+      const headers = ['Date','From','To','Purpose','Odometer Start','Odometer End','Distance (km)','Notes','Business km','Private km'];
+
+      const rows = trips
+        .slice()
+        .sort((a, b) => a.date.localeCompare(b.date))
+        .map(t => {
+          const biz  = t.purpose === 'Business' ? t.km : t.purpose === 'Private' ? 0 : t.km / 2;
+          const priv = t.purpose === 'Private'  ? t.km : t.purpose === 'Business' ? 0 : t.km / 2;
+          return [
+            formatDate(t.date),
+            t.from,
+            t.to,
+            t.purpose,
+            t.odoStart,
+            t.odoEnd,
+            t.km,
+            t.notes || '',
+            biz.toFixed(1),
+            priv.toFixed(1)
+          ].map(v => `"${String(v).replace(/"/g, '""')}"`).join(',');
+        });
+
+      // Summary rows
+      let totalKm = 0, bizKm = 0, privKm = 0;
+      trips.forEach(t => {
+        totalKm += t.km;
+        bizKm   += t.purpose === 'Business' ? t.km : t.purpose === 'Private' ? 0 : t.km / 2;
+        privKm  += t.purpose === 'Private'  ? t.km : t.purpose === 'Business' ? 0 : t.km / 2;
+      });
+
+      const summaryBlank = Array(8).fill('""').join(',');
+      rows.push('');
+      rows.push(`"SUMMARY","","","","","","Total km","","Business km","Private km"`);
+      rows.push(`"","","","","","","${totalKm.toFixed(0)}","","${bizKm.toFixed(0)}","${privKm.toFixed(0)}"`);
+      rows.push(`"","","","","","","Estimated deduction","","R${(bizKm * SARS_RATE).toFixed(2)} @ R${SARS_RATE}/km",""`);
+
+      const csvContent = [headers.map(h => `"${h}"`).join(','), ...rows].join('\n');
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url  = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      const year = new Date().getFullYear();
+      link.href     = url;
+      link.download = `vehicle_logbook_${year}.csv`;
+      link.click();
+      URL.revokeObjectURL(url);
+      showToast('✓ CSV exported!');
+    }
+
+    // =============================================
+    // TOAST
+    // =============================================
+    function showToast(msg) {
+      const el = document.getElementById('toast');
+      el.textContent = msg;
+      el.classList.add('show');
+      setTimeout(() => el.classList.remove('show'), 2800);
+    }
+
+    // =============================================
+    // INIT
+    // =============================================
+    loadTrips();
+    setDefaultDate();
+    renderTable();
+    updateDashboard();
+  </script>
+</body>
+</html>

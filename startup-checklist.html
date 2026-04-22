@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SA Business Startup Checklist | Register &amp; Launch in South Africa</title>
+  <style>
+    /* =============================================
+       DESIGN TOKENS
+    ============================================= */
+    :root {
+      --bg-page:        #0f1117;
+      --bg-card:        #181c27;
+      --bg-card-hover:  #1e2335;
+      --bg-input:       #12151f;
+      --bg-input-focus: #161929;
+
+      --border:         rgba(255,255,255,0.07);
+      --border-focus:   rgba(99,179,237,0.5);
+
+      --accent:         #4f8ef7;
+      --accent-soft:    rgba(79,142,247,0.12);
+      --accent-glow:    rgba(79,142,247,0.25);
+      --green:          #34d399;
+      --green-soft:     rgba(52,211,153,0.12);
+      --amber:          #fbbf24;
+      --amber-soft:     rgba(251,191,36,0.10);
+      --red:            #f87171;
+      --red-soft:       rgba(248,113,113,0.10);
+      --purple:         #a78bfa;
+      --purple-soft:    rgba(167,139,250,0.12);
+      --teal:           #2dd4bf;
+      --teal-soft:      rgba(45,212,191,0.12);
+      --pink:           #f472b6;
+      --pink-soft:      rgba(244,114,182,0.12);
+      --orange:         #fb923c;
+      --orange-soft:    rgba(251,146,60,0.12);
+
+      --text-primary:   #f0f4ff;
+      --text-secondary: #8b9cc8;
+      --text-muted:     #4a5578;
+
+      --radius-sm:      6px;
+      --radius-md:      12px;
+      --radius-lg:      18px;
+      --radius-xl:      24px;
+
+      --shadow-card:    0 4px 24px rgba(0,0,0,0.4);
+      --transition:     all 0.2s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* =============================================
+       HEADER
+    ============================================= */
+    .site-header {
+      background: linear-gradient(180deg, #0a0d16 0%, var(--bg-page) 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+
+    .site-header-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .brand-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #34d399, #4f8ef7);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .brand-text h1 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+
+    .brand-text p {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    /* =============================================
+       LAYOUT
+    ============================================= */
+    .page-wrapper {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 1rem 4rem;
+    }
+
+    /* =============================================
+       HERO
+    ============================================= */
+    .hero {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--green-soft);
+      border: 1px solid rgba(52,211,153,0.25);
+      color: var(--green);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.3rem 0.75rem;
+      border-radius: 99px;
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .hero h2 {
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero h2 span {
+      background: linear-gradient(135deg, var(--green), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* =============================================
+       PROGRESS BAR
+    ============================================= */
+    .progress-section {
+      margin-bottom: 1.75rem;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.65rem;
+    }
+
+    .progress-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+    }
+
+    .progress-pct {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--green);
+    }
+
+    .progress-track {
+      height: 10px;
+      background: var(--bg-input);
+      border-radius: 99px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--green), var(--accent));
+      border-radius: 99px;
+      transition: width 0.4s ease;
+      width: 0%;
+    }
+
+    .progress-sub {
+      margin-top: 0.4rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-align: right;
+    }
+
+    /* =============================================
+       TABS
+    ============================================= */
+    .tabs-nav {
+      display: flex;
+      gap: 0.35rem;
+      overflow-x: auto;
+      padding-bottom: 0.25rem;
+      margin-bottom: 1.5rem;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+
+    .tabs-nav::-webkit-scrollbar { height: 4px; }
+    .tabs-nav::-webkit-scrollbar-track { background: transparent; }
+    .tabs-nav::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    .tab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-muted);
+      transition: var(--transition);
+      white-space: nowrap;
+      font-family: inherit;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-secondary);
+      background: var(--bg-card-hover);
+    }
+
+    .tab-btn.active {
+      background: var(--accent-soft);
+      border-color: rgba(79,142,247,0.3);
+      color: var(--accent);
+    }
+
+    .tab-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 18px;
+      height: 18px;
+      padding: 0 4px;
+      border-radius: 99px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      background: var(--bg-input);
+      color: var(--text-muted);
+    }
+
+    .tab-btn.active .tab-badge {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* =============================================
+       CHECKLIST PANEL
+    ============================================= */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .panel-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-card);
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .panel-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .panel-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .panel-desc {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      margin-top: 0.2rem;
+    }
+
+    /* =============================================
+       CHECKLIST ITEMS
+    ============================================= */
+    .checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .check-item {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 0.85rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .check-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .check-item:first-child { padding-top: 0; }
+
+    .check-item:hover .check-body { opacity: 1; }
+
+    /* Checkbox */
+    .check-box {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      border: 2px solid var(--border-focus);
+      background: var(--bg-input);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .check-box .tick {
+      opacity: 0;
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 900;
+      transition: opacity 0.15s ease;
+    }
+
+    .check-item.done .check-box {
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    .check-item.done .check-box .tick { opacity: 1; }
+
+    .check-item.done .check-label {
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+
+    .check-item.done .check-why { opacity: 0.5; }
+
+    /* Body */
+    .check-body { opacity: 0.85; }
+
+    .check-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.4;
+      margin-bottom: 0.2rem;
+    }
+
+    .check-desc {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.3rem;
+      line-height: 1.5;
+    }
+
+    .check-why {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .check-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.72rem;
+      color: var(--accent);
+      text-decoration: none;
+      margin-top: 0.2rem;
+    }
+
+    .check-link:hover { text-decoration: underline; }
+
+    /* =============================================
+       SECTION DIVIDERS IN CHECKLIST
+    ============================================= */
+    .checklist-section-heading {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      padding: 1rem 0 0.25rem;
+      border-top: 1px solid var(--border);
+      margin-top: 0.5rem;
+    }
+
+    .checklist-section-heading:first-child {
+      border-top: none;
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    /* =============================================
+       BANK COMPARISON
+    ============================================= */
+    .bank-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .bank-card {
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.1rem;
+    }
+
+    .bank-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .bank-fee {
+      font-size: 0.75rem;
+      background: var(--amber-soft);
+      color: var(--amber);
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+
+    .bank-docs {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .bank-docs li {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    .bank-docs li::before {
+      content: '›';
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* =============================================
+       TOOLTIP / NOTE BOXES
+    ============================================= */
+    .note-box {
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+      font-size: 0.82rem;
+    }
+
+    .note-box.amber {
+      background: var(--amber-soft);
+      border: 1px solid rgba(251,191,36,0.2);
+      color: var(--text-secondary);
+    }
+
+    .note-box.blue {
+      background: var(--accent-soft);
+      border: 1px solid rgba(79,142,247,0.2);
+      color: var(--text-secondary);
+    }
+
+    .note-box.green {
+      background: var(--green-soft);
+      border: 1px solid rgba(52,211,153,0.2);
+      color: var(--text-secondary);
+    }
+
+    .note-box strong { color: var(--text-primary); }
+
+    /* =============================================
+       BUTTONS
+    ============================================= */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.65rem 1.25rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: var(--transition);
+      font-family: inherit;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn-primary:hover { background: #3b76e8; transform: translateY(-1px); box-shadow: 0 4px 16px var(--accent-glow); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { background: var(--bg-card-hover); color: var(--text-primary); }
+    .btn-sm { padding: 0.4rem 0.8rem; font-size: 0.78rem; }
+
+    /* =============================================
+       UPSELL
+    ============================================= */
+    .upsell-banner {
+      background: linear-gradient(135deg, rgba(52,211,153,0.07), rgba(79,142,247,0.07));
+      border: 1px solid rgba(52,211,153,0.2);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 1.75rem;
+    }
+
+    .upsell-text h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .upsell-text p {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+
+    .upsell-price {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--green);
+      white-space: nowrap;
+    }
+
+    /* =============================================
+       SECTION SPACING
+    ============================================= */
+    .section { margin-bottom: 1.75rem; }
+
+    .section-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    /* =============================================
+       RESET BUTTON
+    ============================================= */
+    .reset-row {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 1rem;
+    }
+
+    /* =============================================
+       TOAST
+    ============================================= */
+    #toast {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: var(--green);
+      color: #0f1117;
+      padding: 0.75rem 1.25rem;
+      border-radius: var(--radius-md);
+      font-size: 0.875rem;
+      font-weight: 700;
+      box-shadow: 0 8px 32px rgba(52,211,153,0.3);
+      transform: translateY(2rem);
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 1000;
+      pointer-events: none;
+    }
+    #toast.show { transform: translateY(0); opacity: 1; }
+
+    /* =============================================
+       RESPONSIVE
+    ============================================= */
+    @media (max-width: 640px) {
+      .tabs-nav { gap: 0.25rem; }
+      .tab-btn { padding: 0.45rem 0.7rem; font-size: 0.75rem; }
+      .upsell-banner { flex-direction: column; text-align: center; }
+      .bank-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- STICKY HEADER -->
+  <header class="site-header">
+    <div class="site-header-inner">
+      <div class="brand">
+        <div class="brand-icon">🚀</div>
+        <div class="brand-text">
+          <h1>SA Business Startup Checklist</h1>
+          <p>Register and launch a business in South Africa · 2025</p>
+        </div>
+      </div>
+      <div style="display:flex;gap:0.5rem;align-items:center;">
+        <button class="btn btn-ghost btn-sm" onclick="resetAll()">↺ Reset</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-wrapper">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-badge">📋 8 Sections · 60+ Action Items</div>
+      <h2>From idea to trading.<br><span>Every step covered.</span></h2>
+      <p>A comprehensive, interactive guide to registering and launching a small business in South Africa. Tick items off as you complete them — progress is saved locally.</p>
+    </div>
+
+    <!-- PROGRESS BAR -->
+    <div class="progress-section">
+      <div class="progress-header">
+        <div class="progress-label">Overall Progress</div>
+        <div class="progress-pct" id="pct-label">0%</div>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+      <div class="progress-sub" id="progress-sub">0 of 0 items complete</div>
+    </div>
+
+    <!-- TABS NAV -->
+    <div class="tabs-nav" id="tabs-nav">
+      <!-- injected by JS -->
+    </div>
+
+    <!-- TAB PANELS -->
+    <div id="panels-container">
+      <!-- injected by JS -->
+    </div>
+
+    <!-- UPSELL -->
+    <div class="upsell-banner">
+      <div class="upsell-text">
+        <h3>📄 Want the Vehicle Logbook &amp; Tax Calculator too?</h3>
+        <p>Get the full SA Business Toolkit — logbook, SARS tax calculator, BBBEE affidavit guide and this checklist in one download.</p>
+      </div>
+      <div style="display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap;">
+        <div class="upsell-price">R99</div>
+        <a href="https://paypal.me/mrbtmkhabela/9900ZAR" class="btn btn-primary">Buy Now · PayPal</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="toast">Progress saved!</div>
+
+  <script>
+    // =============================================
+    // DATA — sections and checklist items
+    // =============================================
+    const STORAGE_KEY = 'sa_startup_checklist_v1';
+
+    const SECTIONS = [
+      {
+        id: 'cipc',
+        label: 'CIPC Registration',
+        icon: '🏛️',
+        iconBg: 'background:var(--accent-soft)',
+        color: 'var(--accent)',
+        desc: 'Register your company with the Companies and Intellectual Property Commission.',
+        items: [
+          {
+            id: 'cipc-1',
+            label: 'Reserve a company name (CoR9.1)',
+            desc: 'Search the CIPC name database to confirm availability, then submit a name reservation. Names must not be deceptively similar to existing registered names.',
+            why: 'You cannot file incorporation docs without a reserved name.',
+            link: 'https://www.cipc.co.za/index.php/register-your-business/companies/name-reservation/',
+            linkText: 'CIPC name reservation guide'
+          },
+          {
+            id: 'cipc-2',
+            label: 'Decide company type: (Pty) Ltd vs NPC vs CC',
+            desc: 'Most small businesses should register a Private Company — (RF) Pty Ltd. Non-profit companies (NPC) suit charities; Close Corporations are legacy entities. You cannot register a new CC.',
+            why: 'Entity type affects tax, liability, and compliance obligations.'
+          },
+          {
+            id: 'cipc-3',
+            label: 'Prepare Memorandum of Incorporation (MOI)',
+            desc: 'A standard MOI is provided by CIPC (Form CoR15.1A for Pty Ltd). Customise only if your shareholders require special provisions. CIPC charges extra for custom MOIs.',
+            why: 'The MOI is your company\'s constitution — it governs director powers, share classes, and meetings.',
+            link: 'https://www.cipc.co.za/index.php/register-your-business/companies/register-a-new-company/',
+            linkText: 'CIPC company registration portal'
+          },
+          {
+            id: 'cipc-4',
+            label: 'Gather certified ID copies for all directors',
+            desc: 'South African directors: certified copy of SA ID. Foreign nationals: certified copy of passport. Certification must be within 3 months.',
+            why: 'CIPC will reject your application if ID documents are missing or expired.'
+          },
+          {
+            id: 'cipc-5',
+            label: 'Confirm your registered office address',
+            desc: 'This must be a physical address in South Africa (not a P.O. Box). Can be a home address, virtual office, or commercial premises. CIPC correspondence goes here.',
+            why: 'Legal notices are served at the registered address — an incorrect address can cause you to miss critical compliance deadlines.'
+          },
+          {
+            id: 'cipc-6',
+            label: 'Decide on share structure (initial share allocation)',
+            desc: 'Determine the number of authorised shares, par value (or no par value), and how shares are initially distributed among founders. Standard is 1,000 ordinary no-par-value shares.',
+            why: 'Share structure determines ownership percentages and future fundraising flexibility.'
+          },
+          {
+            id: 'cipc-7',
+            label: 'Submit registration via CIPC eServices',
+            desc: 'Create an account on bizportal.gov.za or the CIPC eServices portal, complete Form CoR14.1 (Notice of incorporation), attach the MOI and ID documents, and pay the registration fee (R175 for standard Pty Ltd).',
+            why: 'No registration = no legal business entity. You trade illegally without it.',
+            link: 'https://www.cipc.co.za/index.php/register-your-business/companies/register-a-new-company/',
+            linkText: 'CIPC eServices portal'
+          },
+          {
+            id: 'cipc-8',
+            label: 'Collect your COR14.3 Certificate of Incorporation',
+            desc: 'Once approved (typically 5–10 business days online), download your CoR14.3. This is proof that your company legally exists. Store it securely.',
+            why: 'Banks, SARS, and suppliers require this certificate to verify your entity.'
+          },
+          {
+            id: 'cipc-9',
+            label: 'Set annual return reminder (12 months from incorporation)',
+            desc: 'All registered companies must file annual returns and pay annual fees to CIPC within 30 days of the anniversary of incorporation. Failure = deregistration.',
+            why: 'A deregistered company has no legal standing — contracts, accounts and licences become invalid.',
+            link: 'https://www.cipc.co.za/index.php/annual-returns/',
+            linkText: 'CIPC annual returns info'
+          }
+        ]
+      },
+      {
+        id: 'sars',
+        label: 'SARS Registration',
+        icon: '🧾',
+        iconBg: 'background:var(--amber-soft)',
+        color: 'var(--amber)',
+        desc: 'Register for all applicable taxes with the South African Revenue Service.',
+        items: [
+          {
+            id: 'sars-1',
+            label: 'Register for Income Tax (Company)',
+            desc: 'Within 60 days of incorporation, register your company for income tax on eFiling (efiling.sars.gov.za). You will receive an Income Tax Reference Number (starts with 9).',
+            why: 'Companies are legally required to file annual tax returns and pay corporate income tax at 27%.',
+            link: 'https://www.sars.gov.za/businesses-and-employers/registering-for-income-tax/',
+            linkText: 'SARS eFiling registration'
+          },
+          {
+            id: 'sars-2',
+            label: 'Register for VAT (if annual turnover > R1 million)',
+            desc: 'Compulsory VAT registration applies once your taxable turnover exceeds R1m in any 12-month period. Voluntary registration is allowed from R50,000 turnover. VAT period is typically every 2 months.',
+            why: 'Unregistered businesses cannot charge or reclaim VAT — this is a compliance risk and locks you out of corporate supply chains.',
+            link: 'https://www.sars.gov.za/types-of-tax/value-added-tax/',
+            linkText: 'SARS VAT information'
+          },
+          {
+            id: 'sars-3',
+            label: 'Register as an Employer for PAYE (if you hire staff)',
+            desc: 'Register on eFiling as an employer using form EMP101e. Once registered, you must deduct Pay-As-You-Earn (PAYE) from employees\' salaries and remit to SARS monthly (EMP201).',
+            why: 'Failing to register as an employer and pay over PAYE makes you personally liable for the tax owed.'
+          },
+          {
+            id: 'sars-4',
+            label: 'Register for UIF (Unemployment Insurance Fund)',
+            desc: 'Register with the Department of Employment and Labour (or via SARS if you registered for PAYE). Contribution: 1% employer + 1% employee of gross remuneration, capped at R17,712/month earnings.',
+            why: 'Non-registration is a criminal offence under the UIF Act.',
+            link: 'https://www.labour.gov.za/uif',
+            linkText: 'DoEL UIF registration'
+          },
+          {
+            id: 'sars-5',
+            label: 'Register for SDL (Skills Development Levy) if payroll > R500k/year',
+            desc: 'If your annual payroll exceeds R500,000, you must register and pay SDL at 1% of total leviable remuneration monthly alongside PAYE/UIF on EMP201.',
+            why: 'SDL-registered employers can claim back up to 20% of their levy through their SETA (Sector Education and Training Authority) for approved training.'
+          },
+          {
+            id: 'sars-6',
+            label: 'Set up eFiling profile for company and appoint a tax representative',
+            desc: 'Create or link the company\'s eFiling profile. Designate a tax representative (usually a director or accountant). Ensure you can submit EMP201, VAT201, and ITR14 returns.',
+            why: 'eFiling is mandatory for companies — all returns must be submitted electronically.',
+            link: 'https://www.sars.gov.za/individuals/efiling/',
+            linkText: 'SARS eFiling portal'
+          }
+        ]
+      },
+      {
+        id: 'banking',
+        label: 'Banking',
+        icon: '🏦',
+        iconBg: 'background:var(--green-soft)',
+        color: 'var(--green)',
+        desc: 'Open a dedicated business bank account — never mix business and personal finances.',
+        items: [
+          {
+            id: 'bank-0',
+            label: 'Open a dedicated business bank account',
+            desc: 'South African law does not always require a separate account, but SARS audits and investor due diligence demand clean financial records. Choose a bank that suits your transaction volume and fees.',
+            why: 'Mixing personal and business funds is the number one mistake that triggers SARS scrutiny and complicates bookkeeping.'
+          }
+        ],
+        extra: 'banks'
+      },
+      {
+        id: 'bbbee',
+        label: 'BBBEE',
+        icon: '📊',
+        iconBg: 'background:var(--purple-soft)',
+        color: 'var(--purple)',
+        desc: 'Broad-Based Black Economic Empowerment status and affidavit requirements.',
+        items: [
+          {
+            id: 'bbbee-1',
+            label: 'Determine your BBBEE category',
+            desc: 'EME (Exempt Micro Enterprise): annual turnover < R10 million. QSE (Qualifying Small Enterprise): R10m – R50m. Generic: above R50m. EMEs automatically qualify as Level 4 contributors (or Level 1 if ≥51% black-owned).',
+            why: 'Your BBBEE level directly affects your ability to win government and corporate contracts.'
+          },
+          {
+            id: 'bbbee-2',
+            label: 'Obtain an EME Affidavit (if turnover < R10m)',
+            desc: 'As an EME, you do not need a full BBBEE verification certificate. Instead, obtain a sworn affidavit from a Commissioner of Oaths (a SAPS officer, magistrate, or notary public) confirming your turnover and black ownership percentage. Template is available from the dtic.gov.za.',
+            why: 'An EME affidavit costs nothing (except notarisation) and is legally equivalent to a full BBBEE certificate at this stage.',
+            link: 'https://www.dtic.gov.za/economic-empowerment/broad-based-black-economic-empowerment/',
+            linkText: 'DTIC BBBEE information'
+          },
+          {
+            id: 'bbbee-3',
+            label: 'Have the affidavit signed before a Commissioner of Oaths',
+            desc: 'Take the completed affidavit and your CoR14.3, ID document, and latest financial statements (or projected turnover if new business) to your nearest SAPS station, magistrates\' court, or notary. Do not sign before them — sign in front of them.',
+            why: 'An unsigned or incorrectly witnessed affidavit is invalid and will be rejected by procurement officers.'
+          },
+          {
+            id: 'bbbee-4',
+            label: 'Set an annual affidavit renewal reminder',
+            desc: 'EME affidavits are valid for 12 months. Diarise a renewal each year before expiry. If your turnover crosses R10m, you will need a verified BBBEE certificate from an accredited agency.',
+            why: 'An expired affidavit means you cannot bid on contracts until it is renewed — this can cost you significant revenue.'
+          },
+          {
+            id: 'bbbee-5',
+            label: 'Upload BBBEE affidavit to CSD (Central Supplier Database)',
+            desc: 'Register on the National Treasury\'s Supplier Portal (csd.gov.za) and upload your BBBEE affidavit and CoR14.3. This is required to supply government departments and many SOEs.',
+            why: 'Without a CSD profile, you are invisible to government buyers.',
+            link: 'https://www.csd.gov.za/',
+            linkText: 'Central Supplier Database portal'
+          }
+        ]
+      },
+      {
+        id: 'compliance',
+        label: 'Licences & Compliance',
+        icon: '📜',
+        iconBg: 'background:var(--teal-soft)',
+        color: 'var(--teal)',
+        desc: 'Municipal trading licences, health certificates, and industry-specific permits.',
+        items: [
+          {
+            id: 'comp-1',
+            label: 'Determine if a municipal business licence is required',
+            desc: 'Under the Business Act 71 of 1991, most businesses operating from commercial premises in a municipality need a business licence. Apply at your local municipality. Requirements vary — contact your metro\'s Business Licensing office.',
+            why: 'Trading without a required licence is a criminal offence and can result in your premises being closed.'
+          },
+          {
+            id: 'comp-2',
+            label: 'Obtain a health certificate (if serving food or drink)',
+            desc: 'Food businesses require a Certificate of Acceptability (CoA) from your local municipality\'s Environmental Health Department. Inspections are required annually. Premises must comply with Regulation R638 (Food Hygiene).',
+            why: 'Selling food without a CoA exposes you to immediate shutdown and personal liability.'
+          },
+          {
+            id: 'comp-3',
+            label: 'Obtain a liquor licence (if selling alcohol)',
+            desc: 'Apply to your provincial liquor board. Requires zoning compliance, structural assessment, criminal clearance for all directors, and a 21-day public objection period. Processing takes 60–180 days.',
+            why: 'Selling liquor without a licence is a criminal offence punishable by imprisonment.'
+          },
+          {
+            id: 'comp-4',
+            label: 'Check for industry-specific licences (financial, health, security, transport)',
+            desc: 'Financial services: FSP licence (FSCA). Healthcare: HPCSA / DHA registration. Security: PSIRA registration. Transport: Operating licence from PRASA or provincial authority. Construction: CIDB grading. Check your sector regulator.',
+            why: 'Industry regulations exist to protect consumers — non-compliance is the fastest way to lose your business.'
+          },
+          {
+            id: 'comp-5',
+            label: 'Register with COIDA (Compensation for Occupational Injuries & Diseases)',
+            desc: 'If you employ staff, register with the Compensation Fund (Department of Labour). Pay an annual assessment based on your payroll. This covers employees injured on duty.',
+            why: 'Failure to register means you are personally liable for medical costs and compensation for any workplace injury.',
+            link: 'https://www.labour.gov.za/coida',
+            linkText: 'COIDA information'
+          },
+          {
+            id: 'comp-6',
+            label: 'Display required notices in the workplace',
+            desc: 'Post these where staff can see them: Basic Conditions of Employment Act notice, UIF notice (UI19), Health and Safety notice (Section 17 OHSA), and your COIDA registration certificate.',
+            why: 'Failure to display required notices is a violation of the BCEA and OHSA — inspectors can issue compliance orders on the spot.'
+          }
+        ]
+      },
+      {
+        id: 'insurance',
+        label: 'Insurance',
+        icon: '🛡️',
+        iconBg: 'background:var(--red-soft)',
+        color: 'var(--red)',
+        desc: 'Protect your business, assets, and reputation with the right insurance products.',
+        items: [
+          {
+            id: 'ins-1',
+            label: 'Public Liability Insurance',
+            desc: 'Covers claims from third parties for bodily injury or property damage caused by your business operations. Required by many commercial landlords and corporate clients before you can set foot on site.',
+            why: 'A single personal injury claim can exceed R1 million in legal costs and damages — public liability is non-negotiable for any client-facing business.'
+          },
+          {
+            id: 'ins-2',
+            label: 'Professional Indemnity (PI) Insurance',
+            desc: 'Covers you against claims of negligence, errors, or omissions in your professional services. Essential for consultants, accountants, IT professionals, lawyers, engineers, and designers.',
+            why: 'A disgruntled client claiming your advice cost them money can sue you for millions — PI insurance covers legal defence costs and settlements.'
+          },
+          {
+            id: 'ins-3',
+            label: 'Business Asset / All-Risk Insurance',
+            desc: 'Covers computers, equipment, stock, and business contents against theft, fire, flood, and accidental damage. Ensure your sum insured reflects replacement value, not book value.',
+            why: 'Replacing stolen or damaged equipment out of pocket can destroy a small business cash flow overnight.'
+          },
+          {
+            id: 'ins-4',
+            label: 'Business Interruption Insurance',
+            desc: 'Covers loss of income and fixed costs (rent, salaries) if your business cannot trade due to a covered event (fire, flood, load-shedding damage). Typically sold alongside assets insurance.',
+            why: 'Most small businesses cannot survive more than 3 months without income — business interruption cover bridges that gap.'
+          },
+          {
+            id: 'ins-5',
+            label: 'Cyber Liability Insurance (if handling client data)',
+            desc: 'Covers costs of data breaches, ransomware, and regulatory penalties. Under POPIA, you are liable for data breaches affecting your clients. Cyber cover pays forensic investigation, notification costs, and third-party claims.',
+            why: 'POPIA fines can reach R10 million or 10 years imprisonment — cyber insurance is no longer optional for data handlers.'
+          },
+          {
+            id: 'ins-6',
+            label: 'Key Person Life Insurance (if the business depends on one person)',
+            desc: 'Covers the business against the financial loss caused by the death or disability of a critical person. The business is the policyholder and beneficiary. Useful if you have business debt or depend on a specialist.',
+            why: 'Banks and investors often require key person cover as a condition of lending to small businesses.'
+          }
+        ]
+      },
+      {
+        id: 'legal',
+        label: 'Contracts & Legal',
+        icon: '⚖️',
+        iconBg: 'background:var(--orange-soft)',
+        color: 'var(--orange)',
+        desc: 'The legal documents every trading business must have in place from day one.',
+        items: [
+          {
+            id: 'leg-1',
+            label: 'Client / Service Agreement (Master Service Agreement)',
+            desc: 'A written contract for every client engagement covering scope of work, deliverables, timelines, payment terms, IP ownership, liability limitation, and dispute resolution. Should include your payment terms (e.g. net 30 days).',
+            why: 'Without a signed agreement, you have no legal remedy if a client refuses to pay or disputes delivery.'
+          },
+          {
+            id: 'leg-2',
+            label: 'Non-Disclosure Agreement (NDA)',
+            desc: 'Use a mutual NDA before any business discussion involving confidential information — client data, pricing, IP, or trade secrets. Keep a signed NDA on file for every prospect and supplier relationship.',
+            why: 'Information shared without a signed NDA is not legally protected as confidential — your trade secrets become public domain.'
+          },
+          {
+            id: 'leg-3',
+            label: 'Employment Contracts (for all staff)',
+            desc: 'The Basic Conditions of Employment Act requires a written employment contract for all employees. Must include job description, remuneration, leave entitlements, notice period, and disciplinary procedure. Labour law favours the employee — get this right.',
+            why: 'Verbal employment agreements expose you to constructive dismissal claims and CCMA disputes that are expensive to defend.'
+          },
+          {
+            id: 'leg-4',
+            label: 'Independent Contractor Agreements (for freelancers)',
+            desc: 'If you use freelancers or subcontractors, a written contract must clearly distinguish them from employees. Without it, SARS and the CCMA may deem them employees — triggering PAYE, UIF, and leave liability.',
+            why: 'Misclassifying employees as contractors is one of the most common (and costly) legal errors in small business.'
+          },
+          {
+            id: 'leg-5',
+            label: 'Supplier / Vendor Agreements',
+            desc: 'Any recurring supplier relationship should have a written agreement covering pricing, delivery SLAs, quality standards, and consequences for non-delivery. Even a short email trail confirming terms is better than nothing.',
+            why: 'Supply chain disruptions without legal recourse can shut your business down — agree terms in writing upfront.'
+          },
+          {
+            id: 'leg-6',
+            label: 'Shareholder Agreement (if more than one shareholder)',
+            desc: 'A shareholders\' agreement covers deadlock resolution, share transfer restrictions (right of first refusal), dividend policy, and what happens if a shareholder dies or wants to exit. Separate from and supplements the MOI.',
+            why: 'Co-founder disputes are the leading cause of early-stage business failure — a shareholders\' agreement creates an exit mechanism before emotions run high.'
+          },
+          {
+            id: 'leg-7',
+            label: 'Privacy Policy & POPIA compliance plan',
+            desc: 'Under the Protection of Personal Information Act (POPIA), any business that collects personal data (names, emails, ID numbers) must have a privacy policy, appoint an Information Officer, and secure the data. Register your Information Officer at popia.gov.za.',
+            why: 'POPIA carries fines of up to R10 million and 10 years imprisonment for serious violations.',
+            link: 'https://www.justice.gov.za/inforeg/',
+            linkText: 'POPIA Information Regulator'
+          }
+        ]
+      },
+      {
+        id: 'digital',
+        label: 'Digital Setup',
+        icon: '💻',
+        iconBg: 'background:var(--pink-soft)',
+        color: 'var(--pink)',
+        desc: 'The digital foundations that make your business look and operate professionally.',
+        items: [
+          {
+            id: 'dig-1',
+            label: 'Register a domain name',
+            desc: 'Choose a .co.za (R65–R150/year from Afrihost, Hetzner, or Domains.co.za) or .com domain. Keep it short, memorable, and matching your company name. Register it in the company\'s name, not your personal name.',
+            why: 'A professional domain signals credibility — clients are less likely to trust @gmail.com email addresses.'
+          },
+          {
+            id: 'dig-2',
+            label: 'Set up business email (Google Workspace or Microsoft 365)',
+            desc: 'Google Workspace starts at ~R85/user/month (Business Starter). Gives you @yourcompany.co.za email, 30GB storage, Calendar, Drive, and Meet. Microsoft 365 Business Basic is a similar cost. Avoid free Gmail for client communication.',
+            why: 'A professional email address is the single biggest signal of business legitimacy — free email providers undermine your brand.'
+          },
+          {
+            id: 'dig-3',
+            label: 'Set up cloud accounting software',
+            desc: 'Options: Sage Business Cloud (most popular in SA, R200–R600/month), Xero (R200–R500/month), or Wave (free for invoicing and accounting — no SA payroll). Connect your business bank account for automatic transaction import.',
+            why: 'Manual bookkeeping leads to errors, missed deductions, and cash flow surprises — accounting software pays for itself at tax time.'
+          },
+          {
+            id: 'dig-4',
+            label: 'Design a professional invoice template',
+            desc: 'SARS-compliant invoices must include: company name, registration number, VAT number (if registered), invoice number, date, client details, line items with descriptions, subtotal, VAT amount (15%), and total. Your accounting software handles this automatically.',
+            why: 'Non-compliant invoices (missing VAT number or registration number) are rejected by corporate clients and cannot be used to claim input VAT.'
+          },
+          {
+            id: 'dig-5',
+            label: 'Create a Google Business Profile',
+            desc: 'Register at business.google.com. Add your business name, category, address, phone, website, and hours. Upload photos of your premises or team. This makes you appear in Google Maps searches.',
+            why: 'Google Business Profile is free and is the most effective way for local customers to discover and contact you.',
+            link: 'https://business.google.com/',
+            linkText: 'Google Business Profile setup'
+          },
+          {
+            id: 'dig-6',
+            label: 'Set up a business LinkedIn page',
+            desc: 'Create a Company Page on LinkedIn — separate from your personal profile. Add your logo, company description, website, and industry. Post monthly at minimum to maintain visibility.',
+            why: 'Over 50% of B2B decision-makers research suppliers on LinkedIn before making contact — an absent company page is a missed opportunity.'
+          },
+          {
+            id: 'dig-7',
+            label: 'Secure your business social media handles',
+            desc: 'Register your company name on Instagram, Facebook, X (Twitter), and TikTok — even if you don\'t plan to post immediately. Squatting on your handles prevents brand confusion and trademark disputes.',
+            why: 'Brand handle theft is common — once someone takes your name, recovering it is expensive and often impossible.'
+          },
+          {
+            id: 'dig-8',
+            label: 'Set up a basic website or landing page',
+            desc: 'At minimum, a one-page site with your value proposition, services, contact details, and a way to book or enquire. Options: Wix (easiest), Webflow (professional), WordPress + Divi (flexible). Ensure it is mobile-responsive and loads fast.',
+            why: 'In 2025, customers who cannot find your website assume you are not credible or no longer trading.'
+          }
+        ]
+      }
+    ];
+
+    // =============================================
+    // STATE
+    // =============================================
+    let checked = {};
+    let activeTab = SECTIONS[0].id;
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) checked = JSON.parse(raw);
+      } catch (e) {
+        checked = {};
+      }
+    }
+
+    function saveState() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(checked));
+    }
+
+    // =============================================
+    // RENDER TABS
+    // =============================================
+    function countDone(section) {
+      return section.items.filter(i => checked[i.id]).length;
+    }
+
+    function renderTabs() {
+      const nav = document.getElementById('tabs-nav');
+      nav.innerHTML = SECTIONS.map(s => {
+        const done  = countDone(s);
+        const total = s.items.length;
+        const isActive = s.id === activeTab;
+        return `<button class="tab-btn ${isActive ? 'active' : ''}"
+                        onclick="switchTab('${s.id}')"
+                        aria-label="${s.label}">
+          <span>${s.icon}</span>
+          <span>${s.label}</span>
+          <span class="tab-badge">${done}/${total}</span>
+        </button>`;
+      }).join('');
+    }
+
+    function switchTab(id) {
+      activeTab = id;
+      renderTabs();
+      document.querySelectorAll('.tab-panel').forEach(p => {
+        p.classList.toggle('active', p.dataset.tab === id);
+      });
+    }
+
+    // =============================================
+    // RENDER PANELS
+    // =============================================
+    function renderPanels() {
+      const container = document.getElementById('panels-container');
+      container.innerHTML = SECTIONS.map(s => {
+        const isActive = s.id === activeTab;
+        return `<div class="tab-panel ${isActive ? 'active' : ''}" data-tab="${s.id}">
+          <div class="panel-card">
+            <div class="panel-header">
+              <div class="panel-icon" style="${s.iconBg}">${s.icon}</div>
+              <div>
+                <div class="panel-title" style="color:${s.color}">${s.label}</div>
+                <div class="panel-desc">${s.desc}</div>
+              </div>
+            </div>
+            <div class="checklist">
+              ${s.items.map(item => renderItem(item)).join('')}
+            </div>
+            ${s.extra === 'banks' ? renderBanks() : ''}
+            ${s.extra === 'banks' ? renderBankNote() : ''}
+          </div>
+        </div>`;
+      }).join('');
+    }
+
+    function renderItem(item) {
+      const isDone = !!checked[item.id];
+      const linkHtml = item.link
+        ? `<br><a class="check-link" href="${item.link}" target="_blank" rel="noopener">↗ ${item.linkText}</a>`
+        : '';
+      return `<div class="check-item ${isDone ? 'done' : ''}" id="item-${item.id}" onclick="toggleItem('${item.id}')">
+        <div class="check-box">
+          <span class="tick">✓</span>
+        </div>
+        <div class="check-body">
+          <div class="check-label">${escHtml(item.label)}</div>
+          <div class="check-desc">${escHtml(item.desc)}${linkHtml}</div>
+          <div class="check-why">💡 Why this matters: ${escHtml(item.why)}</div>
+        </div>
+      </div>`;
+    }
+
+    function renderBanks() {
+      const banks = [
+        {
+          name: 'FNB Business',
+          fee: '~R200–R350/mo',
+          docs: [
+            'CoR14.3 (Certificate of Incorporation)',
+            'Certified ID copies of all directors',
+            'Proof of business address',
+            'Shareholders\' resolution to open account',
+            'Minimum 3 months bank statements (if trading)'
+          ]
+        },
+        {
+          name: 'Capitec Business',
+          fee: '~R150–R250/mo',
+          docs: [
+            'CoR14.3 certificate',
+            'ID for all directors with ≥25% shareholding',
+            'Proof of registered address',
+            'SARS Income Tax reference number',
+            'R500 opening deposit'
+          ]
+        },
+        {
+          name: 'Standard Bank Business',
+          fee: '~R230–R400/mo',
+          docs: [
+            'CoR14.3 + CoR14.1 (MOI)',
+            'Certified ID for all directors',
+            'Proof of business address (utility bill or lease)',
+            'SARS tax clearance or reference number',
+            'Business plan (for new businesses, optional but helpful)'
+          ]
+        },
+        {
+          name: 'Nedbank Business',
+          fee: '~R190–R380/mo',
+          docs: [
+            'Certificate of Incorporation (CoR14.3)',
+            'Certified copies of director IDs / passports',
+            'Proof of business operating address',
+            'Board resolution authorising account opening',
+            '3 months personal bank statements for directors'
+          ]
+        },
+        {
+          name: 'Absa Business',
+          fee: '~R195–R350/mo',
+          docs: [
+            'CoR14.3 and a copy of MOI',
+            'ID documents for all directors',
+            'Proof of business address',
+            'Shareholder agreement (if applicable)',
+            'SARS registration confirmation letter'
+          ]
+        }
+      ];
+
+      return `<div class="bank-grid" style="margin-top:1.25rem;">
+        ${banks.map(b => `
+          <div class="bank-card">
+            <div class="bank-name">🏦 ${b.name} <span class="bank-fee">${b.fee}</span></div>
+            <ul class="bank-docs">
+              ${b.docs.map(d => `<li>${d}</li>`).join('')}
+            </ul>
+          </div>
+        `).join('')}
+      </div>`;
+    }
+
+    function renderBankNote() {
+      return `<div class="note-box amber" style="margin-top:1.25rem;">
+        <strong>⚠️ Tip:</strong> Most banks will not open an account for a company that has not yet been registered with CIPC. Get your CoR14.3 first. Some banks (FNB, Capitec) can open an account within 1–2 days via their app. Monthly fees shown are approximate and subject to change — confirm with your chosen bank.
+      </div>`;
+    }
+
+    // =============================================
+    // TOGGLE ITEM
+    // =============================================
+    function toggleItem(id) {
+      checked[id] = !checked[id];
+      saveState();
+
+      const el = document.getElementById(`item-${id}`);
+      if (el) {
+        el.classList.toggle('done', !!checked[id]);
+      }
+
+      updateProgress();
+      updateTabBadges();
+      showToast(checked[id] ? '✓ Item completed!' : 'Item unchecked');
+    }
+
+    // =============================================
+    // PROGRESS
+    // =============================================
+    function updateProgress() {
+      const allItems  = SECTIONS.flatMap(s => s.items);
+      const totalCount = allItems.length;
+      const doneCount  = allItems.filter(i => checked[i.id]).length;
+      const pct        = totalCount > 0 ? Math.round((doneCount / totalCount) * 100) : 0;
+
+      document.getElementById('pct-label').textContent    = pct + '%';
+      document.getElementById('progress-fill').style.width = pct + '%';
+      document.getElementById('progress-sub').textContent  = `${doneCount} of ${totalCount} items complete`;
+    }
+
+    function updateTabBadges() {
+      // Re-render just the tab buttons to update badges
+      renderTabs();
+    }
+
+    // =============================================
+    // RESET
+    // =============================================
+    function resetAll() {
+      if (!confirm('Reset all progress? This cannot be undone.')) return;
+      checked = {};
+      saveState();
+      // Re-render panels to update DOM
+      renderPanels();
+      renderTabs();
+      updateProgress();
+    }
+
+    // =============================================
+    // HELPERS
+    // =============================================
+    function escHtml(s) {
+      return String(s)
+        .replace(/&/g,'&amp;')
+        .replace(/</g,'&lt;')
+        .replace(/>/g,'&gt;')
+        .replace(/"/g,'&quot;')
+        .replace(/'/g,'&#39;');
+    }
+
+    function showToast(msg) {
+      const el = document.getElementById('toast');
+      el.textContent = msg;
+      el.classList.add('show');
+      setTimeout(() => el.classList.remove('show'), 2500);
+    }
+
+    // =============================================
+    // INIT
+    // =============================================
+    loadState();
+    renderTabs();
+    renderPanels();
+    updateProgress();
+  </script>
+</body>
+</html>
