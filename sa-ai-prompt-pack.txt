@@ -1,0 +1,957 @@
+================================================================================
+  AI PROMPT PACK FOR SOUTH AFRICAN BUSINESS OWNERS
+  64 Ready-to-Use AI Prompts | 7 Categories | R199
+================================================================================
+
+HOW TO USE
+----------
+1. Copy any prompt below and paste it into ChatGPT, Claude, Gemini, or any
+   AI assistant.
+2. Replace every [PLACEHOLDER] in square brackets with your actual business
+   details before submitting.
+3. Review and edit the AI output before using it — these are starting points,
+   not final documents.
+4. For legal, tax, or HR matters, have a qualified South African professional
+   review the final document.
+
+DISCLAIMER: These prompts do not constitute legal, tax, HR, or financial advice.
+All output should be reviewed by a qualified South African professional before
+use in any official capacity.
+
+================================================================================
+TABLE OF CONTENTS
+================================================================================
+
+  1. Client Communication          (Prompts 01–10)
+  2. POPIA Compliance              (Prompts 11–20)
+  3. BBBEE & Compliance            (Prompts 21–29)
+  4. HR & Staff                    (Prompts 30–39)
+  5. Finance & Tax                 (Prompts 40–48)
+  6. Marketing                     (Prompts 49–57)
+  7. Contracts & Legal             (Prompts 58–64)
+
+
+================================================================================
+SECTION 1: CLIENT COMMUNICATION
+================================================================================
+Professional, SA-contextualised client correspondence — quotations, invoices,
+scope of work & payment follow-ups.
+--------------------------------------------------------------------------------
+
+[01] PROFESSIONAL QUOTATION EMAIL
+
+Write a professional quotation email for a South African business. The email is
+from [YOUR BUSINESS NAME], a [TYPE OF BUSINESS, e.g. graphic design studio]
+based in [CITY]. The client is [CLIENT NAME / COMPANY]. The quoted service is
+[DESCRIPTION OF SERVICE] at a total cost of [AMOUNT IN RANDS] (VAT [inclusive /
+exclusive]). Quote validity is [NUMBER] days. Payment terms are [e.g. 50%
+upfront, 50% on delivery]. Use a warm but professional South African business
+tone. Include a clear breakdown line, a VAT note if applicable, and a polite
+call to action to accept the quote.
+
+--------------------------------------------------------------------------------
+
+[02] INVOICE FOLLOW-UP EMAIL — FIRST REMINDER
+
+Write a polite first-reminder email to a client whose invoice is [NUMBER] days
+overdue. Business name: [YOUR BUSINESS NAME]. Client name: [CLIENT NAME].
+Invoice number: [INVOICE NUMBER]. Amount outstanding: R[AMOUNT]. Original due
+date: [DATE]. Payment reference: [REFERENCE]. Banking details: [BANK, ACCOUNT
+NAME, ACCOUNT NUMBER, BRANCH CODE]. Tone should be friendly and assume the
+non-payment was an oversight. End with a clear call to action and offer to
+resend the invoice if needed.
+
+--------------------------------------------------------------------------------
+
+[03] INVOICE FOLLOW-UP EMAIL — FINAL DEMAND
+
+Write a firm but professional final-demand letter for an overdue invoice in a
+South African context. The amount owed is R[AMOUNT] on invoice [INVOICE NUMBER],
+now [NUMBER] days overdue. State that if payment is not received within [NUMBER,
+e.g. 5] business days, the matter will be referred to a debt collector and/or
+the business reserves the right to charge interest at the prescribed legal rate
+under the National Credit Act. Keep the tone firm and professional. Include
+banking details: [BANKING DETAILS].
+
+--------------------------------------------------------------------------------
+
+[04] SCOPE OF WORK EMAIL
+
+Write a detailed scope-of-work email to a client confirming the agreed
+deliverables for a project. Business: [YOUR BUSINESS NAME]. Client: [CLIENT
+NAME / COMPANY]. Project name: [PROJECT NAME]. Deliverables: [LIST DELIVERABLES].
+Start date: [DATE]. Completion date: [DATE]. What is NOT included (exclusions):
+[LIST EXCLUSIONS]. Revision rounds included: [NUMBER]. Total fee: R[AMOUNT].
+Payment schedule: [PAYMENT TERMS]. The email should be structured with clear
+headings, confirm mutual understanding, and ask the client to reply with written
+approval to proceed.
+
+--------------------------------------------------------------------------------
+
+[05] SCOPE CREEP RESPONSE EMAIL
+
+Write a professional email addressing scope creep with a client. The client has
+requested [DESCRIPTION OF ADDITIONAL WORK], which falls outside the agreed scope
+of work. Remind the client of the original scope agreed on [DATE] and explain
+that this additional work will require a separate quotation of approximately
+R[AMOUNT]. Keep the tone respectful and solution-focused — the goal is to
+preserve the relationship while protecting the business from unpaid work. Offer
+to send a new quotation promptly if the client wishes to proceed.
+
+--------------------------------------------------------------------------------
+
+[06] PROJECT DELAY NOTIFICATION TO CLIENT
+
+Write a professional email notifying a client of a delay in project delivery.
+Business: [YOUR BUSINESS NAME]. Client: [CLIENT NAME]. Project: [PROJECT NAME].
+Original deadline: [DATE]. New expected deadline: [DATE]. Reason for delay:
+[BRIEF REASON — e.g. supplier delays, illness, dependencies from client side].
+Apologise sincerely without making excessive excuses, explain the revised
+timeline clearly, and reassure the client of your commitment to quality
+delivery. If the delay is partly the client's fault (e.g. late feedback),
+mention this diplomatically.
+
+--------------------------------------------------------------------------------
+
+[07] CLIENT ONBOARDING WELCOME EMAIL
+
+Write a warm and professional onboarding email for a new client of a South
+African [TYPE OF BUSINESS]. Client name: [CLIENT NAME]. Business name: [YOUR
+BUSINESS NAME]. Main contact person: [YOUR NAME AND ROLE]. Contact details:
+[PHONE / EMAIL]. Next step in the process: [e.g. discovery call on DATE, kickoff
+meeting, sending intake form]. Include a brief explanation of how you work, your
+communication style, and what the client can expect in terms of turnaround times
+and feedback cycles. The tone should make the client feel welcomed and confident
+they made the right choice.
+
+--------------------------------------------------------------------------------
+
+[08] PROJECT COMPLETION & HANDOVER EMAIL
+
+Write a professional project completion and handover email. Business: [YOUR
+BUSINESS NAME]. Client: [CLIENT NAME]. Project: [PROJECT NAME]. Deliverables
+handed over: [LIST WHAT WAS DELIVERED]. How deliverables were sent: [e.g.
+Google Drive link, email attachment, physical delivery]. Any important usage
+notes or instructions: [e.g. passwords, file formats, how to update the
+website]. Outstanding balance due: R[AMOUNT] (if any). Thank the client warmly,
+invite them to reach out with any queries, and subtly mention your availability
+for future work or referrals.
+
+--------------------------------------------------------------------------------
+
+[09] PRICE INCREASE NOTIFICATION LETTER
+
+Write a professional price increase notification email for a South African small
+business. The increase is effective from [DATE]. New pricing for [SERVICE OR
+PRODUCT] will be R[NEW AMOUNT], up from R[OLD AMOUNT]. Reason for increase:
+[e.g. rising supplier costs, load-shedding operational costs, inflation,
+increased service scope]. Mention that South Africa's current economic
+environment, including the impact of CPI and fuel costs, has necessitated this
+adjustment. Give clients at least [NUMBER] days notice. Keep the tone empathetic,
+confident, and value-focused — remind clients of the quality and reliability
+they receive.
+
+--------------------------------------------------------------------------------
+
+[10] COMPLAINT RESPONSE EMAIL
+
+Write a professional response to a client complaint for a South African business.
+Business: [YOUR BUSINESS NAME]. Client: [CLIENT NAME]. Nature of complaint:
+[DESCRIBE THE ISSUE THE CLIENT RAISED]. What happened from your side: [YOUR
+UNDERSTANDING OF EVENTS]. Proposed resolution: [HOW YOU INTEND TO RESOLVE IT].
+Acknowledge the client's frustration sincerely, take accountability where
+appropriate without admitting undue legal liability, and outline the concrete
+next steps. The goal is to de-escalate and retain the client relationship
+wherever possible.
+
+
+================================================================================
+SECTION 2: POPIA COMPLIANCE
+================================================================================
+Protection of Personal Information Act — privacy policy, data breach notices,
+consent forms & staff data-handling policy.
+--------------------------------------------------------------------------------
+
+[11] BUSINESS PRIVACY POLICY (POPIA-COMPLIANT)
+
+Write a POPIA-compliant privacy policy for a South African [TYPE OF BUSINESS,
+e.g. online retail store / consulting firm / medical practice]. Business name:
+[BUSINESS NAME]. Registration number: [REG NUMBER]. Information Officer: [NAME
+AND EMAIL]. Website: [WEBSITE URL]. Types of personal information collected:
+[e.g. name, email, ID number, banking details, health information]. Purpose for
+collection: [e.g. billing, service delivery, marketing with consent]. Third
+parties data is shared with: [e.g. payment processors, accountants]. Include
+sections on data subject rights, retention periods, how to lodge a complaint
+with the Information Regulator, and cookie policy where applicable. Write in
+plain English.
+
+--------------------------------------------------------------------------------
+
+[12] DATA BREACH NOTIFICATION TO AFFECTED PARTIES
+
+Write a POPIA-compliant data breach notification letter to affected data
+subjects. The breach occurred at [BUSINESS NAME] on or around [DATE DISCOVERED].
+Nature of the breach: [DESCRIBE WHAT HAPPENED, e.g. unauthorised access to a
+database containing email addresses and phone numbers]. Information compromised:
+[LIST DATA TYPES EXPOSED]. Steps taken to contain the breach: [ACTIONS TAKEN].
+Recommended actions for affected individuals: [e.g. change passwords, monitor
+bank accounts]. Contact for queries: [NAME, EMAIL, PHONE]. The letter should be
+clear, factual, and reassuring — and note that the Information Regulator of
+South Africa has been notified as required under Section 22 of POPIA.
+
+--------------------------------------------------------------------------------
+
+[13] DATA BREACH REPORT TO THE INFORMATION REGULATOR
+
+Draft a formal security compromise notification to the Information Regulator of
+South Africa (inforeg.org.za) as required under Section 22 of POPIA. Responsible
+party: [BUSINESS NAME]. Information Officer: [NAME]. Registration number: [REG
+NUMBER]. Date and time of breach: [DATE / APPROXIMATE TIME]. Description of the
+incident: [DETAILED DESCRIPTION]. Categories of data subjects affected: [e.g.
+customers, employees]. Approximate number of affected persons: [NUMBER].
+Mitigation steps taken: [ACTIONS]. Format it as a formal letter with all
+required POPIA Section 22 fields addressed.
+
+--------------------------------------------------------------------------------
+
+[14] CUSTOMER CONSENT FORM (MARKETING & COMMUNICATIONS)
+
+Write POPIA-compliant consent form language for a South African business to
+obtain customer consent for marketing communications. Business: [BUSINESS NAME].
+Types of communication: [e.g. WhatsApp messages, email newsletters, SMS
+promotions]. Frequency: [e.g. maximum twice per week]. The consent wording must
+be specific, informed, and freely given as required by POPIA. Include a clear
+opt-out mechanism and state how data will be stored and protected. Write both a
+long-form version (for a website or printed form) and a short-form version (for
+a WhatsApp or SMS double-opt-in message).
+
+--------------------------------------------------------------------------------
+
+[15] STAFF DATA HANDLING POLICY
+
+Write a POPIA-compliant internal staff data handling policy for a South African
+business with [NUMBER] employees. Business: [BUSINESS NAME]. The policy must
+cover: what constitutes personal information under POPIA, how employees may
+access and process customer and colleague data, rules around sharing data
+externally or via personal devices, what to do if they suspect a breach,
+consequences of non-compliance, and how to handle a data subject access request
+(DSAR). Write it in plain, accessible language suitable for staff who are not
+legally trained. Include a staff acknowledgement signature block at the end.
+
+--------------------------------------------------------------------------------
+
+[16] POPIA COMPLIANCE SELF-ASSESSMENT PROMPT
+
+You are a POPIA compliance consultant. Help me conduct a basic self-assessment
+of my South African business's POPIA readiness. My business is a [TYPE OF
+BUSINESS] with approximately [NUMBER] customers and [NUMBER] employees. We
+currently [DO / DO NOT] have a privacy policy. We [DO / DO NOT] have a
+designated Information Officer. We collect the following types of personal
+information: [LIST]. Ask me questions across the eight POPIA conditions for
+lawful processing and provide a gap analysis with practical next steps for each
+gap identified.
+
+--------------------------------------------------------------------------------
+
+[17] DATA SUBJECT ACCESS REQUEST RESPONSE
+
+Write a formal response to a Data Subject Access Request (DSAR) received from
+[DATA SUBJECT NAME] on [DATE RECEIVED]. They have requested: [e.g. a copy of
+all personal information held, deletion of their data, correction of inaccurate
+data]. Business name: [BUSINESS NAME]. Information Officer: [NAME]. Under POPIA,
+the response must be provided within 30 days. The information requested is:
+[AVAILABLE IN FULL / PARTIALLY AVAILABLE — EXPLAIN / NOT HELD]. Draft a
+professional letter acknowledging the request, explaining the outcome, and
+informing the data subject of their right to escalate to the Information
+Regulator if dissatisfied.
+
+--------------------------------------------------------------------------------
+
+[18] THIRD-PARTY PROCESSOR DATA SHARING AGREEMENT CLAUSE
+
+Draft a POPIA-compliant data processing clause to include in a service agreement
+with a third-party operator (processor). Our business ([BUSINESS NAME]) is the
+responsible party. The operator is [THIRD PARTY NAME], who will process personal
+information for the purpose of [e.g. payroll processing, email marketing, cloud
+storage]. The clause must address: the purpose and scope of processing, the
+operator's obligation to implement appropriate safeguards, prohibition on
+processing beyond the agreed purpose, notification obligations in case of a
+breach, and audit rights. Write it in clear legal-but-accessible language.
+
+--------------------------------------------------------------------------------
+
+[19] EMPLOYEE PRIVACY NOTICE
+
+Write a POPIA-compliant employee privacy notice for a South African employer.
+Business: [BUSINESS NAME]. This notice must explain: what personal information
+is collected from employees, why it is collected and the lawful basis, who it is
+shared with (e.g. UIF, pension fund, medical aid, SARS), how long it is
+retained, employees' rights under POPIA, and how to contact the Information
+Officer with queries or complaints. Write it clearly for use in an employment
+contract appendix or staff handbook. Information Officer contact: [NAME, EMAIL].
+
+--------------------------------------------------------------------------------
+
+[20] WEBSITE COOKIE NOTICE (POPIA-ALIGNED)
+
+Write a POPIA-aligned cookie notice and consent banner text for a South African
+business website. Business: [BUSINESS NAME]. Website: [WEBSITE URL]. Cookies
+used: [e.g. Google Analytics (analytics), Facebook Pixel (marketing), session
+cookies (essential), Hotjar (behaviour tracking)]. Provide: (1) a short banner
+pop-up text with accept/decline options, (2) a longer cookie policy page that
+explains each cookie category, purpose, and retention period, and (3)
+instructions for users on how to manage or withdraw cookie consent. Keep
+language plain and jargon-free.
+
+
+================================================================================
+SECTION 3: BBBEE & COMPLIANCE
+================================================================================
+Broad-Based Black Economic Empowerment — EME/QSE affidavit letters, supplier
+declarations & compliance summaries.
+--------------------------------------------------------------------------------
+
+[21] BBBEE AFFIDAVIT COVER LETTER (EME)
+
+Write a professional cover letter to accompany a BBBEE EME (Exempt Micro
+Enterprise) sworn affidavit. Business name: [BUSINESS NAME]. Registration
+number: [REG NUMBER]. Owner/director: [NAME]. Annual turnover: R[AMOUNT]
+(confirming the business qualifies as an EME — turnover below R10 million).
+Black ownership percentage: [PERCENTAGE]%. BBBEE level achieved: [LEVEL 1 /
+LEVEL 2 / LEVEL 4]. The letter is addressed to [RECIPIENT / PROSPECTIVE CLIENT
+OR TENDER OFFICE] and serves to confirm the entity's BBBEE status. Keep the
+tone formal and concise.
+
+--------------------------------------------------------------------------------
+
+[22] BBBEE AFFIDAVIT COVER LETTER (QSE)
+
+Write a professional cover letter to accompany a BBBEE QSE (Qualifying Small
+Enterprise) certificate. Business name: [BUSINESS NAME]. Registration number:
+[REG NUMBER]. Annual turnover: R[AMOUNT] (between R10m and R50m — confirming
+QSE status). BBBEE verification agency: [AGENCY NAME]. Certificate validity
+period: [DATE TO DATE]. BBBEE level: [LEVEL]. Ownership: [BLACK OWNERSHIP]%
+black-owned. Addressed to: [RECIPIENT]. Include a brief statement on the
+business's commitment to transformation and an invitation to contact the
+business for further details.
+
+--------------------------------------------------------------------------------
+
+[23] SUPPLIER BBBEE DECLARATION REQUEST
+
+Write a professional email requesting a supplier's BBBEE certificate or sworn
+affidavit. Our business: [YOUR BUSINESS NAME]. Supplier: [SUPPLIER NAME]. Reason
+for request: [e.g. annual BBBEE scorecard compliance, procurement policy
+requirement, tender requirement]. Deadline: [DATE]. Specify that if they qualify
+as an EME (turnover under R10m), a notarised sworn affidavit is acceptable. If
+they are a QSE or large enterprise, they must provide a certificate from an
+accredited BBBEE verification agency. Keep the tone professional and
+collaborative — not demanding.
+
+--------------------------------------------------------------------------------
+
+[24] BBBEE COMPLIANCE CHECKLIST EMAIL TO CLIENT
+
+Write a clear, professional summary email outlining the BBBEE compliance
+documents and information required from a client or supplier for a procurement
+or tender process. Our business: [YOUR BUSINESS NAME]. Recipient: [CLIENT /
+SUPPLIER NAME]. Tender or contract reference: [REFERENCE NUMBER]. Required
+documents include: valid BBBEE certificate or EME affidavit, company
+registration documents, tax clearance certificate (good standing from SARS),
+and [ANY OTHER DOCUMENTS REQUIRED]. Submission deadline: [DATE]. Explain where
+and how documents should be submitted.
+
+--------------------------------------------------------------------------------
+
+[25] ENTERPRISE & SUPPLIER DEVELOPMENT (ESD) PROGRAMME PROPOSAL
+
+Write a professional proposal email or letter for a South African business
+seeking to participate in another company's Enterprise and Supplier Development
+(ESD) programme. Applying business: [YOUR BUSINESS NAME]. Target company's ESD
+programme: [COMPANY NAME]. Products or services offered: [DESCRIPTION]. Black
+ownership level: [PERCENTAGE]%. BBBEE level: [LEVEL]. Years in operation:
+[NUMBER]. What development support is sought: [e.g. mentorship, preferential
+procurement, financial support, skills training]. The tone should be persuasive
+but professional, demonstrating the business's potential and transformation
+credentials.
+
+--------------------------------------------------------------------------------
+
+[26] TAX CLEARANCE GOOD STANDING — PROCESS GUIDE
+
+Write a professional internal checklist and email template to assist a South
+African business owner or HR administrator in obtaining or renewing their SARS
+Tax Clearance Certificate (now called a "Tax Compliance Status" or TCS pin via
+eFiling). Business: [BUSINESS NAME]. Tax number: [TAX REFERENCE NUMBER].
+Required for: [e.g. a government tender, BBBEE compliance, bank account
+opening]. Include a step-by-step reminder of the eFiling process to generate the
+TCS pin, common reasons why the certificate may be withheld (outstanding
+returns, debt), and a suggested checklist to ensure the business is in good
+standing before applying.
+
+--------------------------------------------------------------------------------
+
+[27] TENDER SUBMISSION COVER LETTER
+
+Write a professional tender cover letter for a South African business responding
+to a government or corporate tender. Business name: [BUSINESS NAME]. Registration
+number: [REG NUMBER]. Tender reference: [TENDER NUMBER AND NAME]. Issuing
+entity: [GOVERNMENT DEPARTMENT / COMPANY NAME]. Services or goods being tendered
+for: [DESCRIPTION]. BBBEE level: [LEVEL]. Years of relevant experience: [NUMBER].
+Key differentiator: [WHAT SETS YOUR BUSINESS APART]. The letter should be
+formal, reference compliance with PFMA or SCM policy where relevant, and
+indicate that all required documents are enclosed.
+
+--------------------------------------------------------------------------------
+
+[28] SKILLS DEVELOPMENT WORKPLACE TRAINING PLAN SUMMARY
+
+Write a skills development plan summary for a South African business's BBBEE
+scorecard and SETA reporting. Business: [BUSINESS NAME]. SETA: [RELEVANT SETA
+NAME]. SDL number: [NUMBER]. Number of employees: [NUMBER]. Training planned for
+the financial year: [LIST TRAINING PROGRAMMES, PROVIDERS, DURATION].
+Beneficiaries: [e.g. 5 black female employees for financial management
+training]. Budget allocated: R[AMOUNT]. Draft this as a clear internal
+communication or email to the HR/accounts team explaining the plan, the SDL levy
+submission deadline, and the importance of claiming back the 20% SETA grants.
+
+--------------------------------------------------------------------------------
+
+[29] CSD (CENTRAL SUPPLIER DATABASE) REGISTRATION REMINDER
+
+Write a professional internal memo or email reminding a South African business
+owner or operations manager to maintain their Central Supplier Database (CSD)
+registration (csd.gov.za). Include a checklist of: information required to
+register (company registration documents, banking details, tax reference number,
+BBBEE certificate), how to keep the profile updated annually, why an active CSD
+profile is required for government procurement and BBBEE compliance, and what
+happens if the profile lapses. Keep it practical and action-oriented. Business:
+[BUSINESS NAME]. Responsible person: [NAME].
+
+
+================================================================================
+SECTION 4: HR & STAFF
+================================================================================
+CCMA-aligned HR documentation — employment summaries, disciplinary notices,
+warnings, leave policy & UIF.
+--------------------------------------------------------------------------------
+
+[30] EMPLOYMENT CONTRACT SUMMARY EMAIL
+
+Write a professional email to accompany an employment contract sent to a new
+employee of a South African business. Business: [BUSINESS NAME]. Employee name:
+[NAME]. Job title: [JOB TITLE]. Start date: [DATE]. Monthly salary: R[AMOUNT]
+[gross / net]. Probation period: [NUMBER] months. Working hours: [HOURS PER
+WEEK]. Benefits: [e.g. medical aid contribution, pension, travel allowance].
+Instruct the employee to read the contract carefully, highlight any questions
+before signing, and return a signed copy by [DATE]. Reference compliance with
+the Basic Conditions of Employment Act (BCEA).
+
+--------------------------------------------------------------------------------
+
+[31] DISCIPLINARY HEARING NOTICE (CCMA-ALIGNED)
+
+Write a formal disciplinary hearing notice for a South African employee that is
+aligned with the CCMA Code of Good Practice: Dismissal (Schedule 8 of the
+Labour Relations Act). Employee name: [NAME]. Date of notice: [DATE]. Charges:
+[LIST MISCONDUCT CHARGES, e.g. repeated absenteeism without leave approval,
+gross insubordination]. Date, time, and venue of hearing: [DETAILS]. Presiding
+officer: [NAME AND ROLE]. Inform the employee of their right to be accompanied
+by a shop steward or colleague, their right to present a defence, and the
+potential sanction if found guilty. Keep the tone formal and legally sound.
+
+--------------------------------------------------------------------------------
+
+[32] WRITTEN WARNING LETTER (FIRST OFFENCE)
+
+Write a formal written warning letter for a South African employee. Employee:
+[NAME]. Job title: [TITLE]. Date of incident: [DATE]. Nature of misconduct:
+[DESCRIBE THE SPECIFIC CONDUCT, e.g. arriving late three times in one week
+without valid reason]. This is a [FIRST / SECOND / FINAL] written warning. The
+warning is valid for [NUMBER, typically 6 or 12] months. State clearly what
+improvement is expected and that further misconduct may result in a more serious
+sanction, up to and including dismissal. Include a signature block for the
+employee to acknowledge receipt (not agreement). Align with the Basic Conditions
+of Employment Act and LRA.
+
+--------------------------------------------------------------------------------
+
+[33] EMPLOYEE LEAVE POLICY SUMMARY
+
+Write a clear and practical employee leave policy for a South African small
+business, fully compliant with the Basic Conditions of Employment Act (BCEA).
+Business: [BUSINESS NAME]. Include the following leave types and entitlements
+under the BCEA: annual leave (15 working days per year / 1.25 days per month),
+sick leave (30 days in a 36-month cycle), family responsibility leave (3 days
+per year), maternity leave (4 months unpaid), parental leave (10 consecutive
+days), and study leave (if offered — [DAYS PER YEAR]). Include the procedure for
+applying for leave, notice requirements, public holidays policy, and what
+happens to unused leave. Write in plain language accessible to all staff.
+
+--------------------------------------------------------------------------------
+
+[34] UIF REGISTRATION REMINDER FOR NEW EMPLOYEE
+
+Write a clear internal reminder or email for a South African business owner or
+HR administrator to complete UIF (Unemployment Insurance Fund) registration
+obligations for a new employee. Business: [BUSINESS NAME]. New employee: [NAME].
+Start date: [DATE]. Include: the legal requirement to register within 7 days of
+commencement, how to register on uFiling (ufiling.labour.gov.za), the
+employee's monthly UIF contribution (1% of gross salary capped at
+R17,712/month, matched by the employer), how to declare the employee's details,
+and the consequences of non-registration. Keep it practical and checklist-style.
+
+--------------------------------------------------------------------------------
+
+[35] RETRENCHMENT CONSULTATION LETTER (SECTION 189)
+
+Draft a formal Section 189 retrenchment consultation notice for a South African
+employer. This letter initiates the required consultation process under the
+Labour Relations Act before any retrenchment decision is made. Business:
+[BUSINESS NAME]. Employee(s) affected: [NAME(S) OR CATEGORY]. Reason for
+proposed retrenchment: [e.g. operational requirements, economic downturn,
+restructuring]. Proposed date of retrenchment: [DATE]. Alternatives considered:
+[e.g. reduced hours, temporary lay-off, voluntary retrenchment]. The letter must
+invite the employee(s) to a consultation meeting on [DATE] and indicate that the
+employer is open to alternatives. Confirm the right to union or shop steward
+representation.
+
+--------------------------------------------------------------------------------
+
+[36] PERFORMANCE IMPROVEMENT PLAN (PIP) LETTER
+
+Write a formal Performance Improvement Plan (PIP) letter for a South African
+employee who is underperforming. Employee: [NAME]. Job title: [TITLE].
+Manager/supervisor: [NAME]. Performance concerns: [LIST SPECIFIC ISSUES, e.g.
+consistently missing sales targets, poor quality of work output, failure to meet
+deadlines]. PIP duration: [NUMBER] weeks/months. Specific measurable targets to
+be achieved: [LIST TARGETS]. Support to be provided: [e.g. mentoring, training,
+weekly check-ins]. Consequence of failure to improve: [e.g. further disciplinary
+action]. Align with the CCMA Code of Good Practice on Poor Work Performance.
+
+--------------------------------------------------------------------------------
+
+[37] REMOTE WORK POLICY FOR SA BUSINESS
+
+Write a practical remote work policy for a South African small business.
+Business: [BUSINESS NAME]. Number of employees working remotely: [NUMBER].
+Remote work arrangement: [FULLY REMOTE / HYBRID — NUMBER OF DAYS IN OFFICE].
+Cover: eligibility criteria, required home office setup, core working hours,
+availability and responsiveness expectations, data security and POPIA obligations
+when working from home, load-shedding contingency plans (important context for
+SA), expense reimbursement (if any), performance monitoring, and the employer's
+right to recall employees to office with [NUMBER] days' notice. Write in plain,
+accessible language.
+
+--------------------------------------------------------------------------------
+
+[38] EMPLOYEE RESIGNATION ACKNOWLEDGEMENT & OFFBOARDING EMAIL
+
+Write a professional email acknowledging an employee's resignation and outlining
+the offboarding process. Employee: [NAME]. Last day of employment: [DATE]. Notice
+period: [NUMBER] weeks. Offboarding tasks to cover: return of company property
+(list: [ITEMS]), handover of responsibilities, final payslip and leave payout
+details, UIF documentation, and completion of a separation certificate (UI-19
+form). Confirm the employee's accumulated leave balance of [NUMBER] days will be
+paid out at R[AMOUNT] per day. Keep the tone professional, respectful, and leave
+the relationship in good standing.
+
+--------------------------------------------------------------------------------
+
+[39] WORKPLACE HARASSMENT POLICY STATEMENT
+
+Write a workplace harassment and sexual harassment policy statement for a South
+African business, aligned with the Employment Equity Act and the Code of Good
+Practice on the Handling of Sexual Harassment Cases. Business: [BUSINESS NAME].
+This policy must cover: the business's zero-tolerance stance on harassment,
+definition of harassment and sexual harassment, examples of prohibited conduct,
+how to report an incident (reporting to: [DESIGNATED PERSON OR POSITION]),
+confidentiality guarantee, investigation process, consequences for perpetrators,
+and protection of complainants from victimisation. Include a brief statement
+from management affirming commitment to a safe workplace.
+
+
+================================================================================
+SECTION 5: FINANCE & TAX
+================================================================================
+SARS correspondence, VAT invoice requirements, payment arrangements &
+provisional tax reminders.
+--------------------------------------------------------------------------------
+
+[40] SARS OUTSTANDING RETURN RESPONSE LETTER
+
+Write a formal response letter to SARS regarding an outstanding return query or
+audit notification. Business/taxpayer: [NAME]. Tax reference number: [NUMBER].
+SARS case or audit reference: [REFERENCE]. The query relates to: [e.g.
+outstanding IRP6, outstanding VAT201, income tax return for the year of
+assessment ending DATE]. Reason for any delay: [BRIEF EXPLANATION]. Proposed
+resolution: [e.g. submission by DATE, request for extension]. Keep the tone
+formal, cooperative, and professional — demonstrating willingness to comply.
+Include taxpayer details in the letterhead format.
+
+--------------------------------------------------------------------------------
+
+[41] VAT INVOICE REQUIREMENTS COMPLIANCE CHECK
+
+You are a South African tax compliance expert. Review my business's current
+invoice template and confirm whether it meets all SARS requirements for a valid
+tax invoice under the Value-Added Tax Act (VAT Act 89 of 1991). My business VAT
+number is [VAT NUMBER]. Current invoice elements: [PASTE OR LIST CURRENT INVOICE
+FIELDS]. Check for all required fields including: the words "Tax Invoice",
+supplier's name and VAT number, customer's name and address, invoice number,
+date, description of goods/services, quantity, unit price, VAT amount separately
+stated, and total amount. Identify any missing or incorrect fields and provide
+corrected invoice template language.
+
+--------------------------------------------------------------------------------
+
+[42] SARS PAYMENT ARRANGEMENT REQUEST LETTER
+
+Write a formal payment arrangement request letter to SARS on behalf of a South
+African taxpayer who is unable to pay their full tax debt in one payment.
+Taxpayer name: [BUSINESS OR INDIVIDUAL NAME]. Tax reference number: [NUMBER].
+Outstanding amount: R[AMOUNT]. Tax type: [e.g. income tax, VAT, PAYE]. Reason
+for financial difficulty: [BRIEF EXPLANATION, e.g. cash flow pressure, business
+downturn, COVID-19 recovery]. Proposed monthly instalment: R[AMOUNT]. Proposed
+start date: [DATE]. Reference the SARS Instalment Payment Agreement under
+Section 167 of the Tax Administration Act. Keep the tone cooperative and
+compliant.
+
+--------------------------------------------------------------------------------
+
+[43] PROVISIONAL TAX REMINDER & CALCULATION GUIDE
+
+Write a practical provisional tax reminder and guide for a South African sole
+proprietor or small business owner. My tax reference number is [NUMBER].
+Financial year end: [DATE]. First provisional tax payment (IRP6) is due: [DATE
+— typically 6 months into the tax year]. Second payment is due: [DATE — on the
+last day of the tax year]. Explain: what provisional tax is, how to estimate
+taxable income using the basic amount method vs actual income, the 80% rule and
+penalties for under-estimation, how to submit the IRP6 on SARS eFiling, and a
+simple worked example using estimated annual income of R[ESTIMATED INCOME].
+Write in plain language.
+
+--------------------------------------------------------------------------------
+
+[44] VAT REGISTRATION ADVISORY LETTER
+
+Write an advisory memo or email for a South African business owner on when and
+how to register for VAT. Business: [BUSINESS NAME]. Current annual turnover:
+R[AMOUNT]. Nature of business: [DESCRIPTION]. Explain: the compulsory
+registration threshold (R1 million in any 12-month period), the voluntary
+registration threshold (R50,000), the advantages of early voluntary
+registration, zero-rated vs exempt supplies, the registration process on SARS
+eFiling (VAT101 form), documents required, and the typical processing timeline.
+Include a section on common mistakes new VAT vendors make in their first few
+months of registration.
+
+--------------------------------------------------------------------------------
+
+[45] MONTHLY BOOKKEEPING CHECKLIST FOR SA BUSINESS
+
+Write a comprehensive monthly bookkeeping and compliance checklist for a South
+African small business owner. Business: [BUSINESS NAME]. The business is [VAT
+registered / not VAT registered] and has [NUMBER] employees. The checklist must
+cover: reconciling bank statements, issuing invoices and recording income,
+capturing supplier invoices and payments, PAYE/UIF/SDL submission and payment
+(7th of the month), VAT201 submission if applicable ([MONTHLY / BI-MONTHLY]),
+reviewing debtor aging, checking cash flow, and updating the fixed asset
+register. Organise by week within the month and format clearly for practical
+daily use.
+
+--------------------------------------------------------------------------------
+
+[46] SARS OBJECTION LETTER (ASSESSMENT DISPUTE)
+
+Write a formal objection letter to SARS disputing an incorrect tax assessment.
+Taxpayer name: [NAME]. Tax reference number: [NUMBER]. Assessment number being
+disputed: [NUMBER]. Tax type and year of assessment: [TYPE AND YEAR]. Date of
+assessment: [DATE]. Ground(s) for objection: [DESCRIBE THE ERROR OR DISPUTE,
+e.g. income incorrectly classified, deduction disallowed without basis, double
+counting of income]. Supporting evidence: [LIST DOCUMENTS ATTACHED]. The
+objection must be submitted within 30 business days of the assessment date under
+Section 104 of the Tax Administration Act. Keep the tone formal, factual, and
+professional.
+
+--------------------------------------------------------------------------------
+
+[47] ANNUAL TAX RETURN PREP — EMAIL TO ACCOUNTANT
+
+Write a professional and organised email to my accountant requesting assistance
+with my annual tax return preparation. Business: [BUSINESS NAME]. Financial year
+ended: [DATE]. Accountant: [NAME / FIRM]. I will provide the following documents:
+[LIST AVAILABLE DOCUMENTS, e.g. bank statements, invoices, payroll records,
+expense receipts]. Outstanding queries I need help with: [e.g. home office
+deduction calculation, vehicle claim, depreciation on equipment]. Deadline:
+[DATE]. Request a meeting or call by [DATE]. Ask the accountant to confirm which
+additional documents or information they require from my side.
+
+--------------------------------------------------------------------------------
+
+[48] PAYE & SDL COMPLIANCE REMINDER FOR EMPLOYERS
+
+Write a monthly payroll compliance reminder for a South African employer.
+Business: [BUSINESS NAME]. Payroll period: [MONTH AND YEAR]. Number of
+employees: [NUMBER]. This reminder must cover: submission of the EMP201 return
+on eFiling, PAYE payment due by the 7th of the following month, UIF contribution
+(1% employer + 1% employee), Skills Development Levy (SDL) of 1% of gross
+payroll if the annual wage bill exceeds R500,000, how to handle employees below
+the tax threshold, and a reminder to issue employees their payslips as required
+by the BCEA. Format as a clear action checklist.
+
+
+================================================================================
+SECTION 6: MARKETING
+================================================================================
+South African audience — social media captions, Google Business profiles,
+WhatsApp broadcasts & review requests.
+--------------------------------------------------------------------------------
+
+[49] INSTAGRAM / FACEBOOK CAPTION FOR SA AUDIENCE
+
+Write 3 different social media captions for a South African [TYPE OF BUSINESS]
+promoting [PRODUCT OR SERVICE]. Target audience: [DESCRIBE YOUR AUDIENCE, e.g.
+black female entrepreneurs in Johannesburg aged 25-40]. Brand tone: [e.g. warm
+and empowering / professional and authoritative / fun and relatable]. Price or
+key offer: [OFFER OR PRICE POINT]. Call to action: [e.g. DM us, visit our
+website, book now, WhatsApp us]. Make the captions feel authentically South
+African — include relevant local context, aspirational language, and appropriate
+hashtags mixing local and global tags. Vary the length: one short (under 50
+words), one medium, one longer storytelling format.
+
+--------------------------------------------------------------------------------
+
+[50] GOOGLE BUSINESS PROFILE DESCRIPTION
+
+Write an optimised Google Business Profile description for a South African [TYPE
+OF BUSINESS]. Business name: [BUSINESS NAME]. Location: [AREA / CITY]. Main
+services or products: [LIST]. Unique selling proposition: [WHAT MAKES YOU
+DIFFERENT]. Years in business: [NUMBER]. Key local search terms customers would
+use: [LIST KEYWORDS, e.g. "accountant in Sandton", "African hair salon Durban"].
+The description must be under 750 characters, include relevant keywords
+naturally, speak directly to the local community, include a clear call to
+action, and feel human — not robotic. Do not use the business name in the first
+sentence.
+
+--------------------------------------------------------------------------------
+
+[51] WHATSAPP BROADCAST PROMOTIONAL MESSAGE
+
+Write a WhatsApp broadcast message for a South African [TYPE OF BUSINESS]
+promoting a special offer. Business: [BUSINESS NAME]. Offer: [DESCRIBE THE
+OFFER, e.g. 20% off all services in January, free delivery on orders over R500].
+Validity period: [DATE RANGE]. How to claim: [e.g. reply YES, use code SAVE20,
+call or WhatsApp us]. Contact: [PHONE NUMBER]. The message must be warm and
+conversational — like a message from a friend — under 200 words, include an
+emoji or two naturally, and have a clear deadline to create urgency. Do not make
+it feel like spam. End with the POPIA-compliant opt-out line: "Reply STOP to
+unsubscribe."
+
+--------------------------------------------------------------------------------
+
+[52] GOOGLE REVIEW REQUEST EMAIL / MESSAGE
+
+Write a friendly email or WhatsApp message asking a satisfied South African
+customer to leave a Google review. Business: [BUSINESS NAME]. Customer name:
+[CUSTOMER NAME]. Service or product recently purchased: [DESCRIPTION]. Google
+review link: [GOOGLE REVIEW LINK]. Keep the message warm, genuine, and brief
+(under 100 words). Mention why reviews matter to a small South African business
+— community trust, helping other local customers find reliable services. Do not
+offer incentives for reviews (this violates Google's policies). Write both an
+email version and a WhatsApp version.
+
+--------------------------------------------------------------------------------
+
+[53] LINKEDIN POST FOR SA BUSINESS OWNER
+
+Write a compelling LinkedIn post for a South African business owner or
+professional. Author: [YOUR NAME AND BUSINESS]. Topic or key message: [e.g. a
+business lesson learned, a client success story, a thought on the South African
+economy, a service announcement, a milestone reached]. Target readers: [e.g.
+other entrepreneurs, corporate procurement managers, HR professionals]. Tone:
+[PROFESSIONAL / PERSONAL AND REFLECTIVE / EDUCATIONAL]. Length: 150-300 words.
+The post must have a strong opening line that stops the scroll, a relatable
+middle section, and a clear closing question or call to action to drive comments
+and engagement. Include 3-5 relevant hashtags at the end.
+
+--------------------------------------------------------------------------------
+
+[54] EMAIL NEWSLETTER FOR SA CUSTOMERS
+
+Write a monthly email newsletter for South African customers of a [TYPE OF
+BUSINESS]. Business: [BUSINESS NAME]. Month: [MONTH AND YEAR]. Sections to
+include: (1) a warm personal greeting from the owner, (2) a featured product or
+service highlight with pricing, (3) a useful tip or piece of advice relevant to
+the industry, (4) a customer spotlight or testimonial quote, (5) upcoming events
+or promotions. Length: approximately 400 words. Tone: [FRIENDLY AND PERSONAL /
+PROFESSIONAL / INSPIRATIONAL]. Include a clear unsubscribe link notice at the
+footer for POPIA compliance.
+
+--------------------------------------------------------------------------------
+
+[55] TIKTOK / REELS SCRIPT FOR SA BUSINESS
+
+Write a 30-45 second TikTok or Instagram Reels script for a South African [TYPE
+OF BUSINESS]. Hook (first 3 seconds): [DESCRIBE WHAT SHOULD GRAB ATTENTION,
+e.g. "This R50 changed my business forever"]. Content format: [e.g. "day in my
+life as a [job]", "3 things I wish I knew", "before and after", "watch me make
+[product]"]. Key message to convey: [WHAT YOU WANT VIEWERS TO KNOW OR FEEL].
+Call to action: [e.g. follow, visit link in bio, WhatsApp us, comment their
+city]. Make the script feel authentic and conversational for a South African
+audience. Include directions for on-screen text and suggested audio type.
+
+--------------------------------------------------------------------------------
+
+[56] NEGATIVE GOOGLE REVIEW RESPONSE
+
+Write a professional, empathetic public response to a negative Google review for
+a South African business. Business: [BUSINESS NAME]. The reviewer's complaint:
+[PASTE OR DESCRIBE THE REVIEW]. The true situation from the business's side:
+[BRIEF EXPLANATION]. Resolution offered (if any): [WHAT YOU'VE DONE OR ARE
+WILLING TO DO]. The response must: acknowledge the customer's frustration, avoid
+being defensive or dismissive, demonstrate that you take feedback seriously,
+correct any factual inaccuracies politely, and invite the reviewer to contact
+you directly to resolve the matter. Keep it under 150 words — this is a public
+response that other potential customers will read.
+
+--------------------------------------------------------------------------------
+
+[57] BUSINESS REFERRAL PROGRAMME LAUNCH ANNOUNCEMENT
+
+Write a friendly announcement email or WhatsApp message launching a customer
+referral programme for a South African [TYPE OF BUSINESS]. Business: [BUSINESS
+NAME]. Referral reward for the referring customer: [e.g. R100 off their next
+order, a free service, a gift]. Reward for the new customer they refer: [e.g.
+10% off their first order]. How to refer: [e.g. share a unique referral code,
+tell them to mention your name when booking]. Programme validity: [DATES OR
+ONGOING]. The message must feel exciting and community-oriented — South African
+customers respond well to word-of-mouth trust and community spirit. Keep it
+under 150 words.
+
+
+================================================================================
+SECTION 7: CONTRACTS & LEGAL
+================================================================================
+South African NDA, freelance service agreements & contractor vs employee
+classification checklists.
+--------------------------------------------------------------------------------
+
+[58] NON-DISCLOSURE AGREEMENT (NDA) FOR SA USE
+
+Draft a mutual Non-Disclosure Agreement (NDA) suitable for South African law.
+Disclosing party: [PARTY A NAME, REGISTRATION NUMBER, ADDRESS]. Receiving party:
+[PARTY B NAME, REGISTRATION NUMBER, ADDRESS]. Purpose of disclosure: [e.g.
+exploring a potential business partnership, providing a service quote, due
+diligence]. Duration of confidentiality obligation: [NUMBER] years. Definition
+of confidential information: [DESCRIBE TYPES OF INFORMATION TO BE PROTECTED].
+Governing law: South Africa. Include standard clauses covering: definition of
+confidential information, permitted disclosures, obligations of the receiving
+party, exclusions from confidentiality, remedies for breach (including interdict
+relief), and the jurisdiction of South African courts.
+
+--------------------------------------------------------------------------------
+
+[59] FREELANCE SERVICE AGREEMENT FOR SOUTH AFRICA
+
+Draft a freelance service agreement for South African use between a service
+provider and a client. Service provider: [NAME / BUSINESS NAME, REGISTRATION
+NUMBER]. Client: [NAME / COMPANY, REGISTRATION NUMBER]. Services to be
+provided: [DETAILED DESCRIPTION]. Fee: R[AMOUNT] [per project / per hour / per
+month]. VAT: [APPLICABLE / NOT APPLICABLE — VAT NUMBER IF APPLICABLE]. Payment
+terms: [e.g. 30 days from invoice, 50% upfront]. Intellectual property: [who
+owns work created — transfer to client upon full payment / provider retains
+until paid]. Termination notice: [NUMBER] days. Include clauses on deliverables,
+revisions, confidentiality, independent contractor status (not employee), and
+limitation of liability. Govern under South African law.
+
+--------------------------------------------------------------------------------
+
+[60] INDEPENDENT CONTRACTOR VS EMPLOYEE CLASSIFICATION CHECKLIST
+
+You are a South African labour law expert. Help me determine whether a person I
+engage for work should be classified as an independent contractor or an employee
+under South African law, including the Labour Relations Act, the Basic
+Conditions of Employment Act, and SARS guidelines. The person's name or role:
+[NAME OR ROLE]. Ask me 15 diagnostic questions across the key factors considered
+by the CCMA and SARS — including control, integration, economic dependency,
+ownership of tools, risk, and exclusivity. After my answers, provide a risk
+rating (high/medium/low risk of misclassification), explain the tax and labour
+consequences of misclassification, and recommend the most appropriate engagement
+structure.
+
+--------------------------------------------------------------------------------
+
+[61] SERVICE LEVEL AGREEMENT (SLA) FOR SA BUSINESS
+
+Draft a Service Level Agreement (SLA) for a South African [TYPE OF SERVICE
+BUSINESS, e.g. IT support company, cleaning company, security provider]. Service
+provider: [BUSINESS NAME, REGISTRATION NUMBER]. Client: [CLIENT NAME / COMPANY].
+Services covered: [DETAILED DESCRIPTION]. Service hours: [e.g. Monday-Friday
+08h00-17h00]. Response time commitment: [e.g. within 4 hours for critical
+issues]. Monthly fee: R[AMOUNT]. Exclusions: [WHAT IS NOT COVERED]. Penalties
+for SLA breach: [e.g. service credit of X% of monthly fee]. Review period:
+every [NUMBER] months. Govern under South African law. Include termination and
+dispute resolution clauses.
+
+--------------------------------------------------------------------------------
+
+[62] LETTER OF INTENT (LOI) FOR BUSINESS PARTNERSHIP
+
+Write a non-binding Letter of Intent (LOI) between two South African businesses
+exploring a potential partnership or joint venture. Party A: [BUSINESS NAME,
+REGISTRATION NUMBER]. Party B: [BUSINESS NAME, REGISTRATION NUMBER]. Nature of
+intended collaboration: [e.g. joint bidding on government tenders, co-marketing
+agreement, shared service delivery]. Key terms under consideration: [e.g.
+revenue split, roles and responsibilities, exclusivity period]. Proposed due
+diligence period: [NUMBER] weeks. The LOI must make clear that it is not legally
+binding (except for any confidentiality clause included), sets out the intention
+to negotiate in good faith, and specifies a deadline by which a formal agreement
+will be concluded or negotiations will lapse.
+
+--------------------------------------------------------------------------------
+
+[63] TERMS AND CONDITIONS FOR ONLINE STORE (SOUTH AFRICA)
+
+Write comprehensive Terms and Conditions for a South African online store.
+Business: [BUSINESS NAME]. Registration number: [REG NUMBER]. Website: [URL].
+Products sold: [DESCRIPTION]. The T&Cs must be compliant with the Electronic
+Communications and Transactions Act (ECT Act) and the Consumer Protection Act
+(CPA). Include sections on: acceptance of terms, ordering and payment process,
+pricing and VAT, delivery policy and timeframes, returns and refunds (as
+required by the CPA — 7-business-day cooling off right for online purchases),
+limitation of liability, intellectual property, governing law (South Africa),
+and dispute resolution. Write in plain English.
+
+--------------------------------------------------------------------------------
+
+[64] DEMAND LETTER FOR BREACH OF CONTRACT
+
+Write a formal letter of demand for breach of contract to be sent to a South
+African individual or company. Sender: [YOUR NAME / BUSINESS NAME]. Recipient:
+[NAME / COMPANY]. Nature of contract: [DESCRIBE THE AGREEMENT AND DATE IT WAS
+SIGNED OR CONCLUDED]. Breach: [DESCRIBE SPECIFICALLY HOW THE RECIPIENT BREACHED
+THE CONTRACT]. Amount claimed or remedy sought: [R AMOUNT / SPECIFIC
+PERFORMANCE / OTHER]. Deadline to remedy: [NUMBER] calendar days from date of
+letter. State that failure to remedy within the deadline will result in legal
+proceedings being instituted without further notice, and that the recipient will
+be held liable for legal costs. Keep the tone formal and unambiguous.
+
+
+================================================================================
+DISCLAIMER
+================================================================================
+
+The prompts in this pack are designed to help South African business owners
+generate useful first-draft documents using AI tools. They do not constitute
+legal, tax, HR, or financial advice. All AI-generated output should be reviewed
+by a qualified South African professional (attorney, tax practitioner, HR
+consultant, or accountant) before being used in any official capacity.
+
+Laws and regulations referenced (including POPIA, the LRA, BCEA, VAT Act, and
+BBBEE Codes) are subject to amendment — always verify current requirements with
+the relevant regulatory authority or your advisor.
+
+================================================================================
+AI Prompt Pack for South African Business Owners | 64 Prompts | 7 Categories
+For personal and business use. Not for resale or redistribution.
+================================================================================
