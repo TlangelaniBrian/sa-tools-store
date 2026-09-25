@@ -6,6 +6,10 @@ Professional digital tools built specifically for South African professionals, i
 
 ---
 
+> **Looking for the full paid catalogue?** These SA calculators and templates stay here, but our complete paid range (Founder OS, SA Property Investor Pack, SA Business Owner Prompts, Legal Packs, Workflow Automation) now lives on the main storefront:
+> **https://tlangelanibrian.github.io/digital-products/**
+
+
 ## Products
 
 ### 🧮 SA Income Tax Calculator 2025/26 — R149
